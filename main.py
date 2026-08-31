@@ -106,8 +106,18 @@ def clean_price(value):
     except ValueError:
         return None
 
-
 def clean_address(value):
+    """
+    Shortens Realtor addresses.
+
+    Examples:
+
+    10109 80 ST NW, Edmonton, Alberta T6A3H9
+    -> 10109 NW
+
+    12916 63 ST NW, Edmonton, Alberta T5A0W3
+    -> 12916 NW
+    """
 
     if value is None:
         return None
@@ -117,10 +127,36 @@ def clean_address(value):
     if not value:
         return None
 
-    value = value.replace("|", ", ")
-    value = re.sub(r"\s+", " ", value)
+    # Only keep the street-address portion
+    # before the city/province
+    street = value.split("|")[0]
+    street = street.split(",")[0]
+    street = street.strip()
 
-    return value.strip()
+    # Find the first street/building number
+    number_match = re.search(
+        r"#?(\d+)",
+        street
+    )
+
+    if not number_match:
+        return street
+
+    number = number_match.group(1)
+
+    # Find direction such as NW, NE, SW, SE
+    direction_match = re.search(
+        r"\b(NW|NE|SW|SE)\b",
+        street,
+        re.IGNORECASE
+    )
+
+    if direction_match:
+        direction = direction_match.group(1).upper()
+        return f"{number} {direction}"
+
+    # If there is no direction, just use number
+    return number
 
 
 def build_phone(area_code, phone_number):
