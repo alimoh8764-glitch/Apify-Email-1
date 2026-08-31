@@ -1,6 +1,5 @@
 import os
 import re
-from io import BytesIO
 from datetime import datetime, timezone
 
 import pandas as pd
@@ -22,33 +21,26 @@ GITHUB_FOLDER = os.getenv("GITHUB_FOLDER", "data")
 
 
 if not GITHUB_TOKEN:
-    raise RuntimeError(
-        "Missing Railway variable: GITHUB_TOKEN"
-    )
+    raise RuntimeError("Missing Railway variable: GITHUB_TOKEN")
 
 if not GITHUB_REPO:
-    raise RuntimeError(
-        "Missing Railway variable: GITHUB_REPO"
-    )
+    raise RuntimeError("Missing Railway variable: GITHUB_REPO")
 
 
 github = Github(GITHUB_TOKEN)
 
 
 # =========================================================
-# SAFELY GET NESTED APIFY VALUES
+# HELPERS
 # =========================================================
 
 def get_nested(data, path, default=None):
-
     current = data
 
     try:
-
         for key in path:
 
             if isinstance(key, int):
-
                 if not isinstance(current, list):
                     return default
 
@@ -58,7 +50,6 @@ def get_nested(data, path, default=None):
                 current = current[key]
 
             else:
-
                 if not isinstance(current, dict):
                     return default
 
@@ -70,16 +61,10 @@ def get_nested(data, path, default=None):
         return current
 
     except (KeyError, IndexError, TypeError):
-
         return default
 
 
-# =========================================================
-# CLEAN TEXT
-# =========================================================
-
 def clean_text(value):
-
     if value is None:
         return None
 
@@ -91,21 +76,7 @@ def clean_text(value):
     return value
 
 
-# =========================================================
-# CLEAN PROPERTY PRICE
-# =========================================================
-
 def clean_price(value):
-    """
-    Example:
-
-    $458,800
-
-    becomes:
-
-    458800
-    """
-
     if value is None:
         return None
 
@@ -114,11 +85,7 @@ def clean_price(value):
     if not value:
         return None
 
-    cleaned = re.sub(
-        r"[^\d.]",
-        "",
-        value
-    )
+    cleaned = re.sub(r"[^\d.]", "", value)
 
     if not cleaned:
         return None
@@ -130,21 +97,7 @@ def clean_price(value):
         return None
 
 
-# =========================================================
-# CLEAN ADDRESS
-# =========================================================
-
 def clean_address(value):
-    """
-    Example:
-
-    8720 26 AV NW|Edmonton, Alberta T6K2X2
-
-    becomes:
-
-    8720 26 AV NW, Edmonton, Alberta T6K2X2
-    """
-
     if value is None:
         return None
 
@@ -153,105 +106,61 @@ def clean_address(value):
     if not value:
         return None
 
-    value = value.replace(
-        "|",
-        ", "
-    )
-
-    value = re.sub(
-        r"\s+",
-        " ",
-        value
-    )
+    value = value.replace("|", ", ")
+    value = re.sub(r"\s+", " ", value)
 
     return value.strip()
 
 
-# =========================================================
-# BUILD NORTH AMERICAN PHONE NUMBER
-# =========================================================
-
 def build_phone(area_code, phone_number):
     """
-    Combines AreaCode + PhoneNumber.
-
     Example:
 
-    AreaCode:
-    780
-
-    PhoneNumber:
-    907-0016
-
-    Result:
+    780 + 907-0016
+    becomes
     17809070016
-
-    The leading 1 is added for US/Canada.
     """
 
     if area_code is None or phone_number is None:
         return None
 
-    area_code = re.sub(
-        r"\D",
-        "",
-        str(area_code)
-    )
-
-    phone_number = re.sub(
-        r"\D",
-        "",
-        str(phone_number)
-    )
+    area_code = re.sub(r"\D", "", str(area_code))
+    phone_number = re.sub(r"\D", "", str(phone_number))
 
     if not area_code or not phone_number:
         return None
 
+    full_number = area_code + phone_number
 
-    full_number = (
-        area_code
-        + phone_number
-    )
-
-
-    # Remove leading 1 if source already includes it.
-    # We will add exactly one below.
+    # If number somehow already includes leading 1
     if len(full_number) == 11 and full_number.startswith("1"):
         full_number = full_number[1:]
 
-
-    # Standard US/Canada number should contain
-    # 10 digits before country code.
+    # US/Canada number should be 10 digits before country code
     if len(full_number) != 10:
         return None
-
 
     return "1" + full_number
 
 
 # =========================================================
-# EXTRACT THE FIELDS WE WANT
+# EXTRACT ONLY WANTED FIELDS
 # =========================================================
 
 def extract_records(payload):
 
     if isinstance(payload, dict):
 
-        if isinstance(
-            payload.get("items"),
-            list
-        ):
+        if isinstance(payload.get("items"), list):
             listings = payload["items"]
 
         else:
             listings = [payload]
 
     elif isinstance(payload, list):
-
         listings = payload
 
     else:
-
         return []
 
 
@@ -264,106 +173,61 @@ def extract_records(payload):
             continue
 
 
-        # Bedrooms
         bedrooms = get_nested(
             listing,
-            [
-                "Building",
-                "Bedrooms"
-            ]
+            ["Building", "Bedrooms"]
         )
 
 
-        # Agent first name
         first_name = get_nested(
             listing,
-            [
-                "Individual",
-                0,
-                "FirstName"
-            ]
+            ["Individual", 0, "FirstName"]
         )
 
 
-        # Agent last name
         last_name = get_nested(
             listing,
-            [
-                "Individual",
-                0,
-                "LastName"
-            ]
+            ["Individual", 0, "LastName"]
         )
 
 
-        # Area code
         area_code = get_nested(
             listing,
-            [
-                "Individual",
-                0,
-                "Phones",
-                0,
-                "AreaCode"
-            ]
+            ["Individual", 0, "Phones", 0, "AreaCode"]
         )
 
 
-        # Phone number
         phone_number = get_nested(
             listing,
-            [
-                "Individual",
-                0,
-                "Phones",
-                0,
-                "PhoneNumber"
-            ]
+            ["Individual", 0, "Phones", 0, "PhoneNumber"]
         )
 
 
-        # Property address
         address = get_nested(
             listing,
-            [
-                "Property",
-                "Address",
-                "AddressText"
-            ]
+            ["Property", "Address", "AddressText"]
         )
 
 
-        # Property price
         price = get_nested(
             listing,
-            [
-                "Property",
-                "Price"
-            ]
+            ["Property", "Price"]
         )
 
 
-        # Agent website
         website = get_nested(
             listing,
-            [
-                "Individual",
-                0,
-                "Websites",
-                0,
-                "Website"
-            ]
+            ["Individual", 0, "Websites", 0, "Website"]
         )
 
 
-        # Combine phone
         phone = build_phone(
             area_code,
             phone_number
         )
 
 
-        row = {
+        rows.append({
 
             "Bedrooms":
                 clean_text(bedrooms),
@@ -385,17 +249,14 @@ def extract_records(payload):
 
             "Website":
                 clean_text(website),
-        }
-
-
-        rows.append(row)
+        })
 
 
     return rows
 
 
 # =========================================================
-# CLEAN DATA WITH PANDAS
+# CLEAN WITH PANDAS
 # =========================================================
 
 def clean_dataframe(rows):
@@ -421,17 +282,12 @@ def clean_dataframe(rows):
         return df
 
 
-    # Remove completely empty rows
-    df = df.dropna(
-        how="all"
-    )
+    # Remove fully empty rows
+    df = df.dropna(how="all")
 
 
-    # Clean name fields
-    for column in [
-        "FirstName",
-        "LastName"
-    ]:
+    # Clean names
+    for column in ["FirstName", "LastName"]:
 
         df[column] = (
             df[column]
@@ -440,14 +296,14 @@ def clean_dataframe(rows):
         )
 
 
-    # Keep phone numbers as text
+    # Keep phone as string
     df["Phone"] = (
         df["Phone"]
         .astype("string")
     )
 
 
-    # Clean websites
+    # Clean website
     df["Website"] = (
         df["Website"]
         .astype("string")
@@ -455,7 +311,6 @@ def clean_dataframe(rows):
     )
 
 
-    # Turn empty strings into missing values
     df["Website"] = df["Website"].replace(
         {
             "": pd.NA,
@@ -479,7 +334,7 @@ def clean_dataframe(rows):
     )
 
 
-    # Remove leads that have no agent name at all
+    # Remove rows with no name at all
     df = df.dropna(
         subset=[
             "FirstName",
@@ -489,145 +344,7 @@ def clean_dataframe(rows):
     )
 
 
-    df = df.reset_index(
-        drop=True
-    )
-
-
-    return df
-
-
-# =========================================================
-# CREATE EXCEL FILE WITH TWO SHEETS
-# =========================================================
-
-def create_excel_file(df):
-
-    # -----------------------------------------
-    # LEADS WITH WEBSITES
-    # -----------------------------------------
-
-    with_website = df[
-        df["Website"].notna()
-    ].copy()
-
-
-    # -----------------------------------------
-    # LEADS WITHOUT WEBSITES
-    # -----------------------------------------
-
-    no_website = df[
-        df["Website"].isna()
-    ].copy()
-
-
-    # Reset row numbers
-    with_website = with_website.reset_index(
-        drop=True
-    )
-
-    no_website = no_website.reset_index(
-        drop=True
-    )
-
-
-    # -----------------------------------------
-    # CREATE EXCEL IN MEMORY
-    # -----------------------------------------
-
-    output = BytesIO()
-
-
-    with pd.ExcelWriter(
-        output,
-        engine="openpyxl"
-    ) as writer:
-
-
-        with_website.to_excel(
-            writer,
-            sheet_name="With Website",
-            index=False
-        )
-
-
-        no_website.to_excel(
-            writer,
-            sheet_name="No Website",
-            index=False
-        )
-
-
-        # -------------------------------------
-        # FORMAT BOTH SHEETS
-        # -------------------------------------
-
-        for sheet_name in [
-            "With Website",
-            "No Website"
-        ]:
-
-            worksheet = writer.sheets[
-                sheet_name
-            ]
-
-
-            # Freeze header row
-            worksheet.freeze_panes = "A2"
-
-
-            # Add filters
-            worksheet.auto_filter.ref = (
-                worksheet.dimensions
-            )
-
-
-            # Column widths
-            worksheet.column_dimensions[
-                "A"
-            ].width = 12
-
-            worksheet.column_dimensions[
-                "B"
-            ].width = 18
-
-            worksheet.column_dimensions[
-                "C"
-            ].width = 18
-
-            worksheet.column_dimensions[
-                "D"
-            ].width = 18
-
-            worksheet.column_dimensions[
-                "E"
-            ].width = 55
-
-            worksheet.column_dimensions[
-                "F"
-            ].width = 15
-
-            worksheet.column_dimensions[
-                "G"
-            ].width = 45
-
-
-            # ---------------------------------
-            # FORCE PHONE COLUMN TO TEXT
-            # ---------------------------------
-
-            for cell in worksheet["D"]:
-
-                cell.number_format = "@"
-
-
-    output.seek(0)
-
-    return (
-        output.getvalue(),
-        len(with_website),
-        len(no_website)
-    )
+    return df.reset_index(drop=True)
 
 
 # =========================================================
@@ -638,14 +355,9 @@ def create_excel_file(df):
 def health():
 
     return {
-
         "status": "ok",
-
-        "service":
-            "Apify Realtor Lead Cleaner",
-
-        "webhook":
-            "/webhook"
+        "service": "Apify Realtor CSV Cleaner",
+        "webhook": "/webhook"
     }
 
 
@@ -654,82 +366,81 @@ def health():
 # =========================================================
 
 @app.post("/webhook")
-async def apify_webhook(
-    request: Request
-):
+async def apify_webhook(request: Request):
 
-
-    # -----------------------------------------
-    # 1. RECEIVE JSON FROM APIFY
-    # -----------------------------------------
-
+    # Receive JSON
     try:
-
         payload = await request.json()
 
     except Exception:
-
         raise HTTPException(
             status_code=400,
             detail="Invalid JSON received"
         )
 
 
-    # -----------------------------------------
-    # 2. EXTRACT WANTED FIELDS
-    # -----------------------------------------
-
-    rows = extract_records(
-        payload
-    )
+    # Extract fields
+    rows = extract_records(payload)
 
 
     if not rows:
-
         raise HTTPException(
             status_code=400,
-            detail=(
-                "No Realtor listing records "
-                "found in webhook payload."
-            )
+            detail="No Realtor listing records found"
         )
 
 
-    # -----------------------------------------
-    # 3. CLEAN DATA
-    # -----------------------------------------
-
-    df = clean_dataframe(
-        rows
-    )
+    # Clean data
+    df = clean_dataframe(rows)
 
 
     if df.empty:
-
         raise HTTPException(
             status_code=400,
-            detail=(
-                "No usable records remained "
-                "after cleaning."
-            )
+            detail="No usable records remained after cleaning"
         )
 
 
-    # -----------------------------------------
-    # 4. CREATE EXCEL FILE
-    # -----------------------------------------
+    # =====================================================
+    # SPLIT INTO TWO DATAFRAMES
+    # =====================================================
 
-    (
-        excel_content,
-        with_website_count,
-        no_website_count
-
-    ) = create_excel_file(df)
+    with_website = df[
+        df["Website"].notna()
+    ].copy()
 
 
-    # -----------------------------------------
-    # 5. CREATE UNIQUE FILENAME
-    # -----------------------------------------
+    without_website = df[
+        df["Website"].isna()
+    ].copy()
+
+
+    with_website = with_website.reset_index(
+        drop=True
+    )
+
+    without_website = without_website.reset_index(
+        drop=True
+    )
+
+
+    # =====================================================
+    # CREATE CSV TEXT
+    # =====================================================
+
+    with_website_csv = with_website.to_csv(
+        index=False
+    )
+
+
+    without_website_csv = without_website.to_csv(
+        index=False
+    )
+
+
+    # =====================================================
+    # TIMESTAMP
+    # =====================================================
 
     timestamp = datetime.now(
         timezone.utc
@@ -738,15 +449,25 @@ async def apify_webhook(
     )
 
 
-    filename = (
+    # =====================================================
+    # FILENAMES
+    # =====================================================
+
+    with_website_filename = (
         f"{GITHUB_FOLDER}/"
-        f"realtor_leads_{timestamp}.xlsx"
+        f"leads_with_website_{timestamp}.csv"
     )
 
 
-    # -----------------------------------------
-    # 6. PUSH EXCEL FILE TO GITHUB
-    # -----------------------------------------
+    without_website_filename = (
+        f"{GITHUB_FOLDER}/"
+        f"leads_without_website_{timestamp}.csv"
+    )
+
+
+    # =====================================================
+    # PUSH BOTH FILES TO GITHUB
+    # =====================================================
 
     try:
 
@@ -755,27 +476,31 @@ async def apify_webhook(
         )
 
 
+        # File 1: leads with websites
         repo.create_file(
-
-            path=filename,
-
+            path=with_website_filename,
             message=(
-                f"Add cleaned Realtor leads "
-                f"{timestamp}"
+                f"Add leads with website {timestamp}"
             ),
+            content=with_website_csv,
+            branch=GITHUB_BRANCH,
+        )
 
-            content=excel_content,
 
+        # File 2: leads without websites
+        repo.create_file(
+            path=without_website_filename,
+            message=(
+                f"Add leads without website {timestamp}"
+            ),
+            content=without_website_csv,
             branch=GITHUB_BRANCH,
         )
 
 
     except GithubException as exc:
 
-        print(
-            "GitHub error:",
-            exc
-        )
+        print("GitHub error:", exc)
 
         raise HTTPException(
             status_code=500,
@@ -783,9 +508,9 @@ async def apify_webhook(
         )
 
 
-    # -----------------------------------------
-    # 7. SUCCESS RESPONSE
-    # -----------------------------------------
+    # =====================================================
+    # SUCCESS
+    # =====================================================
 
     return {
 
@@ -798,13 +523,16 @@ async def apify_webhook(
             len(df),
 
         "with_website":
-            with_website_count,
+            len(with_website),
 
         "without_website":
-            no_website_count,
+            len(without_website),
 
-        "file":
-            filename,
+        "with_website_file":
+            with_website_filename,
+
+        "without_website_file":
+            without_website_filename,
 
         "repository":
             GITHUB_REPO
