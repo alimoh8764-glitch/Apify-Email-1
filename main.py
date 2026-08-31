@@ -2,6 +2,7 @@ import os
 import re
 import requests
 from datetime import datetime, timezone
+from urllib.parse import urlparse
 
 import pandas as pd
 from fastapi import FastAPI, Request, HTTPException
@@ -21,6 +22,7 @@ GITHUB_BRANCH = os.getenv("GITHUB_BRANCH", "main")
 GITHUB_FOLDER = os.getenv("GITHUB_FOLDER", "data")
 
 APIFY_TOKEN = os.getenv("APIFY_TOKEN")
+HUNTER_API_KEY = os.getenv("HUNTER_API_KEY")
 
 
 if not GITHUB_TOKEN:
@@ -32,6 +34,9 @@ if not GITHUB_REPO:
 if not APIFY_TOKEN:
     raise RuntimeError("Missing Railway variable: APIFY_TOKEN")
 
+if not HUNTER_API_KEY:
+    raise RuntimeError("Missing Railway variable: HUNTER_API_KEY")
+
 
 github = Github(GITHUB_TOKEN)
 
@@ -41,9 +46,11 @@ github = Github(GITHUB_TOKEN)
 # =========================================================
 
 def get_nested(data, path, default=None):
+
     current = data
 
     try:
+
         for key in path:
 
             if isinstance(key, int):
@@ -85,6 +92,10 @@ def clean_text(value):
     return value
 
 
+# =========================================================
+# CLEAN PRICE
+# =========================================================
+
 def clean_price(value):
 
     if value is None:
@@ -95,7 +106,11 @@ def clean_price(value):
     if not value:
         return None
 
-    cleaned = re.sub(r"[^\d.]", "", value)
+    cleaned = re.sub(
+        r"[^\d.]",
+        "",
+        value
+    )
 
     if not cleaned:
         return None
@@ -106,17 +121,22 @@ def clean_price(value):
     except ValueError:
         return None
 
+
+# =========================================================
+# CLEAN / SHORTEN ADDRESS
+# =========================================================
+
 def clean_address(value):
     """
-    Shortens Realtor addresses.
-
     Examples:
 
     10109 80 ST NW, Edmonton, Alberta T6A3H9
-    -> 10109 NW
+    becomes:
+    10109 NW
 
-    12916 63 ST NW, Edmonton, Alberta T5A0W3
-    -> 12916 NW
+    #3410 10360 102 ST NW, Edmonton...
+    becomes:
+    10360 NW
     """
 
     if value is None:
@@ -127,42 +147,83 @@ def clean_address(value):
     if not value:
         return None
 
-    # Only keep the street-address portion
-    # before the city/province
+
+    # Keep only street portion
     street = value.split("|")[0]
     street = street.split(",")[0]
     street = street.strip()
 
-    # Find the first street/building number
-    number_match = re.search(
-        r"#?(\d+)",
+
+    # Remove a leading unit/apartment number
+    #
+    # Example:
+    # #3410 10360 102 ST NW
+    # becomes:
+    # 10360 102 ST NW
+
+    street_without_unit = re.sub(
+        r"^\s*#\s*\d+\s+",
+        "",
         street
     )
+
+
+    # Find first building/street number
+    number_match = re.search(
+        r"\b(\d+)\b",
+        street_without_unit
+    )
+
 
     if not number_match:
         return street
 
+
     number = number_match.group(1)
 
-    # Find direction such as NW, NE, SW, SE
+
+    # Find NW / NE / SW / SE
     direction_match = re.search(
         r"\b(NW|NE|SW|SE)\b",
-        street,
+        street_without_unit,
         re.IGNORECASE
     )
 
+
     if direction_match:
-        direction = direction_match.group(1).upper()
+
+        direction = (
+            direction_match
+            .group(1)
+            .upper()
+        )
+
         return f"{number} {direction}"
 
-    # If there is no direction, just use number
+
+    # If there is no direction,
+    # just return building number
     return number
 
 
+# =========================================================
+# BUILD PHONE NUMBER
+# =========================================================
+
 def build_phone(area_code, phone_number):
+    """
+    Example:
+
+    780 + 907-0016
+
+    becomes:
+
+    17809070016
+    """
 
     if area_code is None or phone_number is None:
         return None
+
 
     area_code = re.sub(
         r"\D",
@@ -170,22 +231,36 @@ def build_phone(area_code, phone_number):
         str(area_code)
     )
 
+
     phone_number = re.sub(
         r"\D",
         "",
         str(phone_number)
     )
 
+
     if not area_code or not phone_number:
         return None
 
-    full_number = area_code + phone_number
 
-    if len(full_number) == 11 and full_number.startswith("1"):
+    full_number = (
+        area_code
+        + phone_number
+    )
+
+
+    # If source already includes 1
+    if (
+        len(full_number) == 11
+        and full_number.startswith("1")
+    ):
         full_number = full_number[1:]
 
+
+    # North American number = 10 digits
     if len(full_number) != 10:
         return None
+
 
     return "1" + full_number
 
@@ -201,17 +276,20 @@ def download_apify_dataset(dataset_id):
         f"{dataset_id}/items"
     )
 
+
     params = {
         "token": APIFY_TOKEN,
         "clean": "true",
         "format": "json",
     }
 
+
     response = requests.get(
         url,
         params=params,
         timeout=60
     )
+
 
     if response.status_code != 200:
 
@@ -224,27 +302,37 @@ def download_apify_dataset(dataset_id):
         raise HTTPException(
             status_code=500,
             detail=(
-                f"Could not download Apify dataset. "
+                "Could not download Apify dataset. "
                 f"Status: {response.status_code}"
             )
         )
 
+
     try:
+
         data = response.json()
 
     except Exception:
 
         raise HTTPException(
             status_code=500,
-            detail="Apify dataset did not return valid JSON"
+            detail=(
+                "Apify dataset did not "
+                "return valid JSON"
+            )
         )
+
 
     if not isinstance(data, list):
 
         raise HTTPException(
             status_code=500,
-            detail="Apify dataset did not return a list"
+            detail=(
+                "Apify dataset did not "
+                "return a list"
+            )
         )
+
 
     return data
 
@@ -257,25 +345,41 @@ def extract_records(listings):
 
     rows = []
 
+
     for listing in listings:
 
         if not isinstance(listing, dict):
             continue
 
+
         bedrooms = get_nested(
             listing,
-            ["Building", "Bedrooms"]
+            [
+                "Building",
+                "Bedrooms"
+            ]
         )
+
 
         first_name = get_nested(
             listing,
-            ["Individual", 0, "FirstName"]
+            [
+                "Individual",
+                0,
+                "FirstName"
+            ]
         )
+
 
         last_name = get_nested(
             listing,
-            ["Individual", 0, "LastName"]
+            [
+                "Individual",
+                0,
+                "LastName"
+            ]
         )
+
 
         area_code = get_nested(
             listing,
@@ -288,6 +392,7 @@ def extract_records(listings):
             ]
         )
 
+
         phone_number = get_nested(
             listing,
             [
@@ -299,6 +404,7 @@ def extract_records(listings):
             ]
         )
 
+
         address = get_nested(
             listing,
             [
@@ -308,6 +414,7 @@ def extract_records(listings):
             ]
         )
 
+
         price = get_nested(
             listing,
             [
@@ -315,6 +422,7 @@ def extract_records(listings):
                 "Price"
             ]
         )
+
 
         website = get_nested(
             listing,
@@ -327,26 +435,44 @@ def extract_records(listings):
             ]
         )
 
+
         phone = build_phone(
             area_code,
             phone_number
         )
 
+
         rows.append({
-            "Bedrooms": clean_text(bedrooms),
-            "FirstName": clean_text(first_name),
-            "LastName": clean_text(last_name),
-            "Phone": phone,
-            "Address": clean_address(address),
-            "Price": clean_price(price),
-            "Website": clean_text(website),
+
+            "Bedrooms":
+                clean_text(bedrooms),
+
+            "FirstName":
+                clean_text(first_name),
+
+            "LastName":
+                clean_text(last_name),
+
+            "Phone":
+                phone,
+
+            "Address":
+                clean_address(address),
+
+            "Price":
+                clean_price(price),
+
+            "Website":
+                clean_text(website),
+
         })
+
 
     return rows
 
 
 # =========================================================
-# CLEAN DATA
+# CLEAN DATAFRAME
 # =========================================================
 
 def clean_dataframe(rows):
@@ -361,45 +487,65 @@ def clean_dataframe(rows):
         "Website",
     ]
 
+
     df = pd.DataFrame(
         rows,
         columns=columns
     )
 
+
     if df.empty:
         return df
 
-    df = df.dropna(how="all")
 
+    # Remove fully empty rows
+    df = df.dropna(
+        how="all"
+    )
+
+
+    # Clean names
     for column in [
         "FirstName",
         "LastName"
     ]:
+
         df[column] = (
             df[column]
             .astype("string")
             .str.strip()
         )
 
+
+    # Phone as text
     df["Phone"] = (
         df["Phone"]
         .astype("string")
     )
 
+
+    # Clean website
     df["Website"] = (
         df["Website"]
         .astype("string")
         .str.strip()
     )
 
-    df["Website"] = df["Website"].replace({
-        "": pd.NA,
-        "None": pd.NA,
-        "none": pd.NA,
-        "nan": pd.NA,
-        "<NA>": pd.NA,
-    })
 
+    # Treat empty websites as missing
+    df["Website"] = (
+        df["Website"]
+        .replace({
+            "": pd.NA,
+            "None": pd.NA,
+            "none": pd.NA,
+            "nan": pd.NA,
+            "<NA>": pd.NA,
+        })
+    )
+
+
+    # Remove duplicate leads
     df = df.drop_duplicates(
         subset=[
             "FirstName",
@@ -410,6 +556,8 @@ def clean_dataframe(rows):
         keep="first"
     )
 
+
+    # Remove rows with no agent name
     df = df.dropna(
         subset=[
             "FirstName",
@@ -418,7 +566,477 @@ def clean_dataframe(rows):
         how="all"
     )
 
-    return df.reset_index(drop=True)
+
+    return df.reset_index(
+        drop=True
+    )
+
+
+# =========================================================
+# GET DOMAIN FROM WEBSITE
+# =========================================================
+
+def get_domain_from_website(website):
+    """
+    Example:
+
+    http://www.chetaylor.com/
+
+    becomes:
+
+    chetaylor.com
+    """
+
+    if website is None:
+        return None
+
+
+    website = str(website).strip()
+
+
+    if not website:
+        return None
+
+
+    # Add https:// if missing
+    if not website.startswith(
+        (
+            "http://",
+            "https://"
+        )
+    ):
+        website = (
+            "https://"
+            + website
+        )
+
+
+    try:
+
+        parsed = urlparse(
+            website
+        )
+
+
+        domain = (
+            parsed.netloc
+            .lower()
+            .strip()
+        )
+
+
+        if domain.startswith(
+            "www."
+        ):
+            domain = domain[4:]
+
+
+        # Remove port if somehow present
+        domain = domain.split(":")[0]
+
+
+        return domain or None
+
+
+    except Exception:
+
+        return None
+
+
+# =========================================================
+# HUNTER EMAIL FINDER
+# =========================================================
+
+def hunter_find_email(
+    first_name,
+    last_name,
+    website
+):
+    """
+    Hunter gets:
+
+    First Name
+    Last Name
+    Website Domain
+
+    Hunter attempts to find
+    that person's email.
+    """
+
+    domain = get_domain_from_website(
+        website
+    )
+
+
+    if (
+        not first_name
+        or not last_name
+        or not domain
+    ):
+        return None
+
+
+    url = (
+        "https://api.hunter.io/"
+        "v2/email-finder"
+    )
+
+
+    params = {
+
+        "domain":
+            domain,
+
+        "first_name":
+            first_name,
+
+        "last_name":
+            last_name,
+
+        "api_key":
+            HUNTER_API_KEY,
+    }
+
+
+    try:
+
+        response = requests.get(
+            url,
+            params=params,
+            timeout=20
+        )
+
+
+        if response.status_code != 200:
+
+            print(
+                "Hunter search error:",
+                response.status_code,
+                first_name,
+                last_name,
+                domain
+            )
+
+            return None
+
+
+        result = response.json()
+
+        data = (
+            result.get("data")
+            or {}
+        )
+
+
+        email = data.get(
+            "email"
+        )
+
+
+        score = data.get(
+            "score"
+        )
+
+
+        if not email:
+
+            print(
+                "Hunter found no email:",
+                first_name,
+                last_name,
+                domain
+            )
+
+            return None
+
+
+        print(
+            "Hunter found:",
+            first_name,
+            last_name,
+            email,
+            "score:",
+            score
+        )
+
+
+        return {
+
+            "email":
+                email,
+
+            "score":
+                score,
+
+            "domain":
+                domain,
+        }
+
+
+    except Exception as exc:
+
+        print(
+            "Hunter request failed:",
+            first_name,
+            last_name,
+            str(exc)
+        )
+
+        return None
+
+
+# =========================================================
+# SAVE RESULT TO HUNTER LEADS
+# =========================================================
+
+def save_to_hunter_leads(
+    first_name,
+    last_name,
+    phone,
+    hunter_result
+):
+    """
+    Saves successfully found emails
+    into Hunter under the list:
+
+    Apify Realtor Leads
+    """
+
+    if not hunter_result:
+        return False
+
+
+    email = hunter_result.get(
+        "email"
+    )
+
+    domain = hunter_result.get(
+        "domain"
+    )
+
+    score = hunter_result.get(
+        "score"
+    )
+
+
+    if not email:
+        return False
+
+
+    url = (
+        "https://api.hunter.io/"
+        "v2/leads"
+    )
+
+
+    params = {
+        "api_key":
+            HUNTER_API_KEY
+    }
+
+
+    lead_data = {
+
+        "email":
+            email,
+
+        "first_name":
+            first_name,
+
+        "last_name":
+            last_name,
+
+        "website":
+            domain,
+
+        "leads_list_name":
+            "Apify Realtor Leads",
+    }
+
+
+    if phone:
+        lead_data[
+            "phone_number"
+        ] = phone
+
+
+    if score is not None:
+
+        try:
+
+            lead_data[
+                "confidence_score"
+            ] = int(score)
+
+        except (
+            ValueError,
+            TypeError
+        ):
+            pass
+
+
+    try:
+
+        # PUT helps avoid duplicate
+        # Hunter leads with same email.
+        response = requests.put(
+            url,
+            params=params,
+            json=lead_data,
+            timeout=20
+        )
+
+
+        if response.status_code not in (
+            200,
+            201
+        ):
+
+            print(
+                "Hunter lead save error:",
+                response.status_code,
+                email,
+                response.text[:300]
+            )
+
+            return False
+
+
+        print(
+            "Saved to Hunter Leads:",
+            email
+        )
+
+
+        return True
+
+
+    except Exception as exc:
+
+        print(
+            "Hunter lead save failed:",
+            email,
+            str(exc)
+        )
+
+        return False
+
+
+# =========================================================
+# SEND ONLY WEBSITE LEADS TO HUNTER
+# =========================================================
+
+def send_website_leads_to_hunter(
+    with_website
+):
+    """
+    IMPORTANT:
+
+    This function receives ONLY
+    the with_website dataframe.
+
+    Leads without websites NEVER
+    get sent to Hunter.
+    """
+
+    searched = 0
+    found = 0
+    saved = 0
+
+
+    for _, row in (
+        with_website.iterrows()
+    ):
+
+
+        first_name = row.get(
+            "FirstName"
+        )
+
+        last_name = row.get(
+            "LastName"
+        )
+
+        website = row.get(
+            "Website"
+        )
+
+        phone = row.get(
+            "Phone"
+        )
+
+
+        # Skip missing required data
+        if (
+            pd.isna(first_name)
+            or pd.isna(last_name)
+            or pd.isna(website)
+        ):
+            continue
+
+
+        first_name = str(
+            first_name
+        ).strip()
+
+        last_name = str(
+            last_name
+        ).strip()
+
+        website = str(
+            website
+        ).strip()
+
+
+        if (
+            not first_name
+            or not last_name
+            or not website
+        ):
+            continue
+
+
+        searched += 1
+
+
+        result = hunter_find_email(
+            first_name,
+            last_name,
+            website
+        )
+
+
+        if not result:
+            continue
+
+
+        found += 1
+
+
+        if pd.isna(phone):
+            phone_value = None
+
+        else:
+            phone_value = str(
+                phone
+            ).strip()
+
+
+        if save_to_hunter_leads(
+            first_name,
+            last_name,
+            phone_value,
+            result
+        ):
+
+            saved += 1
+
+
+    return (
+        searched,
+        found,
+        saved
+    )
 
 
 # =========================================================
@@ -429,9 +1047,15 @@ def clean_dataframe(rows):
 def health():
 
     return {
-        "status": "ok",
-        "service": "Apify Realtor CSV Cleaner",
-        "webhook": "/webhook"
+
+        "status":
+            "ok",
+
+        "service":
+            "Apify Realtor CSV + Hunter",
+
+        "webhook":
+            "/webhook"
     }
 
 
@@ -440,14 +1064,20 @@ def health():
 # =========================================================
 
 @app.post("/webhook")
-async def apify_webhook(request: Request):
+async def apify_webhook(
+    request: Request
+):
+
 
     # -----------------------------------------
     # 1. READ WEBHOOK BODY
     # -----------------------------------------
 
     try:
-        payload = await request.json()
+
+        payload = (
+            await request.json()
+        )
 
     except Exception:
 
@@ -457,44 +1087,66 @@ async def apify_webhook(request: Request):
         )
 
 
-    # Print payload keys so Railway logs show
-    # what Apify actually sent.
-    if isinstance(payload, dict):
+    if isinstance(
+        payload,
+        dict
+    ):
+
         print(
             "Webhook payload keys:",
             list(payload.keys())
         )
-    else:
-        print(
-            "Webhook payload type:",
-            type(payload).__name__
-        )
 
 
     # -----------------------------------------
-    # 2. FIND DATASET ID
+    # 2. FIND APIFY DATASET ID
     # -----------------------------------------
 
     dataset_id = (
+
         get_nested(
             payload,
-            ["resource", "defaultDatasetId"]
+            [
+                "resource",
+                "defaultDatasetId"
+            ]
         )
+
         or get_nested(
             payload,
-            ["eventData", "defaultDatasetId"]
+            [
+                "eventData",
+                "defaultDatasetId"
+            ]
         )
+
         or get_nested(
             payload,
-            ["payload", "resource", "defaultDatasetId"]
+            [
+                "payload",
+                "resource",
+                "defaultDatasetId"
+            ]
         )
+
         or get_nested(
             payload,
-            ["data", "defaultDatasetId"]
+            [
+                "data",
+                "defaultDatasetId"
+            ]
         )
+
         or (
-            payload.get("defaultDatasetId")
-            if isinstance(payload, dict)
+            payload.get(
+                "defaultDatasetId"
+            )
+
+            if isinstance(
+                payload,
+                dict
+            )
+
             else None
         )
     )
@@ -503,12 +1155,8 @@ async def apify_webhook(request: Request):
     if not dataset_id:
 
         print(
-            "Could not find defaultDatasetId."
-        )
-
-        print(
-            "Webhook payload:",
-            payload
+            "Could not find "
+            "defaultDatasetId."
         )
 
         raise HTTPException(
@@ -527,11 +1175,13 @@ async def apify_webhook(request: Request):
 
 
     # -----------------------------------------
-    # 3. DOWNLOAD ACTUAL REALTOR DATA
+    # 3. DOWNLOAD APIFY DATA
     # -----------------------------------------
 
-    listings = download_apify_dataset(
-        dataset_id
+    listings = (
+        download_apify_dataset(
+            dataset_id
+        )
     )
 
 
@@ -550,7 +1200,7 @@ async def apify_webhook(request: Request):
 
 
     # -----------------------------------------
-    # 4. EXTRACT FIELDS
+    # 4. EXTRACT REALTOR FIELDS
     # -----------------------------------------
 
     rows = extract_records(
@@ -562,7 +1212,9 @@ async def apify_webhook(request: Request):
 
         raise HTTPException(
             status_code=400,
-            detail="No Realtor records found"
+            detail=(
+                "No Realtor records found"
+            )
         )
 
 
@@ -579,12 +1231,15 @@ async def apify_webhook(request: Request):
 
         raise HTTPException(
             status_code=400,
-            detail="No usable records after cleaning"
+            detail=(
+                "No usable records "
+                "after cleaning"
+            )
         )
 
 
     # -----------------------------------------
-    # 6. SPLIT INTO TWO CSV FILES
+    # 6. SPLIT LEADS
     # -----------------------------------------
 
     with_website = df[
@@ -614,15 +1269,16 @@ async def apify_webhook(request: Request):
         len(with_website)
     )
 
+
     print(
         "Leads without website:",
         len(without_website)
     )
 
 
-    # -----------------------------------------
-    # 7. CREATE CSV CONTENT
-    # -----------------------------------------
+    # =====================================================
+    # 7. CREATE THE TWO CSV FILES
+    # =====================================================
 
     with_website_csv = (
         with_website
@@ -637,7 +1293,7 @@ async def apify_webhook(request: Request):
 
 
     # -----------------------------------------
-    # 8. FILENAMES
+    # TIMESTAMP
     # -----------------------------------------
 
     timestamp = datetime.now(
@@ -647,21 +1303,27 @@ async def apify_webhook(request: Request):
     )
 
 
+    # -----------------------------------------
+    # FILE NAMES
+    # -----------------------------------------
+
     with_website_filename = (
         f"{GITHUB_FOLDER}/"
-        f"leads_with_website_{timestamp}.csv"
+        f"leads_with_website_"
+        f"{timestamp}.csv"
     )
 
 
     without_website_filename = (
         f"{GITHUB_FOLDER}/"
-        f"leads_without_website_{timestamp}.csv"
+        f"leads_without_website_"
+        f"{timestamp}.csv"
     )
 
 
-    # -----------------------------------------
-    # 9. UPLOAD BOTH CSV FILES TO GITHUB
-    # -----------------------------------------
+    # =====================================================
+    # 8. UPLOAD BOTH CSV FILES TO GITHUB
+    # =====================================================
 
     try:
 
@@ -671,13 +1333,20 @@ async def apify_webhook(request: Request):
 
 
         repo.create_file(
-            path=with_website_filename,
+
+            path=
+                with_website_filename,
+
             message=(
-                f"Add leads with website "
+                "Add leads with website "
                 f"{timestamp}"
             ),
-            content=with_website_csv,
-            branch=GITHUB_BRANCH,
+
+            content=
+                with_website_csv,
+
+            branch=
+                GITHUB_BRANCH,
         )
 
 
@@ -688,13 +1357,20 @@ async def apify_webhook(request: Request):
 
 
         repo.create_file(
-            path=without_website_filename,
+
+            path=
+                without_website_filename,
+
             message=(
-                f"Add leads without website "
+                "Add leads without website "
                 f"{timestamp}"
             ),
-            content=without_website_csv,
-            branch=GITHUB_BRANCH,
+
+            content=
+                without_website_csv,
+
+            branch=
+                GITHUB_BRANCH,
         )
 
 
@@ -713,17 +1389,60 @@ async def apify_webhook(request: Request):
 
         raise HTTPException(
             status_code=500,
-            detail=f"GitHub error: {exc.data}"
+            detail=(
+                f"GitHub error: "
+                f"{exc.data}"
+            )
         )
 
 
-    # -----------------------------------------
-    # 10. SUCCESS
-    # -----------------------------------------
+    # =====================================================
+    # 9. HUNTER.IO
+    #
+    # ONLY SEND LEADS THAT HAVE WEBSITES
+    # =====================================================
+
+    print(
+        "Starting Hunter.io..."
+    )
+
+
+    (
+        hunter_searched,
+        hunter_found,
+        hunter_saved
+
+    ) = send_website_leads_to_hunter(
+        with_website
+    )
+
+
+    print(
+        "Hunter searches:",
+        hunter_searched
+    )
+
+
+    print(
+        "Hunter emails found:",
+        hunter_found
+    )
+
+
+    print(
+        "Hunter leads saved:",
+        hunter_saved
+    )
+
+
+    # =====================================================
+    # 10. SUCCESS RESPONSE
+    # =====================================================
 
     return {
 
-        "success": True,
+        "success":
+            True,
 
         "dataset_id":
             dataset_id,
@@ -745,4 +1464,13 @@ async def apify_webhook(request: Request):
 
         "without_website_file":
             without_website_filename,
+
+        "hunter_searched":
+            hunter_searched,
+
+        "hunter_emails_found":
+            hunter_found,
+
+        "hunter_leads_saved":
+            hunter_saved,
     }
