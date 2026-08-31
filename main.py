@@ -818,6 +818,231 @@ def enrich_website_leads(with_website):
     return enriched
 
 
+
+
+# =========================================================
+# UPDATE PERSISTENT EMAILLEADS.CSV ON GITHUB
+# =========================================================
+
+def update_email_leads_file(
+    repo,
+    new_email_leads
+):
+    """
+    EmailLeads.csv is cumulative.
+
+    Contains ONLY leads where Hunter found an email.
+
+    Existing leads are preserved.
+    New leads are appended.
+    Duplicate emails are removed.
+    """
+
+    email_path = (
+        f"{GITHUB_FOLDER}/EmailLeads.csv"
+    )
+
+    if new_email_leads.empty:
+
+        print(
+            "No new email leads this run."
+        )
+
+        # If EmailLeads.csv already exists, return its current count.
+        try:
+            existing_file = repo.get_contents(
+                email_path,
+                ref=GITHUB_BRANCH
+            )
+
+            existing_text = (
+                existing_file
+                .decoded_content
+                .decode("utf-8")
+            )
+
+            if not existing_text.strip():
+                return 0
+
+            existing_df = pd.read_csv(
+                StringIO(existing_text),
+                dtype="string"
+            )
+
+            return len(existing_df)
+
+        except GithubException as exc:
+            if exc.status == 404:
+                return 0
+            raise
+
+    new_email_leads = (
+        new_email_leads.copy()
+    )
+
+    email_columns = [
+        "Bedrooms",
+        "FirstName",
+        "LastName",
+        "Phone",
+        "Address",
+        "Price",
+        "Website",
+        "Email",
+        "HunterScore",
+        "HunterStatus",
+    ]
+
+    for column in email_columns:
+
+        if column not in new_email_leads.columns:
+            new_email_leads[column] = pd.NA
+
+    new_email_leads = (
+        new_email_leads[email_columns]
+    )
+
+    # Normalize email values before deduplication.
+    new_email_leads["Email"] = (
+        new_email_leads["Email"]
+        .astype("string")
+        .str.strip()
+        .str.lower()
+    )
+
+    # Safety: EmailLeads.csv should never contain blank emails.
+    new_email_leads = (
+        new_email_leads[
+            new_email_leads["Email"].notna()
+            &
+            (new_email_leads["Email"] != "")
+        ]
+        .copy()
+    )
+
+    try:
+
+        existing_file = (
+            repo.get_contents(
+                email_path,
+                ref=GITHUB_BRANCH
+            )
+        )
+
+        existing_text = (
+            existing_file
+            .decoded_content
+            .decode("utf-8")
+        )
+
+        if existing_text.strip():
+
+            existing_df = pd.read_csv(
+                StringIO(existing_text),
+                dtype="string"
+            )
+
+        else:
+
+            existing_df = pd.DataFrame(
+                columns=email_columns
+            )
+
+        for column in email_columns:
+
+            if column not in existing_df.columns:
+                existing_df[column] = pd.NA
+
+        existing_df = (
+            existing_df[email_columns]
+        )
+
+        existing_df["Email"] = (
+            existing_df["Email"]
+            .astype("string")
+            .str.strip()
+            .str.lower()
+        )
+
+        combined = pd.concat(
+            [
+                existing_df,
+                new_email_leads
+            ],
+            ignore_index=True
+        )
+
+        combined = (
+            combined[
+                combined["Email"].notna()
+                &
+                (combined["Email"] != "")
+            ]
+            .copy()
+        )
+
+        combined = combined.drop_duplicates(
+            subset=["Email"],
+            keep="first"
+        )
+
+        csv_content = (
+            combined
+            .to_csv(index=False)
+        )
+
+        repo.update_file(
+            path=email_path,
+            message="Update EmailLeads.csv",
+            content=csv_content,
+            sha=existing_file.sha,
+            branch=GITHUB_BRANCH,
+        )
+
+        print(
+            "Updated:",
+            email_path,
+            "total email leads:",
+            len(combined)
+        )
+
+        return len(combined)
+
+    except GithubException as exc:
+
+        if exc.status == 404:
+
+            new_email_leads = (
+                new_email_leads
+                .drop_duplicates(
+                    subset=["Email"],
+                    keep="first"
+                )
+            )
+
+            csv_content = (
+                new_email_leads
+                .to_csv(index=False)
+            )
+
+            repo.create_file(
+                path=email_path,
+                message="Create EmailLeads.csv",
+                content=csv_content,
+                branch=GITHUB_BRANCH,
+            )
+
+            print(
+                "Created:",
+                email_path,
+                "email leads:",
+                len(new_email_leads)
+            )
+
+            return len(new_email_leads)
+
+        raise
+
 # =========================================================
 # UPDATE PERSISTENT FBLEADS.CSV ON GITHUB
 # =========================================================
@@ -1277,6 +1502,37 @@ async def apify_webhook(
 
 
     # =====================================================
+    # 7. CREATE EMAIL LEADS
+    #
+    # ONLY leads where Hunter found an email.
+    # =====================================================
+
+    new_email_leads = (
+        enriched_with_website[
+            (
+                enriched_with_website[
+                    "HunterOutcome"
+                ] == "found"
+            )
+            &
+            (
+                enriched_with_website[
+                    "Email"
+                ].notna()
+            )
+        ]
+        .copy()
+        .reset_index(drop=True)
+    )
+
+
+    print(
+        "New email leads:",
+        len(new_email_leads)
+    )
+
+
+    # =====================================================
     # 7. CREATE FB LEADS
     #
     # ONLY completed Hunter searches
@@ -1408,7 +1664,24 @@ async def apify_webhook(
 
 
         # -----------------------------------------
+        # EMAILLEADS.CSV
+        #
+        # Hunter successfully found an email.
+        # -----------------------------------------
+
+        total_email_leads = (
+            update_email_leads_file(
+                repo,
+                new_email_leads
+            )
+        )
+
+
+        # -----------------------------------------
         # FBLEADS.CSV
+        #
+        # Hunter completed the search but
+        # did not find an email.
         # -----------------------------------------
 
         total_fb_leads = (
@@ -1469,6 +1742,15 @@ async def apify_webhook(
 
         "hunter_suppressed":
             hunter_suppressed,
+
+        "new_email_leads":
+            len(new_email_leads),
+
+        "total_email_leads":
+            total_email_leads,
+
+        "email_leads_file":
+            f"{GITHUB_FOLDER}/EmailLeads.csv",
 
         "new_fb_leads":
             len(new_fb_leads),
