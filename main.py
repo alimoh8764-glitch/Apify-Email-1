@@ -831,9 +831,10 @@ def update_email_leads_file(
     """
     EmailLeads.csv is cumulative.
 
-    Contains ONLY leads where Hunter found an email.
+    Contains ONLY leads where Hunter found an email
+    AND HunterStatus is exactly "valid".
 
-    Existing leads are preserved.
+    Existing valid leads are preserved.
     New leads are appended.
     Duplicate emails are removed.
     """
@@ -910,12 +911,22 @@ def update_email_leads_file(
         .str.lower()
     )
 
-    # Safety: EmailLeads.csv should never contain blank emails.
+    # Safety: EmailLeads.csv should contain ONLY
+    # Hunter-verified valid emails and never blank emails.
+    new_email_leads["HunterStatus"] = (
+        new_email_leads["HunterStatus"]
+        .astype("string")
+        .str.strip()
+        .str.lower()
+    )
+
     new_email_leads = (
         new_email_leads[
             new_email_leads["Email"].notna()
             &
             (new_email_leads["Email"] != "")
+            &
+            (new_email_leads["HunterStatus"] == "valid")
         ]
         .copy()
     )
@@ -955,6 +966,21 @@ def update_email_leads_file(
 
         existing_df = (
             existing_df[email_columns]
+        )
+
+        # Keep ONLY Hunter-verified valid emails from older runs too.
+        existing_df["HunterStatus"] = (
+            existing_df["HunterStatus"]
+            .astype("string")
+            .str.strip()
+            .str.lower()
+        )
+
+        existing_df = (
+            existing_df[
+                existing_df["HunterStatus"] == "valid"
+            ]
+            .copy()
         )
 
         existing_df["Email"] = (
@@ -1502,10 +1528,28 @@ async def apify_webhook(
 
 
     # =====================================================
-    # 7. CREATE EMAIL LEADS
+    # 7. ROUTE HUNTER RESULTS
     #
-    # ONLY leads where Hunter found an email.
+    # EmailLeads.csv:
+    #   ONLY HunterStatus == "valid"
+    #
+    # FBleads.csv:
+    #   - no email found
+    #   - accept_all
+    #   - unknown
+    #   - any other non-valid Hunter email status
+    #
+    # Suppressed/privacy responses and API errors are NOT
+    # treated as FB leads because they were not a normal
+    # completed "no valid email" result.
     # =====================================================
+
+    normalized_hunter_status = (
+        enriched_with_website["HunterStatus"]
+        .astype("string")
+        .str.strip()
+        .str.lower()
+    )
 
     new_email_leads = (
         enriched_with_website[
@@ -1520,30 +1564,35 @@ async def apify_webhook(
                     "Email"
                 ].notna()
             )
+            &
+            (
+                normalized_hunter_status == "valid"
+            )
         ]
         .copy()
         .reset_index(drop=True)
     )
 
-
-    print(
-        "New email leads:",
-        len(new_email_leads)
-    )
-
-
-    # =====================================================
-    # 7. CREATE FB LEADS
-    #
-    # ONLY completed Hunter searches
-    # where no email was returned.
-    # =====================================================
 
     new_fb_leads = (
         enriched_with_website[
-            enriched_with_website[
-                "HunterOutcome"
-            ] == "not_found"
+            (
+                enriched_with_website[
+                    "HunterOutcome"
+                ] == "not_found"
+            )
+            |
+            (
+                (
+                    enriched_with_website[
+                        "HunterOutcome"
+                    ] == "found"
+                )
+                &
+                (
+                    normalized_hunter_status != "valid"
+                )
+            )
         ]
         .copy()
         .reset_index(drop=True)
@@ -1551,7 +1600,12 @@ async def apify_webhook(
 
 
     print(
-        "New FB leads:",
+        "New VALID email leads:",
+        len(new_email_leads)
+    )
+
+    print(
+        "New FB leads (no email / non-valid status):",
         len(new_fb_leads)
     )
 
@@ -1666,7 +1720,8 @@ async def apify_webhook(
         # -----------------------------------------
         # EMAILLEADS.CSV
         #
-        # Hunter successfully found an email.
+        # Hunter successfully found an email
+        # AND HunterStatus == valid.
         # -----------------------------------------
 
         total_email_leads = (
@@ -1680,8 +1735,9 @@ async def apify_webhook(
         # -----------------------------------------
         # FBLEADS.CSV
         #
-        # Hunter completed the search but
-        # did not find an email.
+        # Hunter returned no email OR returned
+        # an email with a non-valid status
+        # (accept_all, unknown, etc.).
         # -----------------------------------------
 
         total_fb_leads = (
