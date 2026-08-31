@@ -322,6 +322,18 @@ def extract_records(listings):
             ]
         )
 
+        # Realtor.ca city field:
+        # moreDetails/Property/Address/City
+        city = get_nested(
+            listing,
+            [
+                "moreDetails",
+                "Property",
+                "Address",
+                "City"
+            ]
+        )
+
         price = get_nested(
             listing,
             ["Property", "Price"]
@@ -349,6 +361,7 @@ def extract_records(listings):
             "LastName": clean_text(last_name),
             "Phone": phone,
             "Address": clean_address(address),
+            "City": clean_text(city),
             "Price": clean_price(price),
             "Website": clean_text(website),
         })
@@ -368,6 +381,7 @@ def clean_dataframe(rows):
         "LastName",
         "Phone",
         "Address",
+        "City",
         "Price",
         "Website",
     ]
@@ -887,6 +901,7 @@ def update_email_leads_file(
         "LastName",
         "Phone",
         "Address",
+        "City",
         "Price",
         "Website",
         "Email",
@@ -1112,6 +1127,7 @@ def update_fb_leads_file(
         "LastName",
         "Phone",
         "Address",
+        "City",
         "Price",
         "Website",
         "Email",
