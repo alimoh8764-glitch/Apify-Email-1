@@ -1,5 +1,6 @@
 import os
 import re
+import requests
 from datetime import datetime, timezone
 
 import pandas as pd
@@ -11,7 +12,7 @@ app = FastAPI()
 
 
 # =========================================================
-# RAILWAY ENVIRONMENT VARIABLES
+# ENVIRONMENT VARIABLES
 # =========================================================
 
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
@@ -19,12 +20,17 @@ GITHUB_REPO = os.getenv("GITHUB_REPO")
 GITHUB_BRANCH = os.getenv("GITHUB_BRANCH", "main")
 GITHUB_FOLDER = os.getenv("GITHUB_FOLDER", "data")
 
+APIFY_TOKEN = os.getenv("APIFY_TOKEN")
+
 
 if not GITHUB_TOKEN:
     raise RuntimeError("Missing Railway variable: GITHUB_TOKEN")
 
 if not GITHUB_REPO:
     raise RuntimeError("Missing Railway variable: GITHUB_REPO")
+
+if not APIFY_TOKEN:
+    raise RuntimeError("Missing Railway variable: APIFY_TOKEN")
 
 
 github = Github(GITHUB_TOKEN)
@@ -41,6 +47,7 @@ def get_nested(data, path, default=None):
         for key in path:
 
             if isinstance(key, int):
+
                 if not isinstance(current, list):
                     return default
 
@@ -50,6 +57,7 @@ def get_nested(data, path, default=None):
                 current = current[key]
 
             else:
+
                 if not isinstance(current, dict):
                     return default
 
@@ -65,6 +73,7 @@ def get_nested(data, path, default=None):
 
 
 def clean_text(value):
+
     if value is None:
         return None
 
@@ -77,6 +86,7 @@ def clean_text(value):
 
 
 def clean_price(value):
+
     if value is None:
         return None
 
@@ -98,6 +108,7 @@ def clean_price(value):
 
 
 def clean_address(value):
+
     if value is None:
         return None
 
@@ -113,30 +124,30 @@ def clean_address(value):
 
 
 def build_phone(area_code, phone_number):
-    """
-    Example:
-
-    780 + 907-0016
-    becomes
-    17809070016
-    """
 
     if area_code is None or phone_number is None:
         return None
 
-    area_code = re.sub(r"\D", "", str(area_code))
-    phone_number = re.sub(r"\D", "", str(phone_number))
+    area_code = re.sub(
+        r"\D",
+        "",
+        str(area_code)
+    )
+
+    phone_number = re.sub(
+        r"\D",
+        "",
+        str(phone_number)
+    )
 
     if not area_code or not phone_number:
         return None
 
     full_number = area_code + phone_number
 
-    # If number somehow already includes leading 1
     if len(full_number) == 11 and full_number.startswith("1"):
         full_number = full_number[1:]
 
-    # US/Canada number should be 10 digits before country code
     if len(full_number) != 10:
         return None
 
@@ -144,119 +155,148 @@ def build_phone(area_code, phone_number):
 
 
 # =========================================================
-# EXTRACT ONLY WANTED FIELDS
+# DOWNLOAD APIFY DATASET
 # =========================================================
 
-def extract_records(payload):
+def download_apify_dataset(dataset_id):
 
-    if isinstance(payload, dict):
+    url = (
+        f"https://api.apify.com/v2/datasets/"
+        f"{dataset_id}/items"
+    )
 
-        if isinstance(payload.get("items"), list):
-            listings = payload["items"]
+    params = {
+        "token": APIFY_TOKEN,
+        "clean": "true",
+        "format": "json"
+    }
 
-        else:
-            listings = [payload]
+    response = requests.get(
+        url,
+        params=params,
+        timeout=60
+    )
 
-    elif isinstance(payload, list):
-        listings = payload
+    if response.status_code != 200:
 
-    else:
-        return []
+        raise HTTPException(
+            status_code=500,
+            detail=(
+                f"Could not download Apify dataset. "
+                f"Status: {response.status_code}"
+            )
+        )
 
+    data = response.json()
+
+    if not isinstance(data, list):
+
+        raise HTTPException(
+            status_code=500,
+            detail="Apify dataset did not return a list"
+        )
+
+    return data
+
+
+# =========================================================
+# EXTRACT REALTOR FIELDS
+# =========================================================
+
+def extract_records(listings):
 
     rows = []
-
 
     for listing in listings:
 
         if not isinstance(listing, dict):
             continue
 
-
         bedrooms = get_nested(
             listing,
             ["Building", "Bedrooms"]
         )
-
 
         first_name = get_nested(
             listing,
             ["Individual", 0, "FirstName"]
         )
 
-
         last_name = get_nested(
             listing,
             ["Individual", 0, "LastName"]
         )
 
-
         area_code = get_nested(
             listing,
-            ["Individual", 0, "Phones", 0, "AreaCode"]
+            [
+                "Individual",
+                0,
+                "Phones",
+                0,
+                "AreaCode"
+            ]
         )
-
 
         phone_number = get_nested(
             listing,
-            ["Individual", 0, "Phones", 0, "PhoneNumber"]
+            [
+                "Individual",
+                0,
+                "Phones",
+                0,
+                "PhoneNumber"
+            ]
         )
-
 
         address = get_nested(
             listing,
-            ["Property", "Address", "AddressText"]
+            [
+                "Property",
+                "Address",
+                "AddressText"
+            ]
         )
-
 
         price = get_nested(
             listing,
-            ["Property", "Price"]
+            [
+                "Property",
+                "Price"
+            ]
         )
-
 
         website = get_nested(
             listing,
-            ["Individual", 0, "Websites", 0, "Website"]
+            [
+                "Individual",
+                0,
+                "Websites",
+                0,
+                "Website"
+            ]
         )
-
 
         phone = build_phone(
             area_code,
             phone_number
         )
 
-
         rows.append({
-
-            "Bedrooms":
-                clean_text(bedrooms),
-
-            "FirstName":
-                clean_text(first_name),
-
-            "LastName":
-                clean_text(last_name),
-
-            "Phone":
-                phone,
-
-            "Address":
-                clean_address(address),
-
-            "Price":
-                clean_price(price),
-
-            "Website":
-                clean_text(website),
+            "Bedrooms": clean_text(bedrooms),
+            "FirstName": clean_text(first_name),
+            "LastName": clean_text(last_name),
+            "Phone": phone,
+            "Address": clean_address(address),
+            "Price": clean_price(price),
+            "Website": clean_text(website),
         })
-
 
     return rows
 
 
 # =========================================================
-# CLEAN WITH PANDAS
+# CLEAN DATA
 # =========================================================
 
 def clean_dataframe(rows):
@@ -271,58 +311,45 @@ def clean_dataframe(rows):
         "Website",
     ]
 
-
     df = pd.DataFrame(
         rows,
         columns=columns
     )
 
-
     if df.empty:
         return df
 
-
-    # Remove fully empty rows
     df = df.dropna(how="all")
 
-
-    # Clean names
-    for column in ["FirstName", "LastName"]:
-
+    for column in [
+        "FirstName",
+        "LastName"
+    ]:
         df[column] = (
             df[column]
             .astype("string")
             .str.strip()
         )
 
-
-    # Keep phone as string
     df["Phone"] = (
         df["Phone"]
         .astype("string")
     )
 
-
-    # Clean website
     df["Website"] = (
         df["Website"]
         .astype("string")
         .str.strip()
     )
 
+    df["Website"] = df["Website"].replace({
+        "": pd.NA,
+        "None": pd.NA,
+        "none": pd.NA,
+        "nan": pd.NA,
+        "<NA>": pd.NA,
+    })
 
-    df["Website"] = df["Website"].replace(
-        {
-            "": pd.NA,
-            "None": pd.NA,
-            "none": pd.NA,
-            "nan": pd.NA,
-            "<NA>": pd.NA,
-        }
-    )
-
-
-    # Remove duplicate leads
     df = df.drop_duplicates(
         subset=[
             "FirstName",
@@ -333,8 +360,6 @@ def clean_dataframe(rows):
         keep="first"
     )
 
-
-    # Remove rows with no name at all
     df = df.dropna(
         subset=[
             "FirstName",
@@ -342,7 +367,6 @@ def clean_dataframe(rows):
         ],
         how="all"
     )
-
 
     return df.reset_index(drop=True)
 
@@ -368,42 +392,111 @@ def health():
 @app.post("/webhook")
 async def apify_webhook(request: Request):
 
-    # Receive JSON
+    # -----------------------------------------
+    # 1. READ APIFY WEBHOOK BODY
+    # -----------------------------------------
+
     try:
         payload = await request.json()
 
     except Exception:
+
         raise HTTPException(
             status_code=400,
             detail="Invalid JSON received"
         )
 
 
-    # Extract fields
-    rows = extract_records(payload)
+    # -----------------------------------------
+    # 2. FIND DATASET ID
+    # -----------------------------------------
+
+    dataset_id = get_nested(
+        payload,
+        [
+            "eventData",
+            "defaultDatasetId"
+        ]
+    )
+
+
+    if not dataset_id:
+
+        raise HTTPException(
+            status_code=400,
+            detail=(
+                "No defaultDatasetId found "
+                "in Apify webhook"
+            )
+        )
+
+
+    print(
+        "Apify dataset ID:",
+        dataset_id
+    )
+
+
+    # -----------------------------------------
+    # 3. DOWNLOAD ACTUAL REALTOR DATA
+    # -----------------------------------------
+
+    listings = download_apify_dataset(
+        dataset_id
+    )
+
+
+    print(
+        "Downloaded records:",
+        len(listings)
+    )
+
+
+    if not listings:
+
+        raise HTTPException(
+            status_code=400,
+            detail="Apify dataset is empty"
+        )
+
+
+    # -----------------------------------------
+    # 4. EXTRACT FIELDS
+    # -----------------------------------------
+
+    rows = extract_records(
+        listings
+    )
 
 
     if not rows:
+
         raise HTTPException(
             status_code=400,
-            detail="No Realtor listing records found"
+            detail="No Realtor records found"
         )
 
 
-    # Clean data
-    df = clean_dataframe(rows)
+    # -----------------------------------------
+    # 5. CLEAN DATA
+    # -----------------------------------------
+
+    df = clean_dataframe(
+        rows
+    )
 
 
     if df.empty:
+
         raise HTTPException(
             status_code=400,
-            detail="No usable records remained after cleaning"
+            detail="No usable records after cleaning"
         )
 
 
-    # =====================================================
-    # SPLIT INTO TWO DATAFRAMES
-    # =====================================================
+    # -----------------------------------------
+    # 6. SPLIT INTO TWO CSV FILES
+    # -----------------------------------------
 
     with_website = df[
         df["Website"].notna()
@@ -415,32 +508,37 @@ async def apify_webhook(request: Request):
     ].copy()
 
 
-    with_website = with_website.reset_index(
-        drop=True
-    )
-
-    without_website = without_website.reset_index(
-        drop=True
+    with_website = (
+        with_website
+        .reset_index(drop=True)
     )
 
 
-    # =====================================================
-    # CREATE CSV TEXT
-    # =====================================================
-
-    with_website_csv = with_website.to_csv(
-        index=False
+    without_website = (
+        without_website
+        .reset_index(drop=True)
     )
 
 
-    without_website_csv = without_website.to_csv(
-        index=False
+    # -----------------------------------------
+    # 7. CREATE CSV CONTENT
+    # -----------------------------------------
+
+    with_website_csv = (
+        with_website
+        .to_csv(index=False)
     )
 
 
-    # =====================================================
-    # TIMESTAMP
-    # =====================================================
+    without_website_csv = (
+        without_website
+        .to_csv(index=False)
+    )
+
+
+    # -----------------------------------------
+    # 8. FILENAMES
+    # -----------------------------------------
 
     timestamp = datetime.now(
         timezone.utc
@@ -448,10 +546,6 @@ async def apify_webhook(request: Request):
         "%Y-%m-%d_%H-%M-%S-%f"
     )
 
-
-    # =====================================================
-    # FILENAMES
-    # =====================================================
 
     with_website_filename = (
         f"{GITHUB_FOLDER}/"
@@ -465,9 +559,9 @@ async def apify_webhook(request: Request):
     )
 
 
-    # =====================================================
-    # PUSH BOTH FILES TO GITHUB
-    # =====================================================
+    # -----------------------------------------
+    # 9. UPLOAD BOTH TO GITHUB
+    # -----------------------------------------
 
     try:
 
@@ -476,22 +570,22 @@ async def apify_webhook(request: Request):
         )
 
 
-        # File 1: leads with websites
         repo.create_file(
             path=with_website_filename,
             message=(
-                f"Add leads with website {timestamp}"
+                f"Add leads with website "
+                f"{timestamp}"
             ),
             content=with_website_csv,
             branch=GITHUB_BRANCH,
         )
 
 
-        # File 2: leads without websites
         repo.create_file(
             path=without_website_filename,
             message=(
-                f"Add leads without website {timestamp}"
+                f"Add leads without website "
+                f"{timestamp}"
             ),
             content=without_website_csv,
             branch=GITHUB_BRANCH,
@@ -500,7 +594,10 @@ async def apify_webhook(request: Request):
 
     except GithubException as exc:
 
-        print("GitHub error:", exc)
+        print(
+            "GitHub error:",
+            exc
+        )
 
         raise HTTPException(
             status_code=500,
@@ -508,16 +605,19 @@ async def apify_webhook(request: Request):
         )
 
 
-    # =====================================================
-    # SUCCESS
-    # =====================================================
+    # -----------------------------------------
+    # 10. SUCCESS
+    # -----------------------------------------
 
     return {
 
         "success": True,
 
-        "records_received":
-            len(rows),
+        "dataset_id":
+            dataset_id,
+
+        "records_downloaded":
+            len(listings),
 
         "records_after_cleaning":
             len(df),
@@ -533,7 +633,4 @@ async def apify_webhook(request: Request):
 
         "without_website_file":
             without_website_filename,
-
-        "repository":
-            GITHUB_REPO
     }
