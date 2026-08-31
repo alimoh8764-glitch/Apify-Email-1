@@ -168,7 +168,7 @@ def download_apify_dataset(dataset_id):
     params = {
         "token": APIFY_TOKEN,
         "clean": "true",
-        "format": "json"
+        "format": "json",
     }
 
     response = requests.get(
@@ -179,6 +179,12 @@ def download_apify_dataset(dataset_id):
 
     if response.status_code != 200:
 
+        print(
+            "Apify download failed:",
+            response.status_code,
+            response.text[:500]
+        )
+
         raise HTTPException(
             status_code=500,
             detail=(
@@ -187,7 +193,15 @@ def download_apify_dataset(dataset_id):
             )
         )
 
-    data = response.json()
+    try:
+        data = response.json()
+
+    except Exception:
+
+        raise HTTPException(
+            status_code=500,
+            detail="Apify dataset did not return valid JSON"
+        )
 
     if not isinstance(data, list):
 
@@ -393,7 +407,7 @@ def health():
 async def apify_webhook(request: Request):
 
     # -----------------------------------------
-    # 1. READ APIFY WEBHOOK BODY
+    # 1. READ WEBHOOK BODY
     # -----------------------------------------
 
     try:
@@ -407,20 +421,59 @@ async def apify_webhook(request: Request):
         )
 
 
+    # Print payload keys so Railway logs show
+    # what Apify actually sent.
+    if isinstance(payload, dict):
+        print(
+            "Webhook payload keys:",
+            list(payload.keys())
+        )
+    else:
+        print(
+            "Webhook payload type:",
+            type(payload).__name__
+        )
+
+
     # -----------------------------------------
     # 2. FIND DATASET ID
     # -----------------------------------------
 
-    dataset_id = get_nested(
-        payload,
-        [
-            "eventData",
-            "defaultDatasetId"
-        ]
+    dataset_id = (
+        get_nested(
+            payload,
+            ["resource", "defaultDatasetId"]
+        )
+        or get_nested(
+            payload,
+            ["eventData", "defaultDatasetId"]
+        )
+        or get_nested(
+            payload,
+            ["payload", "resource", "defaultDatasetId"]
+        )
+        or get_nested(
+            payload,
+            ["data", "defaultDatasetId"]
+        )
+        or (
+            payload.get("defaultDatasetId")
+            if isinstance(payload, dict)
+            else None
+        )
     )
 
 
     if not dataset_id:
+
+        print(
+            "Could not find defaultDatasetId."
+        )
+
+        print(
+            "Webhook payload:",
+            payload
+        )
 
         raise HTTPException(
             status_code=400,
@@ -520,6 +573,17 @@ async def apify_webhook(request: Request):
     )
 
 
+    print(
+        "Leads with website:",
+        len(with_website)
+    )
+
+    print(
+        "Leads without website:",
+        len(without_website)
+    )
+
+
     # -----------------------------------------
     # 7. CREATE CSV CONTENT
     # -----------------------------------------
@@ -560,7 +624,7 @@ async def apify_webhook(request: Request):
 
 
     # -----------------------------------------
-    # 9. UPLOAD BOTH TO GITHUB
+    # 9. UPLOAD BOTH CSV FILES TO GITHUB
     # -----------------------------------------
 
     try:
@@ -581,6 +645,12 @@ async def apify_webhook(request: Request):
         )
 
 
+        print(
+            "Uploaded:",
+            with_website_filename
+        )
+
+
         repo.create_file(
             path=without_website_filename,
             message=(
@@ -589,6 +659,12 @@ async def apify_webhook(request: Request):
             ),
             content=without_website_csv,
             branch=GITHUB_BRANCH,
+        )
+
+
+        print(
+            "Uploaded:",
+            without_website_filename
         )
 
 
