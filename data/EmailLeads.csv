@@ -1,20 +1,121 @@
-Bedrooms,FirstName,LastName,Phone,Address,Price,Website,Email,HunterScore,HunterStatus
-2,Tim,Fitzsimmons,17809404141,5151 SW,249500,https://timfitzsimmons.maxwellrealty.ca/,tfitzsimmons@maxwellrealty.ca,96,valid
-5,Pete,Muller,17809960208,16715 NW,399500,https://www.makeityourhome.ca/,peter@makeityourhome.ca,99,valid
-2,Sara,Kalke,17807107669,10136 NW,275000,http://www.sarakalke.com/,sara@sarakalke.com,81,valid
-2,Darlene,Strang,17809083131,2204 NW,197800,http://www.darlenestrang.ca/,darlene@darlenestrang.ca,95,valid
-4,Kamran,Amjad,17802573833,11728 NW,485000,https://bridgewayrealestate.ca/,kamran@bridgewayrealestate.ca,96,valid
-2,Ryan,Lauber,17807174861,11809 NW,475000,http://ryanlauber.com/,ryan@ryanlauber.com,98,valid
-2,Lyndon,Sommert,17804981966,11243 NW,386000,http://www.aret.ca/,lyndon@aret.ca,81,valid
-3,Chris,Squires,17802220045,10726 NW,829900,http://www.realtyunleashed.ca/,chris@realtyunleashed.ca,80,valid
-1,Rod,Thompson,17809949998,4835 NW,249000,https://mymethodrealty.ca/,r.thompson@mymethodrealty.ca,98,valid
-4,JP,Dumlao,17809950540,4659 NW,625000,http://www.propertypathfinders.com/,jp@propertypathfinders.com,95,valid
-4,Joseph,Yisak,17802666990,13011 NW,499900,https://www.maxwellrealty.ca/agents/joseph-yisak/,jyisak@maxwellrealty.ca,97,valid
-1,Shafik,Ladha,16042798075,121,339000,http://www.shafik.com/,shafik@shafik.com,99,valid
-1,Paul,Eviston,16047378865,104,415000,http://www.pauleviston.com/,paul@pauleviston.com,81,valid
-3,Yvonne,Lu,16043393088,95,998000,http://www.yvonnelu.ca/,yvonne@yvonnelu.ca,99,valid
-2,Patti,Martin,16043177768,114,799800,http://www.pattimartin.com/,patti@pattimartin.com,80,valid
-1,Marco,Tam,17783788111,301,479999,http://www.marcotam.com/,marco@marcotam.com,99,valid
-2,Karolina,Crane,17788817931,202,499000,http://www.houzagency.com/,kcrane@houzagency.com,81,valid
-4,Jason,Lim,16047202222,38,1498000,http://www.vancityexperts.com/,jason@vancityexperts.com,98,valid
-2,Mike,Lai,17786815991,808,668000,http://mikelai.ca/,mike@mikelai.ca,95,valid
+Bedrooms,FirstName,LastName,Phone,Address,City,Price,Website,Email,HunterScore,HunterStatus
+2,Tim,Fitzsimmons,17809404141,5151 SW,,249500,https://timfitzsimmons.maxwellrealty.ca/,tfitzsimmons@maxwellrealty.ca,96,valid
+5,Pete,Muller,17809960208,16715 NW,,399500,https://www.makeityourhome.ca/,peter@makeityourhome.ca,99,valid
+2,Sara,Kalke,17807107669,10136 NW,,275000,http://www.sarakalke.com/,sara@sarakalke.com,81,valid
+2,Darlene,Strang,17809083131,2204 NW,,197800,http://www.darlenestrang.ca/,darlene@darlenestrang.ca,95,valid
+4,Kamran,Amjad,17802573833,11728 NW,,485000,https://bridgewayrealestate.ca/,kamran@bridgewayrealestate.ca,96,valid
+2,Ryan,Lauber,17807174861,11809 NW,,475000,http://ryanlauber.com/,ryan@ryanlauber.com,98,valid
+2,Lyndon,Sommert,17804981966,11243 NW,,386000,http://www.aret.ca/,lyndon@aret.ca,81,valid
+3,Chris,Squires,17802220045,10726 NW,,829900,http://www.realtyunleashed.ca/,chris@realtyunleashed.ca,80,valid
+1,Rod,Thompson,17809949998,4835 NW,,249000,https://mymethodrealty.ca/,r.thompson@mymethodrealty.ca,98,valid
+4,JP,Dumlao,17809950540,4659 NW,,625000,http://www.propertypathfinders.com/,jp@propertypathfinders.com,95,valid
+4,Joseph,Yisak,17802666990,13011 NW,,499900,https://www.maxwellrealty.ca/agents/joseph-yisak/,jyisak@maxwellrealty.ca,97,valid
+1,Shafik,Ladha,16042798075,121,,339000,http://www.shafik.com/,shafik@shafik.com,99,valid
+1,Paul,Eviston,16047378865,104,,415000,http://www.pauleviston.com/,paul@pauleviston.com,81,valid
+3,Yvonne,Lu,16043393088,95,,998000,http://www.yvonnelu.ca/,yvonne@yvonnelu.ca,99,valid
+2,Patti,Martin,16043177768,114,,799800,http://www.pattimartin.com/,patti@pattimartin.com,80,valid
+1,Marco,Tam,17783788111,301,,479999,http://www.marcotam.com/,marco@marcotam.com,99,valid
+2,Karolina,Crane,17788817931,202,,499000,http://www.houzagency.com/,kcrane@houzagency.com,81,valid
+4,Jason,Lim,16047202222,38,,1498000,http://www.vancityexperts.com/,jason@vancityexperts.com,98,valid
+2,Mike,Lai,17786815991,808,,668000,http://mikelai.ca/,mike@mikelai.ca,95,valid
+3 + 2,Raman,Chahal,14039222000,108 NE,Calgary,769900,https://www.dhillon-chahal.com/,raman@dhillon-chahal.com,85,valid
+2,Parker,Jang,15878305561,122 SW,Calgary,449900,https://soldbypj.c21.ca/,parker.jang@c21.ca,80,valid
+2,Chase,Olsen,14036060340,3407,Calgary,399900,http://www.chasinghomes.ca/,chase.olsen@chasinghomes.ca,81,valid
+3 + 1,Danny,James,14038630577,244 SE,Calgary,807000,http://www.onehouse.ca/,danny@onehouse.ca,80,valid
+2 + 1,Greg,Kennedy,14032596800,2,Calgary,699900,https://www.calgaryhousefinder.ca/,greg@calgaryhousefinder.ca,96,valid
+2,Jenny,Mayhew,14039928811,302,Calgary,189900,http://www.jennymayhew.ca/,jenny@jennymayhew.ca,83,valid
+3 + 1,Don,Wong,14039032888,7112 SE,Calgary,599900,http://www.donwong.ca/,don@donwong.ca,80,valid
+1,Christopher,Lofgren,14038030325,309,Calgary,269900,http://www.lofgrenre.com/,chris@lofgrenre.com,97,valid
+2,Stacie,Mori,14039883955,2466 SE,Calgary,389500,http://www.staciemori.com/,stacie@staciemori.com,95,valid
+3 + 1,Tanya,Eklund,14038637434,1903 SW,Calgary,849900,http://www.tanyaeklundgroup.ca/,tanya@tanyaeklundgroup.ca,83,valid
+3 + 1,Simmi,Aujla,14033998831,38 SW,Calgary,739888,http://www.chamberlaingroup.ca/,simmi@chamberlaingroup.ca,95,valid
+3,Claire,Fraser,14038631055,60 NE,Calgary,534953,http://www.frasergrouphomes.com/,claire@frasergrouphomes.com,97,valid
+2,Ilona,Drost,15878774049,103,Calgary,380000,https://ilonadrostrealestate.com/,ilona@ilonadrostrealestate.com,84,valid
+4,Michelle,Plach,17809654662,180 SE,Calgary,939000,https://www.honestdoor.com/,michelle@honestdoor.com,95,valid
+3 + 1,Lisa,Johnson,14036088834,225 NE,Calgary,845000,https://innercityinfills.ca/,lisa@innercityinfills.ca,80,valid
+3 + 1,Bob,Jablonski,14036500092,44 SE,Calgary,524900,http://www.jablonskirealestategroup.com/,bob@jablonskirealestategroup.com,99,valid
+4,Kevin,Blackwell,14038166007,543 SE,Calgary,909900,http://www.kevinblackwell.ca/,kevin@kevinblackwell.ca,98,valid
+3,Ali,Mamdani,14035420075,470,Calgary,169000,https://alimamdani.com/,ali@alimamdani.com,97,valid
+2,Sherry,Heinrich,14035858000,3105,Calgary,395900,https://www.sherryheinrich.com/,sherry@sherryheinrich.com,97,valid
+3 + 1,Carla,Garcia,14039199676,58 NE,Calgary,529900,https://www.carlagarcia.cirrealty.ca/,cgarcia@cirrealty.ca,97,valid
+2,Angie,Hartmann,14035895199,330,Calgary,54900,http://www.angiehartmann.ca/,angie@angiehartmann.ca,99,valid
+2,Doug,Baxter,14038292913,38 NE,Calgary,409900,http://baxterandassociates.ca/,doug@baxterandassociates.ca,97,valid
+2,Erick,Dillmann,14038281120,112 SE,Calgary,389900,http://www.findyourcalgary.ca/,erick.dillmann@findyourcalgary.ca,98,valid
+3,Bruce,Miller,14036671441,173 SE,Calgary,760000,https://www.cirrealty.ca/Bruce_Miller,bmiller@cirrealty.ca,95,valid
+3,Jessica,Holmstrom,14037019779,404 SW,Calgary,549900,http://designerrealestate.ca/,jess@designerrealestate.ca,95,valid
+3 + 2,Miranda,Moser,14034700021,377 SW,Calgary,1350000,http://www.calgaryrealestatepro.pro/,miranda@calgaryrealestatepro.pro,96,valid
+2,Andy,Kwok,15879693083,4308,Calgary,270000,https://www.reab.ca/,andy@reab.ca,99,valid
+2,Mason,Kramer,14039907639,372 SE,Calgary,385000,http://www.kramerteam.ca/,mason@kramerteam.ca,97,valid
+3 + 1,Nelle,Derry,14036695319,404 NW,Calgary,1350000,http://www.nellederry.ca/,nelle@nellederry.ca,95,valid
+3 + 2,Rachel,Vanderveen,14032627653,76 SE,Calgary,699999,http://www.vanderveenteam.com/,rachel@vanderveenteam.com,96,valid
+4,Michael,Laprairie,14038529626,28 NE,Calgary,798900,http://www.jayman.com/why-buy-a-jayman/realty,mlaprairie@jayman.com,98,valid
+2 + 2,Barb,Desautels,14036679869,84 NE,Calgary,460000,http://www.barbsellscalgary.com/,barbd@barbsellscalgary.com,95,valid
+3 + 1,Brian,Skinner,14032475171,62 SE,Calgary,679900,https://www.brianskinner.ca/,brian@brianskinner.ca,96,valid
+3 + 1,John,Ditto,14038307077,231 SW,Calgary,649900,http://johnditto.ca/,john@johnditto.ca,95,valid
+2,Maggie,Chen,14034656562,12,Calgary,329900,http://www.skyrockrealty.com/,maggie.chen@skyrockrealty.com,98,valid
+4 + 1,Thomas,Calvert,14038622222,44 NW,Calgary,698800,http://www.thomascalvert.com/,thomas@thomascalvert.com,97,valid
+1,Rob,Whitfield,14035857058,137,Calgary,179000,http://www.robwhitfield.ca/,rob@robwhitfield.ca,95,valid
+2 + 1,Randy,Keylock,14032001111,637 SW,Calgary,749900,http://www.thehomehunters.com/,randy@thehomehunters.com,96,valid
+2,Chris,Grivell,15874163030,67 SW,Calgary,639900,https://framerealtygroup.com/,cgrivell@framerealtygroup.com,96,valid
+3 + 2,Mackenzie,Hare,15875787878,204 NE,Calgary,600000,https://mackenziehare.royallepage.ca/,mackenziehare@royallepage.ca,95,valid
+3 + 1,Rebecca,Chamberlain,14036672330,2635 SW,Calgary,949900,https://www.chamberlaingroup.ca/,rebecca@chamberlaingroup.ca,97,valid
+3 + 1,Danny,Raposo,14039667676,16A Tusslewood Drive NW,Calgary,879900,http://www.dannyraposo.com/,danny@dannyraposo.com,98,valid
+2,Lindsay,Walker,14036309137,803,Calgary,419975,http://www.ldrealtygroup.ca/,lindsay@ldrealtygroup.ca,97,valid
+3 + 1,Joanna,Kopacz,14037148540,92 SW,Calgary,857900,http://www.cirrealty.ca/,jkopacz@cirrealty.ca,96,valid
+2,Jason,Walz,14035050039,220,Calgary,230000,http://walzrealestategroup.ca/,jwalz@walzrealestategroup.ca,82,valid
+2 + 2,Amanda,O'Reilly,14038500565,164 SE,Calgary,1199000,https://amandasellsyyc.ca/,amanda@amandasellsyyc.ca,96,valid
+4 + 1,Sahil,Chhabra,15874393978,314 NE,Calgary,785000,http://www.chhabra.ca/,sahil@chhabra.ca,97,valid
+3,Nikki,Bond,14034626038,208 SE,Calgary,419000,http://www.nikkibond.com/,nikki@nikkibond.com,95,valid
+1,Michael,Montgomery,15872276204,709,Calgary,325000,https://www.renzorealestate.com/,michael@renzorealestate.com,82,valid
+1,Pamela,Balkwill,14038295171,302,Calgary,269900,https://www.pamelabalkwill.com/,pamela@pamelabalkwill.com,95,valid
+2,Ernest,Gardy,14036513093,15 SE,Calgary,539900,http://www.erniegardy.com/,ernie@erniegardy.com,98,valid
+3,Dorothea,Sautter,14036138133,85 NW,Calgary,810000,http://dorotheasautter.royallepage.ca/,dorothea@royallepage.ca,98,valid
+3,Big John,Peterson,14032445646,201,Calgary,466221,http://www.bigjohn.ca/,john@bigjohn.ca,99,valid
+3 + 1,Melissa,Maynard,14036202743,279 SW,Calgary,539900,https://homecollective.ca/,melissa@homecollective.ca,96,valid
+1,Ken,Rigel,14032071748,106,Calgary,449900,http://www.krgroup.ca/,ken@krgroup.ca,99,valid
+1,Chloe,Zhang,15878322781,1806,Calgary,285000,https://www.zenyxproperty.com/,chloe.zhang@zenyxproperty.com,98,valid
+1,Chantelle,Jenkins,14036196761,2144,Calgary,365000,http://www.yourcalgaryagents.ca/,chantelle@yourcalgaryagents.ca,95,valid
+4 + 2,Trung,Bien,14034014222,525 NW,Calgary,1324900,http://www.trungbien.ca/,trung@trungbien.ca,96,valid
+4,Katrina,Holmes,14036200164,1004 NW,Calgary,699900,https://www.katrinaholmes.com/,katrina@katrinaholmes.com,98,valid
+4 + 1,Anne,Clarke-Davidson,14038035578,12 SE,Calgary,1099000,http://bloomgroup.ca/,anne@bloomgroup.ca,97,valid
+2,Cory,Smith,14034621009,76,Calgary,390000,http://www.smithpezzente.com/,cory@smithpezzente.com,98,valid
+3 + 1,Jasben,Lai,14036895512,141 NW,Calgary,749900,http://www.liveinnercity.com/,jasben@liveinnercity.com,96,valid
+4 + 1,Jeff,Stephenson,14036518458,15 SW,Calgary,1449900,http://stephensonrealtygroup.ca/,jeff@stephensonrealtygroup.ca,99,valid
+4 + 1,Timothy,Green,14038911325,2407 NW,Calgary,2249000,http://www.greengroup.estate/,tim@greengroup.estate,95,valid
+3,Richard,Bergeron,14038192331,48 NW,Calgary,459900,http://www.richardbergeron.com/,richard@richardbergeron.com,98,valid
+3,Ian,Cooper,14035600555,12 NW,Calgary,645900,http://www.iancooper.ca/,ian@iancooper.ca,96,valid
+3 + 1,Sunny,Samra,14035611434,327 SW,Calgary,569000,https://www.sunnysamra.com/,sunny@sunnysamra.com,99,valid
+3 + 2,Gemma,Hobb,14039911115,15 SW,Calgary,750000,https://sothebysrealty.ca/en/gemma-hobb/,gemma.hobb@sothebysrealty.ca,99,valid
+2,Stephanie,Campbell,14038609895,209,Calgary,350000,http://www.stephaniecampbell.com/,stephanie@stephaniecampbell.com,98,valid
+2,Tom,Berg,15878882919,401,Calgary,339000,https://bergestate.com/,tom@bergestate.com,95,valid
+3,Jeton,Boletini,14039717042,294 SW,Calgary,710000,http://cirrealty.ca/,jboletini@cirrealty.ca,95,valid
+2,Neil,Lauzon,14036501119,427,Calgary,324900,http://www.neillauzon.com/,neil@neillauzon.com,97,valid
+2,Rebecca,Garrett,14039699222,224,Calgary,355000,https://www.firstresponserealty.ca/,rebecca@firstresponserealty.ca,99,valid
+3,Amanda,Higgs,15878302741,2217 SE,Calgary,1450000,https://amandahiggs.cirrealty.ca/,ahiggs@cirrealty.ca,97,valid
+3,Lindsay,Winship,14038313303,15,Calgary,398000,http://www.winshipassociates.ca/,lindsay@winshipassociates.ca,97,valid
+2,Jason,Palmer,14032563888,221,Calgary,294900,http://www.sold4you.com/,palmer@sold4you.com,96,valid
+3 + 2,David,Rogers,14039929611,235 NW,Calgary,718888,https://www.f1realestate.ca/,david@f1realestate.ca,98,valid
+3,Arun,Verma,14038317931,63 NW,Calgary,590000,https://www.arun-rahul.ca/,arun@arun-rahul.ca,97,valid
+2,Ginger,Andrews,14034733877,5 SW,Calgary,989900,http://www.gingerandrews.com/,ginger@gingerandrews.com,99,valid
+3 + 2,Kevin,Leung,14038357668,4603 NE,Calgary,799900,http://www.leungrealestate.ca/,kevin@leungrealestate.ca,98,valid
+3 + 1,Robyn,Hauck,14032594141,7304 SW,Calgary,629000,http://www.robynhauck.com/,robyn@robynhauck.com,99,valid
+3,Spencer,Tonkinson,14039910177,79 NW,Calgary,824900,http://www.westernelite.ca/,spencer@westernelite.ca,97,valid
+2,Lori,Petersen,14038160059,156 NW,Calgary,399900,https://petersen-group.ca/,lori@petersen-group.ca,98,valid
+3,Kevin,D'Costa,14036055559,68 SE,Calgary,739900,http://www.kevindcosta.com/,kevin@kevindcosta.com,98,valid
+2 + 1,Jeffery,Chan,14039185536,205 NE,Calgary,699900,http://www.soldbyjeffchan.com/,jeff@soldbyjeffchan.com,96,valid
+3 + 1,Jordan,Lotoski,14035420326,5031 NW,Calgary,799900,http://www.jordanlotoski.com/,jordan@jordanlotoski.com,98,valid
+1,Mikala,James,14038897020,107,Calgary,349000,http://www.meinzerjames.ca/,mj@meinzerjames.ca,99,valid
+4,Phil,Lepage,14039696695,1415 SW,Calgary,1050000,http://www.calgaryelitere.com/,phil@calgaryelitere.com,80,valid
+2 + 2,Brooke,Carson,15875824748,9504 SE,Calgary,734900,https://dolcerealestate.ca/,brooke@dolcerealestate.ca,98,valid
+2,Brett,Sowinski,14038751482,3529 NW,Calgary,450000,https://sowinskirealty.com/,brett@sowinskirealty.com,96,valid
+4,Leslie,Kiss,14038614035,5603 SE,Calgary,374900,https://lesliekiss.royallepage.ca/,lesliekiss@royallepage.ca,97,valid
+4 + 1,Nick,Sherby,15875858835,2302 SW,Calgary,1468000,http://www.sng-development.com/,nick@sng-development.com,98,valid
+1,Brad,Crapun,14038603834,402,Calgary,1500000,http://www.bradcrapun.ca/,bradcrapun@royallepage.ca,97,valid
+,Jonathan,Ashkin,14038265022,5424 SW,Calgary,385000,http://ashkinrealty.com/,jonathan@ashkinrealty.com,96,valid
+3 + 1,Eric,Boyd,14038094307,244 NW,Calgary,710000,http://www.homesbyeric.ca/,eric@homesbyeric.ca,97,valid
+3 + 1,David,Jablonski,14039755915,137 SE,Calgary,1275000,http://www.jablonskirealestategroup.com/,david@jablonskirealestategroup.com,95,valid
+3 + 1,Karissa,Freund,14039931334,116 SE,Calgary,679000,http://www.rhinorealty.com/,karissa@rhinorealty.com,99,valid
+3 + 2,Jessica,Kushnir,14035194006,127 SE,Calgary,625000,http://www.socialrealestate.ca/,jess@socialrealestate.ca,95,valid
+3 + 2,Rahim,Damji,15877421357,1527 SE,Calgary,604900,https://www.propzap.com/,rahim@propzap.com,96,valid
+2,John,McNeill,14038071961,306,Calgary,385000,http://www.calgaryurbanhomes.com/,john@calgaryurbanhomes.com,95,valid
+4,Alexander,Weston,14038290990,29 NW,Calgary,829900,http://www.chamberlaingroup.ca/,alexander@chamberlaingroup.ca,98,valid
