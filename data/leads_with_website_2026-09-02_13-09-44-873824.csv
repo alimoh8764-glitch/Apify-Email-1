@@ -1,0 +1,31 @@
+Bedrooms,FirstName,LastName,Phone,Address,City,Price,Website,Email,HunterScore,HunterStatus,HunterOutcome
+3,SYLVIA,BIEDERMAN,15197960523,1048,Windsor,549000,https://www.facebook.com/sylviabiederman.realtor,,,,invalid_input
+3 + 2,ZEINAB,BERRI,15198191153,3272,Windsor,299900,https://www.facebook.com/profile.php?id=100083000671029,,,,invalid_input
+3 + 1,MAGGIE,CHEN,15199723888,2935,Windsor,499000,https://www.maggiechenrealestate.com/,,,,not_found
+2,MAGGIE,CHEN,15199723888,3370,Windsor,409900,https://www.maggiechenrealestate.com/,,,,not_found
+3,CYNTHIA,PADILLA,15199716229,744,Windsor,288000,http://www.cynthiapadillahomes.com/,,,,not_found
+4,PRABHIQBAL,SINGH,15193000048,1625,Windsor,799900,http://instagram.com/REALTOR_PRABHIQBALSINGH_,prabhiqbalsingh@instagram.com,82,accept_all,found
+2 + 2,OMAR,SHAHID,15195622983,1718,Windsor,699900,https://www.facebook.com/yqgrealty,,,,invalid_input
+2,JOE,CONLON,12263450836,2529,Windsor,299900,https://www.facebook.com/joeconlonrealtor,,,,invalid_input
+3 + 1,DEBORAH,KOUTOULA,15199445955,1534,Windsor,479900,http://www.buyorsell4u.com/,,,,not_found
+2,THINESH,PARAMSOTHY,14168754214,540,Windsor,1700,http://www.yourhomerealtor.ca/,,,,not_found
+4 + 1,MILENA,SIMSIC,12269091557,497,Windsor,314900,https://www.youtube.com/embed/Mtb3NSh0MBo,,,,not_found
+2,SCOTT,HODGINS,15198184272,4850,Windsor,379000,http://www.hodginshometeam.com/,scott@hodginshometeam.com,95,valid,found
+2 + 1,ARTUR,BAKU,15199774440,3515,Windsor,319900,https://arturbaku.rlpbinder.ca/,,,,not_found
+3,ARMS,BUMANLAG,15199874405,2763,Windsor,449000,https://www.youtube.com/embed/z48sl1ndCg4,,,,not_found
+,RISHI KUMAR,BAKSHI,14168411647,808,Windsor,699000,https://twitter.com/RishiKBakshi,,,,not_found
+3 + 2,MAGGIE,CHEN,15199723888,2505,Windsor,659900,https://www.maggiechenrealestate.com/,,,,not_found
+3,JOE,FALLEA,15198189757,3416,Windsor,599000,https://www.teamfallea.com/,,,,not_found
+3 + 1,TANYA,NABEIN,12267394476,353,Windsor,389000,https://www.facebook.com/profile.php?id=61577957703417,,,,invalid_input
+3 + 1,JOAN,CHARETTE,15199198733,5325,Windsor,1289900,https://www.facebook.com/joancharette,,,,invalid_input
+3 + 1,BASMA,PRESTON,15199845020,1905,Windsor,649900,https://www.facebook.com/basmapreston22/,,,,invalid_input
+2 + 1,JOE,CONLON,12263450836,1950,Windsor,629900,https://www.facebook.com/joeconlonrealtor,,,,invalid_input
+2,JOE,CONLON,12263450836,1655,Windsor,374900,https://www.facebook.com/joeconlonrealtor,,,,invalid_input
+3,JOE,CONLON,12263450836,1720,Windsor,419900,https://www.facebook.com/joeconlonrealtor,,,,invalid_input
+2,TANMAY,KELKAR,19058671759,1602,Windsor,999000,http://tanmaysells.com/,,,,not_found
+2,ANGELA,COPE,15195665701,1547,Windsor,299900,https://www.angelacope.ca/,,,,not_found
+3,SUSAN,PISKOVIC,15195628048,3070,Windsor,549000,https://www.facebook.com/SusanPiskovic,,,,invalid_input
+3,MAGGIE,CHEN,15199723888,281,Windsor,569900,https://www.maggiechenrealestate.com/,,,,not_found
+3 + 1,AMJAD,ALI,14168365564,494,Windsor,499000,http://www.toprealtorcanada.com/,,,,not_found
+1,MIKE,"COFFIN, ASA",15199802897,9099,Windsor,304900,http://www.teamcoffin.ca/,mike@teamcoffin.ca,97,valid,found
+4,LISA,GRECH NORMANDEAU,15199660536,3431,Windsor,980000,https://www.instagram.com/lisagrech3,,,,not_found
