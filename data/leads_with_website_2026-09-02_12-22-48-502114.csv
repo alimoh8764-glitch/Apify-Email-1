@@ -1,0 +1,602 @@
+Bedrooms,FirstName,LastName,Phone,Address,City,Price,Website,Email,HunterScore,HunterStatus,HunterOutcome
+3,Ezra,Malo,15878965766,2,Calgary,529900,http://ezramalo.ca/,,,,not_found
+3,Gloria,Sun,14038300568,25 SE,Calgary,629900,https://gloriasun.com/,,,,not_found
+2 + 2,Moe,Hashmi,14036135557,434 NE,Calgary,689000,https://www.instagram.com/moe.hashmi.yyc,moehashmi@instagram.com,83,accept_all,found
+2,Emily,Sudermann,14036164682,227 SE,Calgary,549900,http://www.brooksrealestategroup.ca/,,,,not_found
+2,Adrienne,Moul,14039996683,11,Calgary,225000,https://www.999move.com/,,,,not_found
+3 + 2,Raman,Chahal,14039222000,108 NE,Calgary,769900,https://www.dhillon-chahal.com/,raman@dhillon-chahal.com,85,valid,found
+3 + 2,David,Frid,14034793743,1630 NW,Calgary,890000,http://www.realay.ca/,dfrid@realay.ca,80,valid,found
+1 + 1,Brian,Selders,14035853416,51 SE,Calgary,699900,http://calgary-villa-realtor-brian.ca/,,,,not_found
+2,Parker,Jang,15878305561,122 SW,Calgary,449900,https://soldbypj.c21.ca/,parker.jang@c21.ca,80,valid,found
+2,Brad,Van De Walle,14038887653,47 SW,Calgary,949900,http://www.infillhub.com/,,,,not_found
+3 + 1,Brad,Van De Walle,14038887653,1711 SW,Calgary,1999500,http://www.infillhub.com/,,,,not_found
+3,Tessa,Blair,14039210685,237 SW,Calgary,365000,https://blairplus.ca/,,,,not_found
+2,Chase,Olsen,14036060340,3407,Calgary,399900,http://www.chasinghomes.ca/,chase.olsen@chasinghomes.ca,81,valid,found
+3 + 1,Danny,James,14038630577,244 SE,Calgary,807000,http://www.onehouse.ca/,,,,not_found
+3 + 2,Aaron,Moss,15877774030,872 SW,Calgary,1125000,https://aaronmoss.exprealty.com/,,,,not_found
+3,Lori,Gillespie,14034614576,219 NE,Calgary,465000,https://sellhomes.ca/,,,,not_found
+2 + 1,Greg,Kennedy,14032596800,2,Calgary,699900,https://www.calgaryhousefinder.ca/,greg@calgaryhousefinder.ca,96,valid,found
+3,Charles,Harrison,14039185515,46 SE,Calgary,615000,https://charlesharrison.ca/,,,,not_found
+3,Jing Wen,NI,14038050289,191 SW,Calgary,1298000,https://www.homecarerealty.com/,,,,not_found
+3 + 1,Jordan,Helwerda,14035190495,52 SE,Calgary,599900,http://www.bestcalgaryhomes.com/,,,,not_found
+2 + 1,Michelle,Bennett,14036176016,611 SE,Calgary,554900,http://sellwithmichelleyyc.com/,michelle@sellwithmichelleyyc.com,99,valid,found
+1,Oliver,Trutina,14033333471,255,Calgary,319900,http://www.olivertrutina.com/,,,,not_found
+3 + 3,Brittney,MacMillan,14034726919,36 NW,Calgary,619900,http://www.facebook.com/LoveCalgaryLiving,,,,invalid_input
+2,Oliver,Trutina,14033333471,315,Calgary,399900,http://www.olivertrutina.com/,,,,not_found
+1,Oliver,Trutina,14033333471,402,Calgary,319900,http://www.olivertrutina.com/,,,,not_found
+2,Oliver,Trutina,14033333471,102,Calgary,354900,http://www.olivertrutina.com/,,,,not_found
+5 + 1,Brittney,MacMillan,14034726919,408 NW,Calgary,869900,http://www.facebook.com/LoveCalgaryLiving,,,,invalid_input
+3,Sandi,Hegland,14034663456,6,Calgary,290000,http://www.sandihegland.ca/,sandi@sandihegland.ca,97,valid,found
+2,Lana,Wright,14038500482,411,Calgary,482500,http://www.lanawrightrealestate.com/,,,,not_found
+2,Jenny,Mayhew,14039928811,302,Calgary,189900,http://www.jennymayhew.ca/,jenny@jennymayhew.ca,37,,found
+2,Steven,Yeo,15875784995,4201,Calgary,320000,https://www.facebook.com/share/19q7hGSnA8/?mibextid=qi2Omg,,,,invalid_input
+3,Jian,Zhu,14036050881,22 NW,Calgary,650000,https://www.homecarerealty.com/,,,,not_found
+3 + 1,Don,Wong,14039032888,7112 SE,Calgary,599900,http://www.donwong.ca/,don@donwong.ca,80,valid,found
+1,Christopher,Lofgren,14038030325,309,Calgary,269900,http://www.lofgrenre.com/,chris@lofgrenre.com,97,valid,found
+3,Aman,Singh,14036076449,109 NE,Calgary,299999,https://www.elev8group.ca/,,,,not_found
+3,Tim,Mangat,14033833230,197 NE,Calgary,540000,https://calgarymlx.com/,tim@calgarymlx.com,78,accept_all,found
+1,Yoki,Nichol,14032525900,601,Calgary,314900,http://www.yoki.ca/,,,,not_found
+3 + 3,Bal,Kooner,14038300539,2708 SW,Calgary,2799500,http://balkooner.ca/,bal@balkooner.ca,74,accept_all,found
+2,Stacie,Mori,14039883955,2466 SE,Calgary,389500,http://www.staciemori.com/,stacie@staciemori.com,95,valid,found
+2,Andrew,Joseph,14030309040,111,Calgary,265000,http://josephpropertygroup.com/,andrew@josephpropertygroup.com,78,accept_all,found
+3,Joel,Semmens,14032834700,982 NW,Calgary,900000,http://www.joelsemmens.com/,,,,not_found
+3 + 1,Joel,Semmens,14032834700,2703 SW,Calgary,3795000,http://www.joelsemmens.com/,,,,not_found
+2,Elaine,Pippi,14037144867,2307,Calgary,449900,http://elainepippiteam.com/,,,,not_found
+3 + 1,Tanya,Eklund,14038637434,1903 SW,Calgary,849900,http://www.tanyaeklundgroup.ca/,,,,not_found
+3,Breanna,Albrecht,15877007123,123 NW,Calgary,409900,https://linktr.ee/ateamcalgary,,,,not_found
+3 + 1,Simmi,Aujla,14033998831,38 SW,Calgary,739888,http://www.chamberlaingroup.ca/,simmi@chamberlaingroup.ca,95,valid,found
+3,Claire,Fraser,14038631055,60 NE,Calgary,534953,http://www.frasergrouphomes.com/,claire@frasergrouphomes.com,97,valid,found
+2,Ilona,Drost,15878774049,103,Calgary,380000,https://ilonadrostrealestate.com/,ilona@ilonadrostrealestate.com,84,valid,found
+3 + 1,Peter,Gianakoulas,14036079216,8 SW,Calgary,895000,http://realestateprofessionalsinc.com/,,,,not_found
+3 + 2,Peter,Pasion,14037024205,1502 SE,Calgary,580000,http://peterpasion.ca/,,,,not_found
+4,Michelle,Plach,17809654662,180 SE,Calgary,939000,https://www.honestdoor.com/,michelle@honestdoor.com,95,valid,found
+1,Michael,Newton,14035129825,802,Calgary,275000,https://www.gravityrealtygroup.com/,,,,not_found
+3,Terrin,Daemen,14036140234,301,Calgary,249900,http://www.terrinsellsyyc.com/,terrin@terrinsellsyyc.com,57,accept_all,found
+3 + 2,Gary,Banipal,14034832329,341 SE,Calgary,736900,http://sggrealestate.ca/,,,,not_found
+2 + 2,Anthony,Luong,14038368208,3414 NE,Calgary,549900,http://www.palrealestate.ca/,anthony@palrealestate.ca,83,,found
+3 + 1,Terrin,Daemen,14036140234,4207 NW,Calgary,699900,http://www.terrinsellsyyc.com/,terrin@terrinsellsyyc.com,57,accept_all,found
+3 + 2,Gary,Banipal,14034832329,2524 SE,Calgary,618800,http://sggrealestate.ca/,,,,not_found
+3 + 1,Lisa,Johnson,14036088834,225 NE,Calgary,845000,https://innercityinfills.ca/,lisa@innercityinfills.ca,80,valid,found
+1,Michael,Niemans,14038166453,2215,Calgary,459900,http://www.gomike.ca/,michael.niemans@gomike.ca,84,accept_all,found
+3,Derek,Thistle,15875794310,177 SE,Calgary,700000,http://derekthistle.com/,derek@derekthistle.com,81,valid,found
+2,Len T.,Wong,14036068888,208,Calgary,385000,http://www.calgaryluxuryhomesearch.com/,,,,not_found
+4,David,Lofthaug,15876023307,31 NE,Calgary,665380,http://bode.ca/,,,,not_found
+2,Ken,MacAulay,14034716929,1010,Calgary,424900,http://www.kenmacaulay.com/,,,,not_found
+2,Dawson,Alexander,15872268253,40,Calgary,234900,https://www.instagram.com/dawsonalexander/,dawsonalexander@instagram.com,85,accept_all,found
+2,Kamil,Lalji,14033831579,319,Calgary,425000,https://yycreadvisors.com/,,,,not_found
+1,Harry,Hooi,14034720608,206,Calgary,189000,https://hrhrealestate.ca/,,,,not_found
+3,David,Lofthaug,15876023307,520 SE,Calgary,724803,http://bode.ca/,,,,not_found
+3 + 1,Azad,Chandler,14032285557,20 SE,Calgary,625000,http://www.calgaryrealestatewealth.com/,,,,not_found
+3,Raman,Chahal,14039222000,29 SW,Calgary,533990,https://www.dhillon-chahal.com/,raman@dhillon-chahal.com,85,valid,found
+3,David,Brown,14036609910,53,Calgary,265000,http://soldbythebrownteam.com/,,,,not_found
+1,Christy,Longacre,14038606770,401,Calgary,280000,http://www.christylongacre.ca/,,,,not_found
+3,Paula,Murphy,14036042414,305,Calgary,884900,https://paulamurphyrealestate.ca/,,,,not_found
+1,Sherry,Johnston,14038501234,1209,Calgary,199000,http://www.sherryjohnstonrealestate.com/,,,,not_found
+3 + 1,Bob,Jablonski,14036500092,44 SE,Calgary,524900,http://www.jablonskirealestategroup.com/,bob@jablonskirealestategroup.com,99,valid,found
+3,Baljinder,Dhillon,15874393233,40 NE,Calgary,579000,https://www.remax.ca/ab/baljinder-dhillon-h63184998-ag,,,,not_found
+4,Kevin,Blackwell,14038166007,543 SE,Calgary,909900,http://www.kevinblackwell.ca/,kevin@kevinblackwell.ca,98,valid,found
+4,Rick,Qi,14036050504,396 NE,Calgary,889900,https://www.liangcommercial.ca/,,,,not_found
+1 + 2,Jim,Dasouki,14038636633,73 SE,Calgary,649900,https://jim-dasouki.c21.ca/,,,,not_found
+1,Parker,Xiong,14034027123,412,Calgary,255000,https://www.youtube.com/embed/n4yVtX8tjts,,,,not_found
+3,Ali,Mamdani,14035420075,470,Calgary,169000,https://alimamdani.com/,ali@alimamdani.com,97,valid,found
+3,Bill,MacDougall,14039998121,61 SW,Calgary,565000,http://www.calgaryhousing.ca/,,,,not_found
+2,Ross,Aitken,14038745000,201,Calgary,499900,https://www.youtube.com/embed/M5tCAs51yzI,,,,not_found
+3 + 1,Richard,Kim,14036160734,77 NE,Calgary,689900,http://www.richkim.ca/,,,,not_found
+3 + 1,John,Bauman,14035892152,619 SW,Calgary,599900,https://www.lumayyc.com/,,,,not_found
+3 + 2,Lisa,Johnson,14036088834,8134 NW,Calgary,917000,https://innercityinfills.ca/,lisa@innercityinfills.ca,80,valid,found
+2,Michelle,Gee,14033998411,51 SW,Calgary,375000,https://www.michellegee.ca/,,,,not_found
+2,Sherry,Heinrich,14035858000,3105,Calgary,395900,https://www.sherryheinrich.com/,sherry@sherryheinrich.com,97,valid,found
+3 + 2,Ahmed,Attia,14039735516,259 NE,Calgary,569900,https://yyclistings.com/,,,,not_found
+3,Ahmed,Al-Emran,14039032132,40,Calgary,424900,https://www.nicksrealestateinc.com/,ahmed@nicksrealestateinc.com,80,valid,found
+3,Marietta,Mendez Leon,14036148257,413,Calgary,424900,https://mariettamendezrealtor.com/,,,,not_found
+3,Gaurav,Nagpal,15872199999,810 NE,Calgary,359000,https://yychousefinder.com/,,,,not_found
+3,Jon,Dick,14038279499,249 SE,Calgary,579900,http://www.jondickrealestate.com/,,,,not_found
+3,James,Schaeffler,14038697653,639 NE,Calgary,299900,http://jameshomes.ca/,james.schaeffler@jameshomes.ca,81,accept_all,found
+2 + 2,Colin,Craig,14037107408,8432 NW,Calgary,499990,https://www.colincraig.ca/,,,,not_found
+3,Drashti,Doshi,18254493972,245 NE,Calgary,459900,https://www.facebook.com/doshidrashti,,,,invalid_input
+4,Julie,Vesuwalla,14038749021,80 NW,Calgary,889000,http://www.homesweethometeam.ca/,,,,not_found
+2,Wendy,Kelman,14039756043,1409,Calgary,339900,http://www.linkedin.com/http://ca.linkedin.com/pub/wendy-kelman/37/35b/a20,,,,not_found
+3 + 2,Chris,Skowron,14032475171,6547 NW,Calgary,599900,http://www.chrisskowron.com/,,,,not_found
+1,Ryan,Gillard,14034714212,2405,Calgary,190000,https://www.ryangillard.ca/,,,,not_found
+3 + 1,Carla,Garcia,14039199676,58 NE,Calgary,529900,https://www.carlagarcia.cirrealty.ca/,cgarcia@cirrealty.ca,97,valid,found
+1,Henry,Nguyen,14036177222,103,Calgary,269000,http://www.calgaryhomes-henrynguyen.ca/,,,,not_found
+3,Peyman,Valim,14039693471,67 SW,Calgary,685000,http://www.peymanvalim.com/,,,,not_found
+3,Sylvia,Solis-Marasco,14035402700,16 NE,Calgary,335000,https://www.distinctivehomes.net/,,,,not_found
+1 + 1,Dusko,Sremac,14039880033,23 SE,Calgary,1425000,https://www.repcalgaryhomes.ca/,,,,not_found
+3 + 1,Kashif,Sohail,14039713461,56 NE,Calgary,559000,https://www.kashifsohail.ca/,,,,not_found
+4 + 1,Happe,Dhillon,14036670012,36 NW,Calgary,1474990,https://www.dhillon-chahal.com/,happe@dhillon-chahal.com,57,accept_all,found
+2 + 1,Karen,Gonzales,14038037234,242,Calgary,619900,http://www.chestermerehomes.ca/,,,,not_found
+3,Pammi,Brar,14036077070,254 NW,Calgary,399888,http://www.pammibrar.com/,,,,not_found
+2,Angie,Hartmann,14035895199,330,Calgary,54900,http://www.angiehartmann.ca/,angie@angiehartmann.ca,99,valid,found
+3 + 1,Lisa,Johnson,14036088834,1218 SE,Calgary,3888000,https://innercityinfills.ca/,lisa@innercityinfills.ca,80,valid,found
+2,Tim,Mangat,14033833230,204,Calgary,369000,https://calgarymlx.com/,tim@calgarymlx.com,78,accept_all,found
+2,Mathew Said,Morley,14034665250,118,Calgary,300000,http://www.mathewsaidmorley.com/,,,,not_found
+2,Angie,Hartmann,14035895199,40,Calgary,69900,http://www.angiehartmann.ca/,angie@angiehartmann.ca,99,valid,found
+2 + 2,Michael,Ferianec,14035407950,113 NW,Calgary,649900,https://www.urbanupgrade.ca/,,,,not_found
+3 + 1,Caitlin,Fike,14039936197,46,Calgary,974900,https://www.caitlinfike.com/,caitlin@caitlinfike.com,78,accept_all,found
+4 + 1,Zeenat,Taghvai,14038506957,14 SW,Calgary,1499900,http://www.zeenarealty.com/,,,,not_found
+2,Doug,Baxter,14038292913,38 NE,Calgary,409900,http://baxterandassociates.ca/,doug@baxterandassociates.ca,97,valid,found
+2,Angie,Hartmann,14035895199,242,Calgary,49900,http://www.angiehartmann.ca/,angie@angiehartmann.ca,99,valid,found
+2,Erick,Dillmann,14038281120,112 SE,Calgary,389900,http://www.findyourcalgary.ca/,erick.dillmann@findyourcalgary.ca,98,valid,found
+3 + 1,Mary-Lou,McCormick,14039211458,27 SW,Calgary,1179900,http://www.mccormickhomes.ca/,,,,not_found
+3,Bruce,Miller,14036671441,173 SE,Calgary,760000,https://www.cirrealty.ca/Bruce_Miller,bmiller@cirrealty.ca,95,valid,found
+2 + 1,Amit,Gupta,14036174852,116 NW,Calgary,719000,https://www.a4apple.ca/,,,,not_found
+3,Jessica,Holmstrom,14037019779,404 SW,Calgary,549900,http://designerrealestate.ca/,jess@designerrealestate.ca,95,valid,found
+3,Jessica,Holmstrom,14037019779,608 SE,Calgary,619900,http://designerrealestate.ca/,jess@designerrealestate.ca,95,valid,found
+2 + 1,Leslie,Schmeiler,14034641494,2512 NW,Calgary,549900,https://searchyychomes.com/,,,,not_found
+1 + 2,Randi,Scheuerman,14038613293,112 SW,Calgary,715000,https://findyournookyyc.com/,randi@findyournookyyc.com,82,valid,found
+3 + 2,Dave,Rose,14039981191,46 SW,Calgary,669900,http://www.daverose.ca/,,,,not_found
+2,Kyle,Holloway,14035121862,201,Calgary,255000,https://kyleholloway.ca/,,,,not_found
+2 + 2,Jenna,Nguyen,14039187997,7035 NW,Calgary,575000,https://weknowcalgary.com/,,,,not_found
+2,Rohit,Verma,15879177173,1106,Calgary,265000,https://www.facebook.com/rohit.verma7173/?ref=aymt_homepage_panel&eid=ARDf0w74uc0_TP9dVjp0G8-89BwezjHs5_PkNA1d2GSAhpGGzLyh_SFUBKhtpOwHeD9UVCvfCu60LCx8,,,,invalid_input
+1,Dusko,Sremac,14039880033,109,Calgary,285000,https://www.repcalgaryhomes.ca/,,,,not_found
+2,Jon,Dick,14038279499,1301 SE,Calgary,539900,http://www.jondickrealestate.com/,,,,not_found
+3 + 1,Carlene,Timmers,14033991817,6663 NE,Calgary,475000,https://linktr.ee/CarleneismyRealtor,,,,not_found
+3,Rose,Calvelo,14039980287,445 SE,Calgary,385000,http://www.rosecalveloteam.com/,,,,not_found
+3 + 2,Gurminder,Bisla,15876644065,2328 SW,Calgary,1249000,https://garybisla.com/,,,,not_found
+2,Stephanie,Patterson,14038522561,1411,Calgary,310000,http://www.s-patterson.com/,,,,not_found
+3,Eunice,Aranda,14034376777,224 NE,Calgary,509900,https://www.facebook.com/eunice.realestate/,,,,invalid_input
+1,Vincent,Phan,14039731106,806,Calgary,239900,https://vincentphan.ca/,,,,not_found
+3 + 2,Miranda,Moser,14034700021,377 SW,Calgary,1350000,http://www.calgaryrealestatepro.pro/,miranda@calgaryrealestatepro.pro,96,valid,found
+3 + 1,John,Bitonti,14036304367,232 NW,Calgary,549900,http://johnbitonti.com/,john@johnbitonti.com,83,valid,found
+4 + 1,Jillaine,Carlin,14032563888,5 SE,Calgary,1589000,http://www.jillainecarlin.com/,,,,not_found
+2,Andy,Kwok,15879693083,4308,Calgary,270000,https://www.reab.ca/,andy@reab.ca,99,valid,found
+3,Tyler,Remington,14038085950,108,Calgary,440000,https://www.youtube.com/embed/dplHi1i0SEc,,,,not_found
+2,Mason,Kramer,14039907639,372 SE,Calgary,385000,http://www.kramerteam.ca/,mason@kramerteam.ca,97,valid,found
+3 + 1,Nelle,Derry,14036695319,404 NW,Calgary,1350000,http://www.nellederry.ca/,nelle@nellederry.ca,95,valid,found
+3 + 2,Rachel,Vanderveen,14032627653,76 SE,Calgary,699999,http://www.vanderveenteam.com/,rachel@vanderveenteam.com,96,valid,found
+2 + 2,Shauna,Yawney,14038891023,47 NW,Calgary,565000,http://www.myhomemycalgary.com/,shauna@myhomemycalgary.com,82,valid,found
+3 + 1,Ricky,Dhaliwal,14038058711,53 NE,Calgary,649900,http://www.getlistedcalgary.com/,,,,not_found
+3 + 1,Sam,Patel,14038300331,2218 SW,Calgary,999900,https://www.sampatel.ca/,,,,not_found
+4 + 1,Susan,Penley,14036609249,3 NW,Calgary,999900,http://penleymcnaughton.com/,,,,not_found
+1,Rebecca,Beninger,14038528883,306,Calgary,264999,http://rebeccab.ca/,,,,not_found
+2,Tej,Gill,14039697515,106,Calgary,325000,http://www.tejgill.ca/,tej@tejgill.ca,82,valid,found
+4,Michael,Laprairie,14038529626,28 NE,Calgary,798900,http://www.jayman.com/why-buy-a-jayman/realty,mlaprairie@jayman.com,98,valid,found
+3 + 2,Manraj,Samra,14039923655,139 NE,Calgary,559900,https://samrasells.com/,manraj@samrasells.com,80,valid,found
+2 + 2,Barb,Desautels,14036679869,84 NE,Calgary,460000,http://www.barbsellscalgary.com/,barbd@barbsellscalgary.com,95,valid,found
+3 + 1,Maricel,McDonald,14033970831,47 NW,Calgary,699000,https://www.maricelmcdonald.com/,,,,not_found
+4,Michael,Laprairie,14038529626,130 NE,Calgary,782900,http://www.jayman.com/why-buy-a-jayman/realty,mlaprairie@jayman.com,98,valid,found
+4,Michael,Laprairie,14038529626,146 NE,Calgary,772900,http://www.jayman.com/why-buy-a-jayman/realty,mlaprairie@jayman.com,98,valid,found
+2 + 2,Muhammad,Chybli,14038168477,3750 NW,Calgary,1175000,http://www.chybli.com/,,,,not_found
+1,John,Hripko,14038755015,202,Calgary,169900,http://teamhripko.ca/,,,,not_found
+3,Michael,Laprairie,14038529626,121 NW,Calgary,599900,http://www.jayman.com/why-buy-a-jayman/realty,mlaprairie@jayman.com,98,valid,found
+2,Jon,Dick,14038279499,46 SE,Calgary,599900,http://www.jondickrealestate.com/,,,,not_found
+3,Michael,Laprairie,14038529626,57 NW,Calgary,586900,http://www.jayman.com/why-buy-a-jayman/realty,mlaprairie@jayman.com,98,valid,found
+2,Teri-Ann,Begin,14038354177,3319,Calgary,250000,http://www.calgary-realty.com/,,,,not_found
+3 + 2,Andrew,Joseph,14030309040,5116,Calgary,530000,http://josephpropertygroup.com/,andrew@josephpropertygroup.com,78,accept_all,found
+2,Savannah,Pearce,14038803155,22,Calgary,324900,http://www.3sixty5realestate.com/,,,,not_found
+3,Keane,Poon,14038914831,92 NW,Calgary,525000,http://www.keanepoon.com/,keane@keanepoon.com,82,valid,found
+2,Elizabeth,Morgan,14036156923,171 SW,Calgary,689500,http://www.elizabethmorgan.ca/,,,,not_found
+3 + 1,Brian,Skinner,14032475171,62 SE,Calgary,679900,https://www.brianskinner.ca/,brian@brianskinner.ca,96,valid,found
+3 + 1,John,Ditto,14038307077,231 SW,Calgary,649900,http://johnditto.ca/,john@johnditto.ca,95,valid,found
+2,Paul,Ackerman,14039264435,307,Calgary,284900,http://www.paulackerman.ca/,,,,not_found
+2,Anita,Lamarche,14038189623,68 SW,Calgary,429999,https://www.anitarealtor.house/,,,,not_found
+3,Aleksey,Julanov,14036175780,59,Calgary,329900,http://www.alekseysells.ca/,,,,not_found
+3,Debbie,Kurtz,14036677355,58,Calgary,294500,http://www.deborahkurtz.com/,,,,not_found
+2,Joanna,Barstad,14035409606,606,Calgary,390000,https://joannabarstad.com/,,,,not_found
+3,Derek,Thistle,15875794310,76 NW,Calgary,725000,http://derekthistle.com/,derek@derekthistle.com,81,valid,found
+3 + 1,Tammy,To,14036809080,325 SE,Calgary,650000,http://www.thegoodagent.ca/,tammy@thegoodagent.ca,80,valid,found
+1,Len T.,Wong,14036068888,212,Calgary,175000,http://www.calgaryluxuryhomesearch.com/,,,,not_found
+2,Chase,Olsen,14036060340,612,Calgary,485000,http://www.chasinghomes.ca/,chase.olsen@chasinghomes.ca,81,valid,found
+2,David,Lofthaug,15876023307,810,Calgary,423500,http://bode.ca/,,,,not_found
+3 + 1,Kevin,Bernardin,15878992520,887 SE,Calgary,745000,http://www.kevinbernardin.ca/,kevin@kevinbernardin.ca,84,accept_all,found
+2,Maggie,Chen,14034656562,12,Calgary,329900,http://www.skyrockrealty.com/,maggie.chen@skyrockrealty.com,98,valid,found
+2,Janel,Martinkowski,14038271416,189,Calgary,165000,http://www.rightmoveyyc.ca/,,,,not_found
+4 + 1,Thomas,Calvert,14038622222,44 NW,Calgary,698800,http://www.thomascalvert.com/,thomas@thomascalvert.com,97,valid,found
+3 + 2,Julie,Vesuwalla,14038749021,121 NE,Calgary,869000,http://www.homesweethometeam.ca/,,,,not_found
+1,Rob,Whitfield,14035857058,137,Calgary,179000,http://www.robwhitfield.ca/,rob@robwhitfield.ca,95,valid,found
+3 + 1,Truong,Do,14034223666,52 SE,Calgary,449900,https://www.facebook.com/profile.php?id=61578879369593,,,,invalid_input
+2,Christina,Giuffre,14039918818,316 SE,Calgary,359900,http://christinagiuffre.com/,,,,not_found
+3 + 1,Krista,Brown,14039215750,3823 SW,Calgary,1200000,https://krista.brown.remax.ca/,,,,not_found
+2,Dusko,Sremac,14039880033,3209,Calgary,325000,https://www.repcalgaryhomes.ca/,,,,not_found
+2,Vic,Walia,14033993942,71,Calgary,174900,http://lookforahouse.ca./,,,,invalid_input
+2 + 1,Amit,Punn,14038897067,3020 SW,Calgary,565000,http://www.amitpunn.ca/,,,,not_found
+3,Morgan,Gauthier,14034783134,1705 SW,Calgary,524900,http://morgangauthier.realty/,,,,not_found
+4 + 1,Ross,Pavl,14038378100,49 SW,Calgary,2099000,http://www.rosspavl.com/,ross@rosspavl.com,80,valid,found
+4,Raman,Chahal,14039222000,192 SE,Calgary,888800,https://www.dhillon-chahal.com/,raman@dhillon-chahal.com,85,valid,found
+3 + 1,Melissa,Kost,14037103320,59 NW,Calgary,850000,http://www.melissakost.com/,melissa@melissakost.com,80,valid,found
+3 + 1,Jason,Ngo,15879983088,355 SE,Calgary,629900,http://jnrealestategroup.ca/,jason@jnrealestategroup.ca,85,valid,found
+3 + 2,Parks,Layton,15874369376,315 NW,Calgary,799800,https://www.parkslayton.ca/,,,,not_found
+3 + 1,Dennis,Plintz,14036081112,2413B Richmond Road SW,Calgary,900000,https://plintzrealestate.com/,,,,not_found
+3,Christina,van Sluys,14037715415,162 SE,Calgary,525000,https://christinavansluys.ca/,,,,not_found
+2,Jessica,Chan,14032419800,2505,Calgary,395000,http://www.jcre.ca/,,,,not_found
+3,Scott,Van Gaal,14039911362,65 SW,Calgary,360000,https://www.findcalgarylistings.com/,,,,not_found
+3 + 1,Derrick,Newman,14036196661,125 NW,Calgary,739000,http://derricknewmangroup.com/,,,,not_found
+2,Arthur,Leslie,14034043730,1312,Calgary,309900,https://www.youtube.com/embed/dxEqAj47y2k,,,,not_found
+3,Sam,Corea,14038708811,111 SW,Calgary,595000,https://samcorea.com/,sam@samcorea.com,95,valid,found
+3 + 1,Greg,Wiseman,14034643676,116 NW,Calgary,499900,http://wisemanyyc.ca/,,,,not_found
+3,Jessey,Touchette,14038707355,311,Calgary,629900,http://www.treeholm.com/,jessey@treeholm.com,81,valid,found
+2 + 1,Randy,Keylock,14032001111,637 SW,Calgary,749900,http://www.thehomehunters.com/,randy@thehomehunters.com,96,valid,found
+3 + 1,Vitaly,Del Valle,14035106062,406 SE,Calgary,649900,https://www.linkedin.com/in/vitaly-del-valle-077054200/,,,,not_found
+4,David,Lofthaug,15876023307,25 SE,Calgary,958100,http://bode.ca/,,,,not_found
+3 + 1,Michael,Laprairie,14038529626,35 NW,Calgary,819900,http://www.jayman.com/why-buy-a-jayman/realty,mlaprairie@jayman.com,98,valid,found
+4 + 2,Nadeem,Chaudhry,14036308001,43 SW,Calgary,1149900,http://www.nadeemchaudhry.ca/,,,,not_found
+2,Chris,Grivell,15874163030,67 SW,Calgary,639900,https://framerealtygroup.com/,cgrivell@framerealtygroup.com,96,valid,found
+2,Paula,Murphy,14036042414,39 NE,Calgary,529900,https://paulamurphyrealestate.ca/,,,,not_found
+3 + 1,Victoria,Dalgleish,14039269049,952 NW,Calgary,998800,http://www.victoriadalgleish.com/,,,,not_found
+4,David,Lofthaug,15876023307,29 SE,Calgary,919500,http://bode.ca/,,,,not_found
+2,Alankar,Ghimire,14038169431,3409,Calgary,399000,https://www.alanghimire.net/,alankar@alanghimire.net,74,accept_all,found
+2 + 2,Jackie,Hutchinson,14039236003,59 NW,Calgary,530000,https://www.yourokotoksrealtor.com/,,,,not_found
+3 + 2,Mackenzie,Hare,15875787878,204 NE,Calgary,600000,https://mackenziehare.royallepage.ca/,mackenziehare@royallepage.ca,95,valid,found
+1,Alankar,Ghimire,14038169431,235,Calgary,249000,https://www.alanghimire.net/,alankar@alanghimire.net,74,accept_all,found
+3,Kelly L.,Macdonald,14036178758,234 SE,Calgary,575000,https://www.youtube.com/embed/9J5oGWEww50,,,,not_found
+3 + 1,Rebecca,Chamberlain,14036672330,2635 SW,Calgary,949900,https://www.chamberlaingroup.ca/,rebecca@chamberlaingroup.ca,97,valid,found
+1,Jonn,VanBryce,14037035668,102,Calgary,185000,https://jvbyyc.com/,jonn@jvbyyc.com,53,accept_all,found
+3 + 1,Julie,Clark,14037016109,85 SE,Calgary,625000,http://www.julieclark.ca/,julie@julieclark.ca,82,valid,found
+3,Ted,Greenhough,14039739730,71 SW,Calgary,695000,https://calgary123.com/,,,,not_found
+3 + 1,Erick,Dillmann,14038281120,230 NW,Calgary,815000,http://www.findyourcalgary.ca/,erick.dillmann@findyourcalgary.ca,98,valid,found
+2 + 1,Joel,Anderson,14039215635,77 SW,Calgary,839900,http://www.joelyyc.com/,joel@joelyyc.com,82,valid,found
+3,Devon,Laanstra,14038135063,3929 NW,Calgary,640000,http://www.devonlaanstra.com/,,,,not_found
+3 + 1,Nikki,Stewart,14039180133,3302 SW,Calgary,845000,https://www.facebook.com/nmcstewart,,,,invalid_input
+3 + 2,Robert,Karg,14036787568,44 SE,Calgary,599000,http://www.ownthemountains.com/,,,,not_found
+3,Xing Wen,Li,14039918911,207 NW,Calgary,725000,https://www.davidxingwenlee.com/,,,,not_found
+1,Jordan,Smeaton,14038268812,1407,Calgary,289900,http://www.jordansmeaton.com/,jordan@jordansmeaton.com,83,valid,found
+1,Christopher,Duffy,15874320356,2906,Calgary,249000,https://chrisduffy.ca/,chris@chrisduffy.ca,83,valid,found
+3 + 1,Danny,Raposo,14039667676,16A Tusslewood Drive NW,Calgary,879900,http://www.dannyraposo.com/,danny@dannyraposo.com,98,valid,found
+2 + 1,Tanja,van de Kamp,14039785267,2,Calgary,599900,http://findcalgaryhome.ca/,,,,not_found
+3,Simon D.,Hunt,14032930363,59 SE,Calgary,374900,http://www.simondhunt.com/,,,,not_found
+3,Parker,Jang,15878305561,404,Calgary,359000,https://soldbypj.c21.ca/,parker.jang@c21.ca,80,valid,found
+3 + 1,Mike,Dreger,14038033366,218 NW,Calgary,899900,http://mikeanddee.ca/,,,,not_found
+3,Simon D.,Hunt,14032930363,380 SW,Calgary,507900,http://www.simondhunt.com/,,,,not_found
+1,Andrea,Adi,14036076533,7438 SE,Calgary,500000,https://www.facebook.com/andrea.adi.100/,,,,invalid_input
+3 + 1,Mark,Stephen,14036807244,71 NE,Calgary,849900,http://www.airdrierealestateadvisors.com/,,,,not_found
+3 + 2,Donna,Delaney,14039191146,532 SE,Calgary,689000,http://www.donnadelaney.com/,donna@donnadelaney.com,84,valid,found
+3 + 1,Donna,Delaney,14039191146,2020 SW,Calgary,668500,http://www.donnadelaney.com/,donna@donnadelaney.com,84,valid,found
+3 + 2,Donna,Delaney,14039191146,6016 NW,Calgary,874900,http://www.donnadelaney.com/,donna@donnadelaney.com,84,valid,found
+2,Justin,Havre,14032170003,1409,Calgary,300000,https://www.youtube.com/embed/LDglWZ57T-A,,,,not_found
+3 + 2,David,Hansen,14038319101,204 SE,Calgary,729000,https://www.davidhansen.ca/,,,,not_found
+2,Donna,Delaney,14039191146,317,Calgary,409000,http://www.donnadelaney.com/,donna@donnadelaney.com,84,valid,found
+3,Peyman,Valim,14039693471,3766 SW,Calgary,999000,http://www.peymanvalim.com/,,,,not_found
+3,Sam,Patel,14038300331,175 NE,Calgary,429900,https://www.sampatel.ca/,,,,not_found
+3 + 1,Elise,Crowe,14039683694,9 SW,Calgary,1098000,https://sellingyychomes.com/,elise@sellingyychomes.com,82,valid,found
+2,Lindsay,Walker,14036309137,803,Calgary,419975,http://www.ldrealtygroup.ca/,lindsay@ldrealtygroup.ca,97,valid,found
+3 + 1,Colin,Kehler,14036301110,2230 SW,Calgary,800000,https://kehlerhealey.com/,,,,not_found
+2,James,Charal,14038295949,210,Calgary,399000,http://calgaryhomesweethome.com/,,,,not_found
+3 + 1,Catherine,Sinanan,14038155887,507 NE,Calgary,1438900,https://catherinesinanan.royallepage.ca/,casey@royallepage.ca,97,valid,found
+2,Iryna,Rybchynska,14035602947,1110 SE,Calgary,344900,https://yycrealtorchick.ca/,iryna@yycrealtorchick.ca,74,accept_all,found
+3 + 2,Lisa,Johnson,14036088834,825 NW,Calgary,2088800,https://innercityinfills.ca/,lisa@innercityinfills.ca,80,valid,found
+3,Travis,Copp,14037017139,2234 NW,Calgary,875000,http://www.traviscopp.com/,,,,not_found
+3 + 1,Joanna,Kopacz,14037148540,92 SW,Calgary,857900,http://www.cirrealty.ca/,jkopacz@cirrealty.ca,96,valid,found
+2,Rachel,Vanderveen,14032627653,122,Calgary,379999,http://www.vanderveenteam.com/,rachel@vanderveenteam.com,96,valid,found
+2 + 2,Justin,Warthe,14036208746,6 SW,Calgary,1775000,http://www.topcalgaryrealestate.com/,,,,not_found
+3 + 1,Stacie,Mori,14039883955,1515 SE,Calgary,925000,http://www.staciemori.com/,stacie@staciemori.com,95,valid,found
+6 + 2,Natherine,Leger,15879261619,126 NE,Calgary,695000,http://houseandhomeyyc.ca/,,,,not_found
+1,James,Keats,15877006164,123 NW,Calgary,499900,http://www.jameskeats.ca/,,,,not_found
+2,Fiona,Chan,14038908263,209,Calgary,307000,https://instagram.com/fionachanrealtor,fionachan@instagram.com,85,accept_all,found
+2,Jason,Walz,14035050039,220,Calgary,230000,http://walzrealestategroup.ca/,jwalz@walzrealestategroup.ca,82,valid,found
+3 + 1,Paul,Brennand,14036186403,2609 SW,Calgary,1188888,http://www.paulbrennand.com/,,,,not_found
+2 + 2,Amanda,O'Reilly,14038500565,164 SE,Calgary,1199000,https://amandasellsyyc.ca/,amanda@amandasellsyyc.ca,96,valid,found
+2,Sean,Pierce,14034712371,401,Calgary,240000,https://www.facebook.com/profile.php?id=100072960559391,,,,invalid_input
+2,Benjamin,Sweet,14037747447,4111 SW,Calgary,900000,http://www.allcalgarylistings.com/,bsweet@allcalgarylistings.com,80,accept_all,found
+3 + 1,Judit,Sheikh,14035191820,17 NE,Calgary,629900,https://www.facebook.com/judit.sheikh,,,,invalid_input
+4 + 1,Sahil,Chhabra,15874393978,314 NE,Calgary,785000,http://www.chhabra.ca/,sahil@chhabra.ca,97,valid,found
+3 + 1,Mody,Ibrahim El Sayed,14036673657,84 SW,Calgary,789998,https://modyhomes.com/,mody@modyhomes.com,74,accept_all,found
+3 + 1,Sarah,Graham,14036676654,255 SW,Calgary,569900,http://sarahwuhomes.ca/,,,,not_found
+3,Nikki,Bond,14034626038,208 SE,Calgary,419000,http://www.nikkibond.com/,nikki@nikkibond.com,95,valid,found
+4 + 1,Joel,Semmens,14032834700,14 SW,Calgary,3195000,http://www.joelsemmens.com/,,,,not_found
+2,Amanda,Bazant,15873248223,3755 NE,Calgary,449900,http://www.lushrealty.ca/,amanda@lushrealty.ca,81,valid,found
+,Michelle,Plach,17809654662,1903 SE,Calgary,785000,https://www.honestdoor.com/,michelle@honestdoor.com,95,valid,found
+3 + 1,Angelique,Garcia,14034712643,123 SE,Calgary,719900,http://www.angeliqueyyc.com/,,,,not_found
+3 + 1,Jeff,Gilchrist,14036692767,412 SW,Calgary,839900,http://jeffgilchrist.com/,jeff@jeffgilchrist.com,80,accept_all,found
+3 + 1,Derek,Thistle,15875794310,141 SW,Calgary,700000,http://derekthistle.com/,derek@derekthistle.com,81,valid,found
+,Corinne,Lyall,14038045317,2527,Calgary,360000,http://www.royallepagebenchmark.ca/,,,,not_found
+2,Gord,Piper,14038612256,2,Calgary,525000,http://tswrealestategroup.com/,,,,not_found
+3,Erin,Reeves,15872002728,802,Calgary,515000,http://www.reevesrealty.ca/,erin@reevesrealty.ca,81,valid,found
+3,Kent,Faubert,14038136874,8034 SE,Calgary,439900,http://www.kentfaubert.com/,,,,not_found
+4 + 1,Jillaine,Carlin,14032563888,1032 SW,Calgary,879900,http://www.jillainecarlin.com/,,,,not_found
+4,Erin,Reeves,15872002728,801,Calgary,529900,http://www.reevesrealty.ca/,erin@reevesrealty.ca,81,valid,found
+2 + 1,Rose,Calvelo,14039980287,1,Calgary,725000,http://www.rosecalveloteam.com/,,,,not_found
+2,David,Lofthaug,15876023307,1203,Calgary,358985,http://bode.ca/,,,,not_found
+2 + 2,Vincent,Phan,14039731106,1741 SW,Calgary,724800,https://vincentphan.ca/,,,,not_found
+2 + 1,Matthew,Forbell,14039031073,2508 SE,Calgary,399900,https://www.mattforbell.com/,,,,not_found
+3 + 1,Jamie,Newton,14038379300,1307 SE,Calgary,688000,http://www.jamienewton.ca/,,,,not_found
+1 + 2,Mathew Said,Morley,14034665250,159 NW,Calgary,560000,http://www.mathewsaidmorley.com/,,,,not_found
+3,Joe,Perri,14038801766,19 NW,Calgary,680000,http://www.joeperri.calgarypropertyfinder.com/,,,,not_found
+1 + 1,Michele,Gole,14038502357,104,Calgary,410000,http://www.michelegole.com/,michele@michelegole.com,85,accept_all,found
+3 + 1,Imran,Junaid,14034771873,156 NW,Calgary,389000,http://www.realestatedealswithij.com/,,,,not_found
+3 + 1,Deborah,Perrault,14036810344,113 NW,Calgary,799900,https://www.perraulthomes.com/,,,,not_found
+3 + 2,Michael,Wetherup,14038350500,7303 NE,Calgary,549900,http://www.wetherup.com/,,,,not_found
+1,Shane,Strebchuk,15878990881,4,Calgary,175000,https://crownandkingsley.com/,,,,not_found
+3,Chrissie,Worth,14039718880,28 SW,Calgary,679900,http://www.mckay-worth.com/,,,,not_found
+3 + 1,Rebecca,Chamberlain,14036672330,2416 NW,Calgary,899999,https://www.chamberlaingroup.ca/,rebecca@chamberlaingroup.ca,97,valid,found
+2 + 1,Matthew,Forbell,14039031073,202,Calgary,619900,https://www.mattforbell.com/,,,,not_found
+2 + 3,Rebecca,Chamberlain,14036672330,10 SW,Calgary,1090000,https://www.chamberlaingroup.ca/,rebecca@chamberlaingroup.ca,97,valid,found
+2,Elaine,Pippi,14037144867,4213,Calgary,299000,http://elainepippiteam.com/,,,,not_found
+1,Michael,Montgomery,15872276204,709,Calgary,325000,https://www.renzorealestate.com/,michael@renzorealestate.com,96,valid,found
+3 + 1,Ryan,MacDonald,14035199102,264 SE,Calgary,750000,http://calgaryhometeam.com/,,,,not_found
+3,Robert,LeBlanc,14036195556,652 SE,Calgary,427000,https://www.robertleblanc.ca/,,,,not_found
+3,Karen,Fawcett,14038361520,1317 SW,Calgary,2650000,https://www.karenfawcett.ca/,,,,not_found
+4 + 1,Amy,Simpson,14036690156,809 NE,Calgary,1325000,http://www.amysimpson.ca/,,,,not_found
+2 + 1,Donna,Delaney,14039191146,42 SE,Calgary,489000,http://www.donnadelaney.com/,donna@donnadelaney.com,84,valid,found
+3,Jan,Graham,14034614162,99 NE,Calgary,549900,http://www.jangraham.ca/,,,,not_found
+2,Shane,Wan,15874355256,306,Calgary,535990,https://calgarybrothersgroup.com/,,,,not_found
+3,Taeju,Lee,15874366737,122 SW,Calgary,995000,http://www.taejulee.com/,,,,not_found
+2,Kevin,French,14036068593,945 SE,Calgary,349900,http://www.kevinfrench.ca/,,,,not_found
+3,Shane,Wan,15874355256,47 NW,Calgary,724990,https://calgarybrothersgroup.com/,,,,not_found
+1,Pamela,Balkwill,14038295171,302,Calgary,269900,https://www.pamelabalkwill.com/,pamela@pamelabalkwill.com,95,valid,found
+1,Sarah,Arcuri,14032788899,443,Calgary,334900,http://www.findhomecalgary.com/,,,,not_found
+3,Emily,Sudermann,14036164682,30 SW,Calgary,749900,http://www.brooksrealestategroup.ca/,,,,not_found
+4 + 2,Lisa,Johnson,14036088834,2233 NW,Calgary,1535000,https://innercityinfills.ca/,lisa@innercityinfills.ca,80,valid,found
+3,Sam,Hudson,14038135137,271 SW,Calgary,578000,https://hudsonrealestate.ca/,,,,not_found
+3 + 1,Jayesh,Chaudhary,14034833300,184 SW,Calgary,750000,https://jaichaudhary.remaxmtnview.ca/,,,,not_found
+2,Ernest,Gardy,14036513093,15 SE,Calgary,539900,http://www.erniegardy.com/,ernie@erniegardy.com,98,valid,found
+3,Richard,Panuelos,14039267975,108 SE,Calgary,399000,https://www.facebook.com/chad.panuelos/,,,,invalid_input
+3,Dorothea,Sautter,14036138133,85 NW,Calgary,810000,http://dorotheasautter.royallepage.ca/,dorothea@royallepage.ca,98,valid,found
+2 + 1,Larry,Normandeau,14034637212,1821 SW,Calgary,799900,http://www.larrynormandeau.com/,larry@larrynormandeau.com,82,valid,found
+3 + 1,Will,Kaufman,15875779455,3515 SW,Calgary,1299900,https://prymeyyc.com/,,,,not_found
+3,Justin,Becker,14035896470,1122 NW,Calgary,775000,http://www.yycrealty.com/,justin@yycrealty.com,82,valid,found
+2 + 1,Erin,Dupont,14038291730,1,Calgary,699000,http://www.erindupont.com/,,,,not_found
+6 + 2,Raman,Chahal,14039222000,177 NE,Calgary,849990,https://www.dhillon-chahal.com/,raman@dhillon-chahal.com,85,valid,found
+2,Michael,Newton,14035129825,506,Calgary,200000,https://www.gravityrealtygroup.com/,,,,not_found
+3,Big John,Peterson,14032445646,201,Calgary,466221,http://www.bigjohn.ca/,john@bigjohn.ca,99,valid,found
+3 + 1,Michael,Matt,14034618967,1504 NE,Calgary,1249900,https://realogics.ca/,,,,not_found
+4,Sam,Hudson,14038135137,275 SW,Calgary,610000,https://hudsonrealestate.ca/,,,,not_found
+3 + 1,Carson,Harris,15872247777,681 NE,Calgary,575000,https://therealcarsonharris.ca/,carson@therealcarsonharris.ca,78,accept_all,found
+3 + 1,Melissa,Maynard,14036202743,279 SW,Calgary,539900,https://homecollective.ca/,melissa@homecollective.ca,96,valid,found
+3 + 1,Sam,Hudson,14038135137,270 SW,Calgary,599000,https://hudsonrealestate.ca/,,,,not_found
+4 + 2,Jason,Fraser,14039980105,39 NW,Calgary,850000,https://www.facebook.com/jason.fraser.98,,,,invalid_input
+3,Clint,Sanheim,14039993800,75 NW,Calgary,399900,https://clint-sanheim.c21.ca/,clint.sanheim@c21.ca,84,valid,found
+3,Carmelle,Smutko,14038634536,115 SW,Calgary,689900,http://www.exclusivecalgary.com/,carmelle@exclusivecalgary.com,85,valid,found
+1,Ken,Rigel,14032071748,106,Calgary,449900,http://www.krgroup.ca/,ken@krgroup.ca,99,valid,found
+3 + 1,Karen,Fawcett,14038361520,614 SW,Calgary,2800000,https://www.karenfawcett.ca/,,,,not_found
+3,David,Lofthaug,15876023307,186 NW,Calgary,559900,http://bode.ca/,,,,not_found
+5 + 1,Karen,Fawcett,14038361520,601 SW,Calgary,3990000,https://www.karenfawcett.ca/,,,,not_found
+1,Justin,Havre,14032170003,2,Calgary,278000,https://www.youtube.com/embed/LDglWZ57T-A,,,,not_found
+1 + 1,Michael,Laprairie,14038529626,313 SE,Calgary,719900,http://www.jayman.com/why-buy-a-jayman/realty,mlaprairie@jayman.com,98,valid,found
+4,Seth,Allred,14034667384,77 NW,Calgary,815000,https://allredweston.com/,seth@allredweston.com,83,valid,found
+2,Justin,Havre,14032170003,2403,Calgary,475000,https://www.youtube.com/embed/LDglWZ57T-A,,,,not_found
+3 + 1,Jeff,Jackson,15878727093,1732 SW,Calgary,1250000,http://www.plintzrealestate.com/,,,,not_found
+1,Chloe,Zhang,15878322781,1806,Calgary,285000,https://www.zenyxproperty.com/,chloe.zhang@zenyxproperty.com,98,valid,found
+3 + 1,Justin,Havre,14032170003,648 SE,Calgary,1150000,https://www.youtube.com/embed/LDglWZ57T-A,,,,not_found
+1,Chantelle,Jenkins,14036196761,2144,Calgary,365000,http://www.yourcalgaryagents.ca/,chantelle@yourcalgaryagents.ca,95,valid,found
+3 + 1,Dennis,Hwang,14036131881,4624 NW,Calgary,799900,http://dennishwang.ca/,,,,not_found
+2,Greg,Kennedy,14032596800,304,Calgary,369900,https://www.calgaryhousefinder.ca/,greg@calgaryhousefinder.ca,96,valid,found
+3,John,Hripko,14038755015,27,Calgary,315000,http://teamhripko.ca/,,,,not_found
+4 + 2,Trung,Bien,14034014222,525 NW,Calgary,1324900,http://www.trungbien.ca/,trung@trungbien.ca,96,valid,found
+3 + 1,Jennifer,Everingham,14036148772,1012 NW,Calgary,1895000,http://www.jeneveringham.com/,,,,not_found
+3 + 1,Corinne,Poffenroth,14038042444,4183 NW,Calgary,1785000,http://www.corinnepoffenroth.com/,,,,not_found
+3 + 2,Gurvinder,Gill,14035889000,219 NE,Calgary,575000,https://www.facebook.com/GGperfectHomes,,,,invalid_input
+3,William,Ewing,14036053620,22 NW,Calgary,634900,http://www.ewingteam.ca/,,,,not_found
+3,Gloria,Sun,14038300568,80 SE,Calgary,655000,https://gloriasun.com/,,,,not_found
+3 + 2,Jacqueline,Ulch,14036713366,3205 SW,Calgary,1350000,http://www.jaciulch.com/,,,,not_found
+2 + 1,Caleb,Reich,14039229955,2333 SE,Calgary,649900,http://www.calebreich.com/,,,,not_found
+3,Tom,Styles,14035859203,10,Calgary,424900,http://www.calgaryhomestyles.com/,,,,not_found
+2,Reta,Vaccaro,15878977512,345 SE,Calgary,445000,https://retavaccarorealtor.com/,reta@retavaccarorealtor.com,83,accept_all,found
+4,Katrina,Holmes,14036200164,1004 NW,Calgary,699900,https://www.katrinaholmes.com/,katrina@katrinaholmes.com,98,valid,found
+2 + 1,Francesca,Serafini,14037038685,150 SW,Calgary,775000,http://www.francescaserafini.com/,,,,not_found
+2,Iryna,Rybchynska,14035602947,415,Calgary,575000,https://yycrealtorchick.ca/,iryna@yycrealtorchick.ca,74,accept_all,found
+2,Ian,Pangilinan,14036146091,2702,Calgary,535000,https://www.shopcalgaryhomes.ca/,,,,not_found
+3 + 1,Ali,Mamdani,14035420075,376 SE,Calgary,845000,https://alimamdani.com/,ali@alimamdani.com,97,valid,found
+3 + 1,Rick,Qi,14036050504,31 NE,Calgary,539900,https://www.liangcommercial.ca/,,,,not_found
+3 + 1,Lisa,Johnson,14036088834,643 SW,Calgary,1195000,https://innercityinfills.ca/,lisa@innercityinfills.ca,80,valid,found
+2 + 1,Chris,Dingle,14036512156,68 SW,Calgary,1780000,http://www.chrisdingle.ca/,,,,not_found
+4 + 1,Anne,Clarke-Davidson,14038035578,12 SE,Calgary,1099000,http://bloomgroup.ca/,anne@bloomgroup.ca,97,valid,found
+2,Cory,Smith,14034621009,76,Calgary,390000,http://www.smithpezzente.com/,cory@smithpezzente.com,98,valid,found
+3 + 1,Justin,Warthe,14036208746,2352 NW,Calgary,749000,http://www.topcalgaryrealestate.com/,,,,not_found
+2 + 2,Randy,Hall,14036510469,43 NW,Calgary,1599500,http://www.randyhall.ca/,,,,not_found
+4 + 2,Ivan,Cilic,14036817523,115 SW,Calgary,1778000,https://www.ivancilic.com/,,,,not_found
+4 + 1,Tanya,Vaillancourt,14035619372,14 NW,Calgary,1000050,http://tanyavrealty.com/,,,,not_found
+3,Matt,Halladay,14037003182,113,Calgary,584900,http://halladayrealestate.com/,,,,not_found
+4,Sam,Hudson,14038135137,198 NW,Calgary,789900,https://hudsonrealestate.ca/,,,,not_found
+4 + 1,Semra,Kalemli,14033891176,1907 SW,Calgary,1749000,http://kalemlirealty/,,,,invalid_input
+3 + 1,Jasben,Lai,14036895512,141 NW,Calgary,749900,http://www.liveinnercity.com/,jasben@liveinnercity.com,96,valid,found
+4 + 1,Jeff,Stephenson,14036518458,15 SW,Calgary,1449900,http://stephensonrealtygroup.ca/,jeff@stephensonrealtygroup.ca,99,valid,found
+2 + 2,Victoria,Dalgleish,14039269049,6824 NE,Calgary,475000,http://www.victoriadalgleish.com/,,,,not_found
+2 + 1,Jesse,Davies,14039692363,2,Calgary,600000,https://jdrealestatecalgary.ca/,,,,not_found
+4 + 1,Timothy,Green,14038911325,2407 NW,Calgary,2249000,http://www.greengroup.estate/,tim@greengroup.estate,95,valid,found
+3 + 1,David,Strashok,15877000209,2376 SW,Calgary,429900,http://www.thepropertyman.ca/,,,,not_found
+4,Kevin,Huynh,14038356159,1719 NE,Calgary,375000,http://homesbykevin.ca/,,,,not_found
+3,Richard,Bergeron,14038192331,48 NW,Calgary,459900,http://www.richardbergeron.com/,richard@richardbergeron.com,98,valid,found
+2,Jessica,Chan,14032419800,2323,Calgary,289900,http://www.jcre.ca/,,,,not_found
+2 + 3,Simon D.,Hunt,14032930363,14010 SE,Calgary,2495000,http://www.simondhunt.com/,,,,not_found
+1,Anna,Olsinska,14038268714,426,Calgary,277500,https://www.annasellscalgaryhomes.ca/,,,,not_found
+1,Gary,Heald,14038913474,1110,Calgary,185000,http://www.garyheald.com/,,,,not_found
+2,Ryan,Wood,14038284645,32 SW,Calgary,450000,https://www.realtyaces.ca/,,,,not_found
+3,Ian,Cooper,14035600555,12 NW,Calgary,645900,http://www.iancooper.ca/,ian@iancooper.ca,96,valid,found
+2 + 2,Ayo,Olajide,14032783081,694 NW,Calgary,865000,https://www.platinumheritagerealty.ca/,,,,not_found
+3 + 1,Ricky,Easthope,14039991397,139 NW,Calgary,839900,https://www.facebook.com/rickeasthoperealestate/,,,,invalid_input
+3 + 3,Jessica,Bruse,14039736233,130 NW,Calgary,949900,http://jessicabruse.com/,,,,not_found
+3 + 2,Sabriya,Halford,15875858575,160 SE,Calgary,499900,http://@sabriyarealty/,,,,invalid_input
+3,Daniyal,Nasiri,15874347763,299 SW,Calgary,575000,https://www.nasiripropertygroup.com/,,,,not_found
+3,Juanita,Power,14035478401,78 SW,Calgary,639900,http://www.juanitapower.com/,,,,not_found
+3,Cindy,Cheng,14039714939,15,Calgary,399900,https://cindysellsyyc.com/,,,,not_found
+3,David,Lofthaug,15876023307,471 SE,Calgary,619715,http://bode.ca/,,,,not_found
+3 + 1,Happe,Dhillon,14036670012,55 NE,Calgary,599000,https://www.dhillon-chahal.com/,happe@dhillon-chahal.com,57,accept_all,found
+4,David,Lofthaug,15876023307,70 SE,Calgary,724900,http://bode.ca/,,,,not_found
+3,Kevin,Huynh,14038356159,40,Calgary,370000,http://homesbykevin.ca/,,,,not_found
+2,Dorothea,Sautter,14036138133,522,Calgary,184900,http://dorotheasautter.royallepage.ca/,dorothea@royallepage.ca,98,valid,found
+3 + 2,Harry,Morgan,14039664663,2218 SW,Calgary,1199900,https://www.harrymorgan.ca/,harrymorgan@remax.net,80,accept_all,found
+3 + 1,Derrick,Newman,14036196661,3815 SW,Calgary,1785000,http://derricknewmangroup.com/,,,,not_found
+5 + 2,Amandeep,Walia,14036087653,223 NE,Calgary,775000,https://www.yychousesforsale.com/,,,,not_found
+3,Valerie,Guay,14038317096,3,Calgary,234900,https://www.viprealtyandmanagement.com/,valerie@viprealtyandmanagement.com,85,valid,found
+3,Big John,Peterson,14032445646,1060 NE,Calgary,550000,http://www.bigjohn.ca/,john@bigjohn.ca,99,valid,found
+3 + 1,Sunny,Samra,14035611434,327 SW,Calgary,569000,https://www.sunnysamra.com/,sunny@sunnysamra.com,99,valid,found
+4 + 1,Henry,Nguyen,14036177222,92 SE,Calgary,1049000,http://www.calgaryhomes-henrynguyen.ca/,,,,not_found
+3,Krista,Bortoluzzi,14039887053,3556 SE,Calgary,399999,http://www.kristabortoluzzi.com/,,,,not_found
+3 + 1,Jessica,Chan,14032419800,31 NW,Calgary,1199000,http://www.jcre.ca/,,,,not_found
+3 + 2,Karen,Luu,14039758061,9611 SW,Calgary,649900,http://www.argosrealty.century.ca/,,,,not_found
+4 + 2,Erin,Reeves,15872002728,119 SE,Calgary,1269000,http://www.reevesrealty.ca/,erin@reevesrealty.ca,81,valid,found
+3 + 1,Rebecca,Chamberlain,14036672330,32 NW,Calgary,990000,https://www.chamberlaingroup.ca/,rebecca@chamberlaingroup.ca,97,valid,found
+3 + 2,Gemma,Hobb,14039911115,15 SW,Calgary,750000,https://sothebysrealty.ca/en/gemma-hobb/,gemma.hobb@sothebysrealty.ca,99,valid,found
+1,Ian,Quinn,14038312202,313,Calgary,199900,http://www.3sixty5realestate.com/,,,,not_found
+2,Stephanie,Campbell,14038609895,209,Calgary,350000,http://www.stephaniecampbell.com/,stephanie@stephaniecampbell.com,98,valid,found
+3 + 1,Greg,Kennedy,14032596800,1032 NE,Calgary,669900,https://www.calgaryhousefinder.ca/,greg@calgaryhousefinder.ca,96,valid,found
+4,David,Lofthaug,15876023307,477 SE,Calgary,599900,http://bode.ca/,,,,not_found
+2,Thevaki,Tharmakumar,15874369489,5202,Calgary,358588,http://www.calgaryhomechoices.ca/,,,,not_found
+4,David,Lofthaug,15876023307,68 NE,Calgary,574995,http://bode.ca/,,,,not_found
+2,Tom,Berg,15878882919,401,Calgary,339000,https://bergestate.com/,tom@bergestate.com,95,valid,found
+3,Jeton,Boletini,14039717042,294 SW,Calgary,710000,http://cirrealty.ca/,jboletini@cirrealty.ca,95,valid,found
+3,David,Lofthaug,15876023307,11 SW,Calgary,714173,http://bode.ca/,,,,not_found
+2,Neil,Lauzon,14036501119,427,Calgary,324900,http://www.neillauzon.com/,neil@neillauzon.com,97,valid,found
+1,Sarah,Gray,15878948602,1603,Calgary,419900,http://www.sarahgray.ca/,,,,not_found
+3,Alexander,Shemetov,15879997777,30 NW,Calgary,500000,https://www.yyclistings.ca/,,,,not_found
+3 + 1,Kevin,French,14036068593,129 SW,Calgary,619900,http://www.kevinfrench.ca/,,,,not_found
+3 + 1,Sahil,Chhabra,15874393978,75 SE,Calgary,789900,http://www.chhabra.ca/,sahil@chhabra.ca,97,valid,found
+2,Rebecca,Garrett,14039699222,224,Calgary,355000,https://www.firstresponserealty.ca/,rebecca@firstresponserealty.ca,99,valid,found
+2,Valerie,Guay,14038317096,2112,Calgary,284900,https://www.viprealtyandmanagement.com/,valerie@viprealtyandmanagement.com,85,valid,found
+3,KD,Singh,15877000002,2101,Calgary,324900,http://www.preprealty.com/kdsingh,,,,not_found
+1,Elaine,Pippi,14037144867,810,Calgary,311000,http://elainepippiteam.com/,,,,not_found
+,Andrew,van Pelt,14039739302,4607 SW,Calgary,1850000,http://www.andrewvanpelt.com/,,,,not_found
+3,Ashley,McKay,14035420386,646 SW,Calgary,400000,http://www.simplyhomescalgary.com/,,,,not_found
+4 + 1,Parker,Jang,15878305561,744 SE,Calgary,699900,https://soldbypj.c21.ca/,,,,not_found
+3,Amanda,Higgs,15878302741,2217 SE,Calgary,1450000,https://amandahiggs.cirrealty.ca/,ahiggs@cirrealty.ca,97,valid,found
+4,Yu Xiang,Shi,14037086363,208 NW,Calgary,849800,https://www.faircommissionsrealty.com/,,,,not_found
+3 + 2,Nardip,Deo,15878966336,39 NE,Calgary,489000,https://nardipdeo.com/,,,,not_found
+2,Sahil,Chhabra,15874393978,201,Calgary,225000,http://www.chhabra.ca/,sahil@chhabra.ca,97,valid,found
+1 + 2,Jordan,Huntrods,14036814457,365 SE,Calgary,685000,http://calgaryrealestateplus.com/,,,,not_found
+4 + 1,Joseph,Nguyen,15875838878,10385 NW,Calgary,1100000,https://josephnguyenhomes.ca/,,,,not_found
+3 + 1,Gloria,Sun,14038300568,66 NW,Calgary,998000,https://gloriasun.com/,,,,not_found
+3 + 1,David,Brown,14036609910,139 NE,Calgary,540000,http://soldbythebrownteam.com/,,,,not_found
+2,Aman,Sandhu,18254541088,3210,Calgary,309900,https://www.soldbyamansandhu.com/,,,,not_found
+3 + 2,Kevin,Beutler,14036811324,228 NW,Calgary,689000,http://www.kevinbeutler.com/,,,,not_found
+3,Achalu,Biri,14038906792,47 SW,Calgary,414900,https://achalurealtor.ca/,,,,not_found
+3 + 2,Sunny,Bhandohal,15875850085,130 SE,Calgary,739900,https://albertapropertygroup.com/,,,,not_found
+3 + 1,Bob,Damji,14036080786,10 NW,Calgary,644900,http://www.bobdamji.ca/,,,,not_found
+2,Michael,Montgomery,15872276204,70,Calgary,239900,https://www.renzorealestate.com/,michael@renzorealestate.com,96,valid,found
+3 + 1,Michele,Monteith,14035605268,30 SW,Calgary,650000,http://www.mycalgaryhomequest.com/,,,,not_found
+3 + 1,Robbie,Stevenson,14038801125,292 NW,Calgary,750000,http://www.robbietherealtor.ca/,,,,not_found
+3,Alex,Sazanovich,14034811111,21 SW,Calgary,506900,https://www.sazanovich.com/,,,,not_found
+3,Alex,Sazanovich,14034811111,13 SW,Calgary,526900,https://www.sazanovich.com/,,,,not_found
+3,Byron,Wellmann,15874344256,6,Calgary,219000,http://yyc-insider/,,,,invalid_input
+3,Lindsay,Winship,14038313303,15,Calgary,398000,http://www.winshipassociates.ca/,lindsay@winshipassociates.ca,97,valid,found
+3 + 1,Lisa,Johnson,14036088834,2004 SW,Calgary,1549900,https://innercityinfills.ca/,lisa@innercityinfills.ca,80,valid,found
+1,William,Ewing,14036053620,904,Calgary,269900,http://www.ewingteam.ca/,,,,not_found
+1,Joel,Semmens,14032834700,106,Calgary,249900,http://www.joelsemmens.com/,,,,not_found
+2 + 2,Darian,Stadnyk,15878880024,809 SW,Calgary,685000,http://www.darianstadnyk.com/,,,,not_found
+2,Jason,Palmer,14032563888,221,Calgary,294900,http://www.sold4you.com/,palmer@sold4you.com,96,valid,found
+2,Simon,Maara,14038277054,3623,Calgary,279900,http://www.calgaryhomesbuy.ca/,,,,not_found
+2,Brad,Willson,14036056440,104,Calgary,299900,http://www.bradwillson.net/,,,,not_found
+3 + 2,David,Rogers,14039929611,235 NW,Calgary,718888,https://www.f1realestate.ca/,david@f1realestate.ca,98,valid,found
+3,Xing Wen,Li,14039918911,127 SW,Calgary,659000,https://www.davidxingwenlee.com/,,,,not_found
+1 + 2,Tanya,Eklund,14038637434,B,Calgary,375000,http://www.tanyaeklundgroup.ca/,tanya@tanyaeklundgroup.ca,83,valid,found
+3 + 1,Cory,Smith,14034621009,315 SE,Calgary,930000,http://www.smithpezzente.com/,cory@smithpezzente.com,98,valid,found
+3 + 1,Tanya,Eklund,14038637434,2025 SW,Calgary,1350000,http://www.tanyaeklundgroup.ca/,tanya@tanyaeklundgroup.ca,83,valid,found
+1,David,Brown,14036609910,3113,Calgary,282000,http://soldbythebrownteam.com/,,,,not_found
+3,David,Lofthaug,15876023307,14519 NW,Calgary,496594,http://bode.ca/,,,,not_found
+2,Jesse,Davies,14039692363,101,Calgary,350000,https://jdrealestatecalgary.ca/,,,,not_found
+3,Susan,Penley,14036609249,568 SW,Calgary,565000,http://penleymcnaughton.com/,,,,not_found
+3,Ellyn,Mendham,14038047777,41,Calgary,357000,http://www.calgaryrealestatesolutions.com/,ellyn@calgaryrealestatesolutions.com,78,accept_all,found
+3,Michael Angelo,Enciso,14033975613,44,Calgary,329000,http://michaelenciso.maxwellrealty.ca/,,,,not_found
+3,Allen,Tian,14033908863,148 NW,Calgary,525000,http://allentiansellscalgary.com/,,,,not_found
+2,Justin,Havre,14032170003,52 NE,Calgary,345000,https://www.youtube.com/embed/LDglWZ57T-A,,,,not_found
+3,Ken,Fok,14164171133,26 NW,Calgary,739900,https://www.power7realty.com/,,,,not_found
+3,Arun,Verma,14038317931,63 NW,Calgary,590000,https://www.arun-rahul.ca/,arun@arun-rahul.ca,97,valid,found
+2,Ginger,Andrews,14034733877,5 SW,Calgary,989900,http://www.gingerandrews.com/,ginger@gingerandrews.com,99,valid,found
+2,Ryan,Stulp,15878391432,805,Calgary,450000,https://www.facebook.com/ryanstulprealtor,,,,invalid_input
+4,Erin,Reeves,15872002728,78 SE,Calgary,749900,http://www.reevesrealty.ca/,erin@reevesrealty.ca,81,valid,found
+3,Manan,Shah,15879267127,175 NE,Calgary,415000,https://www.facebook.com/MananShahRealtor/,,,,invalid_input
+3 + 2,Kevin,Leung,14038357668,4603 NE,Calgary,799900,http://www.leungrealestate.ca/,kevin@leungrealestate.ca,98,valid,found
+3,Kait,Morris,14039093358,455 SE,Calgary,529500,http://kaitmorris.com/,,,,not_found
+3 + 2,Jesse,Davies,14039692363,77 NW,Calgary,1130000,https://jdrealestatecalgary.ca/,,,,not_found
+2 + 1,Nhi,Tran,14039996091,1,Calgary,679900,http://www.nhitran.ca/,,,,not_found
+2,Chad,Hauser,14037716111,400,Calgary,349900,http://www.chadhauser.com/,,,,not_found
+2,Peter,Pasion,14037024205,112 NW,Calgary,435000,http://peterpasion.ca/,,,,not_found
+3,Tarryn,Hamilton,14034785262,428 SE,Calgary,440000,http://www.tarrynhamilton.com/,tarryn@tarrynhamilton.com,85,valid,found
+3 + 1,Jennifer,Rekrutiak,14034812179,4728 SE,Calgary,719000,https://prymeyyc.com/,,,,not_found
+3 + 1,Robyn,Hauck,14032594141,7304 SW,Calgary,629000,http://www.robynhauck.com/,robyn@robynhauck.com,99,valid,found
+3 + 2,Tanweer,Ahmed,14036502221,152 NE,Calgary,589900,https://calgaryhomesnow.ca/,,,,not_found
+2,Christopher,Duffy,15874320356,4101,Calgary,310000,https://chrisduffy.ca/,chris@chrisduffy.ca,83,valid,found
+3,Spencer,Tonkinson,14039910177,79 NW,Calgary,824900,http://www.westernelite.ca/,spencer@westernelite.ca,97,valid,found
+3 + 2,Joel,Gwillim,14039998610,2316 SW,Calgary,1280000,http://www.calgary-condos.com/,,,,not_found
+3 + 1,Mike,Dreger,14038033366,1508 SE,Calgary,499900,http://mikeanddee.ca/,,,,not_found
+2 + 1,Lily,Chow,14038608029,108 NE,Calgary,499900,http://www.lilyoichow.ca/,,,,not_found
+2 + 1,Christopher,Duffy,15874320356,2,Calgary,595000,https://chrisduffy.ca/,chris@chrisduffy.ca,83,valid,found
+2,Lori,Petersen,14038160059,156 NW,Calgary,399900,https://petersen-group.ca/,lori@petersen-group.ca,98,valid,found
+3 + 1,Christian,Twomey,14038809797,736 SW,Calgary,765000,http://www.christiantwomey.com/,,,,not_found
+3,Kevin,D'Costa,14036055559,68 SE,Calgary,739900,http://www.kevindcosta.com/,kevin@kevindcosta.com,98,valid,found
+3,Diana,Ticolia,15875009428,135 SW,Calgary,429000,https://www.realestateprofessionalsinc.com/,,,,not_found
+2 + 1,Jeffery,Chan,14039185536,205 NE,Calgary,699900,http://www.soldbyjeffchan.com/,jeff@soldbyjeffchan.com,96,valid,found
+3 + 2,Tanner,Frezell,14037077781,15 SW,Calgary,725000,https://www.sellcanmore.ca/,,,,not_found
+2 + 2,Jay,Jhinger,16478214541,44 SE,Calgary,869000,https://jayjhingerjhinger.sutton.com/,,,,not_found
+3,Murray,Scotton,14038619196,84 SW,Calgary,475000,http://www.murrayscotton.com/,murray.scotton@murrayscotton.com,76,accept_all,found
+3,Tudor,Constantinescu,14038306281,44 NE,Calgary,715000,http://www.tchomes.ca/,tudor@tchomes.ca,78,accept_all,found
+2,Satoshi,Takasaka,14034773520,1421,Calgary,269900,http://www.jcapitalrealty.com/,,,,not_found
+3 + 2,Happe,Dhillon,14036670012,163 SE,Calgary,999990,https://www.dhillon-chahal.com/,happe@dhillon-chahal.com,57,accept_all,found
+3,Peter,Pasion,14037024205,144 SE,Calgary,675000,http://peterpasion.ca/,,,,not_found
+3 + 1,Janine,Ion,14034614975,182 NW,Calgary,769000,https://www.janineion.com/,,,,not_found
+2,Sahil,Chhabra,15874393978,704,Calgary,169000,http://www.chhabra.ca/,sahil@chhabra.ca,97,valid,found
+3 + 1,Lisa,Johnson,14036088834,20 SW,Calgary,749900,https://innercityinfills.ca/,lisa@innercityinfills.ca,80,valid,found
+2 + 2,Morgan,Gauthier,14034783134,139 SW,Calgary,535000,http://morgangauthier.realty/,,,,not_found
+3 + 1,Darya,Pfund,18883231998,27 SE,Calgary,624900,https://www.easylistrealty.ca/,,,,not_found
+4,Sarah,Loney,14038051203,8 SW,Calgary,2300000,https://sarah-loney.c21.ca/,,,,not_found
+3 + 1,Jordan,Lotoski,14035420326,5031 NW,Calgary,799900,http://www.jordanlotoski.com/,jordan@jordanlotoski.com,98,valid,found
+2,Harpreet,Johal,14039192424,305,Calgary,310000,https://www.vivorealty.ca/,harpreet@vivorealty.ca,78,accept_all,found
+2,Dal,Dhillon,14039692489,152,Calgary,370000,http://www.mycalgaryhome.ca/,dal.dhillon@mycalgaryhome.ca,97,valid,found
+4 + 1,Elaine,Pippi,14037144867,10909 NW,Calgary,989900,http://elainepippiteam.com/,,,,not_found
+1,Mikala,James,14038897020,107,Calgary,349000,http://www.meinzerjames.ca/,mj@meinzerjames.ca,99,valid,found
+3,Sandeep,Tahim,14039737421,234 NE,Calgary,629900,https://www.wespeak-realestate.ca/,sandeep.tahim@wespeak-realestate.ca,72,accept_all,found
+3,Mason,Lindquist,14033337899,3,Calgary,565000,http://masonlindquist.exprealty.com/,,,,not_found
+4,Phil,Lepage,14039696695,1415 SW,Calgary,1050000,http://www.calgaryelitere.com/,phil@calgaryelitere.com,80,valid,found
+2,Julie,Vesuwalla,14038749021,1808,Calgary,215000,http://www.homesweethometeam.ca/,,,,not_found
+2,Sahil,Chhabra,15874393978,212,Calgary,220000,http://www.chhabra.ca/,sahil@chhabra.ca,97,valid,found
+2 + 2,Brooke,Carson,15875824748,9504 SE,Calgary,734900,https://dolcerealestate.ca/,brooke@dolcerealestate.ca,98,valid,found
+2 + 1,Tod,Hall,14038755520,165 SE,Calgary,699900,http://www.tntrealestatepros.com/,todhall@remax.net,85,accept_all,found
+2,Brett,Sowinski,14038751482,3529 NW,Calgary,450000,https://sowinskirealty.com/,brett@sowinskirealty.com,96,valid,found
+1,Art,Lee,14038274477,416,Calgary,214900,http://www.artlee.ca/,art@artlee.ca,84,accept_all,found
+2,Deric A.,Burton,14032484000,301,Calgary,1163880,https://www.dericburton.com/,,,,not_found
+1 + 2,Deric A.,Burton,14032484000,60 SW,Calgary,1098890,https://www.dericburton.com/,,,,not_found
+4,Leslie,Kiss,14038614035,5603 SE,Calgary,374900,https://lesliekiss.royallepage.ca/,lesliekiss@royallepage.ca,97,valid,found
+3 + 2,Julie,Vesuwalla,14038749021,7712 NW,Calgary,874900,http://www.homesweethometeam.ca/,,,,not_found
+3 + 1,Kathy,Thirsk,15878907112,515 NW,Calgary,621000,http://kathysellscalgary.com/,,,,not_found
+3 + 2,Jason,Streich,14038072204,54 NE,Calgary,635000,http://www.jasonstreich.com/,jason.streich@jasonstreich.com,83,accept_all,found
+4 + 1,Nick,Sherby,15875858835,2302 SW,Calgary,1468000,http://www.sng-development.com/,nick@sng-development.com,98,valid,found
+1,Bryon,Howard,15873279928,419,Calgary,255000,https://www.youtube.com/embed/D2CGS97w98E,,,,not_found
+1,Brad,Crapun,14038603834,402,Calgary,1500000,http://www.bradcrapun.ca/,bradcrapun@royallepage.ca,97,valid,found
+5 + 2,Arnav,Bhalla,14037038753,105 NW,Calgary,1449999,https://www.myrealtysolutions.ca/,arnav@myrealtysolutions.ca,99,valid,found
+3,Ramesh,Verma,14039037879,158 NE,Calgary,544900,http://www.rameshverma.ca/,,,,not_found
+4,Ken,Rigel,14032071748,223,Calgary,1550000,http://www.krgroup.ca/,ken@krgroup.ca,99,valid,found
+3 + 1,Richard,Panuelos,14039267975,1108 NE,Calgary,550000,https://www.facebook.com/chad.panuelos/,,,,invalid_input
+2,Catalina,Marin Fernandez,14034700745,145 SE,Calgary,330000,https://www.facebook.com/CatalinaMarinRealtor/,,,,invalid_input
+3,Rose,Calvelo,14039980287,2220 NE,Calgary,2000000,http://www.rosecalveloteam.com/,,,,not_found
+1,Xing Wen,Li,14039918911,420,Calgary,245000,https://www.davidxingwenlee.com/,,,,not_found
+3,Kenny,Vollet,14039939666,20 SW,Calgary,379900,https://www.facebook.com/Craft-Real-Estate-Group-1320248111373537/?ref=settings,,,,invalid_input
+2 + 2,Dave,Galbraith,14032389500,6991 SW,Calgary,1099900,http://www.recalgary.com/,dgalbraith@recalgary.com,85,accept_all,found
+3,Heather,Dougall,14038078538,465,Calgary,129900,https://avenuestoacreages.ca/heather/,,,,not_found
+2,PatiJoe,Hui,14037089888,4315,Calgary,384000,https://www.facebook.com/hui.pj,,,,invalid_input
+1 + 2,Jason,Palmer,14032563888,125 SE,Calgary,749900,http://www.sold4you.com/,palmer@sold4you.com,96,valid,found
+2,Vineet,Tulsiani,14039717779,208,Calgary,249999,https://www.vcarerealestate.ca/,,,,not_found
+1 + 2,Gary,Brand,14034788662,26 SE,Calgary,660000,http://www.garybrand.ca/,,,,not_found
+3 + 1,Lawrence,Barnett,14036174637,126 SW,Calgary,949999,http://www.lawrencebarnett.com/,,,,not_found
+,Jonathan,Ashkin,14038265022,5424 SW,Calgary,385000,http://ashkinrealty.com/,jonathan@ashkinrealty.com,96,valid,found
+3 + 1,Eric,Boyd,14038094307,244 NW,Calgary,710000,http://www.homesbyeric.ca/,eric@homesbyeric.ca,97,valid,found
+2 + 1,Kevin,Beutler,14036811324,50 SW,Calgary,668900,http://www.kevinbeutler.com/,,,,not_found
+3,Amanda,Levesque,14035545405,620 NE,Calgary,429000,https://www.yourhomeyyc.com/,,,,not_found
+3,Sam,Shenouda,14039919749,210,Calgary,350000,https://shenoudarealty.com/,,,,not_found
+3 + 1,David,Jablonski,14039755915,137 SE,Calgary,1275000,http://www.jablonskirealestategroup.com/,david@jablonskirealestategroup.com,95,valid,found
+4 + 2,Angel,Godson-Onumejor,14034025915,13 NE,Calgary,795000,https://www.angelgodson.ca/,,,,not_found
+3,Jagdeep,Dhindsa,14038266103,156 NE,Calgary,549900,http://www.linkedin.com/in/jagdeep-dhindsa-ab535b133,,,,not_found
+2,Susan,Penley,14036609249,209,Calgary,369900,http://penleymcnaughton.com/,,,,not_found
+2,Deric A.,Burton,14032484000,.,Calgary,278872,https://www.dericburton.com/,,,,not_found
+3 + 1,Karissa,Freund,14039931334,116 SE,Calgary,679000,http://www.rhinorealty.com/,karissa@rhinorealty.com,99,valid,found
+3,Robert,Jansons,14034837253,2857 SW,Calgary,727888,http://www.robandkim.ca/,,,,not_found
+,Michael,Smith,14039192247,1612 NW,Calgary,1450000,https://www.youtube.com/embed/xDQBvqEIMlg,,,,not_found
+4,Dilbaag,Dhillon,14035600304,99 NW,Calgary,770000,https://calgaryrealestategroup.ca/,,,,not_found
+3 + 2,Jessica,Kushnir,14035194006,127 SE,Calgary,625000,http://www.socialrealestate.ca/,jess@socialrealestate.ca,95,valid,found
+3 + 1,Murray,Harris,14036202790,134 SE,Calgary,699900,http://www.murrayharris.ca/,,,,not_found
+3 + 1,Catherine,Gyurko,15879179592,23 SW,Calgary,938000,http://catgyurko/,,,,invalid_input
+3 + 2,Pammi,Brar,14036077070,2855 NE,Calgary,594888,http://www.pammibrar.com/,,,,not_found
+2,Rana,Matturi,14037101399,189 NW,Calgary,329000,https://investingincalgary.ca/,,,,not_found
+3,Vincent,Phan,14039731106,19,Calgary,439900,https://vincentphan.ca/,,,,not_found
+3,Rachael,Beaulieu,14038292364,1968 SE,Calgary,539900,https://blushproperhomes.ca/,,,,not_found
+3 + 1,Steve,Chung,15878300048,12 SE,Calgary,1250000,https://stevechung.housescalgary.ca/,,,,not_found
+3,John,McMahon,14038504987,273 NW,Calgary,598888,http://www.johnnyremax.com/,,,,not_found
+2 + 1,Wesam,Kandil,14038015023,983 NE,Calgary,549999,https://kandilrealestate.com/,wesam@kandilrealestate.com,82,accept_all,found
+3 + 2,Rahim,Damji,15877421357,1527 SE,Calgary,604900,https://www.propzap.com/,rahim@propzap.com,96,valid,found
+3 + 2,Jasmine,Sharma,14036083316,78 NE,Calgary,579000,https://jasminesharma.ca/,,,,not_found
+3,Ben,Pinckney,14037974055,8493 SE,Calgary,559990,https://linktr.ee/benlikepen,,,,not_found
+4,Noorin,Nurani,14036308786,27 NE,Calgary,770000,http://nnhomes.ca/,,,,not_found
+2,Nevin,Van Nest,14032450773,2505,Calgary,369000,http://nevinvannest.com/,,,,not_found
+2,Juanita,Power,14035478401,1407,Calgary,279900,http://www.juanitapower.com/,,,,not_found
+2,John,McNeill,14038071961,306,Calgary,385000,http://www.calgaryurbanhomes.com/,john@calgaryurbanhomes.com,95,valid,found
+3 + 1,Craig,Heynen,14036506117,5048 NW,Calgary,675888,http://www.craigheynen.ca/,,,,not_found
+2 + 3,Jay,Hans,15872255409,5112 NE,Calgary,515000,http://www.sellingpeaks.com/,,,,not_found
+2,Bonnie,Fulford,14038528058,219,Calgary,299999,http://www.bonniefulfordrealestate.ca/,,,,not_found
+3 + 1,Chase,Olsen,14036060340,246 SE,Calgary,659900,http://www.chasinghomes.ca/,chase.olsen@chasinghomes.ca,81,valid,found
+2,Vincent,Phan,14039731106,212,Calgary,274900,https://vincentphan.ca/,,,,not_found
+3 + 1,Ross,Pavl,14038378100,317 SW,Calgary,2298888,http://www.rosspavl.com/,ross@rosspavl.com,80,valid,found
+4,Alexander,Weston,14038290990,29 NW,Calgary,829900,http://www.chamberlaingroup.ca/,alexander@chamberlaingroup.ca,98,valid,found
+4 + 2,Hussain,Vasanwala,14036046848,5004 NW,Calgary,969000,http://homesonthemarket.ca/,,,,not_found
+3 + 1,Matt,Halladay,14037003182,1141 NE,Calgary,959900,http://halladayrealestate.com/,,,,not_found
+3,Mike,Contini,14038501982,127 SW,Calgary,549900,http://mikecontini.ca/,,,,not_found
+2 + 2,John,Preston,14036176009,2204 NW,Calgary,985000,http://www.jpreston.realtor/,,,,not_found
+2,Andrew,Stengler,15873303866,14,Calgary,329900,https://andrewstengler.com/,andrew@andrewstengler.com,74,accept_all,found
