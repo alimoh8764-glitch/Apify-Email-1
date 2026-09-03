@@ -1025,3 +1025,7 @@ Bedrooms,FirstName,LastName,Phone,Address,City,Price,Website,Email,HunterScore,H
 3,Jennifer,Hamilton,18434586734,Brace Dr Lot 1A,Pawleys Island,1395000.0,,jennifer@bhhscoastal.com,0,invalid,verified,actor
 4,Jen,Audier,15864842526,211 Jefferson St E,York,575000.0,http://www.prestinoadvantage.com,jen@prestinoadvantage.com,0,invalid,verified,actor
 4,Trina,Montalbano,18649077412,335 Boxbury Way,Fountain Inn,331590.0,,client.relations@allentate.com,0,invalid,verified,actor
+5,Logan,Abrams,17042398763,17018 Harcombe Dr,Charlotte,1399000.0,http://www.charlottesagents.com,logan@charlottesagent.com,0,invalid,verified,actor
+3,Landon,Stone,13368919667,938 Martin St,Greensboro,125000.0,https://www.mybororealestate.com/,landon@myboroexpert.com,0,invalid,verified,actor
+3,Brad,Mize,19194820157,2081 Satterwhite Rd,Oxford,339500.0,https://linktr.ee/BradMize,brad.mize@allentate.com,0,invalid,verified,actor
+3,null,Bailey,19195392267,2349 Kendricks Ct,Raleigh,485000.0,,,,,not_found,none
