@@ -218,7 +218,7 @@ Bedrooms,FirstName,LastName,Phone,Address,City,Price,Website,Email,HunterScore,H
 5,Craig,Tribus,18046565007,712 Lanyard Dr,Newport,699000.0,,,,,not_found,none
 3,Janet,N Rogers,12522598017,3609 Huntsmoor Ln NW,Wilson,275140.0,,,,,not_found,none
 3,Lindsay,N Thomas-byrd,19199064970,1004 W Thomas St,Rocky Mount,129900.0,,,,,not_found,none
-3,null,Bailey,19195392267,2349 Kendricks Ct,Raleigh,485000.0,,,,,not_found,none
+3,,Bailey,19195392267,2349 Kendricks Ct,Raleigh,485000.0,,,,,not_found,none
 4,Beatty,- Pittman Team,,4136 Pine Hollow Dr,Wilmington,650000.0,,,,,not_found,none
 3,Bella,Point,,2051 Bella Point Dr SE,Bolivia,321990.0,,,,,not_found,none
 4,Brunswick,Plantation,,2095 Marietta Circle,Ash,397990.0,,,,,not_found,none
@@ -357,3 +357,648 @@ Bedrooms,FirstName,LastName,Phone,Address,City,Price,Website,Email,HunterScore,H
 5,Raghu,Kukunoor,,1671 Spears Dr NW,Concord,665000.0,,,,,not_found,none
 4,Foxridge,Meadow,,5522 Golden Pond Drive,Indian Trail,785000.0,,,,,not_found,none
 4,Magnolia,Glen,,Huntersville-Concord Road,Huntersville,764654.0,,,,,not_found,none
+3,Keela,Long,18646418809,2031 Evergreen Dr,Boiling Springs,249900.0,,keelabogan@yahoo.com,71,accept_all,verified,actor
+3,Nick,May,18649932852,1134 Baldwin Dr,Lancaster,475000.0,https://nickmay.costellorei.com,nick@costellorei.com,0,invalid,verified,actor
+3,Jody,Cartee,18647600096,519 Hillandale Rd,Liberty,299700.0,,jody@agrealty.net,0,invalid,verified,actor
+4,Kaylee,Wilson,17049086287,1360 Tappan Ave Unit 184,Rock Hill,479900.0,,kwilson@tlsrealtyllc.com,82,accept_all,verified,actor
+3,Caroline,Mahaffey,18649621750,100 Laconia Dr,Travelers Rest,448950.0,,rrealestcm@aol.com,74,accept_all,verified,actor
+5,Tatiana,Sheffer,18436552882,1021 Muscovy Pl,Conway,999000.0,,tatianam1@remax.net,73,accept_all,verified,actor
+4,Arden,Stelly,18642214943,102 Bradford Way,Anderson,624900.0,,astelly@cdanjoyner.com,0,invalid,verified,actor
+3,APRILE,HIOTT,18435141019,154 Beulah Ln,Dorchester,425000.0,http://www.remaxprorealty.net,ahiott5903@aol.com,72,accept_all,verified,actor
+5,ASHLEY,HAYNES,18438136079,619 Carolina Blvd,Isle of Palms,5175000.0,http://www.zillow.com/profile/R.-Ashley-Haynes/,ashleyhaynes00@yahoo.com,70,accept_all,verified,actor
+4,Margot,Layland,18439575591,2061 Kilkee Dr,Myrtle Beach,649900.0,http://www.mlayland.chicora.com,margotlayland@chicora.net,0,invalid,verified,actor
+4,Becky,Friddle,18643206599,210 Addlestone Cir,Fountain Inn,335000.0,http://www.allentate.com/BeckyFriddle/,allentate@fivestreet.me,70,accept_all,verified,actor
+4,Janet,& Terry Padalino,18039606509,151 Mill House Ln,Lexington,400000.0,https://columbiaschomestoday.com,janet@yourworldre.com,81,accept_all,verified,actor
+5,Janet,Vaughan,18032784437,23 Brookview Ct,North Augusta,525000.0,http://www.housesforsalenorthaugusta.com,jvaughan@meybohm.com,78,accept_all,verified,actor
+5,Whitney,Shelton,18435723131,175 Donning Dr,Summerville,675000.0,https://www.coldwellbankerhomes.com/sc/summerville/agent/whitney-shelton/aid_231614/?utm_campaign=OLDP-RDC&utm_source=RDC&utm_medium=oldp&utm_content=agentwebsite,whitney.shelton@cbrealty.com,71,accept_all,verified,actor
+4,MARTA,PEREZ,18438103510,1057 Lettered Olive Ln,Summerville,477185.0,,marta.perez@lennar.com,58,unknown,verified,actor
+4,Melissa,Cook,18435723131,599 SC 174,Edisto Island,558500.0,https://lowcountry.cbintouch.com/,melissa.cook@cbrealty.com,72,accept_all,verified,actor
+4,SHANNON,"GUESS, REALTOR",18435491900,8780 Palmetto Rd,Edisto Island,1295000.0,https://www.remax.com/real-estate-agents/walterboro-sc-29488-2705-shannonguess-id32076218.html,shannonguess@remax.net,72,accept_all,verified,actor
+5,Patti,Smith,18033512566,129 Bardwell Way,Blythewood,639000.0,,pmisth@remax.com,72,accept_all,verified,actor
+3,Yvonne,Turner,13107809879,103 Stoneybrea Ct,Goose Creek,349900.0,https://search.yvonneturnerrealestate.com/,yvonne@williammeans.com,0,invalid,verified,actor
+3,Steven,Koleno,18046565007,159 Castleton Cir,Boiling Springs,355000.0,https://www.beycome.com,realtor@beycome.com,72,accept_all,verified,actor
+4,Richard,Macdonald And Associates,18433848797,31 Sherbrook Ave,Bluffton,1475000.0,,richard@rmacdonald.com,66,unknown,verified,actor
+4,Hope,Derrick,18039607114,250 Thacher Loop,Elgin,420000.0,thederrickteam.com,hope@thederrickteam.com,0,invalid,verified,actor
+3,Martina,Staples-Byrne,18433579767,625 Cherry Blossom Dr,Murrells Inlet,449900.0,,krw@lawyersatthebeach.com,33,unknown,verified,actor
+3,Blake,Payton,17049308869,4122 Jessamine Way,Indian Land,390000.0,https://www.blakepayton.com/,blakepayton@remax.net,81,accept_all,verified,actor
+4,Pritpal,Kaura,18646405041,2819 Poinsett Hwy,Greenville,480000.0,,juppk51@yahoo.com,71,accept_all,verified,actor
+3,Ginger,Stolp,18644361113,9 Forest Mill St,Spartanburg,190000.0,http://findhomesingreenvillesc.com,ginger@findhomesingreenvillesc.com,0,invalid,verified,actor
+3,Paige,Bird,18434504773,142 John Green Ln,Georgetown,699900.0,https://www.paigebird.com,paigebird@remax.net,72,accept_all,verified,actor
+4,The,Ussery Group,18437577712,7 Indigo Plantation Rd,Okatie,1385000.0,http://www.usseryrealestate.com,johnny@usserygroup.com,80,accept_all,verified,actor
+6,Ashley,James,19194754285,1707 Palmetto Dr,Beaufort,525000.0,,ashley@thekingjamesgroup.com,0,invalid,verified,actor
+5,Emmys,E Justo,18038690184,731 Samantha St,West Columbia,314990.0,https://emmys.yourschomes.com,homesbyemmys@yahoo.com,74,accept_all,verified,actor
+4,Eric,"Emond, Agent",18439977614,7027 Shooting Star Way,Myrtle Beach,615000.0,http://www.theemondteam.com,ericemond@sc.rr.com,0,invalid,verified,actor
+4,Nicki,Jacoby,18434223630,60 Clifton Dr,Okatie,2450000.0,,nicki.jacoby@yahoo.com,73,accept_all,verified,actor
+3,Tom,Von Hagel,18432740096,1611 Breakwater Dr,Little River,648672.0,http://www.yourmyrtlebeachhouse.com,tvonhagel@century21boling.com,0,invalid,verified,actor
+3,Kimberly,Mccullough,18643505302,175 Strawberry Pl,Anderson,219000.0,,mskmccullough@yahoo.com,73,accept_all,verified,actor
+6,Rachel,Alles,17042520597,204 Rowland Ave,Heath Springs,385000.0,,ralles@livewellhomes.net,0,invalid,verified,actor
+3,Dusty,Conine,18037982300,1821 Luster Ln,Columbia,155000.0,,mail@co9group.com,82,accept_all,verified,actor
+4,Denise,Wells,18032361721,530 Benton Ct,Sumter,149900.0,,dlwells1913@aol.com,74,accept_all,verified,actor
+4,Crystal,Bartlett,18036091673,352 Welbeck Rd,Lexington,273985.0,,cb.homes@yahoo.com,74,accept_all,verified,actor
+4,Karen,Binnarr,18642027201,103 Horton Ave,Anderson,299900.0,http://yourupstateteam.com,karen@yourupstateteam.com,79,accept_all,verified,actor
+4,Julie,Mercer,18436662685,395 SW Fabi Dr,Supply,277990.0,,jemercer@drhorton.com,70,accept_all,verified,actor
+3,Robbie,"Ash, Agent",18434575093,284 Westfield-Wallace C Cir Lot 42,Conway,367910.0,http://www.drhorton.com,rkash@drhorton.com,73,accept_all,verified,actor
+3,Michael,Powers,18436841895,1 Chinaberry Cir,Hilton Head Island,505000.0,,mtpsales@aol.com,71,accept_all,verified,actor
+3,"LEE,","VALERIE, C",18436161914,106 Lincoln Blvd,Darlington,119000.0,,gvleehometeam@aol.com,72,accept_all,verified,actor
+3,"BRIDWELL,",LYLES (KIRBY),18642688282,103 Powell Ct,Easley,499000.0,,kirbybridwell@kw.com,0,invalid,verified,actor
+3,Terri,Cole,18439081045,102 Dahlia St,Walterboro,285000.0,http://www.oswald-cole.com,terricole@oswaldassoc.com,71,accept_all,verified,actor
+5,Amy,Templeton,18434254100,1339 Brickmill W,Mount Pleasant,2200000.0,www.amytempleton.com,atempleton@carolinaone.com,0,invalid,verified,actor
+4,James,McGuirt,18036690230,3001 Broad St,Camden,650000.0,,heritageofcamden@aol.com,74,accept_all,verified,actor
+3,Nathan,Dumbleton,18433106855,2232 Franklin Cir,Little River,350000.0,,ndumbleton@palmshome.com,0,invalid,verified,actor
+3,Valentina,Ragozinski,14068852223,715 Three Wood Ln,Woodruff,629900.0,,valentina@flatheadvalleybrokers.com,0,invalid,verified,actor
+5,Tera,Smith,18439572853,Tbb 120 Waccamaw River Rd,Conway,399999.0,,terasellsthestrand@gmail.com,0,invalid,verified,actor
+3,Penney,"Baumgartner, Real Estate Consultant",15174034109,103 Pine Forest Dr,Easley,299000.0,http://penneybaumgartner.yourkwagent.com/,realtorpenney@yahoo.com,72,accept_all,verified,actor
+3,Latrina,Holmes,18032907878,4006 Five Chop Rd,Orangeburg,179900.0,HTTPS://WWW.REALTOR.COM/REALESTATEAGENTS/5E8F414463C0C200117C8A44,latrinapepper@yahoo.com,74,accept_all,verified,actor
+3,Nicole,"""Nikki"" Sprague",18432603444,1025 E Scarlett Ln,Florence,169000.0,,nikkisprague@ymail.com,70,accept_all,verified,actor
+4,StephensJacksonC,,18432290303,2035 E Paces Trl,Darlington,267999.0,www.peedeehomesearch.com,jacs716@yahoo.com,72,accept_all,verified,actor
+3,Lydia,Frost,,4268 Highway 90,Conway,415000.0,,lydiasellsmb@yahoo.com,71,accept_all,verified,actor
+5,Richard,Cobb,18035637368,14388 Yellow Jacket Blvd,North Augusta,405580.0,,cobbrs@stanleymartin.com,80,accept_all,verified,actor
+4,Kaitlyn,Hall,18644215641,103 Woodruff Lake Way,Simpsonville,415000.0,http://Kaitlyn.TheYukichGroup.com,kaitlyn@theyukichgroup.com,70,accept_all,verified,actor
+3,Susan,Spears,17062675100,116 Maddox Ave,North Augusta,750000.0,,sspears@meybohm.com,71,accept_all,verified,actor
+3,Danielle,Simmons,18648849548,240 Stone Ave,Woodruff,249999.0,https://daniellesimmons.cdanjoyner.com/,dsimmons@cdanjoyner.com,0,invalid,verified,actor
+3,Jack,Gowan,18645803139,32 Brookville Dr,Wellford,234900.0,http://www.jackgowan.com,jackg@remax.net,81,accept_all,verified,actor
+3,Roman,Ryabchuk,18648048720,261 Holden Rd,Inman,565000.0,,rryabchuk@kw.com,0,invalid,verified,actor
+3,Runelle,Weeks,18038372351,4145 Faust St,Bamberg,263000.0,,rbweeks@bellsouth.net,71,accept_all,verified,actor
+4,Kathleen,Martusheff,18655567314,2029 Fern Crest Ln,Graniteville,249500.0,http://www.kmbb.us,kathleen@realtystargroup.com,72,accept_all,verified,actor
+3,Rob,Jones,18444480749,202 Vinewood Ct,Simpsonville,269900.0,,rjones@invitationhomes.com,0,invalid,verified,actor
+4,VADIM,(VINNY)RYABCHUK,18645045084,425 Crossvine Way,Campobello,799000.0,,servicebyvinny@kw.com,0,invalid,verified,actor
+3,Nicole,Sanders,17062202627,157 E Pleasant Colony Dr,Aiken,504900.0,,nsanders@c21larrymiller.com,0,invalid,verified,actor
+5,Ryan,Lerow,18046917482,1526 Afton Way,Fort Mill,825000.0,https://m.facebook.com/p/Lerow-Co-Real-Estate-Team-100093599061606/,ryan@lerowco.com,78,accept_all,verified,actor
+3,Jonathan,and Tonya Wiley,18649938153,132 Indigo Way,Greenwood,719900.0,http://www.lakegreenwoodhouses.com,tonyawiley@yahoo.com,70,accept_all,verified,actor
+3,Jerry,Pinkas Real Estate Team,18438399870,1931 Lake View Cir,Surfside Beach,399000.0,http://www.jprealestateexperts.com/,myrtlebeachsales@aol.com,74,accept_all,verified,actor
+3,Derek,Mclendon,18548540816,426 Carrick Loop,Longs,305400.0,,derekmclendon@kw.com,0,invalid,verified,actor
+3,Erin,Parker,15743231483,4907 Woodview Ln,Myrtle Beach,789900.0,,erin@hrgoffice.com,0,invalid,verified,actor
+4,Sherika,Dyer,16054156142,117 Barron Blvd,Lancaster,259900.0,,sherikad@dwrealtyteam.com,0,invalid,verified,actor
+4,Mickey,Chiappetta,18432833254,4390 Saint Annes Ct,Myrtle Beach,599000.0,,mickey@jterealestate.com,0,invalid,verified,actor
+3,Cassie,Alexander,17708566080,206 Princeton Ave,Greenville,735000.0,,cassie@dreamhomesc.com,82,accept_all,verified,actor
+4,Buffy,Foor,17049040539,628 Heron View Dr,York,450000.0,http://www.buffyfoorgroup.com,buffy@buffyfoorgroup.com,79,accept_all,verified,actor
+3,Amanda,Cutrer,19124846782,440 Corley St,Bluffton,2245000.0,,acutrer@palmettobluff.com,80,accept_all,verified,actor
+3,"Jackson,",Tammy,18432296664,3325 James Turner Rd,Effingham,319999.0,,tamactionjackson@aol.com,71,accept_all,verified,actor
+3,Daniel,Carabus,18437939265,53 Chadwick Dr,Charleston,899000.0,,dcarabus@carolinaone.com,0,invalid,verified,actor
+3,SIMPSONDEBORAHP,,18649231372,9 Twin Springs Dr,Greenville,205000.0,,dkpsimpson@yahoo.com,74,accept_all,verified,actor
+4,Josh,Hoover-Dempsey,18649790982,218 Montview Cir,Greenville,629900.0,https://www.greenvillescrealestate.net/,joshhooverdempsey@remax.net,81,accept_all,verified,actor
+3,Jeanette,'JD' Denney,18434910455,198 Chickasaw Ln,Myrtle Beach,319999.0,https://jeanettedenney.realscout.me/,jdsellsrealty@tobringyouhome.com,74,accept_all,verified,actor
+3,Miranda,Mole,18037070226,4316 Charleston Hwy,Orangeburg,349000.0,,mmole@bigfishhometeam.com,0,invalid,verified,actor
+4,Lynn,Blanton,18643911687,208 S Main St,Abbeville,490000.0,,lynnwblanton@yahoo.com,72,accept_all,verified,actor
+3,Crystal,Brodie,18435135256,176 Moon Dance Ln,Summerville,345000.0,http://www.CharlestonHouseHunter.com,info@charlestonhousehunter.com,79,accept_all,verified,actor
+4,Katie,Mccabe,14435624281,1741 Indigo Island Dr,Hanahan,999000.0,,mccabekt@aol.com,74,accept_all,verified,actor
+4,Eugene,Kazayev,14132710989,1727 Trentwood Dr,Fort Mill,479999.0,https://www.coldwellbankerhomes.com/nc/charlotte/agent/yevgeniy-eugene-kazayev/aid_180654/?utm_campaign=OLDP-RDC&utm_source=RDC&utm_medium=oldp&utm_content=agentwebsite,eugene.kazayev@cbcarolinas.com,0,invalid,verified,actor
+3,Melanie,Bauer,17062296904,701 Coneross Creek Rd,Seneca,519000.0,https://melaniebauer.remax.com/,melanie@mlprestigerealty.com,67,unknown,verified,actor
+4,"POWERS,","FRANCINE, G",18643504486,1707 Holiday Dam Rd,Belton,509900.0,http://www.southernrealestatedev.net/,francinepowers9@aol.com,73,accept_all,verified,actor
+5,William,Bruen,18645842577,200 Sherwood Dr,Laurens,432000.0,,billybruen@yahoo.com,74,accept_all,verified,actor
+4,KATHLEEN,DEWITT,18438704958,404 Amaranth Rd,Kiawah Island,2795000.0,https://www.akersellis.com/team-members/kathleen-dewitt,kathleen.dewitt@akersellis.com,78,accept_all,verified,actor
+3,Lindsie,Sink,18642721933,714 Arlington Ave,Greenville,570000.0,,lindsie.sink@allentate.com,0,invalid,verified,actor
+4,Harrison,Pratt,17045797663,106 Deaver St,Chester,110000.0,,harrisonpratt@markspain.com,0,invalid,verified,actor
+4,The,Ken Oliver Team,18434228432,15 Peninsula Dr,Hilton Head Island,1395000.0,https://ken-oliver.com/,clay@ken-oliver.com,81,accept_all,verified,actor
+3,Lakeysha,Smith,18037322200,191 Kingfield Dr,Hopkins,246990.0,http://www.erawilderrealty.com/,lakeysha.smith@cbcarolinas.com,0,invalid,verified,actor
+3,Christine,Armstrong,17046350019,119 River Knoll Dr Lot 1070,Easley,306430.0,,carmstrong@tollbrothers.com,79,accept_all,verified,actor
+3,Vanonna,Squire,18034047667,1845 N Main St,Sumter,269900.0,http://www.yoursouthcarolinahome.com,vanonnasquirerealty@aol.com,74,accept_all,verified,actor
+3,Scott,Spivey,19104651233,602 S Leesburg St,Hartsville,109000.0,,scottspiveyrealestate@yahoo.com,73,accept_all,verified,actor
+3,John,Mclaurin,18437744155,164 N Butler Rd,Latta,143000.0,,danielmclaurin@att.net,70,accept_all,verified,actor
+5,Lyvia,May and Cathy Brennan Team,18036487653,6267 Whirlaway Rd,Graniteville,359900.0,,cbrennan@meybohm.com,82,accept_all,verified,actor
+5,Tommy,Carnucci,18882229185,5637 Porcher Dr,Myrtle Beach,1990000.0,http://www.oceaninvestments.com,tcarnucci@oceaninvestments.com,0,invalid,verified,actor
+5,Diane,Jones,18032612262,437 Haflinger Ln,Lexington,562466.0,,buckanddianejones@sc.rr.com,0,invalid,verified,actor
+3,Cherie,Fay-Jenkins,18037414663,185 Limestone Cir Lot 182,Anderson,370025.0,,clfayjenkins@drhorton.com,70,accept_all,verified,actor
+3,Kolbe,Pruitt,18643476313,125 Emerywood Ln,Greenville,244000.0,,kolbe@qmphomes.com,0,invalid,verified,actor
+4,Archie,Sanders,18436852496,1206 Brackish Bay Rd Unit Southportb,North Myrtle Beach,707522.0,,archiejsanders@yahoo.com,73,accept_all,verified,actor
+4,Terri,Reid,18034179784,3545 Ernandez Rd,Richburg,4347000.0,http://www.happyhomesbyterri.yourkwagent.com,happyhomes@kw.com,0,invalid,verified,actor
+4,Annabell,Lowcountry Homes,18439067437,8631 Woodland Walk,North Charleston,555000.0,http://www.AnnabellLowcountryHomes.com,at@annabelllowcountryhomes.com,64,unknown,verified,actor
+4,Emily,Swoyer,18054158130,272 Boxwood Ln,Beaufort,533228.0,,eswoyer@mungo.com,74,accept_all,verified,actor
+3,Mark,Baatz,18033546821,11 Cambridge Oaks Ct,Columbia,239900.0,http://markbaatz.cbintouch.com,mark.baatz@cbrealty.com,80,accept_all,verified,actor
+5,Harold,McGee,18035869531,3064 Hanging Valley Rd,Blythewood,343920.0,http://www.greatsouthernhomes.com/communities/jacobs-creek,hmcgee@cbcarolinas.com,0,invalid,verified,actor
+4,Twala,Scott,18432617161,97 Colkitt St,Summerville,400000.0,,twala.scott@agentownedrealty.com,0,invalid,verified,actor
+4,Corinthians,Rice,18644266025,543 Walking Ln,Lexington,285000.0,http://www.corinthiansrice.realtor,corinthians.rice@yahoo.com,72,accept_all,verified,actor
+3,Jeremy,Jenks,18436383002,5681 Lacebark Trl,Myrtle Beach,534900.0,http://www.thetrembleygroup.com,jeremy@thetrembleygroup.com,0,invalid,verified,actor
+3,Merri,Cantey,18039207364,142 Hawks Nest Ct,Columbia,244000.0,http://Canteycansell.com,merricantey@remax.net,81,accept_all,verified,actor
+4,Noah,Mcbride,17067015940,426 Bridle Path Rd,North Augusta,470000.0,themcbrideteam.com,noah@themcbrideteam.com,82,accept_all,verified,actor
+3,BOB,CHAMBERS,18432962546,131 Camelot Dr,Goose Creek,350000.0,http://www.soldoncharleston.com,bobchambers@infinty-realty.com,0,invalid,verified,actor
+4,Tyler,Simmons,18033898809,119 Alabama Dr,Darlington,315000.0,,,,,not_found,none
+3,Carver,Buis,,5403 Wild Fern Ct,North Charleston,375000.0,,,,,not_found,none
+3,Shae,Foreman,18434109556,4660 Cedar Island Ct,Awendaw,2395000.0,,,,,not_found,none
+3,Brianne,Lewandowski,,1023 Nottingham Dr,Charleston,464900.0,,,,,not_found,none
+4,Daniel,Soto,18438719000,3045 Adventure Way,Ladson,370000.0,,,,,not_found,none
+3,Chestnut,Farms,,123 Joyce Dr.,Longs,300990.0,,,,,not_found,none
+3,Anna,Westmoreland,18433235775,7813 Montview Rd,North Charleston,325000.0,,,,,not_found,none
+4,Hunter's,Branch,,245 Bevington Brook Ln,Hopkins,324835.0,,,,,not_found,none
+3,Gibson,Grove,,106 Sipsey Cir,Laurens,264990.0,,,,,not_found,none
+5,Magnolia,Farms,,3525 Royal Star Ln,Florence,434735.0,,,,,not_found,none
+4,Durbin,Meadows Traditions,,345 Boxbury Way,Fountain Inn,333490.0,,,,,not_found,none
+4,Woodhaven,,,544 N Sparkleberry St,Chester,282840.0,,,,,not_found,none
+4,Magnolia,Farms,,3533 Royal Star Ln,Florence,380140.0,,,,,not_found,none
+5,Harrier,Point,,1920 Gracie Dr,Woodruff,332240.0,,,,,not_found,none
+5,Hunters,Ridge,,1267 Saginaw Ct,Woodruff,361240.0,,,,,not_found,none
+3,Cedar,Gap,,150 Cranford Rd,Fountain Inn,294990.0,,,,,not_found,none
+4,Maple,Grove,,1031 Autumn Maple Dr,Conway,349740.0,,,,,not_found,none
+3,Maple,Grove,,1035 Autumn Maple Dr,Conway,337490.0,,,,,not_found,none
+4,Auberon,Woods,,9053 Polar Bear Way,Conway,562648.0,,,,,not_found,none
+4,Sandpiper,Place,,433 Flank St,Myrtle Beach,366115.0,,,,,not_found,none
+5,Hunters,Ridge,,1272 Saginaw Ct,Woodruff,352207.0,,,,,not_found,none
+4,Grand,Oaks,,430 Cherrybark Ct,Columbia,306490.0,,,,,not_found,none
+5,Williams,Ridge,,458 Kincord Ct,Woodruff,444455.0,,,,,not_found,none
+3,Beach,View at Grande Dunes,,302 Colonnade Ave,Myrtle Beach,620000.0,,,,,not_found,none
+5,Westport,,,7034 Wishing Well Way,York,546535.0,,,,,not_found,none
+3,Pineview,North,,1018 Mountaintop Way,Summerville,398306.0,,,,,not_found,none
+4,Tupelo,Park,,1249 Patchouli Dr,Longs,325895.0,,,,,not_found,none
+5,Tupelo,Park - Arbor Collection,,282 Kindred Spirits Dr,Longs,415950.0,,,,,not_found,none
+3,Tupelo,Park - Arbor Collection,,740 Mint Julep Dr,Longs,400490.0,,,,,not_found,none
+4,Riverbend,Ranch - Meadows,,State Rd S-42-1943,Boiling Springs,345999.0,,,,,not_found,none
+3,Horizons,at Carnes Crossroads | 55+ - Cottage Collection,,165 Bono Ct,Summerville,416440.0,,,,,not_found,none
+3,Tupelo,Park - Arbor Collection,,814 Long Beach Drive,Longs,358000.0,,,,,not_found,none
+4,Horizons,at Carnes Crossroads | 55+ - Legends Collection,,108 Ireland Drive,Summerville,439000.0,,,,,not_found,none
+3,Collins,Walk Townhomes,,Hs Ph 3,Conway,229500.0,,,,,not_found,none
+3,Horizons,at Carnes Crossroads | 55+ - Cottage Collection,,107 Beamon Loop,Summerville,330475.0,,,,,not_found,none
+5,The,Overlook - American Dream Series,,545 Cambria Dr,Longs,310000.0,,,,,not_found,none
+4,Neely,Park - Walk,,196 Farmwell Dr,Woodruff,279999.0,,,,,not_found,none
+5,Woodmont,Springs - Dream,,107 Sealy St,Piedmont,314999.0,,,,,not_found,none
+4,Cypress,Preserve - Carolina Collection,,302 Little Brook Lane,Moncks Corner,364500.0,,,,,not_found,none
+4,Cleveland,Meadows,,1308 Hugh Mack Ct,Spartanburg,271999.0,,,,,not_found,none
+3,Tupelo,Park - Arbor Collection,,713 Mint Julep Dr,Longs,378140.0,,,,,not_found,none
+4,Sweetgrass,at Summers Corner - Arbor Collection,,1006 Lettered Olive Ln,Summerville,511000.0,,,,,not_found,none
+3,Crossing,at Givhans,,1220 Carriage Wood Cir,Ridgeville,309990.0,,,,,not_found,none
+4,Fieldview,,,Hs Ph 3C,Conway,313405.0,,,,,not_found,none
+3,Pinckney,Place,,8867 Salamander Rd Unit 41,North Charleston,339990.0,,,,,not_found,none
+3,Roselyn,- Blossom,,4876 Good Day Dr,Lancaster,420599.0,,,,,not_found,none
+4,Woodmont,Springs - Dream,,305 Assata Lane,Piedmont,276999.0,,,,,not_found,none
+3,Tributary,III at the Park at River's Edge,,7873 Montview Road,North Charleston,499900.0,,,,,not_found,none
+3,Horizons,at Summers Corner - The Estates,,1008 Seatrout St,Summerville,439500.0,,,,,not_found,none
+5,Briarwood,Reserve,,1402 Willow Ridge Way,Spartanburg,386890.0,,,,,not_found,none
+3,Crestview,,,7038 Stiles Way,Spartanburg,285570.0,,,,,not_found,none
+4,Benjamin's,Grove,,130 Mossend St,Woodruff,407990.0,,,,,not_found,none
+5,Briarwood,Reserve,,1446 Willow Ridge Way,Spartanburg,394230.0,,,,,not_found,none
+3,Pinckney,Place,,8867 Salamander Rd Unit 52,North Charleston,334990.0,,,,,not_found,none
+3,Bluffs,at Sun Colony,,751 Sun Colony Blvd,Longs,296990.0,,,,,not_found,none
+4,Sweetgrass,at Summers Corner - Coastal Collection,,1008 Wild Roam Run,Summerville,479000.0,,,,,not_found,none
+3,Nexton,- Midtown - The Village Collection,,211 Carefree Way,Summerville,521990.0,,,,,not_found,none
+4,Catherine,Cromie,13366712099,309 Chancellors Park Ct,Simpsonville,665000.0,,,,,not_found,none
+3,Chadrick,Widtfeldt,,310 Spartan Dr,Lexington,249900.0,,,,,not_found,none
+5,Ella,Schucker,,615 Lemon Drop Dr,Longs,419900.0,,,,,not_found,none
+3,Ella,Schucker,,620 Lemon Drop Dr,Longs,384900.0,,,,,not_found,none
+4,Kerri,Drafts,,313 Fox Glen Dr,Blythewood,299000.0,,,,,not_found,none
+3,Ian,Raysor,19412430369,257 Jean Wells Dr,Goose Creek,245000.0,,,,,not_found,none
+3,Ross,Thames,18434128062,903 Kit Hall Rd,McClellanville,675000.0,,,,,not_found,none
+3,Heather,Crabtree,16016682520,258 Central Creek Dr,Goose Creek,408000.0,,,,,not_found,none
+3,Susanna,Lee,18438709960,5 Briarcliff Dr,Charleston,449000.0,,,,,not_found,none
+4,Roman,Ramos,,3168 Stanyarne Dr,Charleston,695000.0,,,,,not_found,none
+3,Heather,Crabtree,16016682520,254 Central Creek Dr,Goose Creek,423500.0,,,,,not_found,none
+3,Stephanie,Joseph,,14 Windmill Cir,Irmo,219000.0,,,,,not_found,none
+3,"CROWE,","LATONIA, A",18642207201,15 Chalet Ct,Anderson,299999.0,,,,,not_found,none
+5,Daniel,Hamersky,,1054 Elmswell Ln,Lyman,339000.0,,,,,not_found,none
+3,Ashley,Brown,,543 Oakleaf Chase Cir,Blythewood,457070.0,,,,,not_found,none
+4,Mary,Anne Eubank,,2315 Gadsden St,Columbia,649900.0,,,,,not_found,none
+4,Shelley,Woody,,258 Carrington Dr,Lugoff,307000.0,,,,,not_found,none
+3,Sharon,Eargle,,1120 Tyeu Trl,Columbia,225000.0,,,,,not_found,none
+5,Austin,Hubbard,,1200 University Pkwy,Blythewood,700000.0,,,,,not_found,none
+3,Mary-neel,Mcclintock,18646167280,123 Monaview Cir,Greenville,270000.0,,,,,not_found,none
+4,Matt,Downing,17045171570,3004 Tranquility Sydney F Loop Unit 2050,Longs,339990.0,,,,,not_found,none
+3,Matt,Downing,17045171570,3012 Tranquility Pendleton K Loop Unit 2052,Longs,289990.0,,,,,not_found,none
+3,Ginger,Parks,18646218099,207 Gibbs Rd,Wellford,274900.0,,,,,not_found,none
+3,Rochelle,Hicklin,,908 Woodale Cir,Columbia,150000.0,,,,,not_found,none
+3,Sarah,Aiken,18645510298,824 Chick Springs Rd,Taylors,315000.0,,,,,not_found,none
+4,Matt,Downing,17045171570,2914 Tranquility Gibson F Loop Unit 2043,Longs,435990.0,,,,,not_found,none
+4,Auberon,Woods,,6024 Kermode Dr,Conway,386940.0,,,,,not_found,none
+3,Kayla,Roland,,114 Pine Hall Dr,Goose Creek,359900.0,,,,,not_found,none
+5,Auberon,Woods,,1036 Bear Bone Dr,Conway,415710.0,,,,,not_found,none
+3,Williette,Lee,,7 Desoto Dr,Aiken,350000.0,,,,,not_found,none
+3,Sheldon,Mccarter,14272071319,2156 Olde Creek Rd,Rock Hill,460000.0,,,,,not_found,none
+5,Jonathan,Elkin,18643547244,5 Blacksburg Ct,Simpsonville,625000.0,,,,,not_found,none
+4,Daniel,Shahid,18433246926,73 Hanover St,Charleston,849900.0,,,,,not_found,none
+3,Evergreen,Hills,,8 Juniper Valley Circle,Piedmont,302990.0,,,,,not_found,none
+3,John,Kouten,18438104171,123 Manchester Rd,Summerville,300000.0,,,,,not_found,none
+4,Justin,Bombard,,105 Bear Creek Ct,Blythewood,575000.0,,,,,not_found,none
+4,Arbor,Gate,,Woodruff Road,Simpsonville,638769.0,,,,,not_found,none
+3,Andrea,Arencibia- Moore,18645523602,110 Ligon St,Pickens,235000.0,,,,,not_found,none
+4,Alexis,Jean,,2390 Mount Hebron Rd,Cassatt,759000.0,,,,,not_found,none
+3,The,Elliott Team,17706391174,94 Stratford Village Way,Bluffton,639900.0,,,,,not_found,none
+5,Coachman,Reserve,,101 Belgian Ln,Simpsonville,626995.0,,,,,not_found,none
+3,Kristen,Briley,18435095661,1811 Parkland Preserve Ln,Charleston,620000.0,,,,,not_found,none
+3,Casey,Estridge,,4620 Bonnie Forest Blvd,Columbia,198800.0,,,,,not_found,none
+3,Randy,Bracciodieta,,1699 Moonseed Dr,Longs,465038.0,,,,,not_found,none
+3,Eileen,Obeid,18433129595,1005 W Patterson Pt,Hanahan,500000.0,,,,,not_found,none
+4,Juan,Garcia,17862959125,9 E Oak Hill Ct,Piedmont,109900.0,,,,,not_found,none
+4,Ianna,Fincher,18439348779,216 Chessington Cir,Summerville,395000.0,,,,,not_found,none
+4,Westpoint,Gardens by Toll Brothers,,107 Arabella Dr,Piedmont,537995.0,,,,,not_found,none
+4,Fieldview,,,123 Fox Rae Drive,Conway,319000.0,,,,,not_found,none
+4,Blue,Heron Retreat,,759 Ebb Tide Road,Little River,409990.0,,,,,not_found,none
+4,Cypress,Preserve - American Dream Series,,302 Little Brook Lane,Moncks Corner,358000.0,,,,,not_found,none
+3,Toll,Brothers at SayeBrook,,1139 Milford Way,Myrtle Beach,485995.0,,,,,not_found,none
+4,Bethany,Farms,,3 Birch Horizon Ave,Simpsonville,710995.0,,,,,not_found,none
+3,Jeremiah,Phillips,18644381488,101 Paris View Dr,Greenville,600000.0,,,,,not_found,none
+4,Jolene,Peddicord,18649051815,311 Encampment Blvd,Simpsonville,499000.0,,,,,not_found,none
+4,Orchid,Ridge at The Hive,,1141 W Martintown Road,North Augusta,,,,,,not_found,none
+5,Parkers,Summit,,24 Bramall Dr,Greer,630179.0,,,,,not_found,none
+4,Clairbourne,,,691 Tess St,Graniteville,323200.0,,,,,not_found,none
+3,Martintown,Ridge,,5217 Proper Ct,North Augusta,284900.0,,,,,not_found,none
+4,Clairbourne,,,713 Tess St,Graniteville,298375.0,,,,,not_found,none
+3,Providence,at Trolley Run Station,,4036 Hartshorn Cir,Aiken,328975.0,,,,,not_found,none
+4,Chapin,Place,,704 Feldspar Ct,Chapin,389900.0,,,,,not_found,none
+3,Bridgeport,,,108 Thurgood Drive Ext,Greenville,501055.0,,,,,not_found,none
+3,The,Bluffs at Kay Single Family Homes,,117 River Knoll Dr,Easley,291350.0,,,,,not_found,none
+4,Portrait,Hills,,3024 Tanbark Oak Lane NW,Aiken,319900.0,,,,,not_found,none
+4,Westbriar,Woods,,1452 Harper Mae Dr,Spartanburg,281995.0,,,,,not_found,none
+3,Martintown,Ridge,,5282 Proper Ct,North Augusta,330375.0,,,,,not_found,none
+4,Essence,at Elms Glen Single Family Homes,,7075 Windham Way,Ladson,349990.0,,,,,not_found,none
+5,Bridgeport,,,107 Thurgood Drive Ext,Greenville,508650.0,,,,,not_found,none
+4,Clairbourne,,,692 Tess St,Graniteville,299200.0,,,,,not_found,none
+3,Southbridge,,,3244 Zeppelin Ln,Sumter,299900.0,,,,,not_found,none
+3,Essence,at Sylvan Park,,5041 Moncrief Circle,Graniteville,241900.0,,,,,not_found,none
+3,The,Mill,,825 Huxley Ln,Elgin,300055.0,,,,,not_found,none
+4,Green,Tree Place,,100 Green Tree Road,Anderson,,,,,,not_found,none
+3,Hunt,Club,,83 Rifle Road,Ridgeland,389990.0,,,,,not_found,none
+4,Parkers,Summit,,34 Elland Dr,Greer,572555.0,,,,,not_found,none
+3,Casey,Scott,18642389654,318 Kelby St,Travelers Rest,475000.0,,,,,not_found,none
+4,Chapin,Place,,721 Feldspar Ct,Chapin,379900.0,,,,,not_found,none
+3,Stoneridge,Villas,,121E 872 Alaska Dr,Myrtle Beach,262990.0,,,,,not_found,none
+3,Friendship,Meadows,,2010 Friendship Meadows Way,Seneca,389990.0,,,,,not_found,none
+3,Shareece,Norman,18432639026,668 Saxon Ave,Spartanburg,220000.0,,,,,not_found,none
+3,Shareece,Norman,18432639026,779 Leonard St,Spartanburg,220000.0,,,,,not_found,none
+4,Everly,Classics,,4381 E Maidenhair Way,Spartanburg,399999.0,,,,,not_found,none
+3,Shareece,Norman,18432639026,674 Saxon Ave,Spartanburg,220000.0,,,,,not_found,none
+3,Shareece,Norman,18432639026,333 Preston St,Spartanburg,220000.0,,,,,not_found,none
+3,Cades,Mill,,217 Cades Mill Rd.,Piedmont,329990.0,,,,,not_found,none
+3,Copper,Pointe Ranches,,124 Copper Point Loop,Conway,289990.0,,,,,not_found,none
+3,Shareece,Norman,18432639026,672 Saxon Ave,Spartanburg,220000.0,,,,,not_found,none
+3,Millwood,Ranches,,2010 Springmill Drive,Boiling Springs,274999.0,,,,,not_found,none
+4,Stanford,Village,,1156 Leverette Way,Lyman,274999.0,,,,,not_found,none
+3,Baker,Grove,,713 Baker Way,Moore,,,,,,not_found,none
+3,Laney,Farms,,112 Azalea Dr.,Greater Monroe Area,265990.0,,,,,not_found,none
+3,Berkeley,2-Story,,6004 Ives Avenue,Spartanburg,284999.0,,,,,not_found,none
+3,Stillwood,Farms,,103 Meadow Ln.,Easley,335990.0,,,,,not_found,none
+3,Hope,Pointe,,1509 Hope Pointe Drive,North Myrtle Beach,,,,,,not_found,none
+3,Meadows,Edge Single Family Homes,,482 Myrtle Meadows Dr.,Conway,279990.0,,,,,not_found,none
+3,Shareece,Norman,18432639026,438 N Forest St,Spartanburg,199000.0,,,,,not_found,none
+5,Village,at White Pine,,501 Stone Pine Drive,Pendleton,347900.0,,,,,not_found,none
+3,Stoneridge,Villas,,121C 868 Alaska Dr,Myrtle Beach,239990.0,,,,,not_found,none
+3,Shareece,Norman,18432639026,670 Saxon Ave,Spartanburg,220000.0,,,,,not_found,none
+5,Ravenloft,,,420 RookRoost Circle,CONWAY,360990.0,,,,,not_found,none
+4,Brookside,Farms,,101 Sunriff Court,Greer,331990.0,,,,,not_found,none
+4,Woodglen,,,1111 Broadrum Street,Piedmont,354990.0,,,,,not_found,none
+5,Kingston,Bay,,2600 Riverboat Way,CONWAY,323490.0,,,,,not_found,none
+3,Brookside,Farms - The Meadows,,4 Oak Edge Lane,Greer,,,,,,not_found,none
+3,Chestnut,Ridge,,23 Silicon Drive,Greenville,313990.0,,,,,not_found,none
+3,Spring,Ridge,,6 Zoey Drive,Anderson,320990.0,,,,,not_found,none
+3,Auberon,Woods,,433 Glacier Way,Conway,318490.0,,,,,not_found,none
+3,Baxter,Village,,2296 Springview Court,Boiling Springs,279990.0,,,,,not_found,none
+3,Varner,Station,,506 Evaleigh Street,Woodruff,266990.0,,,,,not_found,none
+3,The,Forest at Black Bear,,137 Bjorn Way,Longs,263990.0,,,,,not_found,none
+3,Cloverdale,,,6 Archestone Way,Piedmont,304990.0,,,,,not_found,none
+3,Heritage,Crossing,,345 Acosta Circle,CONWAY,305990.0,,,,,not_found,none
+3,Eden,Springs,,161 Hadley Springs Ave,LONGS,315990.0,,,,,not_found,none
+4,Pinewood,Estates,,104 Cottage Red Court,CONWAY,309990.0,,,,,not_found,none
+4,Lakeview,at Kitfield,,120 Morning View Way,Moncks Corner,410950.0,,,,,not_found,none
+5,The,Groves at Bees Creek,,6 Veil Drive,RIDGELAND,367490.0,,,,,not_found,none
+4,Westport,,,346 Miramar Drive,York,498990.0,,,,,not_found,none
+4,Carrington,Woods,,218 Ridley Street,LONGS,302990.0,,,,,not_found,none
+3,Sandpiper,Place,,608 Culmen Court,MYRTLE BEACH,332990.0,,,,,not_found,none
+4,The,Preserve at Shaftesbury Glen,,154 Bantry Lane,CONWAY,358990.0,,,,,not_found,none
+4,Seaboard,Station,,102 Depot Circle,Greenwood,347990.0,,,,,not_found,none
+3,Dove,Crossing,,116 Coralberry Drive,CONWAY,276990.0,,,,,not_found,none
+4,Seven,Oaks,,105 Keating Street,Greenwood,338990.0,,,,,not_found,none
+5,The,Lakes at New Riverside,,58 Marion Lake Rd,Bluffton,506900.0,,,,,not_found,none
+3,K.,Hovnanian's Four Seasons at Carolina Oaks,,17 Peach Blossom Ct,Bluffton,539900.0,,,,,not_found,none
+3,The,Lakes at New Riverside,,396 Hill Pond Rd,Bluffton,449900.0,,,,,not_found,none
+5,Sea,Island Collective,,16 Secession Dr,Beaufort,799900.0,,,,,not_found,none
+4,The,Lakes at New Riverside,,53 Marion Lake Rd,Bluffton,419900.0,,,,,not_found,none
+3,K.,Hovnanian's Four Seasons at Carolina Oaks,,50 Estuary Dr,Bluffton,549900.0,,,,,not_found,none
+4,Coastal,Farms,,105 Keithland Drive,CONWAY,391490.0,,,,,not_found,none
+3,Karen,Keffer,18037091002,1035 Waterway Dr,Sumter,350000.0,,,,,not_found,none
+3,Sea,Island Collective,,162 Secession Dr,Beaufort,689900.0,,,,,not_found,none
+3,The,Lakes at New Riverside,,2 Russell Road,Bluffton,399990.0,,,,,not_found,none
+3,Reeves,Crossing,,1013 Toland Dr # 48,Saint George,299900.0,,,,,not_found,none
+3,K.,Hovnanian's Four Seasons at Carolina Oaks,,10 Java Plum St,Bluffton,639900.0,,,,,not_found,none
+5,Sea,Island Collective,,4 Shiloh Ct,Beaufort,659900.0,,,,,not_found,none
+4,The,Orchards,,4612 Monterrico Dr,Lancaster,456400.0,,,,,not_found,none
+3,Bellevue,,,408 Metz Dr,Greenville,285000.0,,,,,not_found,none
+3,Heritage,Landing,,302 Snow Road,Greer,,,,,,not_found,none
+3,Hinson,Farm,,613 Bluestem Cir,Fountain Inn,417500.0,,,,,not_found,none
+5,Benjamin's,Grove,,335 Goodison Way,Woodruff,539900.0,,,,,not_found,none
+4,Founders,Club,,1824 Betty Ross Dr,Moore,449900.0,,,,,not_found,none
+6,Chris,Reid,,1899 S Waccamaw Dr,Murrells Inlet,2200000.0,,,,,not_found,none
+4,The,Greens at Springlake,,Blessed Hope Rd,York,416900.0,,,,,not_found,none
+3,Colleton,Park,,367 Pascalis Pl,Aiken,488900.0,,,,,not_found,none
+3,Highland,Bluff,,692 Pherson St,Aiken,349900.0,,,,,not_found,none
+4,Bellevue,,,6 Waller Drive,Greenville,340990.0,,,,,not_found,none
+5,The,Fairways at Springlake,,1071 Tradition Club St,York,559900.0,,,,,not_found,none
+4,Hancock,Farms,,Snap Spur Circle,Aiken,406990.0,,,,,not_found,none
+5,Arbordale,Reserve,,Kelly Mill Road,Elgin,434900.0,,,,,not_found,none
+4,The,Greens at Springlake,,1062 Tradition Club St,York,429900.0,,,,,not_found,none
+4,True,Cedar at Woodside Plantation,,True Cedar Way Lot 11,Aiken,564900.0,,,,,not_found,none
+3,Highland,Bluff,,628 Pherson St,Aiken,358990.0,,,,,not_found,none
+5,Hancock,Farms,,7044 Snap Spur Cir,Aiken,574900.0,,,,,not_found,none
+3,Sunrise,,,103 Sunrise Court,Anderson,375900.0,,,,,not_found,none
+4,Benjamin's,Grove,,303 Goodison Way,Woodruff,454490.0,,,,,not_found,none
+3,Rochelle,Hicklin,,207 Lee St,Kershaw,209000.0,,,,,not_found,none
+3,Deb,Maria Lamia,14143331614,,Simpsonville,492000.0,,,,,not_found,none
+4,Anna,Kate Cobb,18642762893,208 Grassy Creek Way,Pendleton,342500.0,,,,,not_found,none
+5,Cypress,Landing,,51 Planters Ct,Hardeeville,434250.0,,,,,not_found,none
+4,Grand,Oaks,,1221 Mosser Drive,COLUMBIA,290000.0,,,,,not_found,none
+3,Village,3,,709 Longton Street,WOODRUFF,230990.0,,,,,not_found,none
+4,Forest,Brook,,201 Forest Brook Drive,EASLEY,,,,,,not_found,none
+5,Wrenfield,at Chanticleer,,3256 Wrenfield Way,NORTH AUGUSTA,349000.0,,,,,not_found,none
+3,Ravencrest,,,3029 Emberly Drive,ROEBUCK,271990.0,,,,,not_found,none
+4,Rocky,River Ridge,,1312 Williamston Road,ANDERSON,,,,,,not_found,none
+4,Pine,Lake Estates,,101 Estateside Drive,ANDERSON,316990.0,,,,,not_found,none
+5,The,Preserve at Shaftesbury Glen,,214 Bantry Ln,Conway,494435.0,,,,,not_found,none
+3,Rutledge,Estates,,204 Walsh Way,WOODRUFF,309500.0,,,,,not_found,none
+4,Preserve,at Cypress Commons,,522 Italian Cypress Ct,Conway,312807.0,,,,,not_found,none
+3,Rutledge,Estates,,554 Woodcot Dr,Woodruff,294900.0,,,,,not_found,none
+3,Hawk,Ridge - Anderson,,Hawk Ridge Drive,ANDERSON,267990.0,,,,,not_found,none
+4,Pinebrook,,,702 Forbury Way,WOODRUFF,,,,,,not_found,none
+4,Village,Grove,,200 Bobbin Road,GREENVILLE,310990.0,,,,,not_found,none
+4,Hunters,Ridge,,806 Visions Way,Woodruff,342990.0,,,,,not_found,none
+5,The,Preserve at Shaftesbury Glen,,238 Bantry Ln,Conway,454425.0,,,,,not_found,none
+5,Heritage,Crossing,,613 Anthem Ct,Conway,348876.0,,,,,not_found,none
+3,Hampshire,Heights,,2005 Lachaise Lane,MOORE,277000.0,,,,,not_found,none
+3,Heritage,Crossing,,350 Acosta Cir,Conway,277985.0,,,,,not_found,none
+4,Palmetto,Valley,,300 Ritter Lane,ANDERSON,308990.0,,,,,not_found,none
+3,Evington,Place,,851 Old Pine Dr,Longs,303640.0,,,,,not_found,none
+5,Adams,Glen,,423 Scarlet Leaf Ln,Greenville,405900.0,,,,,not_found,none
+5,Heritage,Crossing,,524 Acosta Cir,Conway,329990.0,,,,,not_found,none
+4,Auberon,Woods,,3049 Berry Bush Way,Conway,511225.0,,,,,not_found,none
+5,Chapman,Village,,2608 Hudson Trail,CONWAY,337490.0,,,,,not_found,none
+4,Russell,Place,,106 Loretta Dr,Spartanburg,309900.0,,,,,not_found,none
+5,Brayfield,Manor - Signature Collection,,708 Penfold Pointe,Wellford,361900.0,,,,,not_found,none
+5,Russell,Place,,104 Loretta Dr,Spartanburg,329900.0,,,,,not_found,none
+3,Elmhurst,Place,,4403 Rockwood Dr,Conway,340510.0,,,,,not_found,none
+4,Bluffs,at Sun Colony,,524 Sun Colony Blvd,Longs,348990.0,,,,,not_found,none
+4,Livingston,Woods,,439 Lancashire Ln,Irmo,370000.0,,,,,not_found,none
+4,Varner,Station,,737 N Ivyblake Ct,Woodruff,249900.0,,,,,not_found,none
+4,Livingston,Woods,,420 Lancashire Ln,Irmo,328500.0,,,,,not_found,none
+5,Auberon,Woods,,1027 Bear Bone Dr,Conway,412515.0,,,,,not_found,none
+4,Winfield,Farms,,151 Grazing St,Myrtle Beach,392640.0,,,,,not_found,none
+4,Highland,Hills,,4605 Crimson Pass,Graniteville,282965.0,,,,,not_found,none
+3,Heritage,Crossing,,544 Acosta Cir,Conway,286990.0,,,,,not_found,none
+5,Ferry,Grove,,675 Glacier Rd,Lexington,361120.0,,,,,not_found,none
+5,Sycamore,Cove,,533 Inchmore Drive,Woodruff,415990.0,,,,,not_found,none
+5,Pleasant,Brook,,326 Fair Cross Circle,Piedmont,331900.0,,,,,not_found,none
+4,Preserve,at Cypress Commons,,280 Bald Cypress Way,Conway,339515.0,,,,,not_found,none
+5,Elmhurst,Place,,4407 Rockwood Dr,Conway,347095.0,,,,,not_found,none
+4,Elmhurst,Place,,4301 Rockwood Dr,Conway,357740.0,,,,,not_found,none
+4,Preserve,at Cypress Commons,,713 Silver Cypress St,Conway,323440.0,,,,,not_found,none
+5,Sunset,Summits,,635 Munchberry Way,SPARTANBURG,421990.0,,,,,not_found,none
+3,Maple,Grove,,Autumn Maple Drive,CONWAY,309490.0,,,,,not_found,none
+4,The,Preserve at Shaftesbury Glen,,601 Glens Way,Conway,390235.0,,,,,not_found,none
+3,Preserve,at Cypress Commons,,504 Italian Cypress Ct,Conway,304740.0,,,,,not_found,none
+5,Westport,,,510 Mahogany Rd,York,513180.0,,,,,not_found,none
+4,Harrison,Valley,,115 Sweetwood Ln,Simpsonville,450480.0,,,,,not_found,none
+4,Tyger,Pines,,107 Lazzon Road,MOORE,289990.0,,,,,not_found,none
+4,Preserve,at Cypress Commons,,118 Leyland Cypress Drive,CONWAY,317490.0,,,,,not_found,none
+3,Highland,Hills,,4653 Crimson Pass,Graniteville,284930.0,,,,,not_found,none
+3,Sandridge,Park,,701 Grateful Dr,Little River,305590.0,,,,,not_found,none
+4,Chapman,Village,,2623 Hudson Trl,Conway,369195.0,,,,,not_found,none
+4,Sandridge,Park,,660 Grateful Dr,Little River,346940.0,,,,,not_found,none
+3,Adams,Glen,,112 Scarlet Leaf Ln,Greenville,406900.0,,,,,not_found,none
+5,Lake,Tide Summit,,265 Lake Tide Drive,CHAPIN,492990.0,,,,,not_found,none
+4,Eden,Springs,,966 Ireland Dr,Longs,462505.0,,,,,not_found,none
+4,Magnolia,Farms,,3300 Royal Star Ln,Florence,312140.0,,,,,not_found,none
+4,Kingston,Oaks,,1904 Bear Oaks Loop,Conway,286500.0,,,,,not_found,none
+5,Shadow,Stone,,208 Seneca Drive,SIMPSONVILLE,,,,,,not_found,none
+4,River,Trace,,617 River Trace Loop,SIMPSONVILLE,355990.0,,,,,not_found,none
+4,Ravenloft,,,336 Rookroost Cir,Conway,310305.0,,,,,not_found,none
+3,Edgewood,Estates,,117 River Fork Trl,Greenville,336900.0,,,,,not_found,none
+4,Harrison,Valley,,102 Sweetwood Lane,Simpsonville,393990.0,,,,,not_found,none
+4,Eden,Springs,,739 Hadara Dr,Longs,468505.0,,,,,not_found,none
+3,Ravenloft,,,405 Rookroost Cir,Conway,284840.0,,,,,not_found,none
+4,Auberon,Woods,,7028 Cinnamon Dr,Conway,459945.0,,,,,not_found,none
+4,Auberon,Woods,,6004 Paddington Ct,Conway,473160.0,,,,,not_found,none
+4,Auberon,Woods,,7023 Cinnamon Dr,Conway,520700.0,,,,,not_found,none
+4,Harrier,Point,,2007 Gracie Dr,Woodruff,280900.0,,,,,not_found,none
+3,Hawk,Ridge - Anderson,,140 Hawk Ridge Rd,Anderson,264900.0,,,,,not_found,none
+3,Auberon,Woods,,1043 Bear Bone Dr,Conway,356840.0,,,,,not_found,none
+3,Winfield,Farms,,177 Homestead Way,Myrtle Beach,367890.0,,,,,not_found,none
+4,Riverwood,Farm,,111 Willoughby Way,Piedmont,368900.0,,,,,not_found,none
+5,Cedar,Shoals - Signature Collection,,102 Cedar Shoals Way,Piedmont,449900.0,,,,,not_found,none
+4,Cedar,Shoals - Heritage Collection,,102 Cedar Shoals Way,Piedmont,346900.0,,,,,not_found,none
+3,Eden,Springs,,355 Hadley Springs Ave,Longs,421040.0,,,,,not_found,none
+5,Spring,Ridge,,39 Zoey Dr,Anderson,386900.0,,,,,not_found,none
+4,The,Forest at Black Bear,,152 Bjorn Way,Longs,386895.0,,,,,not_found,none
+4,Winfield,Farms,,185 Homestead Way,Myrtle Beach,368691.0,,,,,not_found,none
+4,Spring,Ridge,,502 Sonador Way,Anderson,339900.0,,,,,not_found,none
+3,Coastal,Farms,,204 Squirrel Run Dr,Conway,357505.0,,,,,not_found,none
+5,Beach,View at Grande Dunes,,229 Atlantic Breeze St,Myrtle Beach,739965.0,,,,,not_found,none
+3,Winfield,Farms,,145 Homestead Way,Myrtle Beach,364880.0,,,,,not_found,none
+5,Campbell,Ridge,,713 Catbird Ct,Pelzer,632900.0,,,,,not_found,none
+3,Winfield,Farms,,160 Homestead Way,Myrtle Beach,351840.0,,,,,not_found,none
+3,Hemingway,Landing,,1312 Parkside Court,CONWAY,265490.0,,,,,not_found,none
+4,Spring,Ridge Reserve,,907 Valegro Dr,Anderson,449545.0,,,,,not_found,none
+3,Pinewood,Estates,,112 Cottage Red Ct,Conway,280490.0,,,,,not_found,none
+4,Hemingway,Landing,,1328 Parkside Ct,Conway,327567.0,,,,,not_found,none
+4,Pinewood,Estates,,127 Cottage Red Ct,Conway,307575.0,,,,,not_found,none
+4,Pinewood,Estates,,113 Cottage Red Ct,Conway,311805.0,,,,,not_found,none
+4,Hemingway,Landing,,1337 Parkside Ct,Conway,315115.0,,,,,not_found,none
+3,Coastal,Farms,,212 Squirrel Run Dr,Conway,325935.0,,,,,not_found,none
+4,Auberon,Woods,,604 Asiatic Ct,Conway,468525.0,,,,,not_found,none
+4,Pinewood,Estates,,128 Cottage Red Ct,Conway,298490.0,,,,,not_found,none
+4,Pinewood,Estates,,136 Cottage Red Ct,Conway,290490.0,,,,,not_found,none
+3,Coastal,Farms,,140 Keithland Dr,Conway,335955.0,,,,,not_found,none
+4,Williams,Ridge,,531 Frobisher Drive,Woodruff,388990.0,,,,,not_found,none
+5,Autumn,Glen,,116 Crewe Street,Woodruff,271999.0,,,,,not_found,none
+4,Evington,Place,,108 Huggins Way,Longs,276990.0,,,,,not_found,none
+5,Shiloh,Valley,,410 Creeping Jenny Drive,Piedmont,339900.0,,,,,not_found,none
+5,The,Retreat at East Argent,,1080 Sanctuary Dr,Ridgeland,448250.0,,,,,not_found,none
+3,Mulberry,Estates,,101 Moorish Circle,Simpsonville,391990.0,,,,,not_found,none
+4,Auberon,Woods,,9020 Polar Bear Way,Conway,358090.0,,,,,not_found,none
+4,Pine,Lake Estates,,121 Estateside Dr,Anderson,403900.0,,,,,not_found,none
+3,Eden,Springs,,313 Hadley Springs Ave,Longs,403330.0,,,,,not_found,none
+4,Shadow,Stone,,300 Midway Hill Lane,Simpsonville,383999.0,,,,,not_found,none
+3,Somerset,- The Carlisle Collection,,8675 Farrier Drive,Myrtle Beach,372490.0,,,,,not_found,none
+4,Sandridge,Park,,722 Grateful Dr,Little River,346190.0,,,,,not_found,none
+4,Auberon,Woods,,6016 Kermode Dr,Conway,355090.0,,,,,not_found,none
+4,Auberon,Woods,,8020 Panda Bear Way,Conway,353840.0,,,,,not_found,none
+4,Ravenloft,,,332 Rookroost Cir,Conway,279840.0,,,,,not_found,none
+5,Spring,Ridge,,331 Addalynn Ln,Anderson,329900.0,,,,,not_found,none
+4,Waterside,- The Boardwalk Series,,2705 Tranquility Loop,Longs,439990.0,,,,,not_found,none
+4,The,Abbey at Trolley Run Station,,662 Lytham Dr,Aiken,290230.0,,,,,not_found,none
+5,Adams,Glen,,406 Scarlet Leaf Ln,Greenville,397900.0,,,,,not_found,none
+4,Pinebrook,,,559 Winstone Trl,Woodruff,598200.0,,,,,not_found,none
+4,Ashby,Woods,,1854 Springfield Road,Boiling Springs,331900.0,,,,,not_found,none
+4,The,Abbey at Trolley Run Station,,696 Lytham Dr,Aiken,278230.0,,,,,not_found,none
+3,Avalon,Townes,,815 Ernest Lane,Lyman,250900.0,,,,,not_found,none
+5,The,Coves at the Lakes of Cane Bay,,113 Rowboat Road,Summerville,519990.0,,,,,not_found,none
+4,The,Forest at Black Bear,,156 Bjorn Way,Longs,416505.0,,,,,not_found,none
+3,Harper,Ridge,,1105 Kaden Ct,Roebuck,263900.0,,,,,not_found,none
+4,Auberon,Woods,,919 Hibernation Way,Conway,513685.0,,,,,not_found,none
+3,Palmetto,Place,,205 Evergreen St,Longs,317990.0,,,,,not_found,none
+3,Forestwood,,,9309 Long Meadow Way,Longs,373990.0,,,,,not_found,none
+3,Baxter,Village,,2167 Springview Ct,Boiling Springs,313900.0,,,,,not_found,none
+3,Baxter,Village,,4125 Springshire Ln,Boiling Springs,273900.0,,,,,not_found,none
+3,Hawk,Ridge - Anderson,,109 Soaring Hawk Ct,Anderson,284900.0,,,,,not_found,none
+4,Rutledge,Estates,,574 Woodcot Dr,Woodruff,408900.0,,,,,not_found,none
+3,Waterside,,,2705 Tranquility Loop,Longs,349990.0,,,,,not_found,none
+4,Spring,Ridge Reserve,,1312 Sefton Avenue,Anderson,394990.0,,,,,not_found,none
+3,Beach,View at Grande Dunes,,316 Colonnade Ave,Myrtle Beach,720410.0,,,,,not_found,none
+5,Crossing,at Abner Creek,,512 Hadlow Street,Greer,404900.0,,,,,not_found,none
+5,Fieldview,,,1188 Tibetan St,Conway,341220.0,,,,,not_found,none
+3,Horizons,at Summers Corner - The Estates,,1545 Locals St,Summerville,535330.0,,,,,not_found,none
+5,Winfield,Farms,,174 Winfield Farms Road,MYRTLE BEACH,396990.0,,,,,not_found,none
+3,Sweetwater,Hills,,805 Sweetwater Springs Drive,Moore,367990.0,,,,,not_found,none
+3,Horizons,at Summers Corner - The Legends,,1081 Razor Clam Way,Summerville,452000.0,,,,,not_found,none
+4,Shadow,Stone,,112 Shadow Stone Dr,Simpsonville,389999.0,,,,,not_found,none
+5,Shadow,Stone,,122 Shadow Stone Dr,Simpsonville,384999.0,,,,,not_found,none
+3,Horizons,at Summers Corner - The Legends,,1091 Razor Clam Way,Summerville,417900.0,,,,,not_found,none
+4,Autumn,Glen,,147 Crewe St,Woodruff,252999.0,,,,,not_found,none
+4,Shadow,Stone,,114 Shadow Stone Dr,Simpsonville,379999.0,,,,,not_found,none
+5,Cleveland,Meadows,,1635 Chestnut Grove Way,Spartanburg,284739.0,,,,,not_found,none
+4,Sweetgrass,at Summers Corner - Coastal Collection,,1056 Lettered Olive Ln,Summerville,468235.0,,,,,not_found,none
+5,Sweetgrass,at Summers Corner - Arbor Collection,,1011 Beaver Sage Way,Summerville,444190.0,,,,,not_found,none
+4,Bridgeway,,,422 S Creek St,Fountain Inn,299999.0,,,,,not_found,none
+5,Woodmont,Springs - Dream,,108 Sealy St,Piedmont,314999.0,,,,,not_found,none
+4,Sweetgrass,at Summers Corner - Carolina Collection,,1009 Lettered Olive Ln,Summerville,429015.0,,,,,not_found,none
+3,Reserve,at Clinton Commons - Orchard,,205 Woven Wheel Dr,Clinton,247999.0,,,,,not_found,none
+3,Horizons,at Summers Corner - The Estates,,1002 Razor Clam Way,Summerville,505250.0,,,,,not_found,none
+3,Sweetgrass,at Summers Corner - Row Collection,,1063 Lettered Olive Ln,Summerville,433130.0,,,,,not_found,none
+3,Horizons,at Summers Corner - The Legends,,1079 Razor Clam Way,Summerville,444500.0,,,,,not_found,none
+3,SeaChase,Pointe,,1917 Seachase Way,North Myrtle Beach,445000.0,,,,,not_found,none
+3,Kinsdale,,,2280 Millennium Dr.,Lancaster,480990.0,,,,,not_found,none
+4,Cypress,Preserve - Carolina Collection,,387 Camellia Bloom Dr,Moncks Corner,367600.0,,,,,not_found,none
+3,Reserve,at Clinton Commons - Orchard,,203 Woven Wheel Dr,Clinton,247999.0,,,,,not_found,none
+4,Nexton,,,215 Carefree Way,Summerville,448990.0,,,,,not_found,none
+5,Tupelo,Park,,814 Long Beach Drive,Longs,349500.0,,,,,not_found,none
+4,Harrington,,,Tarbell Ave at Reedy Fork Rd,Greenville,348990.0,,,,,not_found,none
+3,Horizons,at Summers Corner - The Estates,,1555 Locals St,Summerville,506400.0,,,,,not_found,none
+5,Southwell,Commons,,1021 Southwell Dr,Anderson,,,,,,not_found,none
+3,Vickery,Station,,733 Parry Ct,Woodruff,259900.0,,,,,not_found,none
+4,Southwell,Commons,,1020 Southwell Dr,Anderson,,,,,,not_found,none
+3,Marshfield,- Signature Collection,,3037 Pembroke Street,Longs,522000.0,,,,,not_found,none
+4,Marshfield,- Reserve Collection,,3037 Pembroke Street,Longs,449000.0,,,,,not_found,none
+3,Greenpond,Acres,,2325 Greenpond Road,Woodruff,565000.0,,,,,not_found,none
+4,Eden,Springs,,293 Hadley Springs Ave,Longs,511810.0,,,,,not_found,none
+5,Horry,County Homes,,8472 S Highway 905,Longs,578900.0,,,,,not_found,none
+4,Laurens,Glen,,208 Fallkirk Ln,Simpsonville,584999.0,,,,,not_found,none
+4,Laurens,Glen,,201 Fallkirk Lane,Simpsonville,578999.0,,,,,not_found,none
+4,Millstone,Landing,,408 Conifer St,Hardeeville,356365.0,,,,,not_found,none
+4,Arrowood,Acres,,425 Adhurst Dr,Enoree,339999.0,,,,,not_found,none
+3,Shaftesbury,Meadows,,1056 Cherrystone Loop,Conway,334990.0,,,,,not_found,none
+4,The,Abbey at Trolley Run Station,,1041 Tabor Pl,Aiken,239900.0,,,,,not_found,none
+3,Crossing,at Givhans,,1196 Carriage Wood Cir,Ridgeville,329990.0,,,,,not_found,none
+3,Woodglen,,,141 Ives Way,Piedmont,394990.0,,,,,not_found,none
+4,Bradford,Pointe,,800 Meadowbrook Ln,Summerville,429990.0,,,,,not_found,none
+4,Indigo,Bay,,3050 Vasco Loop,Myrtle Beach,540990.0,,,,,not_found,none
+4,Marshfield,- Reserve Collection,,3073 Claredon St,Longs,489900.0,,,,,not_found,none
+3,Spring,Grove,,145 Covey Rise Dr,Aynor,224990.0,,,,,not_found,none
+4,Ashby,Woods,,226 Abraham Way,Boiling Springs,329900.0,,,,,not_found,none
+3,Pinckney,Place,,8867 Salamander Rd Unit 46,North Charleston,349990.0,,,,,not_found,none
+4,Spring,Grove,,144 Covey Rise Dr,Aynor,304990.0,,,,,not_found,none
+3,Iris,Meadows,,867 Rodin Rd,Moore,369990.0,,,,,not_found,none
+3,Braxton,Ridge,,324 Hunter Rd,Simpsonville,555000.0,,,,,not_found,none
+6,Sparrow,Creek,,6006 Beasley Ct,Boiling Springs,488720.0,,,,,not_found,none
+3,Spring,Grove,,149 Covey Rise Dr,Aynor,294990.0,,,,,not_found,none
+3,Sparrow,Creek,,3026 Medford Rd,Boiling Springs,391360.0,,,,,not_found,none
+3,Kinsdale,,,7512 Pedigree Cir,Lancaster,570365.0,,,,,not_found,none
+4,Crossing,at Givhans,,1171 Carriage Wood Cir,Ridgeville,369990.0,,,,,not_found,none
+3,Spring,Grove,,157 Covey Rise Dr,Aynor,264990.0,,,,,not_found,none
+4,Hickory,Ridge,,1263 Kist Road,Greer,,,,,,not_found,none
+3,Hitchcock,Preserve,,5013 Tullamore Drive,Aiken,290400.0,,,,,not_found,none
+3,Beach,View at Grande Dunes,,213 Atlantic Breeze St,Myrtle Beach,699530.0,,,,,not_found,none
+4,Ridge,at Sugar Creek,,8717 Miles Gap Rd,Indian Land,511560.0,,,,,not_found,none
+5,Sparrow,Creek,,6010 Beasley Ct,Boiling Springs,478890.0,,,,,not_found,none
+3,Ambridge,,,120 Buckingham Dr,Conway,326400.0,,,,,not_found,none
+5,Southwell,Commons,,1006 Southwell Drive,Anderson,,,,,,not_found,none
+4,Ridge,at Sugar Creek,,8709 Miles Gap Rd,Indian Land,531790.0,,,,,not_found,none
+4,Marshfield,- Reserve Collection,,3056 Claredon St,Longs,596500.0,,,,,not_found,none
+3,Crestview,,,9023 Margot Pl,Spartanburg,239915.0,,,,,not_found,none
+5,Southwell,Commons,,1013 Southwell Dr,Anderson,,,,,,not_found,none
+3,Bayview,,,301 Azimuth Drive,Conway,329490.0,,,,,not_found,none
+4,Marshfield,- Reserve Collection,,3057 Claredon St,Longs,489900.0,,,,,not_found,none
+4,Indigo,at the Preserve,,8414 Sky Blue Ct,Longs,324990.0,,,,,not_found,none
+3,Del,Webb North Myrtle Beach,,1593 Crested Iris Way,North Myrtle Beach,699965.0,,,,,not_found,none
+4,Southwell,Commons,,1015 Southwell Dr,Anderson,,,,,,not_found,none
+5,Pelham,Crossing,,1022 Devenger Rd,Greer,944990.0,,,,,not_found,none
+4,Kinsdale,,,7533 Pedigree Cir,Lancaster,619147.0,,,,,not_found,none
+4,Bradford,Pointe,,844 Meadowbrook Ln,Summerville,434865.0,,,,,not_found,none
+4,The,Village at Glenn Hills,,307 Broadway Avenue,Gaston,276499.0,,,,,not_found,none
+5,Bradford,Pointe,,806 Meadowbrook Ln,Summerville,452340.0,,,,,not_found,none
+3,Crescent,Cove,,1495 Winding Creek Way,Myrtle Beach,449995.0,,,,,not_found,none
+4,Rivercroft,,,1114 Theodore Brunson Rd,Awendaw,1746107.0,,,,,not_found,none
+3,Bradford,Pointe,,837 Meadowbrook Ln,Summerville,421790.0,,,,,not_found,none
+3,Sweetgrass,Station,,122 Cantona Drive,Summerville,429990.0,,,,,not_found,none
+4,Kinsdale,,,7689 Pedigree Cir,Lancaster,704675.0,,,,,not_found,none
+4,Bradford,Pointe,,871 Meadowbrook Ln,Summerville,435865.0,,,,,not_found,none
+4,Woodglen,,,122 Ives Way,Piedmont,367990.0,,,,,not_found,none
+5,Ambridge,,,113 Buckingham Drive,Conway,373000.0,,,,,not_found,none
+3,Vickery,Station,,726 Parry Ct,Woodruff,264900.0,,,,,not_found,none
+3,Rutledge,Estates,,247 Pretoria Dr,Woodruff,278720.0,,,,,not_found,none
+4,Forestwood,,,2537 Spring Rise Dr,Longs,569065.0,,,,,not_found,none
+4,Marshfield,- Reserve Collection,,3018 Claredon St,Longs,552876.0,,,,,not_found,none
+3,Furnie's,Place,,121 Furnies Pl,Loris,423470.0,,,,,not_found,none
+3,Shaftesbury,Meadows,,1073 Cherrystone Loop,Conway,309990.0,,,,,not_found,none
+4,Shaftesbury,Meadows,,1075 Cherrystone Loop,Conway,329990.0,,,,,not_found,none
+3,Bayview,,,178 Admiral St,Conway,249990.0,,,,,not_found,none
+4,The,Abbey at Trolley Run Station,,1059 Tabor Pl,Aiken,234900.0,,,,,not_found,none
+4,Wildcat,Chase,,227 Hungerford Dr,Summerville,465343.0,,,,,not_found,none
+3,Evergreen,Hills,,108 Juniper Valley Cir,Piedmont,299990.0,,,,,not_found,none
+3,Del,Webb North Myrtle Beach,,1589 Crested Iris Way,North Myrtle Beach,704590.0,,,,,not_found,none
+4,Bailey's,Cove,,51 Lone Cypress Trl,Hilton Head Island,1073425.0,,,,,not_found,none
+4,Braxton,Ridge,,700 Timber Grove Dr,Simpsonville,798579.0,,,,,not_found,none
+3,Islecrest,at Grande Dunes,,Islecrest Community,Myrtle Beach,702990.0,,,,,not_found,none
+4,Braxton,Ridge,,403 Rustic Outland Dr,Simpsonville,723581.0,,,,,not_found,none
+3,Dillon,Village,,1231 Canterfield Pl,Spartanburg,260990.0,,,,,not_found,none
+3,Kings,River Preserve,,2004 Kings River Trail,Hollywood,638990.0,,,,,not_found,none
+4,Evergreen,Hills,,504 Cedar Valley Dr,Piedmont,336990.0,,,,,not_found,none
+4,Evergreen,Hills,,104 Juniper Valley Cir,Piedmont,318990.0,,,,,not_found,none
+4,Anderson,Oaks,,178 Anderson Oaks Ln,Easley,436433.0,,,,,not_found,none
+5,Evergreen,Hills,,100 Juniper Valley Cir,Piedmont,337990.0,,,,,not_found,none
+4,Evergreen,Hills,,612 Silver Fir St,Piedmont,343480.0,,,,,not_found,none
+3,Islecrest,at Grande Dunes,,7712 Vicino Path,Myrtle Beach,749271.0,,,,,not_found,none
+3,The,Settlement,,18 Lewes Ave,Simpsonville,362990.0,,,,,not_found,none
+3,Furnie's,Place,,109 Furnie's Place,Loris,414900.0,,,,,not_found,none
+4,Sherwood,Gardens,,248 Talbert Trl,Landrum,297395.0,,,,,not_found,none
+3,Wildcat,Chase,,114 Scout Drive,Summerville,421990.0,,,,,not_found,none
+5,Central,Park,,752 Minton Rd,James Island,961180.0,,,,,not_found,none
+3,Edgewood,Farms,,109 Cedar Shoals Court,Easley,275900.0,,,,,not_found,none
+3,Edgewood,Farms,,133 Edgewood Farms Ct,Easley,335275.0,,,,,not_found,none
+4,Anderson,Oaks,,177 Anderson Oaks Ln,Easley,459990.0,,,,,not_found,none
+3,Enclave,at The Settlement,,103 Beautyberry St,Simpsonville,337990.0,,,,,not_found,none
+5,Enclave,at The Settlement,,104 Wilson School St,Simpsonville,383985.0,,,,,not_found,none
+3,Islecrest,at Grande Dunes,,7724 Vicino Path,Myrtle Beach,664990.0,,,,,not_found,none
+4,The,Settlement,,6 Plain Post Trl,Simpsonville,462867.0,,,,,not_found,none
+3,Enclave,at The Settlement,,7 Golden Astor Dr,Simpsonville,324490.0,,,,,not_found,none
+4,Braxton,Ridge,,900 Cedarleaf Way,Simpsonville,696177.0,,,,,not_found,none
+4,Benjamin's,Grove,,621 Farmdale Dr,Woodruff,439990.0,,,,,not_found,none
+3,Pamela,McKenzie,18433382072,112 Sunset Cir,Hardeeville,319000.0,http://pamsellslowcountry.kwrealty.com,,,,not_found,hunter_finder
+4,Ellie,Sineath,,270 Clarabelle Ln,Summerville,434000.0,,,,,not_found,none
+4,The,Islands,,2081 Saltwater Bend,BEECH ISLAND,273300.0,,,,,not_found,none
+5,Ellie,Sineath,,109 Clarabelle Ln,Summerville,429000.0,,,,,not_found,none
+4,Ryan,Pirkle,,333 Lewisham Rd,Columbia,299200.0,,,,,not_found,none
+4,Susanna,Lee,18438709960,2161 Tall Grass Cir,Mount Pleasant,875000.0,,,,,not_found,none
+3,Lasandra,Aiken,18649658222,2004 Creekview Dr Lot 58,Anderson,439000.0,,,,,not_found,none
+3,Renaissance,Place,,26 Renaissance Row Dr,Greenville,370000.0,,,,,not_found,none
+4,Wuindy,Rodriguez,,5 Valley Glen Ct,Greer,315000.0,,,,,not_found,none
+3,Renaissance,Place,,18 Renaissance Row Dr,Greenville,379000.0,,,,,not_found,none
+3,Renaissance,Place,,24 Renaissance Row Dr,Greenville,370000.0,,,,,not_found,none
+4,Eagle,Creek,,Thomas Lane,Central,415900.0,,,,,not_found,none
+3,Long,Bay Golf Club,,882 Foxtail Dr,Longs,358900.0,,,,,not_found,none
+3,Long,Bay Golf Club,,902 Foxtail Dr,Longs,379900.0,,,,,not_found,none
+3,Renaissance,Place,,24 Deans Pleasant Dr,Greenville,318550.0,,,,,not_found,none
+4,Long,Bay Golf Club,,Fox Tail Drive,Longs,401900.0,,,,,not_found,none
+3,Long,Bay Golf Club,,906 Foxtail Dr,Longs,379900.0,,,,,not_found,none
+5,Huckleberry,Estates,,5020 Huckleberry Ln,Conway,472647.0,,,,,not_found,none
+4,Beaufort,County Homes,,2206 Spanish Court,Beaufort,999999.0,,,,,not_found,none
+4,South,Park,,114 Jacqueline Road,Piedmont,386900.0,,,,,not_found,none
+4,Ruth,Saintusaire,,50 Periwinkle Ct,Irmo,165000.0,,,,,not_found,none
+4,Victorywoods,Village,,4115 Half Mast Loop,Columbia,302900.0,,,,,not_found,none
+3,Lasandra,Aiken,18649658222,2004 Creekview Ridgecrest Dr Lot 58,Anderson,439000.0,,,,,not_found,none
+4,The,Meadows at Midway,,124 Tiger Lily Dr,Anderson,439290.0,,,,,not_found,none
+4,Walker's,Pointe,,504 Tilman Ct,Anderson,649900.0,,,,,not_found,none
+5,Jamie,Boney,18033614137,531 Dutton Way,Blythewood,517146.0,http://www.mungo.com,jboney@mungo.com,83,accept_all,found,hunter_finder
+4,Angela,Franco,,1317 Algeddis Dr,Greer,415000.0,,,,,not_found,none
+4,Angela,Franco,,526 W Holloway Dr,Woodruff,417000.0,,,,,not_found,none
+4,Madison,Robertson,,100 Warren Ave,Lamar,137000.0,,,,,not_found,none
+4,Tonya,Upton,,1840 D Ave,West Columbia,279900.0,,,,,not_found,none
+4,Pleasant,Brook,,268 Fair Cross Cir,Greenville,317810.0,,,,,not_found,none
+3,Ginger,Parks,18646218099,1080 Sousa Ct,Spartanburg,444900.0,,,,,not_found,none
+3,Palmetto,Place,,304 Jessamine St,Longs,322990.0,,,,,not_found,none
+3,Palmetto,Place,,300 Jessamine St,Longs,293990.0,,,,,not_found,none
+3,Shaftesbury,Meadows,,105 Foxford Drive,Conway,336990.0,,,,,not_found,none
+3,Rivertown,Landing,,558 Wilbur Road,Conway,295990.0,,,,,not_found,none
+3,The,Ponds,,467 Hundred Oaks Pkwy,Summerville,509990.0,,,,,not_found,none
+4,Erica,Powell,18642025344,102 Kathryan Ct,Greenville,430000.0,,,,,not_found,none
+4,Auberon,Woods,,6032 Kermode Dr,Conway,357090.0,,,,,not_found,none
+6,Paul,Arini,,844 Neff Ct,Fort Mill,769000.0,,,,,not_found,none
+5,Sarah,Couch,18649055266,380 Forrester Dr,Greenville,1225000.0,,,,,not_found,none
+5,Brandy,Hancock,18433644128,1334 Jameson Rd,Easley,619900.0,,,,,not_found,none
+4,The,Preserve at Shaftesbury Glen,,724 Doonbeg Ct,Conway,380820.0,,,,,not_found,none
+3,SayeBrook,,,1135 Milford Way,Myrtle Beach,465990.0,,,,,not_found,none
+3,Courtney,Zachmeyer,16072294705,102 Dockwell Ln,Summerville,425000.0,,,,,not_found,none
+4,Andy,Bovender,18438002692,211 Haddrell St,Mount Pleasant,4380000.0,,,,,not_found,none
+3,K.,Hovnanian's Four Seasons at Carolina Oaks,,14 Carolina Oaks Avenue,Bluffton,519990.0,,,,,not_found,none
+3,Sea,Island Collective,,12 Secession Drive,Beaufort,629990.0,,,,,not_found,none
