@@ -444,7 +444,7 @@ Bedrooms,FirstName,LastName,Phone,Address,City,Price,Website,Email,HunterScore,H
 3,Anna,Catron,18649151316,1A Love Dr,Travelers Rest,580000.0,http://www.homesweetsouthernhome.com,theannmortonteam@gmail.com,89,valid,actor
 6,Sally,Lucas,18037600289,136 Hawks Ridge Ln,Chapin,750000.0,https://www.sallylucashomes.com,sallylucashomes@gmail.com,89,valid,actor
 5,Heather,Skinner,17046613406,85020 Newloch Ct,Lancaster,542000.0,http://residentialunleashed.kw.com,heatherskinner@kw.com,100,valid,actor
-4,null,Seth June Team,18433530093,6052 Renata Ln,Myrtle Beach,1890000.0,sethjune.com,sethjuneteam@shjune.com,100,valid,actor
+4,,Seth June Team,18433530093,6052 Renata Ln,Myrtle Beach,1890000.0,sethjune.com,sethjuneteam@shjune.com,100,valid,actor
 5,Dan,Hamilton,18645277685,114 Magnolia St,Reidville,328000.0,http://www.MyGreenvilleHome.com,info@mygreenvillehome.com,100,valid,actor
 4,Randal,"Longo, Agent",18437376347,814 Swing About,Greenwood,595000.0,http://www.isaverealty.com/,info@isaverealty.com,100,valid,actor
 3,Amy,Mckitrick,18036776528,144 Graydon Ct,West Columbia,367000.0,http://www.amysellssc.com,amymckitrick31@gmail.com,91,valid,actor
@@ -488,7 +488,7 @@ Bedrooms,FirstName,LastName,Phone,Address,City,Price,Website,Email,HunterScore,H
 3,Ethan,Casey,18647061693,231 Metcalf Ct,Spartanburg,305000.0,,ecasey9595@gmail.com,88,valid,actor
 4,Robyn,Lane,18432225599,2357 Rice Pond Rd,Charleston,850000.0,http://Erawilderrealty.com,robynlane01@icloud.com,90,valid,actor
 4,Kimberly,Sinnett,18033601415,183 Andover Way,Lugoff,349500.0,http://www.conquesthomes.com,kimberly.sinnett@gmail.com,91,valid,actor
-3,null,Pivot Properties Team,18435828250,613 Mirella Loop,Myrtle Beach,430000.0,,thepivotproperties@gmail.com,90,valid,actor
+3,,Pivot Properties Team,18435828250,613 Mirella Loop,Myrtle Beach,430000.0,,thepivotproperties@gmail.com,90,valid,actor
 3,Brent,Humphries,18038049887,1950 Daisy Couch Rd,Lancaster,575000.0,,brenthumphries9887@gmail.com,89,valid,actor
 3,David,& Dale Cross,18432982052,68 Stroup Rd,Seabrook,1049000.0,www.DavidDale.com,david@daviddale.com,100,valid,actor
 5,Alexander,Barrientos,18439033550,1307 Fiddlehead Way,Myrtle Beach,1150000.0,,abarrientos@c21harrelson.com,100,valid,actor
@@ -608,3 +608,12 @@ Bedrooms,FirstName,LastName,Phone,Address,City,Price,Website,Email,HunterScore,H
 4,Bethany,Way,18037221900,806 S Woodrow St,Columbia,175000.0,www.bethanyway.com,bethany.lynn.way@gmail.com,89,valid,actor
 3,Mariah,Matthews,18034791239,308 Angus Dr,Columbia,238500.0,,matthewsrealtors@gmail.com,88,valid,actor
 3,Michelle,Berryman,16083355119,1321 Cedarwood Ln,Rock Hill,230000.0,michelle-homes.com,hello@michelle-homes.com,100,valid,actor
+4,MARTA,PEREZ,18438103510,1057 Lettered Olive Ln,Summerville,477185.0,,marta.perez@lennar.com,90,valid,actor
+4,Hope,Derrick,18039607114,250 Thacher Loop,Elgin,420000.0,thederrickteam.com,hope@thederrickteam.com,100,valid,actor
+4,The,Ussery Group,18437577712,7 Indigo Plantation Rd,Okatie,1385000.0,http://www.usseryrealestate.com,johnny@usserygroup.com,100,valid,actor
+3,Dusty,Conine,18037982300,1821 Luster Ln,Columbia,155000.0,,mail@co9group.com,100,valid,actor
+3,Lise,Gulick,18432841800,507 Sanders Farm Ln,Wando,800000.0,,lise.gulick@carolinaoneplus.com,92,valid,actor
+5,Ryan,Lerow,18046917482,1526 Afton Way,Fort Mill,825000.0,https://m.facebook.com/p/Lerow-Co-Real-Estate-Team-100093599061606/,ryan@lerowco.com,100,valid,actor
+3,Jeanette,'JD' Denney,18434910455,198 Chickasaw Ln,Myrtle Beach,319999.0,https://jeanettedenney.realscout.me/,jdsellsrealty@tobringyouhome.com,92,valid,actor
+3,Crystal,Brodie,18435135256,176 Moon Dance Ln,Summerville,345000.0,http://www.CharlestonHouseHunter.com,info@charlestonhousehunter.com,100,valid,actor
+4,Noah,Mcbride,17067015940,426 Bridle Path Rd,North Augusta,470000.0,themcbrideteam.com,noah@themcbrideteam.com,100,valid,actor
