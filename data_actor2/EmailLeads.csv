@@ -96,7 +96,7 @@ Bedrooms,FirstName,LastName,Phone,Address,City,Price,Website,Email,HunterScore,H
 4,Team,Hardee Hunt and Williams,19102566998,318 Englewood Dr,Wilmington,415000.0,http://www.hardeehuntandwilliams.com,info@hardeehuntandwilliams.com,100,valid,actor
 3,Laura,FitzHugh,19104771124,6195 Bethel Rd SE,Southport,565000.0,https://laurafitzhugh.kw.com/,lfitzhugh25@icloud.com,91,valid,actor
 4,James,Redden,13367826291,221 Stonehedge Dr,King,279900.0,www.douglasredden.com,jamessoldit@kw.com,100,valid,actor
-3,null,Living By The Coast Realty Group,19102023638,217 Cherry Blossom Dr,Richlands,275000.0,,team@livingbythecoast.com,100,valid,actor
+3,,Living By The Coast Realty Group,19102023638,217 Cherry Blossom Dr,Richlands,275000.0,,team@livingbythecoast.com,100,valid,actor
 4,Aletha,McCants,18432898901,405 Whitetail Way,Tabor City,339000.0,https://alethamccants.myrealtyonegroup.com/,aletham.mccants@gmail.com,91,valid,actor
 3,Jerry,Bryant,13364684854,5101 Center Rd,Jonesville,315000.0,,bryanthomect@yadtel.net,100,valid,actor
 4,Spencer,Harrell,13369065436,3506 Cardinal Ridge Dr,Greensboro,359900.0,WWW.KERNERSVILLEHOUSES.COM,spencerlrg@gmail.com,91,valid,actor
@@ -333,3 +333,278 @@ Bedrooms,FirstName,LastName,Phone,Address,City,Price,Website,Email,HunterScore,H
 4,Tasha,Viney,17042229052,1613 Painted Horse Dr,Indian Trail,524900.0,http://www.Homesnthecarolinas.com,tasha@homesnthecarolinas.com,100,valid,actor
 4,Lisa-Leigh,Schwartz,17046090100,8820 Heydon Hall Cir,Charlotte,1230000.0,https://www.CarolinaDreamDealer.com,lisaleighschwartz@live.com,92,valid,actor
 3,Greg,Martin,17049032889,4514 Pendock Ct,Charlotte,700000.0,https://www.martingroupproperties.com,greg@martingroupproperties.com,100,valid,actor
+3,Tamelin,Delli-Gatti,13044882700,4 Blake Ln,Seabrook,1225000.0,searchscrealestate.com,tamelinscrealtor@gmail.com,91,valid,actor
+3,Danielle,Scott,18646160958,103 Piedmont Park Rd,Greenville,247900.0,https://livingingreenville.com/,rebrokerdanielle@gmail.com,91,valid,actor
+3,Alyssa,Holmes,18439575673,1530 Highway 646,Loris,299900.0,https://alyssaholmes.century21thomas.com/?oid=&chome=1&odoor=,alyssaholmesrealestate@gmail.com,88,valid,actor
+4,Kevin,Quat,18432527246,70 Deerfield Rd,Hilton Head Island,2195000.0,http://www.bestavailablerealestate.com,kevin@aimstars.com,100,valid,actor
+3,Eddie,Burch,18646089991,200 Sheffield Rd,Greer,379000.0,http://www.cdanjoyner.com/agent_details.php?id=3557,eburch@cdanjoyner.com,100,valid,actor
+3,Rachel,Cooper,18034146731,1232 Deep Creek Rd,Blythewood,295000.0,http://www.rachelcoopersellshomes.com,rachel@nexthomespecialists.com,100,valid,actor
+3,Paul,"M.Capers CRB,CRS,GRI",18438937336,314 Cleveland St Unit 1,Walterboro,170990.0,,preachercape@lowcountry.com,89,valid,actor
+4,Kristie,Brown,14044018725,8620 Hickory Creek Ln,North Charleston,435000.0,https://www.marshviewscharleston.com/,kristieb@rogcoastal.com,100,valid,actor
+3,Nikki,Cain - Host on American Dream TV - Expert Realtor,18039158772,529 Summit Terrace Ct,Columbia,198700.0,https://www.instagram.com/therealnikkiycain/,nikkicain7309@gmail.com,92,valid,actor
+4,Bill,Prebeck,18036056149,237 Bent Oak Dr,Chapin,689900.0,http://www.livinginchapinsc.com,wjp5008@gmail.com,91,valid,actor
+5,Kaz,Burnz,18037301462,6 Green Shank Ct,Irmo,599900.0,http://www.kazburnz.com,kaz@burnzinc.com,92,valid,actor
+4,Russell,Jones,18034145811,1025 Haverford Cir,Columbia,229000.0,https://www.coldwellbankerhomes.com/sc/columbia/agent/russell-jones/aid_203867/?utm_campaign=OLDP-RDC&utm_source=RDC&utm_medium=oldp&utm_content=agentwebsite,russell.jones@cbcarolinas.com,100,valid,actor
+3,Christopher,Meehan,15132906326,2038 Teramo Dr,Myrtle Beach,1579000.0,https://christopher-meehan.remaxsouthernshores.net/agents/2049104/Christopher+Meehan,cmeehanprofessional@gmail.com,90,valid,actor
+3,Robert,Sedgwick,18432272212,1542 Wiregrass Way,Hardeeville,649900.0,https://robertsedgwick.exprealty.com/,rob@hhirealestate.com,100,valid,actor
+4,Tyler,Keis,18032936358,3510 Tanbark Oak Ln NW,Aiken,389075.0,,tkeis05@icloud.com,88,valid,actor
+3,Anna,Holland,18033488655,7850 US Highway 321 S,Ridgeway,639900.0,https://www.facebook.com/annamjeffersreco,anna@mjeffersreco.com,100,valid,actor
+3,Cindy,Norwood,18032369313,2 Yosemite Cir,Sumter,295000.0,,wizehomebuyers@gmail.com,88,valid,actor
+4,GREGG,FESLER,18437970000,148 Southwold Cir,Goose Creek,429000.0,http://greggfesler.com,gregg@greggfesler.com,100,valid,actor
+4,Joetta,Talford,,2117 Belle Regal Cir,Rock Hill,635000.0,http://www.joettatalford.com,joetta@trihomesforsale.com,100,valid,actor
+3,Sallie,Trotter Graham,18439644417,176 Highland Dr,Greenwood,269900.0,,sallieg.re@gmail.com,91,valid,actor
+4,Andrea,"Bell, ABR",18434124703,2378 Brackish Dr,Mount Pleasant,1550000.0,https://www.coldwellbankerhomes.com/sc/mount-pleasant/agent/andrea-bell/aid_95336/?utm_campaign=OLDP-RDC&utm_source=RDC&utm_medium=oldp&utm_content=agentwebsite,andrea.bell@cbcarolinas.com,100,valid,actor
+5,Patrick,O'connor,18039575566,236 Muirfield Ct E,Blythewood,395000.0,http://www.ThePatrickOConnorTeam.com,poconnor@cbcarolinas.com,100,valid,actor
+4,Daniele,Ennis,17063647653,558 Annison Pointe Ct,North Augusta,569900.0,,daniele.ennis.realestate@gmail.com,91,valid,actor
+3,Lisa,Lovro,18036871744,2058 Green Hill Rd,Lugoff,340000.0,http://www.helpsold.com,lisalovro@gmail.com,89,valid,actor
+4,Alexis,Marino,18432544401,117 Old English Dr,Galivants Ferry,415000.0,,alexis.m.marino@gmail.com,88,valid,actor
+3,Joy,Godwin,18037476619,9715 Old State Rd,Cameron,269000.0,,joywgodwin@gmail.com,91,valid,actor
+3,Sabriya,Scott,19128440682,129 Belknap Rd,Goose Creek,239900.0,WWW.SCOTTREALTYPROFESSIONALS.COM,sabriya@scottrealtyprofessionals.com,100,valid,actor
+3,Samuel,Spagnola,18432839202,971 Irving Dr,Little River,349999.0,,samuelspagnola@gmail.com,91,valid,actor
+3,John,Bowen,18642754535,279 Brookfield Rd,Roebuck,299900.0,http://www.greenvillelife.com,john@jbp.team,100,valid,actor
+4,Whitney,Ray,18649858954,107 Boyd Ave,Simpsonville,299900.0,http://www.togetherwefindhome.com,whitneyray@gatheringteam.com,88,valid,actor
+5,Sybil,Hill Real Estate,18438346234,547 Little Barley Ln,Charleston,3385000.0,http://www.sybilhillrealestate.com,s.hill@carolinaone.com,100,valid,actor
+4,Rawlings,LaMotte,18036004082,161 Longtown Place Dr,Columbia,349222.0,https://www.capitalcitygroupsc.com/,rawlings.lamotte@cbcarolinas.com,100,valid,actor
+3,Sarah,Bennett,18038283503,1268 Tributary Dr,Lexington,445000.0,http://www.teamsarah.com,sarah@sarahtherealtor.com,100,valid,actor
+3,SUSAN,"AVILES, Broker/Owner, Reside Real Estate LLC, ABR, ALHS, LMC, E-PRO",18436972383,315 Eclipse St,Summerville,419000.0,www.residerealestatellc.com,susan@residerealestatellc.com,100,valid,actor
+3,Tim,Elder,18646162147,176 Coleman Rd,Wellford,400000.0,http://www.greenvillehomelistings.com,time@timelder.com,100,valid,actor
+5,Jason,"T. Ellis, Broker",18432222672,2036 Summer Rose Ln,Myrtle Beach,1020000.0,http://www.jteRealEstate.com,jason@jterealestate.com,100,valid,actor
+3,Laura,Moore,18648033555,722 Pope Field Rd,Easley,324800.0,www.yourgreenvillerealtors.com,themooreteamllc@gmail.com,89,valid,actor
+3,Tiffany,J Collins,18436161251,1432 Critcher Rd,Florence,194900.0,http://www.tiffanysellsflorence.com,tiffanysellsflorence@gmail.com,90,valid,actor
+3,Leroy,Hammond,18032188392,181 Spring Oak Ln,North Augusta,255000.0,Leroyhammond.kw.com,leroyhammond@kw.com,91,valid,actor
+4,Suzanne,Ghaleb,17046074282,3475 Pikeview Rd,Fort Mill,739000.0,https://www.northgroupre.com/agent.php?&agentid=1049612,suzanneghaleb.realty@gmail.com,92,valid,actor
+3,Kelly,Jo Hard,18646593220,1115 Cascadia Ct,Wellford,280900.0,,kellyjo.hard@meritagehomes.com,100,valid,actor
+3,Nadine,Gilchrist,18643756521,166 Sweetgum Loop,McCormick,319000.0,SAVANNAHLAKESVILLAGE.COM,nadine@liveslv.com,100,valid,actor
+3,Lenae,Raymond,18439073044,1107 Kings Town Thorpe D Way Lot 91,Conway,456780.0,,lenaer6@gmail.com,88,valid,actor
+3,Shannon,Rollings,17063494999,602 Morris Run,North Augusta,750000.0,http://shannonr.com,shannon@shannonr.com,100,valid,actor
+3,Charla,McDonald,18433431456,640 Oak Marsh Dr,Mount Pleasant,1100000.0,http://www.charlamcdonaldproperties.com,cmcdonald@carolinaone.com,91,valid,actor
+3,Deborah,Williams,18645999907,105 Guilford Pl,Spartanburg,239777.0,http://www.deborahwilliams.agentprosrealty.com/,agentprosrealty@gmail.com,89,valid,actor
+4,Diane,Staska,,2325 Brackish Dr,Mount Pleasant,999500.0,,diane.staska@carolinaone.com,100,valid,actor
+6,MAC,JENKINSON,18776633456,407 Royall Ave,Mount Pleasant,4275000.0,http://www.jenkinsonandmoore.com,mac@carolinaone.com,100,valid,actor
+5,HEATHER,BURTON,18436549140,512 Palm Blvd,Isle of Palms,2250000.0,,hburton@charlestonrentalproperties.com,100,valid,actor
+3,Alvin,Simmons,18434162000,1404 Cimmaron Ln,Goose Creek,535000.0,,klrw341@kw.com,91,valid,actor
+3,KIM,BOERMAN,18434520688,2111 Razorback Ln,Charleston,475000.0,,kim@experience-charleston.com,100,valid,actor
+3,Jeremy,Garrett,18433777612,1761 Kenwood Rd,Manning,285000.0,https://jeremygarrett.carolinaone.com,jeremy.garrett@carolinaone.com,92,valid,actor
+3,Zachary,Peek,18438554766,3016 Reamer Dr,Murrells Inlet,555000.0,https://zpeek.homesinmyrtlebeachforsale.com,zach@grandstrandcoastalrealty.com,100,valid,actor
+3,Marsha,Widenhofer,18433687153,432 Bb Sams Dr,Saint Helena Island,825000.0,https://www.bhhs.com/bay-street-realty-group-sc310/agent-search-results?full_name=Marsha%2BWidenhofer,marsha.widenhofer@gmail.com,88,valid,actor
+3,Marcy,Alice Cutchall,15704232723,12969 SC 260,Manning,239000.0,http://marcyc.litchfieldbythelake.com/,marcyc@thelitchfieldcompany.com,89,valid,actor
+3,Paige,Walling,18435214200,500 Bb Sams Dr,Saint Helena Island,470000.0,,pkwalling77@gmail.com,90,valid,actor
+4,PAULA,"MCCORMICK - BIC, ABR, GRI, CRS",18032365944,2146 Kingsbury Dr,Sumter,171500.0,http://WWW.PTREO.COM,myrealtor2009@outlook.com,89,valid,actor
+3,Dale,Clift,18644970625,168 S Lake Emory Dr,Inman,400000.0,,daleclift@kw.com,100,valid,actor
+3,Erica,Henderson,18644903394,102 Mason Rd,Gaffney,375000.0,,ericahendersonrealtor@gmail.com,88,valid,actor
+3,Micah,Norman,18034668783,245 Hallie Hills Pl,Lexington,231000.0,,sellbuymicah@gmail.com,89,valid,actor
+5,Susan,Riley,18037416009,161 Woodlake Cir,Chapin,950000.0,https://carolinaresultsteam.com/,susan@carolinaresultsteam.com,100,valid,actor
+5,Amanda,Braghirol,18645803979,406 Red Fern Trl,Simpsonville,959900.0,http://upstateexpertsrealty.com,amandabraghirol@gmail.com,92,valid,actor
+3,Kristen,Driggers,18432457767,700 E Roosevelt St,Dillon,245000.0,https://kristendriggers.fathomrealty.com/,kldriggers2@gmail.com,91,valid,actor
+4,Brian,L. Faltus,18035301703,938 Beaufort Farm Rd,Blythewood,315000.0,https://www.columbiahomestore.com/,brianfaltus@kw.com,100,valid,actor
+5,Carol,Syler,17046090726,4050 Brandywine Ter,Lancaster,800000.0,https://carolsylerhomes.com,carolsylerhomes@gmail.com,90,valid,actor
+3,Daniel,Vanover,18644737479,7 Chestnut Ridge Dr,Inman,350000.0,http://www.beyondresc.com/,daniel@beyondresc.com,100,valid,actor
+3,Chad,Jones,18039575566,45 Bluebead Ct,Columbia,219900.0,http://www.cbjhomesforsale.com/,cjones@cbcarolinas.com,100,valid,actor
+3,Jennifer,Hamilton,18434586734,Brace Dr Lot 1A,Pawleys Island,1395000.0,,jennifer@bhhscoastal.com,100,valid,actor
+3,shelly,phillips,,1021 Knob Creek Ln,Tega Cay,530000.0,www.homewithshelly.com,sphillips@highgarden.com,100,valid,actor
+3,Hannah,Hart,18643672288,205 Timms Rd,Piedmont,340000.0,http://soldbylockehart.com,hannah@caseygroupre.com,100,valid,actor
+3,Thomas,Blackmon,18432066133,1141 Whites Cir,Darlington,276500.0,temoryproperties.com,thomas@cbflorence.com,90,valid,actor
+3,Michael,Buie,18033548046,2230 Raven Dr,Rock Hill,539900.0,https://michaelbuie.lpthomesearch.com,michael.buiehomes@gmail.com,91,valid,actor
+4,Tracy,Mccants,18435279476,3 N Hazel Ave,Andrews,200000.0,,tracymccants4@gmail.com,88,valid,actor
+3,Carlos,Handal,18649082353,124 Village Vista Dr,Fountain Inn,389000.0,https://carlos.carolinaresults.com/,carloshandalrealtor@gmail.com,91,valid,actor
+4,Judy,Upchurch,18432747940,112 Palm Terrace Loop,Conway,295000.0,,upchurchreservices@gmail.com,89,valid,actor
+3,Natalie,Robinson,12705903573,1821 W Oakland Ave,Sumter,100000.0,https://natalie.sellingcolumbiasc.com/,natalie@yiprealestate.com,100,valid,actor
+4,Susan,"Gallion, Agent",18643314809,116 Leatherton Way,Greenville,525000.0,http://www.cbcaine.com/agents/susangallion,sgallion@cbcaine.com,100,valid,actor
+3,Jennifer,Wilson,18649075920,202 Durness Dr,Simpsonville,469000.0,http://www.cbcaine.com/agents/JenniferWilson,jwilson@cbcaine.com,100,valid,actor
+4,Mary,Bishop,18645908550,2048 Halton Oaks Dr,Spartanburg,344900.0,,mbishop@cbcaine.com,91,valid,actor
+5,Melody,Bell,18643537355,122 Jones Creek Cir,Anderson,575000.0,http://www.callmba.com,melody@callmba.com,100,valid,actor
+3,Moricia,Hare,18034636669,1131 Chadford Rd,Irmo,218500.0,http://www.thebesthomesincolumbia.com,propertyconsultants.moricia@gmail.com,90,valid,actor
+4,The,JT Livingston Group,18033486289,158 Summer Orchard Dr,Lexington,297000.0,https://www.jtsellscolumbia.com/,jtsellscolumbia@gmail.com,88,valid,actor
+5,Nicolette,Fischer,18032698880,1314 Chestnut Rd,Elgin,465000.0,https://www.nicoletterealestategroup.com/,nicoletteafischer@gmail.com,92,valid,actor
+4,Danielle,Catherine Nisberg,19087233086,3047 Tanbark Oak Ln NW,Aiken,325000.0,,daniellenisberg2@me.com,89,valid,actor
+5,Cullen,Hofmann,14106888782,8446 Middle River Way,North Charleston,550000.0,,cullen.hofmann@gmail.com,88,valid,actor
+3,Dylan,Reese,18032369430,3640 Lindella Rd,Sumter,160000.0,http://www.wesellsumter.com,dreese@wesellsumter.com,100,valid,actor
+4,Luke,Martin,18646344656,202 Allgood Dr,Pickens,492000.0,http://knight.realtor,luke@chknightrealestate.com,100,valid,actor
+4,Coastal,Land & Home Team,18435828690,835 Rabon-Magnolia Plan Rd Lot 5,Aynor,354000.0,http://clhrealty.com,office@clhrealty.com,100,valid,actor
+3,Dylan,Thompson,18434556538,315 Rock Creek Rd,Clemson,365000.0,,dthompson@myrtlebeach.com,89,valid,actor
+3,The,Steel Group,18434211866,2501 Redwood St,Georgetown,237900.0,,thesteelgroupcoordinator@gmail.com,89,valid,actor
+5,W,Rhett Kelly,18032382819,611 Clearview Ct,Columbia,444900.0,,rkelly@svrealty.com,100,valid,actor
+3,Annette,M Bryant,18439296834,3119 Palomino Dr,Beaufort,335000.0,http://www.newcoastcollective.com/,annette@newcoastcollective.com,100,valid,actor
+3,Rebecca,Condeluci,18433331908,2629 Scarecrow Way,Myrtle Beach,329000.0,http://www.sunandsandrealestate.com,rc4745@sccoast.net,88,valid,actor
+3,Fletcher,Sales Team,18433332670,113 Jenna Macy Dr,Conway,415000.0,,fletcher_508@hotmail.com,90,valid,actor
+4,Meghan,Lynch,18432532405,116 N Lakewood Dr,Florence,275000.0,,meghanlynchrealtor@gmail.com,91,valid,actor
+3,Matt,Hydrick,18649407824,301 Cater St,Anderson,175000.0,,matt@mhydrick.com,100,valid,actor
+3,John,Neil,18649187129,4 Adam Walker Dr,Greenville,385000.0,https://johnneil.allentate.com,john.neil@allentate.com,100,valid,actor
+3,Christopher,Louviere,18433002766,827 Kirby Ct,Charleston,445000.0,http://www.sellchs.com,christopher@srecharleston.com,100,valid,actor
+4,Rob,Brannan,18036221372,105 Marlee Ct,Lexington,1099000.0,http://www.robbrannan.com,rob@c21v.com,100,valid,actor
+4,Peter,Kouten,18432103034,4764 Gaynor Ave,North Charleston,350000.0,http://peterkoutenteam.com,peter.kouten@carolinaone.com,100,valid,actor
+3,LAURA,SIMMONS,18646307253,4495 Hawkins Rd,Greer,849900.0,http://www.lsahomesales.com/,getsimmonsgetsold@gmail.com,92,valid,actor
+3,Brendan,D'Anna,18436856629,233 Stonebrook Dr,Myrtle Beach,319900.0,,bdpalmettohomes@gmail.com,90,valid,actor
+4,Jen,Audier,15864842526,211 Jefferson St E,York,575000.0,http://www.prestinoadvantage.com,jen@prestinoadvantage.com,100,valid,actor
+4,Jutamas,Freeman - Jan,19802978447,104 Oak Grove Ct,Fort Mill,498900.0,JanFreeman.BHHSCarolinas.com,jan.freeman@bhhscarolinas.com,89,valid,actor
+4,Telly,Topakas,18037486188,100 Morning Lake Dr,Lexington,1300000.0,https://tellytopakas.homeadvantagerealty.com/,tellytopakasrealtor@gmail.com,90,valid,actor
+3,Rupesh,Patel,18645719092,125 Cunningham St,Arcadia,250000.0,https://www.upstatepropertyfinder.com/,rupesh@therp3group.com,100,valid,actor
+4,Sandra,Gilfillan,18036004226,325 Cherokee Pond Trl,Lexington,360000.0,,sandra@tggrealty.com,100,valid,actor
+5,Rick,Horne,18649827653,2 Country Squire Ct,Greenville,1250000.0,,rhorne2007@charter.net,88,valid,actor
+3,Anna,Catron,18649151316,1A Love Dr,Travelers Rest,580000.0,http://www.homesweetsouthernhome.com,theannmortonteam@gmail.com,89,valid,actor
+6,Sally,Lucas,18037600289,136 Hawks Ridge Ln,Chapin,750000.0,https://www.sallylucashomes.com,sallylucashomes@gmail.com,89,valid,actor
+5,Heather,Skinner,17046613406,85020 Newloch Ct,Lancaster,542000.0,http://residentialunleashed.kw.com,heatherskinner@kw.com,100,valid,actor
+4,null,Seth June Team,18433530093,6052 Renata Ln,Myrtle Beach,1890000.0,sethjune.com,sethjuneteam@shjune.com,100,valid,actor
+5,Dan,Hamilton,18645277685,114 Magnolia St,Reidville,328000.0,http://www.MyGreenvilleHome.com,info@mygreenvillehome.com,100,valid,actor
+4,Randal,"Longo, Agent",18437376347,814 Swing About,Greenwood,595000.0,http://www.isaverealty.com/,info@isaverealty.com,100,valid,actor
+3,Amy,Mckitrick,18036776528,144 Graydon Ct,West Columbia,367000.0,http://www.amysellssc.com,amymckitrick31@gmail.com,91,valid,actor
+3,Deana,Mah,18645782120,161 Timberlake Dr,Inman,370000.0,http://www.soldbydeanamah.com/,deana.mah@century21blackwell.com,88,valid,actor
+3,DE-ANN,CARROLL,18436707947,3325 Stonehaven Dr,North Charleston,330000.0,,dcarroll@carolinaone.com,100,valid,actor
+3,Quinnie,Jones,18436671100,205 N Springville Rd,Darlington,315000.0,https://www.quinniesellsflorence.com,q.jones@cbflorence.com,89,valid,actor
+3,Joanne,Gillet,18436556343,305 Brace Dr,Pawleys Island,509900.0,http://www.EdgeOfTheBeach.com,joanne@edgeofthebeach.com,100,valid,actor
+3,Jamie,Allen,18648502724,900 Cricket Ln,Anderson,425000.0,https://bit.ly/JamieAllen,jallen@cbcaine.com,100,valid,actor
+4,Houser,& Co. Team,18439995933,472 Mattamushkeet Dr,Little River,385985.0,,houserandco13@gmail.com,92,valid,actor
+3,Kimberly,Austin,18642217940,247 Clardy Rd,Pelzer,299900.0,thesouthernkey.com,southernkey23@gmail.com,91,valid,actor
+3,Roni,Haskell,18439773119,124 Robin St,Summerville,315000.0,roniandcorealestate.com,roni.haskell@kw.com,89,valid,actor
+4,Wendy,Weeden at Coldwell Banker Realty,18038160230,50 Nature Ln,Elgin,310000.0,http://www.wendyweedengroup.com,wendyweedenrealty@gmail.com,90,valid,actor
+4,The,Mills Group,18433902121,2021 Sage Dr,Myrtle Beach,349000.0,,kevinmillsteam@gmail.com,88,valid,actor
+4,Daniel,L Minolfo,18036403334,1030 Kismet Dr,Aiken,425000.0,,dannyminolfo@gmail.com,91,valid,actor
+5,Lindsey,Moore,18037276504,107 Riggs Dr,Lexington,429000.0,http://columbiahomestory.com,lindsey@yourlegacygroup.com,100,valid,actor
+3,Jason,Klugh,17045609742,3038 Trace Meadow Ct,York,639000.0,https://www.lakewyliecarolinahomes.com/,jason@klughpropertygroup.com,100,valid,actor
+3,Deby,Emanuel,18434465971,4446 New Found Ln,Myrtle Beach,249000.0,http://debyyourrealtor.com,deby@exitcrp.com,89,valid,actor
+4,Courtney,Williams,15713317071,4030 Maidstone Dr,Mount Pleasant,1029000.0,https://www.facebook.com/CourtneyWilliamsRealEstateAgent,courtney@cwilliamschshomes.com,100,valid,actor
+3,Holli,Reese,13605092704,215 Shadybrook Dr,Summerville,400000.0,http://hreese.kw.com/,holli@mssummerville.com,100,valid,actor
+3,Jennifer,Blanche,18438702197,200 Alpine Rd,Summerville,429000.0,,jenniferlblanche@gmail.com,88,valid,actor
+4,Trina,Montalbano,18649077412,335 Boxbury Way,Fountain Inn,331590.0,,client.relations@allentate.com,100,valid,actor
+4,Kirsten,Zinkann,18647047591,129 Saint Johns St,Simpsonville,395000.0,http://zinkann.com,kzinkann@kw.com,100,valid,actor
+3,Blake,Sloan,18432229265,1709 Singleton St,Conway,225000.0,www.BlakeSloan.Com,listings@srgmail.com,100,valid,actor
+4,KENNY,O'SHIELDS,18644262151,111 Bridletrail Ln,Union,440000.0,newhorizonrealtysc.com,kenny@newhorizonrealtysc.com,100,valid,actor
+4,Ophelia,Williams,18034063002,6 Parkwood Ct,Camden,279900.0,http://www.owilliamsandco.com/,owilliams.realtor@gmail.com,91,valid,actor
+3,"SCHMIDT,","ROBERT, C",18643134474,1 Dickens Ln,Taylors,344900.0,http://www.bobschmidtrealtor.com,bschmidt@cbcaine.com,100,valid,actor
+3,Micah,Winn,18036162320,1850 Charter Dr,Rock Hill,325000.0,https://micahwinn.realscout.me/,micah@micahwinn.com,100,valid,actor
+3,Luis,Bordon,18438882067,1 Oatly Cir,Charleston,649500.0,http://www.ChuckTownHomes.com,luis@chucktownhomes.com,100,valid,actor
+4,Melissa,Faile,18035247871,1686 Nestledown Ct,Rock Hill,939900.0,http://www.CarolinaRealtySolutions.com,melissa.faile@crsmail.com,100,valid,actor
+3,Yana,Lynch,18434246068,1716 Gray Oaks Dr,Conway,979900.0,http://www.fideire.com,yana@fideire.com,100,valid,actor
+4,Lailah,Turner,18604882226,355 Fennec Loop,Conway,290000.0,https://lgtcoastalhomes.com/,lgtcoastalhomes@gmail.com,88,valid,actor
+3,Brittany,Foy,18436853969,905 Futrell St,Loris,329000.0,https://www.wesellmyrtlebeachrealestate.com/,brittany@brittanyfoyandassociates.com,100,valid,actor
+4,Diane,LaBaugh,18433253924,126 Hartley Pl,Pawleys Island,547000.0,http://www.pawleysmurrellshomes.com,dianelabaugh@gmail.com,89,valid,actor
+5,LAURIE,"LOPARO, Agent",18434421290,7074 Pumpkinseed Dr,Johns Island,785000.0,http://www.lauriesellscharleston.com,laurieloparo@gmail.com,88,valid,actor
+4,Keith,Darin Hensel,17042317272,555 Shepherd Ln,Clover,975000.0,http://www.keith.helenadamsrealty.com,khensel@helenadamsrealty.com,100,valid,actor
+3,Julie,Hallman,18435686036,1298 Julian Clark Rd,Charleston,575000.0,,jbhallman@kw.com,100,valid,actor
+4,Lewis,Living Team,19084510484,290 Star Lake Dr,Murrells Inlet,668000.0,,beckilewisrealtor@gmail.com,88,valid,actor
+3,Judy,Connaughton,18433155822,609 Six Lakes Dr,Myrtle Beach,255500.0,http://judy.newmyrtlebeachrealestate.com,makethebeachyourhome@gmail.com,88,valid,actor
+5,Braden,Greer,18036039540,285 Baccharis Dr,Columbia,345000.0,http://extramileforyou.com,braden@extramileforyou.com,100,valid,actor
+3,Blake,Gruel,18432523164,280 Club Gate Dr,Bluffton,685000.0,,blake@gruelgroupteam.com,100,valid,actor
+3,Ethan,Casey,18647061693,231 Metcalf Ct,Spartanburg,305000.0,,ecasey9595@gmail.com,88,valid,actor
+4,Robyn,Lane,18432225599,2357 Rice Pond Rd,Charleston,850000.0,http://Erawilderrealty.com,robynlane01@icloud.com,90,valid,actor
+4,Kimberly,Sinnett,18033601415,183 Andover Way,Lugoff,349500.0,http://www.conquesthomes.com,kimberly.sinnett@gmail.com,91,valid,actor
+3,null,Pivot Properties Team,18435828250,613 Mirella Loop,Myrtle Beach,430000.0,,thepivotproperties@gmail.com,90,valid,actor
+3,Brent,Humphries,18038049887,1950 Daisy Couch Rd,Lancaster,575000.0,,brenthumphries9887@gmail.com,89,valid,actor
+3,David,& Dale Cross,18432982052,68 Stroup Rd,Seabrook,1049000.0,www.DavidDale.com,david@daviddale.com,100,valid,actor
+5,Alexander,Barrientos,18439033550,1307 Fiddlehead Way,Myrtle Beach,1150000.0,,abarrientos@c21harrelson.com,100,valid,actor
+3,Sheila,Newton Team,18649406377,121 Wilson Rd,Anderson,275000.0,http://www.SheilaNewtonTeam.com,sheilanewtonteam@gmail.com,88,valid,actor
+4,Kelli,Voss,18034485667,155 Black Mountain Dr,Fort Mill,775000.0,,kelli@thevosshomegroup.com,100,valid,actor
+3,Jeffrey,Young,18642065997,8 Firnstone Ct,Greenville,650000.0,,jyoung984@gmail.com,90,valid,actor
+4,Elise,Witman,18432476772,20 Old Stoney Ln,Hilton Head Island,699990.0,,ewitman@hotmail.com,91,valid,actor
+4,Sheila,Cramer Fleming,17049954204,419 Overcrest St,Myrtle Beach,290000.0,,sheilaflemingrealty@gmail.com,90,valid,actor
+3,Jolene,Puffer,18282168134,850 Cardinal Pl,North Myrtle Beach,625000.0,http://jolenerocksrealestate.com,jolenerocksrealestate@gmail.com,89,valid,actor
+3,Monika,Scurti,18645296761,104 Bermuda Ln,Inman,389900.0,https://kw.com/agent/monika-scurti/858796,monika.scurti@kw.com,100,valid,actor
+3,Peggy,Davis,18438772097,676 Esperia Ln,Myrtle Beach,750000.0,,peggydavismb@gmail.com,89,valid,actor
+5,Christine,Reid Chaplin,18436840097,417 Corley St,Bluffton,5250000.0,https://blufftonareahomesearch.com,creidhhi@gmail.com,89,valid,actor
+3,Sandra,Shaw,18433444644,329 Bayview Ave,Georgetown,255000.0,http://www.SandraShawRealtor.com,sandrashawrealtor@gmail.com,88,valid,actor
+4,Patrick,and Taylor Team,18433386511,26 Angel Wing Dr,Hilton Head Island,1375000.0,http://www.patrickandtaylorteam.com,info@patrickandtaylorteam.com,100,valid,actor
+3,Rochelle,Rennert,18438479694,120 Alston Cir,Goose Creek,299400.0,http://www.theunlockingdreamsteam.com,rochellesellscharleston@gmail.com,90,valid,actor
+3,Shea,Robbins,18432170530,53 Broad St,Charleston,5800000.0,,srobbins@carolinaone.com,100,valid,actor
+4,Kathryn,McDonnell,18144903094,8634 W Fairway Woods Dr,North Charleston,815000.0,https://www.katsellscharleston.com,katsellscharleston@gmail.com,88,valid,actor
+5,Rachel,Urso,18438019087,89 Ashley Ave Unit 89A,Charleston,5950000.0,https://rachelursorealestate.com/,admin@rachelursorealestate.com,100,valid,actor
+3,Zahra,Balov,18644004100,129 Hurst Ave,Anderson,295000.0,,zahra.nexthome@gmail.com,92,valid,actor
+3,Christopher,Bowes,18433682935,28 Park Loop,Bluffton,395000.0,https://www.CoastalInvestmentNetwork.com,chris@coastalinvestmentnetwork.com,100,valid,actor
+4,Jason,B. Brown,14014805952,865 Evans Rd,Charleston,979000.0,www.kg-re.com,realestatenewportri@gmail.com,89,valid,actor
+7,Sally,Awad,17046808689,5093 Gladiola Way,Tega Cay,690000.0,http://sallyawadluxuryproperties.com,sallyawad77@gmail.com,92,valid,actor
+4,Ryan,Mandigo,18432515172,743 Dusty Pine Way,Myrtle Beach,329900.0,http://rcmforrealestate.com,rcmforrealestate@gmail.com,91,valid,actor
+4,Elissa,Campbell,18434107871,600 Parkwood Dr,Goose Creek,374900.0,http://PeninsulaPropertiesSC.com,elissa.campbell@agentownedrealty.com,100,valid,actor
+3,Katlyn,Benjamin,18036075635,919 Bors St,Sumter,190000.0,,katlyn.k.benjamin@gmail.com,89,valid,actor
+3,Cathy,Waddell Cox,18434370593,212 Rifle Ln,Moncks Corner,289900.0,,ccox@century21properties.com,92,valid,actor
+3,Carl,D Patterson,18032428854,167 Sea Island Blvd,Fort Mill,400000.0,https://www.bradleypattersonhomes.com/index.php,carl@bradleypattersonhomes.com,100,valid,actor
+4,Nekka,Gainey,18434532543,561 Endeavor Dr,Florence,271600.0,,victoria29501@gmail.com,89,valid,actor
+3,Paul,Rogers,18647149898,405 Foxhound Rd,Simpsonville,414000.0,paulrogers.greenvillemoves.com,progers@greenvillemoves.com,90,valid,actor
+3,Deanna,Morton,18645177191,157 Windsor Creek Ct,Simpsonville,475000.0,https://deannamorton.bluefieldgroup.com/,deanna@bluefieldgroup.com,91,valid,actor
+3,Robricco,"""Rob"" Porter",15027940931,3113 Woodbridge Rd,Florence,165000.0,https://proporterproperties.com/,rgporter21@gmail.com,89,valid,actor
+3,Jameson,Scott,18436321199,1106 N 8th Ave,Dillon,185000.0,,jamesonscott@kw.com,90,valid,actor
+3,Kodee,Weipert,15754955480,1953 Pinewood Rd,Sumter,275000.0,,kodeeweip17@gmail.com,90,valid,actor
+4,Carrie,Rivera,17044971233,422 Danielle Way,Fort Mill,425000.0,https://carrierivera.exprealty.com,realtorcarrie@shpcarolinas.com,100,valid,actor
+3,Connie,Morse,18039346958,1217 E Brewington Rd,Sumter,450000.0,http://conniesellssumter.com,sumteragent@gmail.com,89,valid,actor
+7,Mike,Green,18438551816,2045 S Waccamaw Dr,Murrells Inlet,2275000.0,http://www.MyrtleBeachPropertyFinder.com,mikegreenmyrtlebeach@gmail.com,91,valid,actor
+3,Jesse,Nelson,18435160425,1919 Brittlebush Ln,Johns Island,599000.0,http://www.charlestonheritagrealestate.com,jesse@charlestonheritagerealestate.com,100,valid,actor
+3,Angela,Miller,18439908963,1301 Mill Creek Dr,Manning,284000.0,https://www.angelamillerteam.net/,angelamillerteam@gmail.com,90,valid,actor
+3,Chad,Murdock,18555873540,Pointer Dr,Summerville,525000.0,,cmurdock@hunterquinnhomes.com,100,valid,actor
+4,Caden,H,18432975778,183 Glen Abbey,Kiawah Island,3800000.0,,chostetlerrealtor@gmail.com,90,valid,actor
+4,Donna,Neese,18039575566,335 Stillington St,Lexington,348900.0,http://www.sweetsouthernhomes.com/,dneese@cbcarolinas.com,100,valid,actor
+3,Nick,Caughman,18034292366,210 Forest Dr,North Augusta,275000.0,http://caughmanrealty.com,nick@teamcaughman.com,100,valid,actor
+4,Missy,Rick,18649798268,144 Light Spring Rd,Easley,329900.0,https://missyrick.missyrick.com/,missy.rick@allentate.com,100,valid,actor
+3,Amber,Wingard,18033195158,2332 Trakand Dr,Lexington,279999.0,http://www.ambersolditsc.com,wingard.amber@gmail.com,88,valid,actor
+3,TJ,Green,18035657432,1014 Kingsbury Dr,Sumter,229900.0,http://tjgreen.realtor,buysellrentwithtj@gmail.com,90,valid,actor
+5,Jessica,Towe,18647100814,107 Country Creek Dr,Pickens,2400000.0,,1jessicatowe@gmail.com,91,valid,actor
+4,RODNEY,HANCOCK,18434371347,4176 Home Town Ln,Ravenel,829900.0,,rodneyhancock08@gmail.com,91,valid,actor
+5,Jennifer,Kluenie,18435723131,5284 Mulholland Dr,Summerville,510000.0,https://www.coldwellbankerhomes.com/sc/summerville/agent/jennifer-hale/aid_95588/?utm_campaign=OLDP-RDC&utm_source=RDC&utm_medium=oldp&utm_content=agentwebsite,jennifer.kluenie@cbcarolinas.com,91,valid,actor
+4,Brian,Seitz,18437082308,108 Alumni Ct,Ladson,339900.0,http://www.bseitz.com,brian.seitz@cbcarolinas.com,100,valid,actor
+3,Windham,"Realtors, Robin Windham",18439916672,3572 Berryhill Rd,Johns Island,435000.0,https://findmyporch.com,robinwindham67@gmail.com,89,valid,actor
+3,Suzy,Torres,18434259451,101 Ewell Ct,Summerville,339900.0,http://www.suzytorres.com,storres@carolinaone.com,100,valid,actor
+4,Matthew,Cuchelo,18457973310,158 Haverhill St,Summerville,425000.0,,matthew.cuchelo@gmail.com,92,valid,actor
+3,Brent,Boatwright,18438192121,749 Beauregard St,Charleston,865000.0,,brent@ashleycooperrealestate.com,100,valid,actor
+5,Drew,Salazar,18435308800,209 Goldfinch Ln,Summerville,429900.0,https://www.synergysc.com/,drew@synergysc.com,100,valid,actor
+4,William,Barnwell,18436280008,1714 Wambaw Ave,Charleston,795000.0,http://WilliamBarnwellRE.com,william@thecassinagroup.com,100,valid,actor
+3,Natalie,Taflinger,18437731728,2413 S Purvis Dr,Florence,199900.0,https://natalietaflingerhomes.com,natalietaf@me.com,92,valid,actor
+3,Darlene,and Mike Anderson,18034134328,193 Lands End Ln,Prosperity,639750.0,http://www.TeamAndersonSellsHomes.com,darleneanderson1957@gmail.com,89,valid,actor
+3,Tera,Velasco,18033840158,5370 Greyton Cir,North Augusta,315000.0,,velascotera@gmail.com,88,valid,actor
+5,Tucker,Davis,18434215483,11111 Lee Circle Lee Cir Unit 11111,Murrells Inlet,1550000.0,http://tuckerdavis.exprealty.com/,sntrealtyllc@gmail.com,88,valid,actor
+3,David,Jones,18033314392,348 Blossom View Ct,West Columbia,320000.0,http://www.go2david4homes.com/,davidjones@cbcarolinas.com,100,valid,actor
+3,Adunier,Padron,18432268278,801 Elm St E,Hampton,210000.0,,adu.micasa@gmail.com,90,valid,actor
+3,Tameka,Thomason,18642380420,102 Copper Creek Cir,Clinton,229000.0,https://www.agencyupstate.com/,tameka.thomason@gmail.com,91,valid,actor
+3,Julia,Ferrell,18439976068,169 Gray Owl Sewee Dr Lot 106,Conway,256935.0,,julia@beverlyhomessc.com,100,valid,actor
+5,Terry,"""Trey"" White",18434217544,1005 Ocean Pines Ct,North Myrtle Beach,600000.0,,treywhite.realestate@gmail.com,89,valid,actor
+5,Anthony,Jerry,18034131951,33 Mauser Dr,Lugoff,449000.0,,ajerryhomechoice@hotmail.com,90,valid,actor
+4,Anthony,Morgan,18643866698,33 Happy Ave,Greenville,499000.0,http://anthonymorgan.kwrealty.com,anthony@bluefieldgroup.com,89,valid,actor
+4,Lisa,Paige,17065645472,409 Foggy River Dr,Aiken,299900.0,,mspaige123@me.com,88,valid,actor
+3,Stephen,Sansbury,18434885558,1582 Horry Rd,Aynor,539900.0,https://sansburybutlerproperties.com/,chrissansburyre@gmail.com,88,valid,actor
+3,Melanie,Wilson,17049061973,3 King Haigler Chase St,Lake Wylie,535000.0,http://www.melaniewilsonsells4you.com,mel.wilsonrealtor@gmail.com,92,valid,actor
+4,LeAnne,Carswell,18648959791,16 Marion Meadow Ln,Travelers Rest,675000.0,https://www.expertrealestateteam.com/,leanne@leannecarswell.com,100,valid,actor
+3,Michael,Mcgreevey,18643823800,2 Abelia Dr,Greenville,275617.0,,michael@herlong-sir.com,100,valid,actor
+4,Beth,"Ross, Broker/Owner",18433530393,4257 Monterey Dr,Florence,849900.0,http://www.carolinapinesrealty.com,info@carolinapinesrealty.com,89,valid,actor
+4,Franklin,Jones,18032204447,143 King Charles Rd,Columbia,335000.0,http://www.TheNeighborhoodRE.com,franklin@theneighborhoodre.com,100,valid,actor
+3,Stephanie,F Deese,19108000358,282 Ridley St,Longs,305000.0,,realtorstephaniedeese@gmail.com,88,valid,actor
+4,Jordan,Savage,17196495266,100 Huff Dr,Greenville,319990.0,,jordan@brandnovahomes.com,100,valid,actor
+3,Jonathan,Minerick,18884002513,521 16th Ave N,Surfside Beach,798000.0,https://homecoin.com,info@homecoin.com,100,valid,actor
+3,Kim,Guest,18649180066,18 Buckhead Ln,Simpsonville,315000.0,http://kim.buyhomesofgreenville.com,kim@guestgrouphomes.com,100,valid,actor
+4,Ali,Shahid,18439033550,1064 Page Dr,Conway,494900.0,,ashahid@c21harrelson.com,100,valid,actor
+3,Greg,Sisson,18434386818,287 Kings River Rd,Pawleys Island,349900.0,http://www.gregsisson.com,greg@gregsisson.com,100,valid,actor
+3,Teri,Camp,18645960390,290 Cedar Canyon Dr,Spartanburg,259900.0,,teri.camp@century21blackwell.com,100,valid,actor
+4,Jess,Fisher,18434466833,3560 Golden Rod Rd,Murrells Inlet,565000.0,http://www.kingfishproperties.com,jess@kingfishproperties.com,92,valid,actor
+3,Sam,Little,18436371284,1617 Jessamine Rd,Charleston,575000.0,https://beachresidential.com/,slittle@thebeachcompany.com,100,valid,actor
+4,Greg,Boger,18432775845,1505 E Deep Creek Overlook,Mount Pleasant,3225000.0,http://avenuerealtyco.com,gboger@avenuerealtyco.com,100,valid,actor
+3,Anthony,Weston,18646218082,309 Swamp Fox Rd,Spartanburg,399900.0,anthonyweston.kw.com,anthonyweston@kw.com,100,valid,actor
+3,Gracen,Cagle,18438330722,827 Sheila Dr,Johnsonville,289000.0,http://gracenc.thelitchfieldcompany.com/,gracenc@thelitchfieldcompany.com,100,valid,actor
+3,Caitlin,E Ketchie,18656073520,156 Dataw Dr,Saint Helena Island,629000.0,,caitlinketchierealestate@gmail.com,88,valid,actor
+3,Jennifer,Landry,18644004100,217 Shady Spring Way,Wellford,249000.0,,jenniferlandry@kw.com,88,valid,actor
+4,STUART,RUMPH & CHIP OLSEN,18437683921,2571 High Hammock Rd,Seabrook Island,3200000.0,http://www.seabrookrealestate.com,seabrookislandsc@seabrookrealestate.com,100,valid,actor
+4,James,Wedgeworth,18433847825,651 Pine Arbor Rd,Hardeeville,849000.0,http://www.JamesWedgeworth.com,james@jameswedgeworth.com,100,valid,actor
+3,Ginn,Maiers,18436967402,1171 Welcome Dr,Mount Pleasant,1549000.0,http://www.ginnmaiers.com,gmaiers@dunesproperties.com,100,valid,actor
+3,Scott,Love,18433105858,255 Garden Row Dr N,Hardeeville,400000.0,https://www.lovecoastalliving.net/,scott@lclteam.com,90,valid,actor
+3,Kay,Miller,18642472025,201 Harrison Ave,Walhalla,274000.0,www.clardyrealestate.com,kay@clardyrealestate.com,100,valid,actor
+4,Brian,Hurry,18642856096,2209 Edgefield Rd,Spartanburg,399500.0,https://www.hurryhometeam.com,bhurry@cbcaine.com,100,valid,actor
+3,Donna,Saguto,18436300402,309 Chaff Ct,Georgetown,537335.0,,donnasaguto@gmail.com,90,valid,actor
+3,Danae,Hudson,18642454012,110 Connelly Rd,Marietta,550000.0,,danaehudson.realtor@gmail.com,90,valid,actor
+4,Dawn,Wilson,18432702133,240 Old Savannah Dr,Goose Creek,400000.0,,dawn.wilson@carolinaone.com,90,valid,actor
+3,Lindsey,Johnson,19196168687,1510 Manor Blvd,Charleston,565000.0,,lindsey@livelycharleston.com,100,valid,actor
+3,Nancy,Branco,18433683879,219 Station Pkwy,Bluffton,450000.0,,nancybranco@gmail.com,89,valid,actor
+3,Kevin,Lombard,12075906400,34 Raven Glass Ln,Bluffton,659000.0,http://www.kevinlombardrealestate.com,kevinlombardschh@gmail.com,89,valid,actor
+4,Joan,Kelly,18435402501,287 Station Pkwy,Bluffton,779000.0,http://joankellygroup.com/,joan@joankellygroup.com,91,valid,actor
+3,Andrea,Kelly,18036047736,560 Edisto Dr,Batesburg,335000.0,www.AndreaKellyHomes.com,andreakelly@exitrec.com,92,valid,actor
+5,Robert,Herron,18647231945,130 Raleighs Ln,West Union,650000.0,https://macherron.allentate.com,mac.herron@allentate.com,88,valid,actor
+3,The,Faris Group,18433218865,8 River Dr,Beaufort,519000.0,http://farisagents.com,hamza@teamfaris.com,100,valid,actor
+3,Sharon,Laidig,18649931209,164 Savannah Dr,McCormick,359000.0,,rayraylaidig@gmail.com,89,valid,actor
+3,Penthea,"""Penny"" Broach",18035136642,106 Hyler Dr,Lexington,300000.0,http://thebroachcompany.kw.com,penny@pennybroach.com,100,valid,actor
+3,Ron,Bixby,12032406740,296 Foxpath Loop,Myrtle Beach,290000.0,http://ronsellsmyrtlebeach.com,rdbrealestate@gmail.com,91,valid,actor
+3,Lauren,Gillespie,18643142712,126 Grand Oak Cir,Pendleton,299900.0,http://www.theupstatespecialist.com,soldbylauren@gmail.com,91,valid,actor
+3,Carol,Rosenthal,18439073738,1120 Hickory Knob Ct,Myrtle Beach,308500.0,http://www.fullreoservices.com,carol@fullreoservices.com,100,valid,actor
+3,Shane,Russell,18037308581,128 Heartwood Dr,Lexington,238000.0,http://www.rhousehomes.com,shane@nexthomespecialists.com,92,valid,actor
+5,Marva,Neal,18433793010,24 Ridge Rd,Beaufort,1295000.0,,marvaneal67@gmail.com,89,valid,actor
+3,Talia,Gila,17063124687,102 Sea Oats Inlt,Mauldin,349990.0,http://upstatehomessc.com,talia.gila@gmail.com,90,valid,actor
+3,Adam,Crosson,18436670233,797 Brickhouse Rd,Florence,329900.0,http://adam.florencehomesearch.com/,adamcrosson@gmail.com,92,valid,actor
+4,Nancy,Walsh,18437184285,3114 Macaron Ct,Ravenel,502075.0,https://instacard.co/Nancy-Walsh,nancy.walsh@ashtonwoods.com,100,valid,actor
+4,DIANNE,RODGERS,18433459220,211 Towhee Dr,Summerville,375000.0,,drodgers@carolinaone.com,100,valid,actor
+4,Jhamari,Thomas,18036063392,363 Explorer Dr,Chapin,340000.0,https://jhamari.thekinggroupsc.com,jhamari@thekinggroupsc.com,91,valid,actor
+3,"Newkirk,",Liz,18432356565,605 Smith St,Marion,76000.0,,liz@docksiderealtycompany.com,100,valid,actor
+4,Bethany,Way,18037221900,806 S Woodrow St,Columbia,175000.0,www.bethanyway.com,bethany.lynn.way@gmail.com,89,valid,actor
+3,Mariah,Matthews,18034791239,308 Angus Dr,Columbia,238500.0,,matthewsrealtors@gmail.com,88,valid,actor
+3,Michelle,Berryman,16083355119,1321 Cedarwood Ln,Rock Hill,230000.0,michelle-homes.com,hello@michelle-homes.com,100,valid,actor
