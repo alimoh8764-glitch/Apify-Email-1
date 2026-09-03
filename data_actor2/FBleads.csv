@@ -1002,3 +1002,6 @@ Bedrooms,FirstName,LastName,Phone,Address,City,Price,Website,Email,HunterScore,H
 4,Andy,Bovender,18438002692,211 Haddrell St,Mount Pleasant,4380000.0,,,,,not_found,none
 3,K.,Hovnanian's Four Seasons at Carolina Oaks,,14 Carolina Oaks Avenue,Bluffton,519990.0,,,,,not_found,none
 3,Sea,Island Collective,,12 Secession Drive,Beaufort,629990.0,,,,,not_found,none
+3,Robert,Sedgwick,18432272212,1542 Wiregrass Way,Hardeeville,649900.0,https://robertsedgwick.exprealty.com/,rob@hhirealestate.com,0,invalid,verified,actor
+3,Christopher,McCormick,18438719133,106 Turnbury Rd,Goose Creek,353000.0,,cjmccormick@carolinaone.com,0,invalid,verified,actor
+4,Jack,Catterton,18435686939,433 Brightside Trl,Summerville,798039.0,,jack.catterton@carolinaone.com,0,invalid,verified,actor
