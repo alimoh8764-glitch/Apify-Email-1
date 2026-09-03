@@ -1,3 +1,359 @@
 Bedrooms,FirstName,LastName,Phone,Address,City,Price,Website,Email,HunterScore,HunterStatus,HunterOutcome,EmailSource
 2,April,Osborne,,1218 Broadway Lake Rd,Anderson,215000,https://www.AllStarRealEstateSC.com,april@allstarsc.com,63,unknown,verified,actor
 3,Hannah,Johnson,18649347857,502 Forest Ln,Belton,313900,,,,,not_found,none
+3,Lee,Anne Rouse,19105400282,1559 W New Carraway Pl SE,Bolivia,300000.0,,la@solpropertygrp.com,58,unknown,verified,actor
+3,Amy,Ballard,18033258774,1207 Orchard Oriole Ln,Durham,355000.0,http://askamynow.com,aballard@paraclerealty.com,0,invalid,verified,actor
+3,Kaylee,Wilson,17049086287,1115 Lorrie Ln Unit 410,Albemarle,309900.0,,kwilson@tlsrealtyllc.com,82,accept_all,verified,actor
+5,Tim,Hansley,17046216837,12028 Grinstead Ln,Charlotte,600000.0,http://dickensmitchener.com/agents/tim-hansley/,thansley@dickensmitchener.com,81,accept_all,verified,actor
+3,Anne,Scruggs,19192277324,121 Providence Creek Dr,Fuquay Varina,375000.0,http://www.annescruggs.pruysu.com,anne.scruggs@pruysu.com,81,accept_all,verified,actor
+3,Rusty,Thompson,19106250510,848 Pinewood Rd,Fairmont,250000.0,,rusty.thompson@exprealty.com,0,invalid,verified,actor
+3,Adam,M Martin,19803133330,707 N Thompson St Unit 108,Whiteville,374900.0,WWW.TRUEHOMESUSA.COM,amartin@tlsrealtyllc.com,80,accept_all,verified,actor
+3,Fonville,Morisey Realty,19197854363,5408 Walker Farm Rd,Hillsborough,299900.0,http://www.fmrealty.com,dquackenbush@fmrealty.com,0,invalid,verified,actor
+3,Agnelo,(AL) Lobo,19199269776,208 Indian Branch Dr,Morrisville,440000.0,http://www.reitplace.com,al@reitplace.com,0,invalid,verified,actor
+3,Shelly,Jones,17045628752,312 Gidney St,Shelby,250000.0,http://www.RealEstateByShelly.com,shelly66@bellsouth.net,74,accept_all,verified,actor
+3,Su,Ju Chen,19194268966,7105 Kemp Rd,Raleigh,649900.0,http://www.hpw.com/OfficesAndAgents/AgentProfile.aspx?AgentMLSID=R26741,suju@hpw.com,0,invalid,verified,actor
+3,Joshua,A Jacobsen,19365544276,2182 Crusoe Island Rd,Whiteville,260000.0,WWW.EXPREALTY.COM,joshua.jacobsen@exprealty.com,0,invalid,verified,actor
+4,Brandon,Bartholomew,19196049030,151 Pretty Run Br Ln,Wendell,515000.0,https://brandon-bartholomew.remax.com/,brandon.bartholomew@remax.net,79,accept_all,verified,actor
+3,Christy,Donaldson,13362668605,3109 Cullens Dr,Graham,451900.0,,sharingfreedom@aol.com,72,accept_all,verified,actor
+4,Chris,Thomas,19194953366,30 Banbury Rd W,Zebulon,529900.0,,christophert@1stclassre.com,0,invalid,verified,actor
+3,Ethan,Brady,13369534809,1566 Brookdale Dr,Asheboro,317400.0,http://facebook.com/ethan.brady.739,ethanbrady@remax.net,73,accept_all,verified,actor
+3,Kimberly,Bullard,19109776061,7585 Fox Fern Dr,Fayetteville,237900.0,,kimnye@nc.rr.com,0,invalid,verified,actor
+3,Greg,Christner,18288087390,269 Pinewood Knoll Dr,Hendersonville,207000.0,http://www.cbHendersonville.com,greg.christner@coldwellbanker.com,0,invalid,verified,actor
+3,Jake,Forbes,12527661600,207 S Plume St,Roper,35000.0,http://www.hertfordncrealestate.com/index.html,forbes_thomasjacob@yahoo.com,71,accept_all,verified,actor
+3,Christy,Lewis,17047630686,2000 Envoy Ln,Indian Trail,395000.0,https://www.christylewishomes.com,christy@nexthomeparamount.com,0,invalid,verified,actor
+4,Loretta,M Lucas,17042818539,2305 Sanders Ave,Charlotte,699900.0,http://www.lorettalucas.com/,loretta@danielsrealestategrp.com,0,invalid,verified,actor
+3,Melissa,Spivey,19197402161,3109 Manor Ridge Dr,Raleigh,499900.0,melsellshomesnc.com,info@melsellshomesnc.com,0,invalid,verified,actor
+3,The,Morrisette Group,12523392166,173 Zion Rd,Hobbsville,298900.0,http://www.morrisettegroup.com,dmorrisette@rwtowne.com,82,accept_all,verified,actor
+6,Brian,Tyson,17043638756,9930 Minnie Lemmond Ln,Mint Hill,2100000.0,https://www.coldwellbankerhomes.com/nc/charlotte/agent/brian-tyson/aid_94572/?utm_campaign=OLDP-RDC&utm_source=RDC&utm_medium=oldp&utm_content=agentwebsite,btyson@cbcarolinas.com,0,invalid,verified,actor
+3,Jessika,Mcneill,19107598537,154 Shamrock St NE Unit 14,Concord,250000.0,http://jessikamcneill.com,jessika.mcneill@exprealty.com,0,invalid,verified,actor
+4,Tracy,Whisnant,17044777391,1235 Brookwood Rd,Shelby,569000.0,http://www.tracywhisnant.com,tracywhisnant@remax.net,80,accept_all,verified,actor
+4,Deona,Bell,17042396033,1819 Bankett Ave,Salisbury,359900.0,,deonadoby.realestate@yahoo.com,74,accept_all,verified,actor
+3,Dottie,Willard,19195932286,160 Roberson Creek Rd,Pittsboro,1135000.0,http://www.dottiewillard.pruysu.com,dottie.willard@pruysu.com,74,accept_all,verified,actor
+5,Billy,Arango,17042934516,161 Cape Cod Way,Mooresville,1650000.0,http://billyarango.cbintouch.com/,billy.arango.realtor@gmail.com,0,invalid,verified,actor
+3,Byron,Descalzi,17046614814,1440 McIlroy Rd,Charlotte,599888.0,https://byrondescalzi.exprealty.com,byron@macgroupclt.com,0,invalid,verified,actor
+4,Jim,Ring,19104584300,,Wilmington,1275000.0,,jimringrealty@bellsouth.net,72,accept_all,verified,actor
+5,Jen,Chance,17043186011,3900 Ashton Dr,Charlotte,1795000.0,,jchance@5pointsrealty.com,65,unknown,verified,actor
+3,Abby,Nelson,17048901860,309 Treeline Dr,Belmont,450000.0,abbynelson.com,abbynelson@bellsouth.net,72,accept_all,verified,actor
+3,Daniel,Smith,13366870770,660 Hugh Miller Rd,Lexington,340000.0,http://www.redlinkrealty.com,dpsmith85@yahoo.com,74,accept_all,verified,actor
+3,Beth,Hines,19198686316,1216 Stockton Rd,Kinston,249900.0,http://www.bethhinesrealestate.com/,bethhines@remax.net,71,accept_all,verified,actor
+4,William,Daughtry,19108909337,97 N Rabbit Run Dr,Smithfield,429900.0,,larrydaughtry@remax.net,71,accept_all,verified,actor
+3,Jordan,Bellamy,18433314940,1611 1/2 Malta Ave,Raleigh,549999.0,,jordan@caulteam.com,0,invalid,verified,actor
+6,"Rozella,",Julie,12526198109,2148 Sandfiddler Rd Lot 116,Corolla,1299000.0,,julie@sandbarrealtyandconstruction.com,63,unknown,verified,actor
+3,Gregory,Williams,17046851237,30 Mitchell Brown Rd NE,Bolivia,160000.0,http://proactiverealestate.com,gwilliamshb@yahoo.com,74,accept_all,verified,actor
+3,MARVIN,BIDDIX,17044661944,453 Thompson Rd,Rutherfordton,219000.0,,marvinbiddix@remax.net,78,accept_all,verified,actor
+3,Brooke,Jordan Moore,17043610330,308 Fincastle Glen Rd,Shelby,296990.0,,brooke.moore@delwebb.com,70,accept_all,verified,actor
+4,Logan,Homes Team,19107993435,557 Belfort Ln SW Unit 87,Ocean Isle Beach,326444.0,,osc@loganhomes.com,81,accept_all,verified,actor
+3,Cheralyn,Baker,19195389771,345 Spotted Turtle Trl,Wendell,624000.0,,cheralyn.baker@terramorhomes.com,72,accept_all,verified,actor
+3,GARLINDA,PRICE,19104947798,638 Georgetown Cir,Fayetteville,315000.0,,garlindap@yahoo.com,72,accept_all,verified,actor
+5,Kelly,Marks,13363461253,1912 Pembroke Rd,Greensboro,1775000.0,http://www.KellyMarks.com,kellymarks@remax.net,82,accept_all,verified,actor
+4,Sherry,Horn,17049155450,102 Star Dr,Grover,225000.0,,sherry@soldbuysherry.com,80,accept_all,verified,actor
+4,Elizabeth,Ward,13362545327,2809 Kilpatrick White Rd,Greensboro,325980.0,http://www.drhorton.com,eward@drhorton.com,79,accept_all,verified,actor
+3,Renae,Hutsell,19109640797,8220 NC 210 S,Bunnlevel,495000.0,http://www.hutsellrealtyandinsurance.com,hutwilsel@aol.com,71,accept_all,verified,actor
+3,Debbie,Simpson,13363667313,536 Main St,Jonesville,249000.0,http://www.deborah-simpson.remax.com,debbie.simpson@remax.net,79,accept_all,verified,actor
+3,Kaeli,Hinton,19196234312,1529 Briar Brook Ln,Zebulon,333215.0,,khinton@danryanbuilders.com,74,accept_all,verified,actor
+4,Margaret,Stephens,13362274433,107 Sullivan Ct,Gibsonville,320000.0,,msmccann02@bellsouth.net,73,accept_all,verified,actor
+3,Alma,Peters,19192474166,8005 Lighthouse Way,Indian Trail,350000.0,,almap@kw.com,0,invalid,verified,actor
+4,Christopher,R Grocott,12675661014,3830 Ridge Crest Dr,Southport,1015000.0,WWW.STJAMESPLANTATION.COM,chris.grocott@stjamesplantation.com,70,accept_all,verified,actor
+4,Stephanie,Brown,17047562622,1033 Rodey Ave,Charlotte,450000.0,,stephanie.brown@kw.com,0,invalid,verified,actor
+3,Crystal,Greenidge,13365580742,1107 Avalon Rd,Greensboro,129999.0,,crystal.greenidge@yahoo.com,73,accept_all,verified,actor
+3,Andrew,Nagy,17045333838,319 Big Indian Loop,Mooresville,875000.0,http://www.nagyproperties.com,nagy@realtor.com,0,invalid,verified,actor
+3,Nicholas,Wayne Newton,18284430874,1911 Wall St,Morganton,319500.0,WWW.CBNEWTONREALESTATE.COM,nicholas.newton@coldwellbanker.com,0,invalid,verified,actor
+5,Jennifer,Bouvier,17043966390,1718 Aldershot Ct,Dallas,315000.0,https://www.teambouvier.com,jenn@teambouvier.com,81,accept_all,verified,actor
+3,Jason,Long,12527750855,2877 Tyndall Williams Dr,Deep Run,298000.0,https://linktr.ee/jlongrealtor,jason@rogeast.com,0,invalid,verified,actor
+4,Jenn,Johnson,12522200186,120 Atkins Way,Hertford,750000.0,,jennifer@1stclassagents.com,0,invalid,verified,actor
+3,"Nelson,",Brian E,19199265542,504 Wild Plum Way Unit 275,Durham,460540.0,http://www.12OaksCustomHomes.com,12oakscustomhomes@trianglenewhomes.com,0,invalid,verified,actor
+3,Kim,Delahanty,16126442766,408 Deer Path,Eden,519000.0,https://kdelahanty.cbtriad.com,kim.delahanty@coldwellbanker.com,0,invalid,verified,actor
+3,Team,Archer,19107772790,702 William and Mary Pl,Wilmington,425000.0,,hello@getteamarcher.com,66,unknown,verified,actor
+4,Faysal,W Merhi,19197600048,509 Ferry Ct,Wake Forest,517000.0,,faysal@costellorei.com,0,invalid,verified,actor
+4,Janelle,Lenhart,17043324524,1538 Sterling Rd,Charlotte,1800000.0,,jlenhart@cottinghamchalk.com,0,invalid,verified,actor
+3,Sharleen,Thomas,19105152698,1212 Morningside Dr,Kinston,90000.0,https://conwaycorealtors.com,sharleen.thomas@yahoo.com,71,accept_all,verified,actor
+4,Emily,S Temple,19195242918,908 Windrow Ln,Raleigh,624900.0,,emily@southernsoldrealestate.com,0,invalid,verified,actor
+3,Marlene,Clevenger,18288917440,712 Frank Rector Rd,Marshall,2100000.0,,marlene.clevenger@nestrealty.com,0,invalid,verified,actor
+3,Paul,Wetzel,18287735606,404 Mountain Ave,West Jefferson,319500.0,,paul@peakmtn.com,64,unknown,verified,actor
+3,Dianne,Gordonn,17572706898,Albemarle Plantation Lot 125,Hertford,417180.0,,dgordonn@rwtowne.com,81,accept_all,verified,actor
+3,Vance,Murphy,16787610798,1029 Ramsey Rd,Jacksonville,185000.0,http://vancemurphy.kw.com,vance@vanceismyrealtor.com,71,accept_all,verified,actor
+3,Regina,Drury,19102324919,2605 Rothbury Way,Wilmington,337000.0,https://www.reginadrury.com,rdrury@wilmingtonc21.com,0,invalid,verified,actor
+3,Alejandro,Adarve,13363027533,4420 Fairland Ct,Burlington,299999.0,,alejandro@mckenzierealestate.com,0,invalid,verified,actor
+3,Donna,Davis,13362148556,4014 Forest Oaks Ln,Mebane,449000.0,,donnaparker@remax.net,81,accept_all,verified,actor
+3,Stephanie,Blackburn,17047596168,3300 Bonaire Dr,Charlotte,324900.0,http://www.thecarolinashomefinder.com,stephanie@carolinaexecrealty.com,82,accept_all,verified,actor
+3,John,Dowdy III,19108681976,6495 Portsmouth Dr,Fayetteville,190000.0,,bhhsjjdowdy@yahoo.com,71,accept_all,verified,actor
+4,Robin,Sullivan,19194229932,30 Bella Ln,Zebulon,670000.0,http://robinsullivan.hpw.com,sullivanr@hpw.com,0,invalid,verified,actor
+4,Mary,Ellen Holleran,19193604978,10 Ellen Pl,Chapel Hill,1075000.0,http://maryellenholleran.com,maryellen@maryellenholleran.com,64,unknown,verified,actor
+4,MYRON,ROUSE,12523553129,2307 Carey Rd,Kinston,259000.0,,rouserealtor@yahoo.com,70,accept_all,verified,actor
+3,Denise,M Phillips,,165 Copeland Ct,Hubert,235000.0,,chaun128@yahoo.com,72,accept_all,verified,actor
+4,Sheena,Thomas,17045672101,301 Congress St W,Lincolnton,365000.0,,homeswithsheena@hotmail.com,0,invalid,verified,actor
+4,Robert,Meyer,17049044030,1838 S Wendover Rd,Charlotte,1795000.0,https://robertmeyer.helenadamsrealty.com,rmeyer@helenadamsrealty.com,0,invalid,verified,actor
+3,DIANE,LEDBETTER,17046928260,152 N Shore Dr,Cherryville,700000.0,http://www.dianeledbetter.com/,dianeledbetter@remax.net,82,accept_all,verified,actor
+3,Esperanza,Thomas,19105788146,112 Nesting Ln,Raeford,300000.0,http://www.teamthomasfortbragg.com,nanette.thomas@yahoo.com,70,accept_all,verified,actor
+4,Christie,Hargrove,19103858965,165 Pinecroft Dr,Dunn,375000.0,http://www.NaylorRealty.com,chargrove@naylorrealty.com,81,accept_all,verified,actor
+4,Alexis,Hughes,17047732117,1014 Cane Manor Ct,Waxhaw,1400000.0,www.MyCharlotteHomes.com,alexis.hughes@exprealty.com,0,invalid,verified,actor
+5,Kenneth,Ward,19197138414,166 Red Jasper Way,Clayton,499990.0,,kcward@drhorton.com,78,accept_all,verified,actor
+3,Danya,R. Bizzell,19198739380,1033 Winter Haven Dr,Knightdale,567904.0,,danya@danyabizzell.com,73,accept_all,verified,actor
+3,Loren,Buff,17045308244,3910 English Oak Dr,Lincolnton,285900.0,,loren.buff@exprealty.com,0,invalid,verified,actor
+3,Jennifer,Hollar Powell,18289627812,1701 Richey Rd,Taylorsville,339900.0,https://jennifer-powell.teammetro.net,hollar_jen@yahoo.com,73,accept_all,verified,actor
+3,Rebecca,Pence,13364574738,104 Candace Ct,Thomasville,354000.0,,becky.pence@allentate.com,0,invalid,verified,actor
+4,Christine,Wynne,13368122104,1305 Swanner Ct,High Point,729000.0,,chris.wynne@coldwellbanker.com,0,invalid,verified,actor
+4,Fran,T Cash,14046971695,8709 Lake Nona Dr,Wilmington,999000.0,,fcash@bhhscpp.com,0,invalid,verified,actor
+3,Devon,Carrick,19196083220,3021 Englefield Dr,Raleigh,450000.0,https://devon-carrick.kw.com,devon.carrick@kw.com,0,invalid,verified,actor
+4,Scott,Castevens,13364137285,5928 Woodfield Dr,Kernersville,484000.0,http://castevensandcompany.com,scott@castevensandcompany.com,78,accept_all,verified,actor
+3,Faith,& Greg Bryant,13369648542,387 Haden Grove Church Rd,Linwood,204900.0,,faithbryant@remax.net,79,accept_all,verified,actor
+3,Eddie,& Laura Burton,13363643053,2469 Flat River Church Rd,Roxboro,575000.0,http://www.eddieandlaura.com,info@eddieandlaura.com,0,invalid,verified,actor
+3,Alissa,McDonald,17049963933,128 Mallory Tai Dr,Lincolnton,270000.0,https://alissamcdonald.exprealty.com,alissa.mcdonald@exprealty.com,0,invalid,verified,actor
+3,Kristi,Garriss Fritter,19194170720,139 Rockport Ridge Way,Cary,530000.0,,kristifritter@yahoo.com,74,accept_all,verified,actor
+3,James,Butterworth,19193686888,171 Randolph Dr,Clayton,250000.0,http://www.FindHomesInCary.com,jimbutterworth@remax.net,72,accept_all,verified,actor
+3,Amanda,Bullock,19103152127,71 Deerwood Ln,Pinehurst,750000.0,http://www.AmandaBullock.com,amanda@amandabullock.com,71,accept_all,verified,actor
+4,Tawan,Davis-Sherrod,,1013 Shadowpine Way Lot 41,Rocky Mount,378900.0,www.adamshomes.com,tawan.sherrod@adamshomes.com,79,accept_all,verified,actor
+3,Hillcrest,Ranches,,105 Hoptree Dr,Franklinton,299990.0,,,,,not_found,none
+3,Lauren,Little,,404 Sadie Dr,Matthews,359000.0,,,,,not_found,none
+6,South,Mills,,140 Jasmine Ct,South Mills,449990.0,,,,,not_found,none
+3,Serenity,- The Cottage Collection,,27 Restful Pt,Fuquay Varina,411360.0,,,,,not_found,none
+4,Windgate,,,165 Windgate Way,Mooresville,504000.0,,,,,not_found,none
+4,Forestville,Yard,,816 Carpet Grass Ave,Knightdale,419000.0,,,,,not_found,none
+3,Cheryl,L Hollis,,845 Compass Rose Ln SW,Supply,374900.0,,,,,not_found,none
+3,"Wilson,",Travis,17048794975,420 Trillium Way,Belmont,565000.0,,,,,not_found,none
+3,Paula,Price,18288556124,40 Candlewick Cove Dr,Taylorsville,489000.0,,,,,not_found,none
+3,Milja,Saldarriaga,,5121 Saddleback Dr,Mount Holly,349650.0,,,,,not_found,none
+4,The,Grove at Winston Pointe,,36 Joyful Stone Dr,Clayton,502990.0,,,,,not_found,none
+3,Galloway,Ridge,,6017 Starview Terrace,Charlotte,341490.0,,,,,not_found,none
+4,Corinth,Village,,7 Jubilee Ct,Greensboro,348490.0,,,,,not_found,none
+3,Kaiden,Faithful,,4313 Walnut Hollow Dr,Winston Salem,235000.0,,,,,not_found,none
+4,Clark,Creek Landing Townhomes,,2821 Frances View Ln,Lincolnton,283990.0,,,,,not_found,none
+3,Avalon,Place Townes,,1403 Hatteras Rd,Durham,324000.0,,,,,not_found,none
+5,Stella,View - Summit Collection,,1101 Cosmic Drive,Durham,514990.0,,,,,not_found,none
+4,Oak,Grove Hill,,6406 Cherrybark Oak Ln,Huntersville,583030.0,,,,,not_found,none
+3,Buffalo,Townes,,1316 W Garner Road,Garner,329999.0,,,,,not_found,none
+4,Chandler,Pointe,,6264 Ashton Woods Ln,Rural Hall,298490.0,,,,,not_found,none
+3,The,Falls at Newton,,472 Dazzle Loop,Newton,331190.0,,,,,not_found,none
+3,Fishel,Village,,426 Mirage Dr,Winston Salem,308990.0,,,,,not_found,none
+3,Hidden,Forest,,410 Park Slope Way,Youngsville,329990.0,,,,,not_found,none
+3,Pinecrest,,,16 Digging Time Avenue,Pine Level,286805.0,,,,,not_found,none
+4,Hidden,Forest,,405 Park Slope Way,Youngsville,389990.0,,,,,not_found,none
+5,Rolesville,Crossing - Summit Collection,,521 Pacolet Dr,Rolesville,524990.0,,,,,not_found,none
+5,Norris,Crossing,,100 Ocean Mist Ln,Holly Springs,676990.0,,,,,not_found,none
+3,Everlee,- Summit Collection,,4221 Gray Alder Ln,Raleigh,474635.0,,,,,not_found,none
+5,Rolesville,Crossing - Summit Collection,,524 Pacolet Dr,Rolesville,543260.0,,,,,not_found,none
+4,Hidden,Forest,,370 Park Slope Way,Youngsville,365990.0,,,,,not_found,none
+5,Stella,View - Summit Collection,,901 Constellation Cir,Durham,558990.0,,,,,not_found,none
+5,Stella,View - Summit Collection,,916 Constellation Cir,Durham,549990.0,,,,,not_found,none
+5,Norris,Crossing,,120 Ocean Mist Ln,Holly Springs,711395.0,,,,,not_found,none
+5,Cayden,Cove - Summit Collection,,1032 Hidden Beach Dr,Wendell,492215.0,,,,,not_found,none
+4,Mica,Ridge - Sterling Collection,,1003 Shiny Pearl Way,Durham,462990.0,,,,,not_found,none
+4,Parker,Ridge - Sterling Collection,,405 Granite Knoll Ct,Rolesville,484810.0,,,,,not_found,none
+5,Norris,Crossing,,124 Ocean Mist Ln,Holly Springs,754015.0,,,,,not_found,none
+4,Rolesville,Crossing - Highland Collection,,340 Pale Morning Dr,Rolesville,523960.0,,,,,not_found,none
+3,Wesley,Downs - Hanover Collection,,1009 Yellow Leaf Ln,Durham,424990.0,,,,,not_found,none
+5,Rolesville,Crossing - Highland Collection,,1605 Copper John Rd,Rolesville,597485.0,,,,,not_found,none
+5,Cayden,Cove - Summit Collection,,1028 Hidden Beach Dr,Wendell,462380.0,,,,,not_found,none
+4,Gardner,Farms,,4400 Old Buies Creek Rd.,Angier,,,,,,not_found,none
+5,Rosedale,- Classic Collection,,6024 Autumn Dew Dr,Wake Forest,664845.0,,,,,not_found,none
+5,Carolina,Springs - Sterling Collection,,201 Mount Olive Trl,Apex,679740.0,,,,,not_found,none
+5,Cayden,Cove - Summit Collection,,125 Dorian Bay Ct,Wendell,498215.0,,,,,not_found,none
+5,Stella,View - Summit Collection,,1056 Constellation Cir,Durham,514990.0,,,,,not_found,none
+5,Rosedale,- Classic Collection,,6040 Autumn Dew Dr,Wake Forest,665370.0,,,,,not_found,none
+3,Wendell,Falls,,780 Lunar Light Dr,Wendell,429890.0,,,,,not_found,none
+4,Rosedale,- Cottage Collection,,2057 Rosedale Ridge Ave,Wake Forest,413525.0,,,,,not_found,none
+5,Stonewall,,,1131 Magpie Ln,Hillsborough,899000.0,,,,,not_found,none
+4,Stonewall,,,Miller Road,Hillsborough,,,,,,not_found,none
+3,The,Courtyards at Walters Farm,,7363 Walters Farm Way,Huntersville,1016145.0,,,,,not_found,none
+3,Wesley,Downs - Hanover Collection,,3009 Allamore Drive,Durham,390990.0,,,,,not_found,none
+4,The,Coves on Lake Wylie,,17023 Walker Wylie Dr,Charlotte,727990.0,,,,,not_found,none
+4,Stonewall,,,1231 Magpie Ln,Hillsborough,875000.0,,,,,not_found,none
+4,Stonewall,,,1167 Magpie Ln,Hillsborough,876000.0,,,,,not_found,none
+5,Kings,Crossing - Dream,,115 Primrose St,King,380000.0,,,,,not_found,none
+4,Golden,Trace - Sterling Collection,,416 Cedar Barn Ln,Garner,429990.0,,,,,not_found,none
+5,Exchange,at 401,,573 Fosterton Cottage Way,Raleigh,519990.0,,,,,not_found,none
+4,Huxley,,,1443 Rowboat Rd,Apex,649000.0,,,,,not_found,none
+5,Exchange,at 401,,569 Fosterton Cottage Way,Raleigh,526400.0,,,,,not_found,none
+5,Lewiston,Meadows,,4808 Lewiston Meadows Dr,Greensboro,577540.0,,,,,not_found,none
+4,Brookside,,,32 Stone Creek Dr,Coats,324500.0,,,,,not_found,none
+4,Lewiston,Meadows,,4805 Lewiston Meadows Dr,Greensboro,561920.0,,,,,not_found,none
+3,Oakwood,Townes,,932 Broadleaf Trce,Mebane,248920.0,,,,,not_found,none
+3,Silverstone,Traditional,,2000 Mayglass Dr,Knightdale,549999.0,,,,,not_found,none
+4,Broadmoor,,,1005 Titian Avenue,Wake Forest,,,,,,not_found,none
+5,Stoneriver,- Classic Collection,,645 Cassa Clubhouse Way,Knightdale,547990.0,,,,,not_found,none
+3,Wilson's,Walk,,151 S Meyers Ct,Clayton,319990.0,,,,,not_found,none
+4,Wendell,Falls,,788 Lunar Light Dr,Wendell,449890.0,,,,,not_found,none
+5,Oak,Meadow,,35 Oak Meadow Ln,Angier,459990.0,,,,,not_found,none
+4,Stoneriver,- Cottage Collection,,645 Cassa Clubhouse Way,Knightdale,424990.0,,,,,not_found,none
+6,The,Coves on Lake Wylie,,18246 Torchbearer Ln,Charlotte,829990.0,,,,,not_found,none
+3,Downtown,Wilmington Collective,,510 McRae St Unit 101,Wilmington,445000.0,,,,,not_found,none
+4,The,Coves on Lake Wylie,,17110 Walker Wylie Dr,Charlotte,597990.0,,,,,not_found,none
+3,Barton,Place,,2705 Forest Hills Rd SW,Wilson,319900.0,,,,,not_found,none
+3,Sandra,R Foy,,468 Rockport Dr,Clayton,645000.0,,,,,not_found,none
+3,Ally,Bohanan,16092475403,806 Costner St,Lowell,319900.0,,,,,not_found,none
+4,Debi,L Gallo,,2787 St James Dr SE,Southport,849000.0,,,,,not_found,none
+3,Jasmine,A Franks,19196857071,186 S Waterstone Ln,Clayton,324990.0,,,,,not_found,none
+3,McNeely,Group,18008960464,568 Wicklow Sq SW,Ocean Isle Beach,1375000.0,,,,,not_found,none
+5,Ram,Nayar,,9004 Creekstone Rd Unit 70,Waxhaw,825000.0,,,,,not_found,none
+3,Bryant,Tumbelekis,13156512777,804 Hilton Dr,Fayetteville,251000.0,,,,,not_found,none
+3,Kris,Shepherd,13369407097,469 Sunset Dr,Winston Salem,310000.0,,,,,not_found,none
+4,Gio,Dominique,,183 S Waterstone Ln,Clayton,364990.0,,,,,not_found,none
+4,Tracy,Dowling,18884002513,900 Houston Heights Rd,Charlotte,1349000.0,,,,,not_found,none
+3,Ross,Pritchard,12059087853,28 Fairhaven Ct,Asheville,400000.0,,,,,not_found,none
+4,Paula,Price,18288556124,3750 11th St NE,Hickory,590000.0,,,,,not_found,none
+4,Stonemill,,,3512 Hartwell Ln,Monroe,589990.0,,,,,not_found,none
+4,Stonemill,,,3503 Hartwell Ln,Monroe,616340.0,,,,,not_found,none
+4,Stonemill,,,3826 Forty Acre Dr,Monroe,599990.0,,,,,not_found,none
+4,Steve,G Metarelis,17048000380,3302 Genlee Dr,Durham,349900.0,,,,,not_found,none
+4,Stonemill,,,3822 Forty Acre Dr,Monroe,544990.0,,,,,not_found,none
+4,Stonemill,,,3823 Forty Acre Dr,Monroe,550990.0,,,,,not_found,none
+4,Stonemill,,,3819 Forty Acre Dr,Monroe,556990.0,,,,,not_found,none
+4,Meisha,Spang,19196618189,4101 Twin Spires Dr,Knightdale,415000.0,,,,,not_found,none
+3,Tracy,Dowling,18884002513,140 N Hill Ln,Troutman,335000.0,,,,,not_found,none
+5,Suzanne,Bedwan,19804068862,9338 Moss Plantation Ave NW,Concord,587185.0,,,,,not_found,none
+3,Suzanne,Bedwan,19804068862,1593 Gossage Ln NW,Concord,499906.0,,,,,not_found,none
+3,Derek,Pruitt,19194041405,1420 Park Dr,Raleigh,775000.0,,,,,not_found,none
+3,Oakwood,Townes,,1122 Winding Spg Dr,Mebane,303000.0,,,,,not_found,none
+3,Craig,Tribus,17026047770,2721 Puritan St,Gastonia,129900.0,,,,,not_found,none
+3,Adam,Jupiter,,517 Forest Ln,Belmont,350000.0,,,,,not_found,none
+4,Robin,Haigler,17046612551,64 Piney Woods Rd,Fletcher,497690.0,,,,,not_found,none
+4,Jennifer,Friedman,19178616381,7323 Neal Rd,Charlotte,367900.0,,,,,not_found,none
+3,Karen,Mark,19194814914,104 Cliffdale Rd,Holly Springs,294500.0,,,,,not_found,none
+4,Michael,Agins,19198161135,900 Nelson St,Kinston,249900.0,,,,,not_found,none
+3,Iby,Marzouq,17047797224,4736 Crowders Crest Dr,Gastonia,115000.0,,,,,not_found,none
+3,Adam,Bartholomew,12524428900,3007 Lewy Ln,Rocky Mount,168500.0,,,,,not_found,none
+3,Eileen,Price,19199175969,220 Phillips Dr,Arapahoe,449500.0,,,,,not_found,none
+4,Preserve,at Mayes Meadow,,12411 Mayes Road,Cornelius,837838.0,,,,,not_found,none
+5,Bristol,Run,,12912 Garffe Sherron Road,Wake Forest,987500.0,,,,,not_found,none
+5,Craig,Tribus,18046565007,712 Lanyard Dr,Newport,699000.0,,,,,not_found,none
+3,Janet,N Rogers,12522598017,3609 Huntsmoor Ln NW,Wilson,275140.0,,,,,not_found,none
+3,Lindsay,N Thomas-byrd,19199064970,1004 W Thomas St,Rocky Mount,129900.0,,,,,not_found,none
+3,null,Bailey,19195392267,2349 Kendricks Ct,Raleigh,485000.0,,,,,not_found,none
+4,Beatty,- Pittman Team,,4136 Pine Hollow Dr,Wilmington,650000.0,,,,,not_found,none
+3,Bella,Point,,2051 Bella Point Dr SE,Bolivia,321990.0,,,,,not_found,none
+4,Brunswick,Plantation,,2095 Marietta Circle,Ash,397990.0,,,,,not_found,none
+5,Longleaf,Meadow,,6237 Caprine St,Fuquay-Varina,1070995.0,,,,,not_found,none
+3,Regency,at Auburn Station - Journey Collection,,1404 Rearden Dr,Raleigh,483995.0,,,,,not_found,none
+3,Regency,at Olde Towne - Excursion Collection,,5104 Fountainbridge Ct,Raleigh,607995.0,,,,,not_found,none
+3,Regency,at Auburn Station - Excursion Collection,,1404 Rearden Dr,Raleigh,563995.0,,,,,not_found,none
+4,Longleaf,Crest,,6621 Azure Heights Ct,Holly Springs,962995.0,,,,,not_found,none
+5,Rosedale,- Classic Collection,,1721 Golden Honey Drive,Wake Forest,546990.0,,,,,not_found,none
+3,The,Point,,296 Marvel Drive,Rolesville,453990.0,,,,,not_found,none
+4,Yasmine,Debnam,19842123273,4122 Lady Slipper Ln,Durham,349900.0,,,,,not_found,none
+3,Regency,at Holly Springs - Excursion Collection,,205 Regency Ridge Dr,Holly Springs,703995.0,,,,,not_found,none
+3,Dotty,Allen,18284298788,455 Avery Ln,Newland,875000.0,,,,,not_found,none
+6,Retreat,at Friendship,,2328 Englemann Dr,Apex,961370.0,,,,,not_found,none
+6,Retreat,at Friendship,,2324 Englemann Dr,Apex,969850.0,,,,,not_found,none
+4,Retreat,at Friendship,,2469 Picual Way,New Hill,791630.0,,,,,not_found,none
+4,Spring,Grove,,1104 Yellow Springs Drive,Huntersville,581990.0,,,,,not_found,none
+4,Emerson,Glen,,9905 Emerson Glen Drive,Kannapolis,579990.0,,,,,not_found,none
+5,Retreat,at Friendship,,2477 Picual Way,New Hill,771810.0,,,,,not_found,none
+4,Boulder,Ridge,,1738 Boulder Ridge Drive,Gastonia,382990.0,,,,,not_found,none
+5,Retreat,at Friendship,,2433 Picual Way,New Hill,772310.0,,,,,not_found,none
+4,Cambrey,Pointe,,110 Costa Ct,Mooresville,578880.0,,,,,not_found,none
+5,Retreat,at Friendship,,2473 Picual Way,New Hill,755110.0,,,,,not_found,none
+4,Retreat,at Friendship,,2458 Andrena Way,New Hill,789950.0,,,,,not_found,none
+5,Whitaker,Pointe,,12112 Avast Drive,Huntersville,584990.0,,,,,not_found,none
+3,Bell,Meadows,,1247 Evening Walk NE,Winnabow,342255.0,,,,,not_found,none
+5,Williams,Grove,,327 Macon Lake Dr,Apex,875000.0,,,,,not_found,none
+3,Meadowview,Glen,,127 Luther Dr,Graham,363990.0,,,,,not_found,none
+3,Pinewood,,,7411 Linda Vista Ln,Leland,339000.0,,,,,not_found,none
+3,Village,Point,,1295 Village Point Road,Shallotte,,,,,,not_found,none
+4,Bell,Meadows,,1258 Evening Walk NE,Winnabow,339066.0,,,,,not_found,none
+3,Julie,Setterlind,,25 Ocaso Dr,Asheville,625000.0,,,,,not_found,none
+3,Linwood,Estates,,114 Linwood Estates Drive,Lexington,271990.0,,,,,not_found,none
+3,Ravenfield,Ranches,,905 Heathway Dr,Charlotte,456990.0,,,,,not_found,none
+4,Middle,Creek Village Single Family Homes,,2151 Webfoot Drive NE,Bolivia,329990.0,,,,,not_found,none
+3,Brookshire,Single Family,,214 Bluebell Street,Sanford,291990.0,,,,,not_found,none
+4,Kelton,,,4012 Miranda Vlg Wy,Charlotte,443990.0,,,,,not_found,none
+4,Highland,Ridge,,484 Freedom Trail Drive,Willow Spring,399990.0,,,,,not_found,none
+3,Brookshire,Estates,,210 Bluebell Street,Sanford,339990.0,,,,,not_found,none
+4,Griffin,Place,,1005 Merlin Street,Durham,354990.0,,,,,not_found,none
+3,East,Lake,,7020 Mcfarland Drive,Leland,309990.0,,,,,not_found,none
+3,Harpers,Glen Classics,,612 Impala Trace,Wendell,319990.0,,,,,not_found,none
+3,The,Glen at Hollybrook,,701 Jasmine Street,Wendell,299990.0,,,,,not_found,none
+4,Allen,Park Estates,,888 Nichols View Court,Raleigh,499990.0,,,,,not_found,none
+4,Carolina,Crofts Single Family,,3920 Market Garden Drive,Greenville,399990.0,,,,,not_found,none
+3,Serenity,- The Cottage Collection,,17 Comfort Ct,Fuquay Varina,390900.0,,,,,not_found,none
+4,Serenity,- The Cottage Collection,,35 Restful Pt,Fuquay Varina,405000.0,,,,,not_found,none
+3,Cresswind,Rocky River,,205 Marina Bay Trl,Locust,668990.0,,,,,not_found,none
+4,Flatiron,Forest,,74 Flatiron Forest Dr.,Pittsboro,865000.0,,,,,not_found,none
+3,Cresswind,Wesley Chapel,,5018 Belle Mont Farm Ave,Monroe,610740.0,,,,,not_found,none
+4,The,River District - Excursion Collection,,7250 Westrow Avenue,Charlotte,709990.0,,,,,not_found,none
+4,The,River District - Excursion Collection,,5125 Hollow Branch Rd,Charlotte,842922.0,,,,,not_found,none
+4,Serenity,- The Village Collection,,22 Rainbrook Cv,Fuquay Varina,524900.0,,,,,not_found,none
+3,Serenity,- The Village Collection,,160 Cozy Hvn,Fuquay Varina,473450.0,,,,,not_found,none
+3,Huffman,Ridge,,2002 10th Street SE,Hickory,296990.0,,,,,not_found,none
+4,Grayson,Park Single-Family,,2008 Willowleaf Drive,Leland,374990.0,,,,,not_found,none
+3,The,River District - Pioneer Collection,,7250 Westrow Avenue,Charlotte,583990.0,,,,,not_found,none
+3,Hamptons,at Hickory,,1396 5th St Drive NE,Hickory,354990.0,,,,,not_found,none
+4,The,Reserve at Prestleigh,,941 Cattle Drive,Wake Forest,441990.0,,,,,not_found,none
+3,Rydele,Heights,,548 Country Oak Road,Weaverville,460990.0,,,,,not_found,none
+3,NoVi,Chatham Park - The Mews Collection,,21 Tall Grass Rd,Pittsboro,499900.0,,,,,not_found,none
+4,Middleton,,,4626 Reedy Creek Farm Circle,Greensboro,350990.0,,,,,not_found,none
+3,Encore,at Harmony,,3406 Charolais Ln,Harrisburg,641037.0,,,,,not_found,none
+5,Brandon,Creek,,3203 Liberty Elm Lane,Gastonia,379990.0,,,,,not_found,none
+4,Galvins,Ridge,,304 Red Brick St,Sanford,341990.0,,,,,not_found,none
+4,Colly,Farm,,103 Sugarberry Drive,Stokesdale,402990.0,,,,,not_found,none
+5,Lacy,Farm,,2107 Lacy Farm Road,Graham,,,,,,not_found,none
+4,The,Landing at Summerhaven,,3108 Hannaford Drive,Mebane,391990.0,,,,,not_found,none
+4,The,Reserve at Stoney Creek,,6405 Clark Creek Trail,Whitsett,339990.0,,,,,not_found,none
+3,Eagle,Creek,,1815 Black Falcon Lane NE,Bolivia,281990.0,,,,,not_found,none
+5,Saddlebrook,,,1007 Saddlebrook Drive,Rocky Mount,300990.0,,,,,not_found,none
+4,Chandler,Pointe,,1453 Weatherend Drive,RURAL HALL,300990.0,,,,,not_found,none
+4,Owens,Ridge,,301 Owens Ridge Way,Lexington,280999.0,,,,,not_found,none
+4,Reedy,Creek Preserve,,3937 Coleman Drive,Charlotte,464990.0,,,,,not_found,none
+3,Jetstream,Park,,3813 Falcon Court NW,Wilson,263990.0,,,,,not_found,none
+4,Kalas,Falls,,1132 Dartford Green Place,Wake Forest,606990.0,,,,,not_found,none
+4,Oak,Grove Hill,,7009 Butternut Oak Terrace,Huntersville,476990.0,,,,,not_found,none
+3,Laurel,Oaks,,106 Bay Laurel Dr,Sanford,304990.0,,,,,not_found,none
+3,Horton,Park,,7505 Percussion Dr,Apex,591490.0,,,,,not_found,none
+4,Tobacco,Road,,139 Bulk Barn Rd,Angier,540000.0,,,,,not_found,none
+4,Forestville,Yard,,800 Carpet Grass Ave,Knightdale,423000.0,,,,,not_found,none
+4,Barwell,Park,,3627 Turney Dr,Raleigh,389990.0,,,,,not_found,none
+4,Ashland,,,9613 Horton Road,Apex,874000.0,,,,,not_found,none
+5,Addison,West,,208 Gallant Pnes Dr,Holly Springs,984000.0,,,,,not_found,none
+3,Woodland,Crossing,,605 Crescent Wood Trl,Zebulon,389000.0,,,,,not_found,none
+4,Woodland,Crossing,,521 Crescent Wood Trl,Zebulon,420000.0,,,,,not_found,none
+4,Woodland,Crossing,,613 Crescent Wood Trl,Zebulon,424000.0,,,,,not_found,none
+3,Wellers,Knoll,,15 Single Barrel Ct,Lillington,334000.0,,,,,not_found,none
+3,Gregory,Village,,298 Gregory Village Dr,Lillington,319000.0,,,,,not_found,none
+3,Gregory,Village,,110 Baldwin St,Lillington,272000.0,,,,,not_found,none
+4,Retreat,at North Main,,44 Fellow Dr,Lillington,414000.0,,,,,not_found,none
+4,Retreat,at North Main,,140 Fellow Dr,Lillington,399000.0,,,,,not_found,none
+3,Retreat,at North Main,,112 Fellow Dr,Lillington,325000.0,,,,,not_found,none
+5,Wellers,Knoll,,85 Charred Oak Ct,Lillington,399000.0,,,,,not_found,none
+3,River,Rock,,2623 Wood Valley Rd,Winston Salem,411900.0,,,,,not_found,none
+3,White,Oak Creek Crossing,,161 Oriole Drive,Angier,289900.0,,,,,not_found,none
+5,Nathans,Ridge,,26 Mable Ct,Lillington,390900.0,,,,,not_found,none
+4,True,Homes On Your Lot - Mill Creek Cove,,3655 Rivergate Way NE,Leland,321900.0,,,,,not_found,none
+3,Wendell,Springs,,949 Bright Tavern Way,Wendell,445900.0,,,,,not_found,none
+4,Benson,Village,,100 Benson Village Dr # 31,Benson,374900.0,,,,,not_found,none
+3,Reedy,Fork Middleton,,5212 Reedy Creek Farm Cir,Greensboro,323900.0,,,,,not_found,none
+4,Nathans,Ridge,,69 Open Meadow Ct # 71,Lillington,399900.0,,,,,not_found,none
+4,True,Homes Build OYL - Triad,,2321 Old Salisbury Rd,Winston-Salem,532900.0,,,,,not_found,none
+4,Nathans,Ridge,,54 Open Meadow Ct # 95,Lillington,414900.0,,,,,not_found,none
+3,True,Homes On Your Lot - Mill Creek Cove,,972 Ashburton Rd SE # 93,Bolivia,539900.0,,,,,not_found,none
+3,Oaks,at St Martin,,479 Laurel Oak Ave,Oakboro,324900.0,,,,,not_found,none
+5,Parc,Northwest,,1185 Hackney Dr,Elon,530900.0,,,,,not_found,none
+3,Lake,Royale,,138 Sacred Fire Rd,Louisburg,374900.0,,,,,not_found,none
+3,Caldwell,Forest,,13114 Foxberry Road,Charlotte,399500.0,,,,,not_found,none
+3,Saddle,Farm,,109 Saddle Street,Mocksville,465900.0,,,,,not_found,none
+4,Norman,Creek,,122 Swing Way,Troutman,449900.0,,,,,not_found,none
+5,Robinson,Oaks,,1311 Wiggins Dr,Gastonia,689900.0,,,,,not_found,none
+3,Founders,Landing | 55+ Community,,3077 Founding Fathers Dr,Gastonia,539900.0,,,,,not_found,none
+4,Founders,Landing | 55+ Community,,3057 Constitution Ln,Gastonia,539900.0,,,,,not_found,none
+4,Cedar,Ridge,,336 Cedar Ridge Trl,Angier,619900.0,,,,,not_found,none
+3,Castlewood,,,107 Arundel Dr,Archer Lodge,489900.0,,,,,not_found,none
+4,Ford,Meadows,,175 Ford Meadows Drive,Garner,419900.0,,,,,not_found,none
+4,Norman,Creek,,128 Swing Way,Troutman,459900.0,,,,,not_found,none
+5,Cedar,Ridge,,364 Cedar Ridge Trl,Angier,629900.0,,,,,not_found,none
+4,Cedar,Ridge,,216 Cedar Ridge Trl,Angier,574900.0,,,,,not_found,none
+4,Robinson,Oaks,,1336 Knob Creek Dr,Gastonia,619900.0,,,,,not_found,none
+4,Magnolia,Glen Estates,,1614 Wareham Dr,Mebane,519900.0,,,,,not_found,none
+4,Wexford,,,1321 Cricket St,Elon,514900.0,,,,,not_found,none
+4,Twin,Creek,,857 Twin Creek Rd,Kernersville,555900.0,,,,,not_found,none
+4,Hillcrest,Grove,,1611 Edgemont Road,Wendell,569900.0,,,,,not_found,none
+4,Magnolia,Glen Estates,,1010 Brockton Drive,Mebane,471990.0,,,,,not_found,none
+4,Kilburne,Village,,226 Clapp Farms Rd,Greensboro,389900.0,,,,,not_found,none
+3,Wexford,,,1205 Cricket Street,Elon,495900.0,,,,,not_found,none
+4,Browning,Mill,,48 Browning Mill Drive,Wendell,489900.0,,,,,not_found,none
+4,High,Springs,,139 Rising Star Drive,Clayton,570900.0,,,,,not_found,none
+3,Founders,Landing | 55+ Community,,3082 Constitution Lane,Gastonia,500000.0,,,,,not_found,none
+3,David,Wishon,17047013953,101 Swink St SW,Concord,289000.0,,,,,not_found,none
+3,Ying,Zhu,,212 Sir Richard Ln,Chapel Hill,350000.0,,,,,not_found,none
+3,Elysian,at Weddington,,Deal Road,Weddington,1216495.0,,,,,not_found,none
+4,Camber,Woods,,2262 Trundle Dr # CWO0115,Gastonia,469722.0,,,,,not_found,none
+5,Raghu,Kukunoor,,1671 Spears Dr NW,Concord,665000.0,,,,,not_found,none
+4,Foxridge,Meadow,,5522 Golden Pond Drive,Indian Trail,785000.0,,,,,not_found,none
+4,Magnolia,Glen,,Huntersville-Concord Road,Huntersville,764654.0,,,,,not_found,none
