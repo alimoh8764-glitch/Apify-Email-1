@@ -1009,3 +1009,6 @@ Bedrooms,FirstName,LastName,Phone,Address,City,Price,Website,Email,HunterScore,H
 3,Pinpoint,Properties,19193482585,3619 Bent Tree Ct,Wilmington,335000.0,,hannah@pinpointnc.com,0,invalid,verified,actor
 3,Christopher,Louviere,18433002766,827 Kirby Ct,Charleston,445000.0,http://www.sellchs.com,christopher@srecharleston.com,0,invalid,verified,actor
 3,Greg,Sisson,18434386818,287 Kings River Rd,Pawleys Island,349900.0,http://www.gregsisson.com,greg@gregsisson.com,0,invalid,verified,actor
+4,Lisa,Gamble,16144031330,518 Onteora Blvd,Asheville,599950.0,https://www.beverly-hanks.com/agents/brentandlisa,lisa.gamble@allentate.com,0,invalid,verified,actor
+4,Blake,Ginther,13362838689,189 Cabot Dr,Winston Salem,449900.0,http://www.theginthergroup.com,sales@theginthergroup.com,0,invalid,verified,actor
+3,null,Bailey,19195392267,2349 Kendricks Ct,Raleigh,485000.0,,,,,not_found,none
