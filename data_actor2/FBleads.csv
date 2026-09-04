@@ -1028,3 +1028,8 @@ Bedrooms,FirstName,LastName,Phone,Address,City,Price,Website,Email,HunterScore,H
 5,Logan,Abrams,17042398763,17018 Harcombe Dr,Charlotte,1399000.0,http://www.charlottesagents.com,logan@charlottesagent.com,0,invalid,verified,actor
 3,Landon,Stone,13368919667,938 Martin St,Greensboro,125000.0,https://www.mybororealestate.com/,landon@myboroexpert.com,0,invalid,verified,actor
 3,Brad,Mize,19194820157,2081 Satterwhite Rd,Oxford,339500.0,https://linktr.ee/BradMize,brad.mize@allentate.com,0,invalid,verified,actor
+3,Steven,Koleno,18046565007,206 Ashwood Ln,Anderson,297000,https://www.beycome.com,realtor@beycome.com,72,accept_all,verified,actor
+3,Crystal,Sauvola,18646557145,118 MT Vernon Cir,Greer,850000,,crystal@keystoneconstruction.com,82,accept_all,verified,actor
+4,Eric,Thomas,16316644758,316 Keels Rd W,Hodges,499999,,eric.thomas@exprealty.com,0,invalid,verified,actor
+4,Camellia,Woodard,18645782120,7038 New Horizon Ln,Boiling Springs,367000,,cwoodard@century21blackwell.com,0,invalid,verified,actor
+4,Camellia,Woodard,18645907297,7038 New Horizon Ln Lot 91,Boiling Springs,367000,,,,,not_found,none
