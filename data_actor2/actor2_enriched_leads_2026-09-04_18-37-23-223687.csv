@@ -1,0 +1,20 @@
+Bedrooms,FirstName,LastName,Phone,Address,City,Price,Website,Email,HunterScore,HunterStatus,HunterOutcome,EmailSource
+3,Hans,"Neugebauer, Agent",18439992684,515 3rd Ave N,Surfside Beach,449000,http://www.HansOnTheBeach.com,hans@hansforhouses.com,89,valid,verified,actor
+3,Steven,Koleno,18046565007,206 Ashwood Ln,Anderson,297000,https://www.beycome.com,realtor@beycome.com,72,accept_all,verified,actor
+3,Willie,Stansell,18434416402,16 Tiller Island Dr,Beaufort,999000,WWW.HOMESINBEAUFORT.COM,williemack@tidelandrealty.com,92,valid,verified,actor
+4,Karen,R Milligan,19102761200,7109 Round Stone Dr,Graniteville,359900,,kmilligan325@gmail.com,89,valid,verified,actor
+3,Matt,Nocks,18643823800,133 Redcroft Dr,Greer,424651,http://www.herlongsir.com,matt.nocks@herlong-sir.com,89,valid,verified,actor
+3,Collins,Weber,17042396037,556 Talisman Trl,Longs,269000,,collins@webergrouprealty.com,90,valid,verified,actor
+3,Crystal,Sauvola,18646557145,118 MT Vernon Cir,Greer,850000,,crystal@keystoneconstruction.com,82,accept_all,verified,actor
+3,COURTNEY,HUGHEY,18644206000,92 Bridgewater Ct,Iva,450000,,upstatehomegirl@gmail.com,91,valid,verified,actor
+4,Cortney,Knight,18644974688,1823 Gowdeysville Rd,Gaffney,1125000,https://ellisonsold.com/agents/cortney-knight/,cortney@ellisonsold.com,100,valid,verified,actor
+4,Eric,Thomas,16316644758,316 Keels Rd W,Hodges,499999,,eric.thomas@exprealty.com,0,invalid,verified,actor
+5,Dan,Hamilton,18645277685,304 Winston Ln,Roebuck,279000,http://www.MyGreenvilleHome.com,info@mygreenvillehome.com,100,valid,verified,actor
+5,Jennifer,Vick,17045642808,3010 Gilroy Dr,Fort Mill,542500,http://www.jennifervickco.com,jennifer@jennifervickco.com,100,valid,verified,actor
+3,Minna,French,18437420942,805 Payne Ct,Conway,275900,http://www.minnafrench.realtor,minna@homesofmyrtlebeach.com,91,valid,verified,actor
+4,Camellia,Woodard,18645782120,7038 New Horizon Ln,Boiling Springs,367000,,cwoodard@century21blackwell.com,0,invalid,verified,actor
+3,Mary,Neddy,19805051516,650 Pacific Commons-The Augusta Model Dr Lot 10,Surfside Beach,699000,https://findmyrtlebeachproperties.com,maryneddygroup@gmail.com,89,valid,verified,actor
+4,Mike,Feehley,17047995233,1871 Second Baxter Crossing,Fort Mill,1015000,https://mikefeehley.ivesterjackson.com/,mikefeehley@gmail.com,89,valid,verified,actor
+5,Elizabeth,Goodnight,18649016336,282 Utica Bend Ct,Seneca,365000,https://elizabethgoodnight.sites.cbmoxi.com/,egoodnight@cbcaine.com,100,valid,verified,actor
+3,Katherine,Seger,18034178027,748 Chipmeadow Ln,York,315000,https://signaturehg.com/,kseger@signaturehg.com,100,valid,verified,actor
+4,Camellia,Woodard,18645907297,7038 New Horizon Ln Lot 91,Boiling Springs,367000,,,,,not_found,none
