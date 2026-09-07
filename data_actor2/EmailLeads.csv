@@ -350,7 +350,7 @@ Bedrooms,FirstName,LastName,Phone,Address,City,Price,Website,Email,HunterScore,H
 3,Beth,Y. Smoot,19192137000,2205 Kilburn Rd,Raleigh,798000.0,http://www.bethsmoot.com,beth@nhtriangleproperties.com,91,valid,actor
 3,Stacey,Delgado,19192390364,42 Racquet Ct,Sanford,425000.0,https://www.redfin.com/real-estate-agents/stacey-delgado,stacey.delgado@redfin.com,100,valid,actor
 3,S.,Vanessa Mouton,19192101873,505 Heathridge Ln,Cary,650000.0,http://VanessaMouton.com,vm@vanessamouton.com,90,valid,actor
-3,null,The Soho Group,19103678247,1501 E Yacht Dr,Oak Island,649900.0,,lynn@sohoislands.com,100,valid,actor
+3,,The Soho Group,19103678247,1501 E Yacht Dr,Oak Island,649900.0,,lynn@sohoislands.com,100,valid,actor
 3,Kara,OShea,19193453040,2534 Purnell Rd,Wake Forest,525000.0,https://www.realtor.com/realestateagents/62903c1fb8581cfcf90d95c9,koshea9900@gmail.com,90,valid,actor
 3,Alisha,Walker,18285721235,3430 Tranquil Hills Dr,Lenoir,649999.0,www.facebook.com/alishawalkerrealestate,alishawalker7967@gmail.com,88,valid,actor
 3,Bailey,Basnight Real Estate,12522411200,220 Pelican Dr,Atlantic Beach,875000.0,http://www.bailey-basnightrealestate.com,baileybasnightrealestate@gmail.com,88,valid,actor
@@ -629,7 +629,7 @@ Bedrooms,FirstName,LastName,Phone,Address,City,Price,Website,Email,HunterScore,H
 3,Team,KBT Realty,19106223478,500 Sweetbay Ct,Wilmington,430000.0,https://kbtrealty.com,info@kbtrealty.com,100,valid,actor
 3,Bob,Warchol,17048811921,1568 Watermill Rd,Morganton,1000000.0,http://www.MyLakeNormanAgent.com,bobwarchol@kw.com,100,valid,actor
 3,Bonnie,L Hernandez,19196674011,3637 Ashton Glen Ln,Oxford,375000.0,http://www.trianglehomeandland.com,bonnie@trianglehomeandland.com,92,valid,actor
-3,null,Living By The Coast Realty Group,19102023638,7054 Healy Haven Ln NE,Leland,849999.0,,team@livingbythecoast.com,100,valid,actor
+3,,Living By The Coast Realty Group,19102023638,7054 Healy Haven Ln NE,Leland,849999.0,,team@livingbythecoast.com,100,valid,actor
 3,Jayne,A. Anderson,19102794001,3879 Beaver Cir SW,Shallotte,517000.0,http://www.BrunswickCountyNeighborhoods.com/,jayne@jayneanderson.com,100,valid,actor
 3,Sean,D McDonnell,14439949722,452 Hardison Rd,Holly Ridge,355000.0,www.quietwatersrealtygroup.com,sean@quietwatersrealtygroup.com,100,valid,actor
 3,Drew,Maher,17042589227,234 Brumley Rd,Mooresville,375000.0,http://www.dmaherproperties.com,drew@dmaherproperties.com,100,valid,actor
@@ -735,3 +735,10 @@ Bedrooms,FirstName,LastName,Phone,Address,City,Price,Website,Email,HunterScore,H
 3,Ashley,P Polk,13045735550,504 Edgewater Way Lot 193,Surf City,485000.0,WWW.BLUECOASTREALTY.COM,ashley@bluecoastrealty.com,100,valid,actor
 3,La,Sonda Stasinopoulos,19196088386,505 Southland Dr,Zebulon,353000.0,,contact.raleigh@meritagehomes.com,100,valid,actor
 3,Stacey,Horowitz,19192478759,8833 Wildwood Links,Raleigh,815000.0,http://www.StaceyHorowitz.com,shorowitz@fmrealty.com,89,valid,actor
+5,Earl,Fleetwood,18035712150,5706 Barbary Coast Rd,Hollywood,699000.0,,earl@deanproperty.com,89,valid,actor
+5,Jesse,Rone,18437372683,2805 Merriams Dr,Charleston,899900.0,marshandstonegroup.com,jesse@marshandstonegroup.com,90,valid,actor
+3,Ashley,Smith Willis,18435091535,5068 Sweetgrass Farm Rd,Johns Island,2235000.0,http://www.facebook.com/seigniousandsmith,ashley@sscharleston.com,100,valid,actor
+3,Greenway,Maney Team,18439202303,4067 Da Vinci Dr,Myrtle Beach,389900.0,,info@greenwaymaneyteam.com,90,valid,actor
+4,Cynthia,Pannebaker,,635 Creekway Ct Unit RRS0035,Greer,696067.0,,cindy@pannebakerteam.com,92,valid,actor
+3,Ben,Guyton Jr.,18432411929,1911 Deerfield Ave,Surfside Beach,425000.0,,ben@thegrandeagency.com,100,valid,actor
+5,Colby,Rowe,18432511747,321 N Oak Dr,Surfside Beach,1699900.0,http://www.roweventures.com,colby@roweventures.com,100,valid,actor
