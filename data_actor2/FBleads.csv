@@ -1085,7 +1085,7 @@ Bedrooms,FirstName,LastName,Phone,Address,City,Price,Website,Email,HunterScore,H
 5,Richard,Stephens,18643056273,5023 Burke Meadows Run,Chesnee,369000.0,https://www.mungo.com/communities/greenville-spartanburg/spartanburg-county/burke-estates#overview,rstephens@mungo.com,74,accept_all,verified,actor
 4,Jennifer,Bushey,18436021605,6112 Zoe Way,Myrtle Beach,449900.0,,jdocking@beazer.com,0,invalid,verified,actor
 3,Justin,Cook,17705673030,2816 Starnes Rd,Edgemoor,350000.0,,justin@mcleroyrealty.com,0,invalid,verified,actor
-4,NA,,19127482148,126 Thistle Ln,Beaufort,571791.0,,msearson@fredwilliamshomes.com,0,invalid,verified,actor
+4,,,19127482148,126 Thistle Ln,Beaufort,571791.0,,msearson@fredwilliamshomes.com,0,invalid,verified,actor
 5,Jesse,Rone,18437372683,2805 Merriams Dr,Charleston,899900.0,marshandstonegroup.com,jesse@marshandstonegroup.com,72,accept_all,verified,actor
 3,Amber,Nikki Nassan,14125264191,2289 Hazel Way,Longs,497149.0,,anassan@nvrinc.com,70,accept_all,verified,actor
 5,Mary,Davis Anderson,18439101934,305 Virginia Ave,Cheraw,384900.0,http://www.cherawscrealestate.com,mary-lewisrealty@att.net,74,accept_all,verified,actor
@@ -1251,3 +1251,167 @@ Bedrooms,FirstName,LastName,Phone,Address,City,Price,Website,Email,HunterScore,H
 5,Matt,Downing,17045171570,8222 Essence Johnson J Dr Unit 2169,Longs,394990.0,,,,,not_found,none
 3,Jessica,Dannemiller,14403153461,377 Chorus Rd,Fort Mill,489000.0,,,,,not_found,none
 3,Stephanie,Hudson,,5004 Weatherwood Dr,North Myrtle Beach,425000.0,,,,,not_found,none
+3,Jodie,Roybal,19103152826,615 E Philadelphia Ave,Pinebluff,525000.0,,lovethepines@yahoo.com,74,accept_all,verified,actor
+3,Sherry,DeWeese,19107972826,3609 Grenedine Dr,Fayetteville,419900.0,https://sherry-deweese.remaxsouthernproperties.com,sherrydeweese19@yahoo.com,72,accept_all,verified,actor
+3,Gina,Carey,12525150481,112 Sandpiper Ct,Atlantic Beach,1880000.0,,ginacarey@kw.com,0,invalid,verified,actor
+3,Nicole,Russell,18282004660,845 Whiteside Mountain Rd Lot 2,Highlands,1550000.0,,nicole.russell@allentate.com,0,invalid,verified,actor
+3,Susanne,Pendleton,12526705944,908 Sawgrass Ct,New Bern,475000.0,www.susannependleton.com,susannependleton@coldwellbanker.com,0,invalid,verified,actor
+3,Nadia,Kernytska,17185782707,919 Danbrook Cir,Lincolnton,425000.0,,nadiakernytska@yahoo.com,73,accept_all,verified,actor
+3,Gretchen,Keeter,12522558120,165 Newtown Rd,Moyock,399000.0,http://www.gretchenkeeter.com,jgkeeter@yahoo.com,70,accept_all,verified,actor
+3,Logan,Homes Team,19107993435,4411 Village Green Dr SW Unit HOMESITE112,Shallotte,417100.0,,osc@loganhomes.com,81,accept_all,verified,actor
+3,Joanne,Bryson,18282007951,416 Sherwood Forest Ln,Cullowhee,599000.0,https://joannebryson.meadowsmountainrealty.com,joanne@bhhsmmr.com.com,0,invalid,verified,actor
+3,Sean,Warren,16313043511,296 Cheshire Farm Dr,Smithfield,354900.0,,seanwarren315@yahoo.com,74,accept_all,verified,actor
+3,Whitney,Hunt-Sailors,17048479300,6505 Boykin Spaniel Rd,Charlotte,663000.0,,realtorwhit@aol.com,73,accept_all,verified,actor
+3,Brett,M. Rodgers,19196105778,2421 Perkins Rd,Durham,599999.0,http://www.brettrealestate.com/,brett@mlsullivan.com,0,invalid,verified,actor
+3,Christy,Bradshaw,17044926161,6634 Bells Mill Dr,Charlotte,425000.0,http://www.christybradshawhomes.com,christybradshaw@remax.net,72,accept_all,verified,actor
+3,"Basnight,",Caroline,12522166703,124 S Dogwood Trl Lot 2,Southern Shores,699000.0,,cabasnight@villagerealtyobx.com,0,invalid,verified,actor
+3,Kyle,Mckim,18282000454,169 Shelby Dr Lot 18,Highlands,1895000.0,http://www.highlandsproperties.com/,kyle@highlandsproperties.com,78,accept_all,verified,actor
+3,James,Hurt,15407981792,10 Eldorado Ln,Pinehurst,625000.0,http://jimhurt.bhhsprg.com,jim.hurt@bhhsprg.com,0,invalid,verified,actor
+3,Tiffany,Alexy,18884556040,6015 Lake Wheeler Rd,Raleigh,600000.0,,tiffany@tiffanyalexy.com,0,invalid,verified,actor
+3,Sondra,Blaser,17042811865,1107 Spring Fall Ct,Charlotte,460000.0,http://www.sondrablaser.com,sondrablaser@carolina.rr.com,0,invalid,verified,actor
+3,Dru,Ferrence,12522562913,207 Sir Richard E Lot 89,Kill Devil Hills,425000.0,,druferrence@villagerealtyobx.com,0,invalid,verified,actor
+3,Heather,Whistler,12523392717,105 Yeopim Cir,Hertford,425000.0,http://heatherwhistler.com,heatherwhistler@forbesuc.com,73,accept_all,verified,actor
+3,Laura,Emert,12525713193,608 Alpine Rd,Winston Salem,360000.0,,lauraemert@kw.com,0,invalid,verified,actor
+3,Casey,Barbera,19106394266,1180 Rays Bridge Rd,Whispering Pines,450000.0,www.bhhsprg.com,caseyb@bhhsprg.com,0,invalid,verified,actor
+3,Tammy,Parker,17046780004,738 Costner School Rd,Bessemer City,475000.0,http://www.tammyparkerrealty.com,tammy@gnce.com,65,unknown,verified,actor
+3,Erica,Broughton,19195000996,708 Cross Timbers Dr,Durham,385000.0,,e.broughton@monarchrealty.co,0,invalid,verified,actor
+3,Jessie,Krieger,19375152047,145 Hobby Rd,Holly Springs,569900.0,,jkkrieger@drhorton.com,71,accept_all,verified,actor
+3,Kurt,Rogerson,12527733041,157 S River Dr,Beaufort,580000.0,https://www.realtor.com/realestateagents/59dbde645e51c20011eb3a73,kdrogerson@aol.com,70,accept_all,verified,actor
+3,Renee,S Britt,19106351051,23 Bowen Ct,Wilmington,649198.0,http://www.saltershavennc.com,rbritt@mungo.com,82,accept_all,verified,actor
+3,Shawna,Clark,17077241234,1300 Westerland Way Unit 15,Durham,485000.0,,sclark@mungo.com,82,accept_all,verified,actor
+3,Loren,Inman,16199949131,2361 Willard Rd,Wallace,450000.0,,dollnextdoor@yahoo.com,74,accept_all,verified,actor
+3,Patty,Young,13366258969,6417 Cape Wedgewood Cir,Browns Summit,385900.0,,pattyb81967@yahoo.com,74,accept_all,verified,actor
+3,Alexis,Davis,12527029697,122 E 2nd St,Washington,365000.0,,alexis.davis@coastalrivers.com,0,invalid,verified,actor
+3,Nancy,Harris,12527732502,306 Oak Ridge Ct,Swansboro,380000.0,https://nancy.coastalteamnc.com/,nancy@nccoastalteam.com,0,invalid,verified,actor
+3,Cathy,Griffin,17046377721,435 Lake Drive 10,Lexington,699000.0,http://www.CathyGriffinHomes.com,c21cathy@bellsouth.net,71,accept_all,verified,actor
+3,Deona,Bell,17042396033,730 Mainsail Rd,Salisbury,1189900.0,,deonadoby.realestate@yahoo.com,74,accept_all,verified,actor
+3,Stacia,Welborn,19106206776,8040 Reunion Rd,Wilmington,690000.0,,stacia.welborn@remax.net,71,accept_all,verified,actor
+3,Joseph,Kendrick,18668079087,586 Wilhelm Pl NE,Concord,469000.0,https://www.unrealestate.com,info@unrealestate.com,0,invalid,verified,actor
+3,Sindy,Diaz Ruiz,19806360583,3616 Fair Oaks Pl NW,Concord,400000.0,,sindy.diazruiz@cbrealty.com,81,accept_all,verified,actor
+3,Judy,Godwin,17044383403,4396 NC Highway 200,Stanfield,579000.0,http://www.jgodwinrealty.com,jjgodwin@bellsouth.net,74,accept_all,verified,actor
+3,Eastwood,Homes,18665517995,421 Bingham and Parks Rd,Advance,529115.0,http://www.eastwoodhomes.com,amohl@eastwoodhomes.com,72,unknown,verified,actor
+3,Amanda,Bullock,19103152127,168 Juniper Creek Blvd,Pinehurst,425000.0,http://www.AmandaBullock.com,amanda@amandabullock.com,71,accept_all,verified,actor
+3,Jeremiah,Barnett,19102628222,161 Watersfield Rd,Leland,375000.0,http://www.sencrealty.com,buyilm@yahoo.com,72,accept_all,verified,actor
+3,Diana,Jewell,19104583739,6201 Motts Village Rd,Wilmington,765000.0,http://www.dianajewell.com,diana@dianajewell.com,72,unknown,verified,actor
+3,The,Local Group Team,12525156996,108 Blue Heron Ct,Beaufort,845000.0,,trubyproctor@thelocalgrouprealty.com,78,accept_all,verified,actor
+3,Naomi,Brown,19842187626,6 Saint James Ct,Durham,574000.0,https://naomibrown-rasmussen.fathomrealty.com/,nrasmussen@fathomrealty.com,0,invalid,verified,actor
+3,The,and Cheryl Helmecki,19102794610,542 Slippery Rock Way,Carolina Shores,369900.0,http://www.wegotyourhouse.com,buy@wegotyourhouse.com,37,unknown,verified,actor
+3,Philip,Bradley,18432245592,499 Bright Mountain Rd Lot 9,Cullowhee,1295000.0,https://mckeeproperties.com/meet-our-team/philip-bradley/,philip@cashiers.com,0,invalid,verified,actor
+3,Janene,Carver,13365043089,5812 Altrada Dr,Durham,499900.0,,janenecarver@remax.net,70,accept_all,verified,actor
+3,Stacey,Williams,12523339394,150 Pine St,Hertford,358000.0,,staceyunitedcountry26@yahoo.com,71,accept_all,verified,actor
+3,Lisa,Simmons,13368174275,4542 Mountain Spring Rd,Germanton,375000.0,http://lisasimmons.listingbook.com,lhshomes@aol.com,72,accept_all,verified,actor
+3,Frances,Swain,19197938135,4807 Brentwood Rd,Durham,420000.0,http://Yolandamartinhomes.com,swain_frances@yahoo.com,74,accept_all,verified,actor
+3,Jessica,Ussery,17854929118,5706 Woodstream Rd,Randleman,485000.0,https://jessicaussery.allentate.com,jessica.ussery@allentate.com,0,invalid,verified,actor
+3,Elizabeth,Franklin,18283288900,17 Tennyson Dr,Taylorsville,449900.0,http://elizabethfranklinrealtor.com/index.php/about-me/,elizabethfranklin@mail.com,59,unknown,verified,actor
+3,BENITA,PETE HESTER,19104259000,1204 Longleaf Dr,Fayetteville,649900.0,,petehester@aol.com,70,accept_all,verified,actor
+3,Jeremy,Toney,18283586208,270 Lewis Ferry Rd,Statesville,475000.0,,jeremy@nestlewoodrealty.com,0,invalid,verified,actor
+3,Maria,Sorto,18282736367,44 Rathfarnham Rd,Asheville,410000.0,,sortoasheville@aol.com,73,accept_all,verified,actor
+3,Vickie,Gallimore,13369539500,456 Nassau Trl,Asheboro,424500.0,http://www.vickiegallimore.com,vgallimore@remax.net,82,accept_all,verified,actor
+3,Susan,Barnes,18282310231,206 Southwood Ct,Fletcher,439000.0,https://www.beverly-hanks.com/agents/susanbarnes,susanbarnes@beverly-hanks.com,0,invalid,verified,actor
+3,Bob,McCorkle,19102330691,9424 NC 210 Hwy,Rocky Point,439000.0,http://www.intracoastalrealty.com,bobknows2@att.net,73,accept_all,verified,actor
+3,Robert,Johnson,17044915314,1630 Topeka Ct,Monroe,424900.0,https://www.viewcharlottehomes.com,rjohnson@myhomenorthcarolina.com,0,invalid,verified,actor
+3,Sasha,Elliott,17048040718,4065 Deal Mill Rd,Granite Falls,469000.0,,sasha.elliott@givingtreerealty.com,0,invalid,verified,actor
+3,Team,Archer,19107772790,209 Pine Valley Dr,Wilmington,649900.0,,hello@getteamarcher.com,66,unknown,verified,actor
+3,Amber,Whitaker,17047794168,1385 Ebenezer Rd,China Grove,375000.0,http://amber.thesarvergroup.com,amber@thesarvergroup.com,0,invalid,verified,actor
+3,Trevor,J Urban,,322 Oakland Dr,Wilmington,475000.0,,trevor@homesforsalewilmington.com,0,invalid,verified,actor
+3,Crystal,Cox,17047274170,3006 Centerview Dr,Indian Trail,400000.0,http://www.crystalcox.premiersothebysrealty.com,crystal.cox@premiersir.com,0,invalid,verified,actor
+3,David,Bermel,13362134325,6236 NC 87,Gibsonville,419900.0,https://www.davidbermel.com,dbermel@fmrealty.com,0,invalid,verified,actor
+3,Hector,Tobar,19194981278,1218 Champions Pointe Dr,Durham,495000.0,,hector@weichertos.com,0,invalid,verified,actor
+3,Lisa,Belk,17048073954,150 Ashford Hollow Ln,Mooresville,390000.0,http://www.jumpresidential.com,lisa@jumpresidential.com,0,invalid,verified,actor
+3,Valeria,Navas,17046857616,2410 Juniper Dr,Charlotte,350000.0,,valeria@thedreamrealty.net,79,accept_all,verified,actor
+3,BRENDA,COATS,19108642325,138 Lamplighter Way,Spring Lake,352000.0,,rainydaysbc@hotmail.com,0,invalid,verified,actor
+3,Rachel,Toms,18287753913,131 Macdougall Ln,Weaverville,467500.0,,racheltoms@kw.com,0,invalid,verified,actor
+3,Samantha,Janisch,17574780477,170 Sharber Ln,Elizabeth City,474450.0,HTTPS://WWW.FACEBOOK.COM/SAMANTHAJANISCHREALTOR,soldbysam@rwhomes.com,0,invalid,verified,actor
+3,Christopher,R Grocott,12675661014,3682 W Medinah Ave,Southport,610000.0,WWW.STJAMESPLANTATION.COM,chris.grocott@stjamesplantation.com,70,accept_all,verified,actor
+3,Suzanne,Polino,19104771378,6929 English Holly Ct SW Lot 61,Ocean Isle Beach,389900.0,http://www.suzysellsnc.com,support@suzysellsnc.com,82,accept_all,verified,actor
+3,Benbury,Wood Jr,19198767411,1006 Canterbury Ct,Youngsville,664900.0,,benbury.wood@hodgekittrellsir.com,0,invalid,verified,actor
+3,Pam,Campbell,19197493472,753 Saint Andrews Loop,Sanford,395000.0,http://www.pamcampbell.pruysu.com,pamcamp@nc.rr.com,0,invalid,verified,actor
+3,Stuart,Bowler,12526003930,855 Belgrade Swansboro Rd,Stella,359000.0,https://www.bowlerrealestate.com/,stuartbowler@remax.net,73,accept_all,verified,actor
+3,Jennifer,Washburn,13369324913,839 Parkland Rd,Reidsville,359900.0,http://jennifersellsnc.com,jennifer.washburn@remax.net,73,accept_all,verified,actor
+3,Carolyn,Widener,18283294826,51 Jericho Ridge Rd,Fletcher,495000.0,,carolyn.widener@coldwellbanker.com,0,invalid,verified,actor
+3,Jacque,Mentink,18289259155,61 Majestic Path,Nebo,1295000.0,http://www.ourfamilysellshomes.com,jacquerealestate@yahoo.com,73,accept_all,verified,actor
+3,ASHLEY,TRAMMEL,19194791177,337 Latta Rd,Durham,549900.0,,isellhomz@aol.com,72,accept_all,verified,actor
+3,Brooke,Leonard,13365775375,3611 Summit Lakes Dr,Browns Summit,550000.0,,brookel@kw.com,0,invalid,verified,actor
+3,TREVOR,WHITSON,13369734142,3664 Elk Ridge Rd,Ferguson,895000.0,www.leatherwoodrealestate.com,trevor@leatherwoodmountains.com,80,unknown,verified,actor
+3,Jennifer,Korinchak,17175578527,182 Robert Dr,Statesville,450000.0,http://www.jenniferkorinchak.com/,jkorinchak@helenadamsrealty.com,0,invalid,verified,actor
+3,Leontine,Zambrano,12522590374,3000 Bluewater Blvd,New Bern,371000.0,www.newbernrealtor.com,leontinez@aol.com,73,accept_all,verified,actor
+3,Mary,Sitton,18284899354,19 Thornapple Dr,Hendersonville,799000.0,http://www.marysitton.com/,mary@marysitton.com,81,accept_all,verified,actor
+3,Monica,T Coleman,19102568171,178 Kinkaid Ct,Hampstead,549000.0,,monicac114@yahoo.com,74,accept_all,verified,actor
+3,Kitty,Stockton,19192154109,2248 Cranford Rd,Durham,660000.0,http://www.kittystockton.com,kitty@kittystockton.com,78,accept_all,verified,actor
+3,Jenny,Smith,18283204840,6149 N Shore Dr,Nebo,1499000.0,,8533smit@bellsouth.net,73,accept_all,verified,actor
+3,KALA,FORTIN,19312372917,225 Timberline Dr,Sanford,355000.0,http://www.fayettevillencmls.com/fay/idx/index.php?key=127087d4b4e0699da35c3f055eed99b1,kalafortin@yahoo.com,74,accept_all,verified,actor
+3,Team,D.r. Horton,19197427946,1113 Pampas Grass Dr Lot 292,Castle Hayne,391590.0,,wilmingtoninfo@drhorton.com,79,accept_all,verified,actor
+3,Joanna,Lopez,19108001913,1151 Natal Dr SE,Bolivia,374100.0,,joanna.lopez@adamshomes.com,82,accept_all,verified,actor
+3,Dylan,King,13369918273,1713 Creekline Dr,Kernersville,409900.0,"https://www.coldwellbanker.com/Coldwell-Banker-Triad,-Realtors-3188c/Dylan-King-7465265a",dking@cbadvantage.com,0,invalid,verified,actor
+3,Kyle,Kline,19103153856,185 Tamarisk Ln,Pinehurst,549900.0,www.sellmoorehomes.com,kyle@sellmoorehomes.com,79,accept_all,verified,actor
+3,Jerry,Ferrell,19194183880,753 Bolens Creek Rd,Burnsville,440000.0,https://jerryferrellrealestate.com/,jerry.ferrell@exprealty.com,0,invalid,verified,actor
+3,Toni,Phillips,13363545052,162 Piedmont Ave,Winston Salem,485000.0,http://www.CamelCityRealtor.com,toni.phillips@golrb.com,78,accept_all,verified,actor
+3,Kelly,S Curran,18602279955,127 Lark Dr,West End,389000.0,WWW.KELLYCURRANREALTOR.COM,kellycurran@aol.com,73,accept_all,verified,actor
+3,Phil,Puma,17043752495,12716 Cumberland Crest Dr,Huntersville,380000.0,http://www.PumaRealty.com,phil@pumahomes.com,81,accept_all,verified,actor
+3,Harry,Keating,19107349816,1097 Purdie Hall Rd,Tar Heel,354300.0,,harry.keating@exprealty.com,0,invalid,verified,actor
+3,Michael,Sanders,19192187525,6505 Wooden Shoe Ln,Raleigh,415000.0,https://soldinraleigh.com/,mike@mikesandersteam.com,73,accept_all,verified,actor
+3,Jenny,Loretto,14343347213,17120 Players Ridge Dr,Cornelius,924900.0,,jloretto@triconresidential.com,78,accept_all,verified,actor
+3,James,Hewlett,13367057172,4406 Camden Ridge Dr,Greensboro,385000.0,,jameshewlett7959@yahoo.com,72,accept_all,verified,actor
+3,Anu,Singh,19198590800,103 Litton St,Apex,385000.0,,anusingh@fathomrealty.com,64,unknown,verified,actor
+3,Karmen,Quakenbush,13364536074,7502 Summersun Dr,Browns Summit,399000.0,,karmen.quakenbush@remax.net,82,accept_all,verified,actor
+3,TIMOTHY,BAXTER,18282653468,966 Burkett Rd,Boone,465000.0,,baxter@goboone.net,72,accept_all,verified,actor
+3,Lauren,Lowery,17046020400,3900 Dunwoody Dr,Charlotte,350000.0,http://laurenlowery.lodestonerealestate.com,laurenlowery@kw.com,0,invalid,verified,actor
+3,Tracey,Duncan,,6825 Forney Hill Rd,Denver,424900.0,http://TraceyIsYourKey.com,tracey@traceyisyourkey.com,74,accept_all,verified,actor
+3,Harold,Blackwelder,17042016359,907 Orangewood St,Kannapolis,429500.0,www.gobestwayrealty.com,haroldblackwelder@yahoo.com,74,accept_all,verified,actor
+3,Katherine,Cummings,19786182613,1123 Nantucket Dr Unit 89,Mebane,465880.0,,kcummings@windsorhomes.us,0,invalid,verified,actor
+3,Patricia,Peterson,12526728412,201 Dogwood Ln,Trent Woods,375000.0,,pattyhouses@ymail.com,71,accept_all,verified,actor
+3,Faye,Guin,12524382774,2169 US Highway 1 N,Norlina,1150000.0,http://www.countryknollsrealty.com/,c21knolls@aol.com,73,accept_all,verified,actor
+3,Justin,Thompson,18432805704,2124 Lindrick Ct NW,Calabash,434900.0,,justin.thompson@elliottcoastalliving.com,0,invalid,verified,actor
+3,Charlene,Cole,13369718398,225 NE 75th St,Oak Island,529000.0,charlene.southernrealtyadvantage.com,charlene@southernrealtyadvantage.com,67,unknown,verified,actor
+3,John,Poltrock,18288376400,104 Antler Ln,Murphy,358800.0,http://www.thepoltrockteam.com/,concierge@poltrockteam.com,80,accept_all,verified,actor
+3,Kevin,Burnett,,167 Mountain Vista Dr,Saluda,729000.0,,,,,not_found,none
+3,Tabitha,R. Wade,19192703108,2615 Ellis Chapel Rd,Bahama,350000.0,,,,,not_found,none
+3,Renee,Scheidt,17049576045,1345 Gheen Rd,Salisbury,405999.0,,,,,not_found,none
+3,Chase,C Crain,19199439962,12109 Townmeade Ct,Raleigh,439000.0,,,,,not_found,none
+3,Julie,Mallett,18657428336,729 5th Ave W,Hendersonville,497500.0,,,,,not_found,none
+3,Matthew,Tucker,,10010 Drawbridge Dr,Charlotte,534998.0,,,,,not_found,none
+3,John,V Jones,,1737 Rosebay Ct SW,Ocean Isle Beach,478900.0,,,,,not_found,none
+3,Lilliah,Moseley,17045163788,2015 Claybrook Ln,Denver,380000.0,,,,,not_found,none
+3,Mercedes,Vickers,19199297100,644 Granite Mill Blvd,Chapel Hill,425000.0,,,,,not_found,none
+3,Robin,L Campbell,,2423 Lake Ridge Dr,Southport,404820.0,,,,,not_found,none
+3,Non,Member,17049403159,48 Skyline Dr,Waynesville,765000.0,,,,,not_found,none
+3,Lyndsy,S Eaker,19197491910,108 Vulcan St,Garner,400357.0,,,,,not_found,none
+3,Jeff,Goldman,19199095400,511 Hugo St,Durham,495000.0,http://jeffcgoldman.com,,,,not_found,hunter_finder
+3,Daniel,Gluckin,19198593300,127 Dunloe Loop,Raleigh,750000.0,,,,,not_found,none
+3,Harriet,Kirkland,,6889 Greedy Hwy,Hickory,599900.0,http://www.coldwellbanker.com/for/harriet.kirkland,,,,not_found,hunter_finder
+3,Ronny,Chakra,17046162487,9032 Boyd Dr,Matthews,924900.0,,,,,not_found,none
+3,Brenna,Oubre,18283333055,82 Summit Cir,Hendersonville,659000.0,,,,,not_found,none
+3,Brandon,Rushing,19802752163,3914 Mullis Newsome Rd,Monroe,399485.0,,,,,not_found,none
+3,Clarence,Brown,17049058414,12005 Grove Crossing Dr,Huntersville,599900.0,,,,,not_found,none
+3,Steve,Metarelis,14693586891,100 Steuben Dr,Huntersville,359900.0,,,,,not_found,none
+3,Cheryl,L Hollis,,653 Hidden Valley Rd,Wilmington,379900.0,,,,,not_found,none
+3,Kellie,S Bender,19195592093,34 Ashley Woods Ct,Clayton,499900.0,,,,,not_found,none
+3,Raelyn,Lawrence,,1003 Irongate Dr,Apex,550000.0,,,,,not_found,none
+3,Halen,Threatt,,1226 Four Wood Dr,Fayetteville,399999.0,,,,,not_found,none
+3,Ryan,Fitzgerald,,1432 Antiquity Ave,Raleigh,675000.0,,,,,not_found,none
+3,Alex,Lilly,19198161131,669 Fosterton Cottage Way,Raleigh,459990.0,,,,,not_found,none
+3,Angelia,Farish,19192755597,159 Fox Pen Dr,Raleigh,589900.0,,,,,not_found,none
+3,Jenny,Reisinger,18285062053,229 Rippling Brook Rd,Sylva,450000.0,,,,,not_found,none
+3,Kathryn,Nussman,,8421 Whisper Ridge Pl,Raleigh,405000.0,,,,,not_found,none
+3,Kristin,Tiburzi,17043303819,12323 Poplar Forest Dr Unit 205,Charlotte,360000.0,,,,,not_found,none
+3,John,Kluth,,9326 Legrand Dr,Terrell,899900.0,,,,,not_found,none
+3,Craig,Tribus,18046565007,115 Queensferry Rd,Cary,1015000.0,,,,,not_found,none
+3,Joel,Hargett,19194411213,5550 MT Mansfield Rd,Charlotte,369900.0,,,,,not_found,none
+3,Thomas,L Shoupe,,9425 Cartersville Ct,Raleigh,394000.0,,,,,not_found,none
+3,Non,Member,17049403159,132 Wilson Farm Rd,Weaverville,405000.0,,,,,not_found,none
+3,Tommy,Fahey,17049951511,9102 Brightleaf Pl,Charlotte,410000.0,,,,,not_found,none
+3,Joshua,L Estabrook,14344899414,814 Postell St,Raleigh,450000.0,,,,,not_found,none
+3,George,M Wilson,19194392105,160 Adams Pointe Ct,Angier,425000.0,,,,,not_found,none
+3,Phillip,Demuth,,717 Summer Music Ln,Raleigh,509900.0,,,,,not_found,none
+3,Mark,Stephens,19195253202,336 W Earp St,Holly Springs,579900.0,,,,,not_found,none
+3,Lori,Sahling,17046510606,2086 Warrior Fork Trl,Morganton,749900.0,,,,,not_found,none
+3,Beatty,- Pittman Team,,753 Liberty Landing Way,Wilmington,435000.0,,,,,not_found,none
+3,Jeremy,Peet,17046046584,510 Grace Church Ln,Belmont,384999.0,,,,,not_found,none
+3,Pam,H Fox,,5012 Masonboro Loop Rd,Wilmington,385000.0,,,,,not_found,none
+3,Tabitha,R. Wade,19192703108,129 Family Dr,Rougemont,549900.0,,,,,not_found,none
+3,Blythe,Mcneely,18284307212,5572 Hayes Waters Rd,Morganton,439000.0,,,,,not_found,none
+3,Todd,Marlow,,3001 Galena Chase Dr,Indian Trail,430000.0,,,,,not_found,none
+3,Ashley,Gronewald,19196334760,224 Faison Dr,Knightdale,350000.0,,,,,not_found,none
+3,Michael,Sceau,17044933048,6509 Fairford Dr,Charlotte,403900.0,,,,,not_found,none
+3,Caroline,Ericksen,18034481374,11 Town Cir,Flat Rock,565000.0,,,,,not_found,none
+3,Robin,L Campbell,,129 Flat Clam Dr,Wilmington,402900.0,,,,,not_found,none
