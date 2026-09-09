@@ -1,0 +1,319 @@
+Bedrooms,FirstName,LastName,Phone,Address,City,Price,Website,Email,HunterScore,HunterStatus,HunterOutcome
+6,TIM,BROWN,15195727017,15 Treeview,St. Jacobs,$1095000,http://www.kwrealtyteam.com/,,,,not_found
+5,Martin,Smith,19053316570,63 Donegal,Brantford,$659900,https://www.evusto.ca/,,,,not_found
+2,REIN,WANG,19059090101,128 Grovewood Common,Oakville (GO Glenorchy),$599000,https://www.linkedin.com/in/rein-wang-500b74167/,,,,not_found
+3,Babar,Muhammad,12892447722,36 Mahony,Hamilton,$529900,https://www.babarmuhammad.ca/,,,,not_found
+5,NATHAN,LOGANATHAN,15195569828,601 Columbia Forest,Waterloo,$537888,https://www.youtube.com/embed/Ki85Gfcq-Nk,,,,not_found
+1,GREGORY,JANDRICIC,19053358808,5317 Upper Middle,Burlington (Orchard),$450000,http://gregoryjandricic.kw.com/,gregoryjandricic@kw.com,95,valid,found
+3,LEILA,ZAREPOOR,15195460757,40 Ferman,Guelph (Willow West/Sugarbush/West Acres),$899900,http://www.lzrealty.ca/,,,,not_found
+3,Stacey,Keric,19055375456,175 Lormont,Stoney Creek,$699900,https://www.tkrealty.ca/,stacey@tkrealty.ca,84,accept_all,found
+2,Deanna,Brown,19055635335,4345 Beverley,Lincoln (Beamsville),$539900,http://www.solds.ca/,,,,not_found
+4,CELENE,CHOTAI,14165644786,643 Windwood,Hamilton (Binbrook),$799999,http://www.buyandsellwithcelene.com/,,,,not_found
+2,Deanna,Brown,19059714023,4345 Beverley,Beamsville,$539900,https://www.solds.ca/,,,,not_found
+3,MIKE,GALIVAN,19052207253,132 Hampton Heath,Burlington (Appleby),$1274000,http://galivanhomes.com/,mikegalivan@rmxemail.com,98,valid,found
+6,ANURAG,SHARMA,12267808886,169 Bruce,Kitchener,$749900,http://www.anuraghomes.ca/,anurag@anuraghomes.ca,82,valid,found
+3,ROGAN,MANOKARASINGAM,14169537873,100 Hollywood,Cambridge,$649000,http://www.buyandsellwithrogan.com/,,,,not_found
+4,RACHEL,MORGAN,19054831718,551 Deerhurst,Burlington (Appleby),$1339900,https://morganwasley.com/,rachel@morganwasley.com,84,valid,found
+6,AHMAD SIYAR,POPALZAY,14169495880,183 Valmont,Hamilton (Ancaster),$995000,https://tirupopalgroup.com/,ahmad@tirupopalgroup.com,80,valid,found
+4,STERLING,WONG,14164597653,1421 Watersedge,Mississauga (Clarkson),$2680500,https://www.searchrealtycareers.com/,sterlingwong@searchrealty.ca,96,valid,found
+3,RAHUL,ARORA,14164604499,1008 Cooper,Milton (BE Beaty),$869000,http://www.arorareg.com/,rahul@arorareg.com,84,valid,found
+4,Christina,Wasley,19053307344,551 Deerhurst,Burlington,$1339900,https://www.morganwasley.com/,christina@morganwasley.com,81,valid,found
+2,DEANNA,MENDES,14165578737,2075 Appleby Line,Burlington (Uptown),$575000,http://www.elevatedandco.ca/,,,,not_found
+2,Aaron,Cherney,19054017915,60 Valley,St. Catharines (Rykert/Vansickle),$589000,http://aaroncherney.com/,,,,not_found
+2,Dawn,Geddes,15192222413,22 Sleeman,Guelph,$759900,http://www.sellshouses.ca/,,,,not_found
+3,DAVID,MCINTYRE,15197819110,851 Union,Kitchener,$599900,http://www.mres.ca/,david@mres.ca,80,accept_all,found
+4,CHRIS,CIPRIANI,19055451188,148 Moores,Haldimand,$2599999,http://www.ciprianiteam.com/,chris@ciprianiteam.com,97,valid,found
+3,ROGER,TOWNSEND,16473605900,7749 Shagbark,Niagara Falls (Brown),$599888,http://www.callroger.ca/,,,,not_found
+3,TOBIAS RICHARD,SMULDERS,19055451188,230 Beach,Hamilton (Hamilton Beach),$698888,http://www.teamsmulders.com/,,,,not_found
+6,Brendon,Aasla,15192091018,40 Premier,Waterdown,$1485000,https://www.facebook.com/AgentAasla,,,,invalid_input
+3,ANURAG,SHARMA,12267808886,207 Broadacre,Kitchener,$2850,http://www.anuraghomes.com/,anurag@anuraghomes.com,98,valid,found
+5,THOMAS GEORGE,POBOJEWSKI,19055682121,3217 Hazelwood,Burlington (Headon),$1235000,http://www.pobojewski.ca/,,,,not_found
+2,ANTONELLA C.,ANICHINI,19058326656,201 Westbank,Hamilton (Stoney Creek Mountain),$599800,http://antonellarealestate.com/,,,,not_found
+2,DAVID,BRADICA,19058128123,15 Queen,Hamilton (Central),$565000,http://www.davidbradica.com/,david@davidbradica.com,83,valid,found
+3,ANA,BASTAS,12896705888,5 Liddycoat,Hamilton (Ancaster),$668900,http://www.anabastas.ca/,ana@anabastas.ca,82,valid,found
+5,KATE,DROZDOWSKI,19053051600,114 Reding,Hamilton (Ancaster),$3995000,http://www.sellwithkate.com/,,,,not_found
+3,TARA LORRAINE,DUNN,19053992829,2163 Sutton,Burlington (Orchard),$999900,http://www.dunndealhomes.com/,,,,not_found
+4,KAPIL,MARWAHA,19054561000,3469 Caplan,Burlington (Roseland),$988800,http://www.mistersold.ca/,,,,not_found
+5,BRUCE,WITCHEL,14169482435,1175 Kane,Mississauga (Lorne Park),$1795000,http://www.brucewitchel.com/,,,,not_found
+2,David,Bradica,19058128123,15 Queen Street S Unit# 1111,Hamilton,$565000,https://davidbradica.com/,david@davidbradica.com,83,valid,found
+5,Jerry,Hendriks,19056513475,4 Royal Orchard,St. Catharines (Lakeport),$749000,https://www.youtube.com/embed/d8o1L5q9Umw,,,,not_found
+,Tobias,Smulders,12898128137,59 Cielo,Hamilton,$438888,https://www.teamsmulders.com/,tobias@teamsmulders.com,99,valid,found
+,Tobias,Smulders,12898128137,55 Cielo,Hamilton,$438888,https://www.teamsmulders.com/,tobias@teamsmulders.com,99,valid,found
+4,Tobias,Smulders,12898128137,641 Limeridge,Hamilton,$749900,https://www.teamsmulders.com/,tobias@teamsmulders.com,99,valid,found
+4,Chris,Klashoff,19055744600,72 Emerald,Hamilton,$279900,https://www.chrisklashoff.royallepage.ca/,chrisklashoff@royallepage.ca,98,valid,found
+,Harry,Chopra,16475467000,134 Anne,Niagara-on-the-Lake,$879000,http://www.teamchoprarealty.ca/,,,,not_found
+3,CLAIRE,MCNEVAN,19054665306,192 Victoria,Hamilton (Landsdale),$525000,http://www.clairemcnevan.com/,,,,not_found
+4,SAM ALLAN,MCDADI,19055021500,195 Holmes,Milton (SC Scott),$1375000,http://www.mcdadi.com/,,,,not_found
+2,PHILIP RUSSELL,HOLLETT,19056397676,5001 Corporate,Burlington (Tansley),$599900,https://www.philiphollett.com/,,,,not_found
+3,Tobias,Smulders,12898128137,230 Beach,Hamilton,$698888,https://www.teamsmulders.com/,tobias@teamsmulders.com,99,valid,found
+3,LEE,QUAILE,15484907336,204 Stanley,Waterloo,$1299900,http://leequaile.ca/,,,,not_found
+5,Tejvir,Dhugga,14164757500,6604 Locus,Niagara Falls,$579999,http://www.tejvirdhugga.com/,,,,not_found
+4,Rob,Golfi,19055757700,31 Commando,Waterdown,$1299900,https://www.robgolfi.com/,,,,not_found
+4,Michael,St. Jean,12892398866,14 Green Forest,Hamilton,$748888,https://www.youtube.com/embed/Cmg3MgM_cck,,,,not_found
+4,TOBIAS RICHARD,SMULDERS,19055451188,641 Limeridge,Hamilton (Thorner),$749900,http://www.teamsmulders.com/,,,,not_found
+3,MATTHEW,ADEH,19055755478,1894 Main,Hamilton (McQuesten),$549000,http://www.teamgrande.com/,matthew@teamgrande.com,98,valid,found
+,TOBIAS RICHARD,SMULDERS,19055451188,55 Cielo,Hamilton (Jerome),$438888,http://www.teamsmulders.com/,,,,not_found
+4,LEE S.,QUAILE,15484907336,46 Cherry,Kitchener,$895000,https://leequaile.ca/,,,,not_found
+,TOBIAS RICHARD,SMULDERS,19055451188,59 Cielo,Hamilton (Ryckmans),$438888,http://www.teamsmulders.com/,,,,not_found
+5,SAURABH,NAGPAL,14169189894,141 Cedar Crest,Kitchener,$699900,http://www.saurabhnagpal.ca/,,,,not_found
+3,LEE S.,QUAILE,15484907336,26 St. Leger,Kitchener,$599000,https://leequaile.ca/,,,,not_found
+3,RAJVIR,GREWAL,16476761700,36 Kerr,Cambridge,$499000,http://www.rajvirgrewal.com/,,,,not_found
+4,TANYA,ROCCA,19053354102,23 West Glen,Hamilton (Stoney Creek Mountain),$949000,http://www.roccasisters.ca/,tanya@roccasisters.ca,99,valid,found
+3,CLIFF C.,REGO,15198044999,156 Hickory,Cambridge,$599000,http://www.corcoranhorizon.com/,cliff@corcoranhorizon.com,95,valid,found
+3,JASON,O'KEEFE,15195035828,415 Morgan,Kitchener,$450000,https://www.realhomeexperts.ca/,,,,not_found
+4,RINA,DI RISIO,19053383737,3368 Raspberry Bush,Oakville (BR Bronte),$1739000,http://www.rina.ca/,rdirisio@rina.ca,84,accept_all,found
+,RONALD,JANSEN,15195701330,7106 Wellington County Rd 124,Guelph,$1,http://www.colliersmn.com/ron.jansen,,,,not_found
+5,ALEX,IRISH,19058427677,2073 Deramore,Oakville (FD Ford),$3050000,http://www.alexirish.com/,,,,not_found
+3,NICHOLAS,WILLIAMS,19058427677,2380 Bromsgrove,Mississauga (Clarkson),$629900,http://www.williamsfamilyrealestate.com/,nicholas@williamsfamilyrealestate.com,97,valid,found
+4,Chris,Cipriani,19059787834,148 Moores,York,$2599999,https://www.ciprianiteam.com/,chris@ciprianiteam.com,97,valid,found
+4,MATTHEW,BUSCH,19058286550,5322 Windermere,Burlington (Appleby),$999900,https://www.youtube.com/embed/7ztJpvNTQ1Q,,,,not_found
+2,Philip,Hollett,12892597795,5001 Corporate Drive Unit# 410,Burlington,$599900,https://www.philiphollett.com/,philip@philiphollett.com,80,valid,found
+3,Rajvir,Grewal,16476761700,36 Kerr,Cambridge,$499000,http://www.rajvirgrewal.com/,,,,not_found
+3,Linda,Cabral,15198044000,156 Hickory,Cambridge,$599000,http://www.regoteam.com/,lindac@regoteam.com,98,valid,found
+4,Tanya,Rocca,19053354102,23 West Glen,Stoney Creek,$949000,https://www.roccasisters.ca/,tanya@roccasisters.ca,99,valid,found
+4,TONY,JOHAL,15197403690,231 Steepleridge,Kitchener,$849999,http://www.tonyjohal.com/,tony@tonyjohal.com,97,valid,found
+3,Ali,Salarian,16473305109,1121 Cooke Boulevard Unit# 76,Burlington,$689000,http://www.remaxsuccess.ca/,ali@remaxsuccess.ca,97,valid,found
+5,LALIT,SHARMA,14169919993,86 Margaret,Hamilton (Stoney Creek),$1299000,https://www.realtorlalit.com/,lalitsharma@royallepage.ca,98,valid,found
+5,TANYA,ROCCA,19053354102,24 Newcastle,Hamilton (Thorner),$1250000,http://www.roccasisters.ca/,tanya@roccasisters.ca,99,valid,found
+3,TRAVIS ROBERT,LANGERAAP,19055731188,2223 Hall,Hamilton,$1499900,http://www.teamtravis.ca/,,,,not_found
+1,PHILIP RUSSELL,HOLLETT,19056397676,30 Hamilton,Hamilton (Waterdown),$449900,https://www.philiphollett.com/,,,,not_found
+4,LAURA,DOUCETTE,19055757070,59 Renata,Hamilton (Dundas),$1300000,http://homesinhamiltonontario.com/,,,,not_found
+4,FEEFA,KHAN,19054561000,3975 Seebring,Mississauga (Erin Mills),$1499000,http://www.feefakhan.ca/,fkhan@feefakhan.ca,77,accept_all,found
+2,LESLIE,ZHANG,14164097368,3200 William Coltson,Oakville (JM Joshua Meadows),$550000,http://www.topliving.ca/,,,,not_found
+4,DUNCAN,HARVEY,19058427000,2285 Dunedin,Oakville (FD Ford),$1690000,http://www.harveymccreery.com/,duncan@harveymccreery.com,82,valid,found
+2,DEANNA,MENDES,14165578737,2075 Appleby Line Unit# 102,Burlington,$575000,http://www.elevatedandco.ca/,,,,not_found
+3,LEE,QUAILE,15484907336,26 St. Leger,Kitchener,$599000,http://leequaile.ca/,,,,not_found
+4,RAYMOND,PACE,19052577500,2454 Woking,Mississauga (Sheridan),$1199900,http://www.paceteam.ca/,raymond.pace@paceteam.ca,83,valid,found
+3,ALEX,IRISH,19058427677,138 East,Oakville (BR Bronte),$1699900,http://www.alexirish.com/,,,,not_found
+2,William,Miller,12896879455,19 Stoneridge,Niagara-on-the-Lake (St. Davids),$999000,https://www.millergroupproperties.com/,,,,not_found
+5,Tanya,Rocca,19053354102,24 Newcastle,Hamilton,$1250000,https://www.roccasisters.ca/,tanya@roccasisters.ca,99,valid,found
+5,Lalit,Sharma,14169919993,86 Margaret,Hamilton,$1299000,https://www.realtorlalit.com/,lalitsharma@royallepage.ca,98,valid,found
+5,MARY L.,HAMILTON,19053084887,66 Garden,Hamilton (Ancaster),$1139900,http://www.soldbyhamilton.ca/,mary@soldbyhamilton.ca,78,accept_all,found
+5,MICHAEL,PHINNEY,19054668888,245 Glenholme,Hamilton (Glenview),$659000,http://phinneyrealestate.com/,michael@phinneyrealestate.com,99,valid,found
+4,Duncan,Harvey,19055105995,2285 Dunedin,Oakville,$1690000,https://www.harveymccreery.com/,duncan@harveymccreery.com,82,valid,found
+2,Garett,Mercer,16473915256,26 Maitland,Brantford,$424999,http://www.linkedin.com/in/garett-mercer-9570911a6/,,,,not_found
+3,TONY,JOHAL,15197403690,11 Woodborough,Cambridge,$675000,http://www.tonyjohal.com/,tony@tonyjohal.com,97,valid,found
+2,CAROL,MCMONAGLE,19053377001,125 George,Oakville (OO Old Oakville),$2999000,http://www.cmcmonagle.com/,,,,not_found
+4,Ryan,Campbell,15197555477,92 Mary,Brantford,$299000,https://www.facebook.com/RCCsells/?fref=ts,,,,invalid_input
+4,Laura,Doucette,19055704075,59 Renata,Dundas,$1300000,https://www.homesinhamiltonontario.com/,,,,not_found
+3,Travis,Langeraap,12892371412,2223 Hall,Binbrook,$1499900,https://www.teamtravis.ca/,,,,not_found
+5,RENA,CAMPITELLI,14166982090,63 Cait,Hamilton (Ancaster),$1650000,https://www.renacampitelli.com/,,,,not_found
+5,AHMAD SIYAR,POPALZAY,14169495880,598 Black Oak,Waterloo,$799900,https://tirupopalgroup.com/,ahmad@tirupopalgroup.com,80,valid,found
+4,SCARLETT,STRATI,16474001775,435 Parkside,Hamilton (Waterdown),$1199900,https://scarlettstrati.com/,scarlett@scarlettstrati.com,97,valid,found
+3,SHAHID,KHAWAJA,14166623000,1000 Asleton,Milton (WI Willmott),$775000,http://www.shahid.ca/,,,,not_found
+3,MICHAEL,PHINNEY,19054668888,1066 Stockwell,Mississauga (Lorne Park),$2600000,http://phinneyrealestate.com/,michael@phinneyrealestate.com,99,valid,found
+2,NATASHA,EADIE,19058257777,2511 Lakeshore,Oakville (BR Bronte),$1300000,https://natashaeadie.com/,,,,not_found
+4,PATRICIA,WARD,14162361241,1360 Lewisham,Mississauga (Clarkson),$899900,http://www.patwardrealtor.com/,,,,not_found
+2,Philip,Hollett,12892597795,30 Hamilton Street S Unit# 711,Waterdown,$449900,https://www.philiphollett.com/,philip@philiphollett.com,80,valid,found
+3,Michelle,Reynolds,19054018874,40 Harmony,Niagara-on-the-Lake (Town),$1550000,https://www.luxuryniagararealestate.com/,,,,not_found
+4,LINDSAY,SELLAND,16472629087,3125 Riverview,Oakville (BR Bronte),$1469999,http://www.sellandrealestate.com/,lindsay@sellandrealestate.com,83,valid,found
+3,JAKE,LYONS,19056393355,1361 Stephenson,Burlington (Brant),$949900,http://www.lyonsgrouprealty.com/,jake@lyonsgrouprealty.com,82,valid,found
+4,CHERYL,MICKOLWIN,14166173682,4269 Taffey,Mississauga (Erin Mills),$799000,https://www.youtube.com/embed/WR9tkehNGLg,,,,not_found
+4,RINA,DI RISIO,19053383737,1387 Willowdown,Oakville (SW Southwest),$2799000,http://www.rina.ca/,rdirisio@rina.ca,84,accept_all,found
+4,LEE,QUAILE,15484907336,46 Cherry,Kitchener,$895000,http://leequaile.ca/,,,,not_found
+3,NATASHA,EADIE,19058257777,2511 Lakeshore Road W Unit# 712,Oakville,$1300000,https://natashaeadie.com/,,,,not_found
+4,Scarlett,Strati,16474001775,435 Parkside,Waterdown,$1199900,https://www.scarlettstrati.com/,scarlett@scarlettstrati.com,97,valid,found
+4,BRAD,RHODENIZER,14169950494,3 Spring,Brantford,$650000,https://www.facebook.com/brad.rhodenizer,,,,invalid_input
+2,Tony,Pucci,15197714663,38 Davern,Brantford,$849900,https://www.yourbrantfordhome.com/,tonypucci@royallepage.ca,96,valid,found
+4,Mary,Hamilton,19053084887,66 Garden,Ancaster,$1139900,https://www.youtube.com/embed/3SUxr32PAu0,,,,not_found
+5,BILL,SCHIAVONE,14169996084,16 Ennisclare,Oakville (MO Morrison),$10950000,http://www.schiavonediamond.com/,,,,not_found
+6,DREW,WOOLCOTT,19053329223,1354 No 1 Side,Burlington,$2149999,http://woolcott.ca/,drewwoolcott@woolcott.ca,97,valid,found
+3,RINA,DI RISIO,19053383737,4823 Thomas Alton,Burlington (Alton),$859000,http://www.rina.ca/,rdirisio@rina.ca,84,accept_all,found
+3,BRAD,MILLER,19053382121,2450 Old Bronte,Oakville (WM Westmount),$998000,http://goodalemillerteam.com/,brad@goodalemillerteam.com,83,accept_all,found
+3,ANDRA,ARNOLD,15198249050,93 Westwood,Guelph (Willow West/Sugarbush/West Acres),$399999,http://www.andraarnold.com/,,,,not_found
+6,LINDA,VADALA,15198249050,26 Bridle Path,Puslinch,$2149900,http://rlproyalcity.com/realtor/linda-vadala/,lindavadala@royallepage.ca,98,valid,found
+3,Jake,Lyons,19054664722,1361 Stephenson,Burlington,$949900,https://www.lyonsgrouprealty.com/,jake@lyonsgrouprealty.com,82,valid,found
+6,Rob,Golfi,19055757700,52 Kensington,Hamilton,$549000,https://www.robgolfi.com/,,,,not_found
+,Paul,Dishke,19055731188,4049 6 Highway,Hamilton,$1990900,https://www.pauldishke.ca/,,,,not_found
+3,ALEX,IRISH,19058427677,60 Old Mill,Oakville (OO Old Oakville),$1379000,http://www.alexirish.com/,,,,not_found
+4,William,Miller,12896879455,18 Harmony,Niagara-on-the-Lake (Town),$999000,https://www.millergroupproperties.com/,,,,not_found
+3,Paul,Makarenko,19055451188,1275 Stephenson Drive Unit# 6,Burlington,$1250000,https://www.paulandadam.com/,paul@paulandadam.com,85,valid,found
+6,Drew,Woolcott,19053329223,1354 No 1 Side,Burlington,$2149999,https://www.woolcott.ca/,drewwoolcott@woolcott.ca,97,valid,found
+4,CAROLINE,HARVEY,15195787300,46 Ellen,Kitchener,$699900,https://www.corepg.co/,,,,not_found
+3,NICK,CZARNOGORSKI,19053399320,32 Allan,Hamilton (Homeside),$440000,http://nickcz.ca/,,,,not_found
+4,GERALDINE,MAHOOD,15195794110,537 Havendale,Waterloo,$899000,https://www.geraldinesellshomes.com/,geraldine@geraldinesellshomes.com,97,valid,found
+3,CHRISTIAN,VERMAST,14169609995,100 Dalewood,Hamilton (Westdale),$995000,https://paulandchristianassociates.com/,,,,not_found
+4,SCARLETT,STRATI,16474001775,4670 Bracknell,Burlington (Alton),$1499900,https://scarlettstrati.com/,scarlett@scarlettstrati.com,97,valid,found
+5,CAROL,KORENIC,14168209648,3574 Autumnleaf,Mississauga (Erin Mills),$899999,http://www.carolkorenic.com/,carol@carolkorenic.com,98,valid,found
+2,MICHAEL,PHINNEY,19054668888,50 Old Mill,Oakville (OO Old Oakville),$499999,http://phinneyrealestate.com/,michael@phinneyrealestate.com,99,valid,found
+2,Kate,Broddick,15197746664,575 Conklin Road Unit# 1010,Brantford,$379900,https://twitter.com/teamkateagents,,,,not_found
+3,MARIO,RAKANOVIC,15194970518,110 Highland Road E Unit# 86,Kitchener,$599900,http://www.kwinnovationrealty.com/,,,,not_found
+5,CYNTHIA,AVIS,19058427000,456 Lakeshore,Oakville (SW Southwest),$4898000,http://www.avisteam.com/,,,,not_found
+2,Kate,Broddick,15197746664,575 Conklin Road Unit# 226,Brantford,$379900,https://twitter.com/teamkateagents,,,,not_found
+3,Wendy,Easveld,15197554575,57 Westchester,Brantford,$479900,https://www.facebook.com/brantfordresidentialproperties,,,,invalid_input
+3,Robert,Di Corrado,19059888748,4039 Barry,Lincoln (Beamsville),$874900,https://www.buyniagara.com/,,,,not_found
+2,LUCILA E,PADILLA,16479265829,450 Dundas,Hamilton (Waterdown),$399000,http://www.lucilapadilla.com/,lucila@lucilapadilla.com,85,valid,found
+3,BONNIE,GREENWOOD,15194046887,76 Cluthe,Kitchener,$525000,http://www.agentgreenwood.com/,bonnie@agentgreenwood.com,95,valid,found
+4,PAUL,FITZPATRICK,15192401722,28 Oxford,Guelph,$1450000,http://www.homegrouprealty.ca/,,,,not_found
+5,SAM ALLAN,MCDADI,19055021500,432 Bob-O-Link,Mississauga (Clarkson),$10988000,http://www.mcdadi.com/,,,,not_found
+2,ROSEMARIE V.,WALLACE,19058225000,128 Garden,Oakville (CO Central),$634900,http://www.askrosewallace.com/,rose@askrosewallace.com,98,valid,found
+4,TIM,BISHOP,14168187562,2000 The Collegeway,Mississauga (Erin Mills),$999900,http://www.timbishophomes.com/,,,,not_found
+2,Cameron,Nolan,19059283246,510 Queenston Road Unit# 406,Hamilton,$339900,https://www.cameronnolan.ca/,,,,not_found
+4,Scarlett,Strati,16474001775,4670 Bracknell,Burlington,$1499900,https://www.scarlettstrati.com/,scarlett@scarlettstrati.com,97,valid,found
+1,Chris,Cipriani,19059787834,2373 King Street E Unit# 17,Hamilton,$309900,https://www.ciprianiteam.com/,chris@ciprianiteam.com,97,valid,found
+3,Nick,Czarnogorski,19053399320,32 Allan,Hamilton,$440000,https://www.nickcz.ca/,,,,not_found
+4,Kate,Broddick,15197746664,48 Nightingale,Brantford,$674900,https://twitter.com/teamkateagents,,,,not_found
+2,DAVID PATRICK,BAILEY,14167691616,399 Elizabeth,Burlington (Brant),$1650000,http://www.highparkrealestate.com/,,,,not_found
+4,CHARLENE,DE SILVA,19058552200,4975 Southampton,Mississauga (Churchill Meadows),$668888,http://www.stayinthegta.ca/,charlene@stayinthegta.ca,99,valid,found
+4,LISA,LANOUE,19058427000,1177 Grand,Oakville (FA Falgarwood),$1299900,http://www.lisalanoue.com/,,,,not_found
+3,SAMRINA,QURESHY,16472677960,33 Miles,Milton (OM Old Milton),$889900,http://www.samrinaqureshy.com/,,,,not_found
+4,SUE,BOLOGNONE,15192926995,60 Sixth Concession,Brant (Burford),$849900,http://www.midwesternrealty.ca/,,,,not_found
+1,VLAD,DESPOTOVIC,15195900352,225 Harvard,Waterloo,$222900,http://www.vdespo.ca/,,,,not_found
+2,SARAH,CULMONE,19058427000,2177 Burnhamthorpe,Mississauga (Erin Mills),$525000,http://www.avisteam.com/agent/sarah-culmone/,sarah@avisteam.com,96,valid,found
+4,BARBARA,BEERS,19056347755,1 Chatterson,Hamilton (Ancaster),$1239000,http://www.barbarabeers.com/,barbara@barbarabeers.com,95,valid,found
+4,PAUL,BAJWA,14162765833,830 Megson,Milton (WI Willmott),$899000,http://www.paulbajwa.com/,,,,not_found
+2,JULIE ALLISON,RENNIE,14169259191,223 Rebecca,Oakville (CO Central),$1299999,https://rennieteam.com/,,,,not_found
+4,MONTY,GIBSON,19056371700,509 Larkspur,Burlington (Bayview),$1679900,http://montygibson.com/,,,,not_found
+5,MIRO,LUKIC,15195911782,44 Tami,Kitchener,$1299900,http://www.realestatemiro.ca/,,,,not_found
+3,ANDRA,ARNOLD,15198249050,38 Borland,Guelph (Clairfields/Hanlon Business Park),$924999,http://www.andraarnold.com/,,,,not_found
+4,Patrick,Burke,19053806459,75 Bergenstein,Pelham (Fonthill),$1099000,https://www.thebteam.ca/,,,,not_found
+1,Dhana,Dias,19057519863,359 Geneva,St. Catharines (Fairview),$225000,https://www.facebook.com/profile.php?id=61577948440177&locale=en_GB#,,,,invalid_input
+3,PARTH,KADEKAR,16476572908,49 Marina Point,Hamilton (Stoney Creek),$599000,http://pkrealty.ca/,,,,not_found
+,KAMILA,ROSE,19058023776,4921 Sann,Lincoln (Lincoln Lake),$2475000,https://www.facebook.com/kamila.kwiatkowski.9/,,,,invalid_input
+3,MATT,QUINN,14169493238,76 Pearl,Hamilton (Strathcona),$764900,http://krausemorris.ca/,,,,not_found
+3,JAKE,NICOLLE,12892042227,5000 Desantis,Lincoln (Beamsville),$549900,https://jakenicolle.com/,jake@jakenicolle.com,83,valid,found
+1,MICA,SADLER,15195893521,181 King,Kitchener,$425000,http://www.sadlerrealty.ca/,mica@sadlerrealty.ca,99,valid,found
+6,Carmine,Trifone,19055416691,75 Kensington,Hamilton,$574900,https://www.carminetrifonerealtor.com/,,,,not_found
+2,DAVID,ROBBIO,16476993096,1340 Main,Milton (DE Dempsey),$549900,https://www.robbionicolle.com/,,,,not_found
+3,BRAD,MILLER,19053382121,2193 Lillykin,Oakville (RO River Oaks),$1399900,http://goodalemillerteam.com/,brad@goodalemillerteam.com,83,accept_all,found
+4,Barbara,Beers,19056342335,1 Chatterson,Ancaster,$1239000,https://www.barbarabeers.com/,barbara@barbarabeers.com,95,valid,found
+4,Monty,Gibson,19052205958,509 Larkspur,Burlington,$1679900,https://www.montygibson.com/,,,,not_found
+2,Sandra,O'Connor,19058703205,139 Queen,Hamilton,$499999,https://www.homesofburlington.com/,,,,not_found
+3,DARREN JOHN,MORRIS,14168780436,76 Pearl,Hamilton,$764900,http://www.krausemorris.ca/,,,,not_found
+4,Carlos,Rosa,14169997332,127 Court,Paris,$939000,http://www.homesbycarlos.ca/,,,,not_found
+3,Tom,Woods,19052277400,31 Stuart,St. Catharines (Downtown),$588000,http://www.tomwoods.ca/,tom@tomwoods.ca,95,valid,found
+4,Brendon,Aasla,15192091018,14 Allenby,Brantford,$559900,https://www.facebook.com/AgentAasla,,,,invalid_input
+3,BRENDA,MCKINLEY,19053208306,148 St Andrews,Hamilton (Vincent),$699900,http://brendamckinley.realtyworldlegacy.ca/,brenda@realtyworldlegacy.ca,99,valid,found
+1,MICA,SADLER,15195893521,62 Balsam,Waterloo,$389999,http://www.sadlerrealty.ca/,mica@sadlerrealty.ca,99,valid,found
+4,SHERI,SULLIVAN,12892421972,12 Fiddlehead,Hamilton (Waterdown),$1199900,http://www.sheri.realtor/,,,,not_found
+6,ANURAG,SHARMA,12267808886,49 Scots Pine,Kitchener,$1279900,http://www.anuraghomes.ca/,anurag@anuraghomes.ca,82,valid,found
+4,CARLOS,ROSA,19055682121,127 Court,Brant (Paris),$939000,http://homesbycarlos.ca/,,,,not_found
+3,NATALIE,KESHAVARZNIA,19053803233,7992 Peter,Niagara Falls (Chippawa),$539000,http://www.thekeshgroup.com/,,,,not_found
+2,JON,FLYNN,19053245266,9150 Willoughby,Niagara Falls (Chippawa),$599900,http://flynnrealestateinc.com/,jon@flynnrealestateinc.com,96,valid,found
+2,David,Robbio,16476993096,1340 Main Street E Unit# 113,Milton,$549900,https://www.robbionicolle.com/,,,,not_found
+8,LIZ,SEREC,15192732821,727 Frederick,Kitchener,$849900,http://www.stratfordhomes.ca/,lserec@stratfordhomes.ca,83,accept_all,found
+3,Jake,Nicolle,12892166852,5000 Desantis,Lincoln,$549900,https://www.youtube.com/embed/s6w1kv5jEbA,,,,not_found
+5,COLTON,DAVIDSON,15195025049,95 Underhill,Kitchener,$650000,http://coltonsellshomes.com/,colton@coltonsellshomes.com,80,valid,found
+4,Jennifer,Huang,19053253838,15 Black Friars,St. Catharines (Lakeshore),$799900,https://jenniferhuang.ca/,jen@jenniferhuang.ca,95,valid,found
+4,MARTINUS,GELEYNSE,16478733999,42 Nightingale,Hamilton (Landsdale),$619000,http://www.martinus.ca/,,,,not_found
+3,Annachie,Borsellino-Luchsinger,19053793198,148 St Andrews,Hamilton,$699900,https://www.borsellinorealty.ca/,,,,not_found
+5,ADELE,MCGOVERN,14168712631,26 Hostein,Hamilton (Ancaster),$1250000,http://www.prep2sell.com/,,,,not_found
+4,JESSE,CHIDWICK,14168094544,455 Ramsey,Milton (FO Ford),$1299900,http://www.teamapex.ca/,,,,not_found
+3,PETER,WOZNOWSKI,14169957767,3045 Ferguson,Burlington (Alton),$1149800,http://www.woznowski.com/,,,,not_found
+4,Patricia,Rende,19053997840,1389 Lakeshore,Burlington,$1689000,https://www.royallepage.ca/PatriciaRende,patriciarende@royallepage.ca,98,valid,found
+3,ROB,STRICKLER,15195787300,238 Mcgarry,Kitchener,$699900,http://www.thehomeman.net/,robstrickler@thehomeman.net,99,valid,found
+3,ANGELIQUE,LYONS,19058788101,228 Bell,Milton (OM Old Milton),$859000,http://www.angellyons.ca/,,,,not_found
+3,NANCY,ROBERTSON,19058450024,50 Old Mill,Oakville (OO Old Oakville),$989000,https://www.youtube.com/embed/2mxQuEPocCQ,,,,not_found
+4,FAISAL,SUSIWALA,15196245555,2172 Centre,Flamborough,$1695000,http://www.homeshack.com/,,,,not_found
+2,JOE,REA,14168001888,44 Conrad,Grimsby (Grimsby Beach),$599888,http://www.byjesseandjoe.com/,joe@byjesseandjoe.com,85,valid,found
+3,JAMES,MICALLEF,19055682121,1237 North Shore,Burlington (Brant),$1099000,http://www.jamesmicallef.com/,,,,not_found
+4,FISHER,YU,16479726691,2346 Salcome,Oakville (JC Joshua Creek),$1979000,https://www.youtube.com/embed/5dok6wj_O9s,,,,not_found
+4,FISHER,YU,16479726691,130 Solingate,Oakville (BR Bronte),$1598000,https://www.youtube.com/embed/5dok6wj_O9s,,,,not_found
+3,Kathleen Anne,Clyson,15195787300,91 Roseview,Cambridge,$659900,http://www.thedorindaorserteam.com/,,,,not_found
+2,JARED,ROPCHAN,15198249050,60 Ptarmigan,Guelph (Kortright Hills),$809000,http://royalcity.com/,jaredropchan@royallepage.ca,99,valid,found
+4,Sheri,Sullivan,12892421972,12 Fiddlehead,Waterdown,$1199900,https://www.sheri.realtor/,,,,not_found
+3,JAMES,MICALLEF,19055682121,1237 North Shore Boulevard Unit# 405,Burlington,$1099000,http://www.jamesmicallef.com/,,,,not_found
+3,METKA,MANFREDA,19053486117,121 Dorothy,St. Catharines (Lakeport),$524900,https://mmanfreda.momentumrealty.ca/,,,,not_found
+4,Kyle,Miller,16474628249,7 Glenayr,St. Catharines (Glendale/Glenridge),$849000,http://www.millercowleyniagara.com/,,,,not_found
+3,Craig,Bush,19055755478,485 Green Road Unit# 30,Stoney Creek,$629900,https://www.youtube.com/embed/9GZFVyMmE8M,,,,not_found
+3,HONG,CHHOR,15192243040,5982 Dunn,Niagara Falls (Arad/Fallsview),$409900,http://www.hongchhor.com/,,,,not_found
+4,ROBERT,PIPERNI,16473603335,7 Seacove,Hamilton (Lakeshore),$999999,https://www.youtube.com/embed/zdCIdtZsG4Q,,,,not_found
+3,Cahit,Tutak,15195021938,1393 Pineview,Cambridge,$539000,http://teammosaic.ca/,cahit@teammosaic.ca,80,valid,found
+3,SUSAN,MASTERSON,16473884471,3119 Hedges,Burlington (Alton),$1435000,http://www.teammasterson.com/,susan@teammasterson.com,95,valid,found
+3,ANITA,PUROHIT,16479914742,3010 Palmer,Burlington (Palmer),$499000,https://www.getontheblock.com/team,anita@getontheblock.com,98,valid,found
+2,ANN,CORRIGAN,19053383737,100 Burloak,Burlington (Appleby),$589900,http://www.oakvillehousesales.com/,,,,not_found
+3,Elyse,Rose,15198353440,88 Baggs,Cambridge,$779900,http://therosegroup.ca/,,,,not_found
+3,ALEX,WINIARSKI,14164559151,1023 Runnymead,Oakville (GA Glen Abbey),$999000,https://winrealtyteam.com/,alex@winrealtyteam.com,85,valid,found
+3,Jamie,Szeibert,12892711244,1025 Pelham,St. Catharines (Rykert/Vansickle),$999900,https://www.niagarahomeportal.ca/,,,,not_found
+5,Ed,Dunn Jr.,19059287653,272 Houghton,Hamilton,$749900,https://www.youtube.com/embed/eXbML3THYZ0,,,,not_found
+3,COLTON,DAVIDSON,15195025049,121 University Avenue E Unit# 102,Waterloo,$350000,http://coltonsellshomes.com/,colton@coltonsellshomes.com,80,valid,found
+3,Susan,Masterson,16473884471,3119 Hedges,Burlington,$1435000,https://www.teammasterson.com/,susan@teammasterson.com,95,valid,found
+2,Melanie,Cunningham,19059203343,197 East 44Th,Hamilton,$529900,https://www.ontario.onepercentrealty.com/agents/1275,melanie@onepercentrealty.com,53,,found
+4,LINDA,VADALA,15198249050,62 Rodney,Guelph (Dovercliffe Park/Old University),$899000,http://rlproyalcity.com/realtor/linda-vadala/,lindavadala@royallepage.ca,98,valid,found
+3,Amy,Sheffar,12263874191,22 Allensgate,Brantford,$719900,https://twitter.com/Amy_Sheffar,,,,not_found
+4,LYNNE,DUFF,15198078409,66 Park Hill,Cambridge,$999900,http://www.yourremaxteam.ca/,lynne@yourremaxteam.ca,99,valid,found
+6,PETER,HE,12896441111,2031 Duncan,Oakville (FD Ford),$2190000,http://www.peterhe.ca/,,,,not_found
+3,KHALID,ZAFFAR,15198607554,103 Blackbird,Cambridge,$799000,http://www.mr1percent.ca/,,,,not_found
+4,Lynne,Duff,15198078409,66 Park Hill,Cambridge,$999900,http://yourremaxteam.ca/,lynne@yourremaxteam.ca,99,valid,found
+2,Nancy,MacKay,19053172476,27 Rachel Drive Unit# 41,Hamilton,$549900,https://www.mackayrealtygroup.com/,nancy@mackayrealtygroup.com,98,valid,found
+3,JOSHUA,BASS-MELDRUM U.E.,19058707653,177 Main,Grimsby (Grimsby West),$749900,http://www.joshuabass.ca/,,,,not_found
+1,Jay,Chan,15195904687,308 Lester Street Unit# 511,Waterloo,$285000,http://jaychan.affinityrealestate.ca/,,,,not_found
+4,RICHARD,DE GROOT,15195794110,1277 Cameron,Ayr,$2249000,http://www.richarddegroot.myubertor.com/,richard@myubertor.com,78,accept_all,found
+3,BOB,WANG,19053389000,2072 Glenada,Oakville (WC Wedgewood Creek),$1099000,http://bobwanghomes.ca/,,,,not_found
+4,Karen,Filice,19059614664,7776 Tupelo,Niagara Falls,$899900,https://www.cirriusrealty.ca/,karen@cirriusrealty.ca,98,valid,found
+3,TRAVIS ROBERT,LANGERAAP,19055731188,6 Scottswood,Haldimand,$880000,http://www.teamtravis.ca/,,,,not_found
+7,FARRUKH,SHAHBAZ,19052061444,1261 Rose,Milton (CB Cobban),$1367999,http://www.farrukh.ca/,,,,not_found
+3,MARK,GARRETT,12894895436,609 Green Mountain,Hamilton,$849900,http://markgarrett.ca/,,,,not_found
+4,SOPHIE ALEGRA,GITERMAN,18883231998,68 Waldau,Wilmot,$2399900,http://www.sophiegiterman.com/,,,,not_found
+3,Mark,Garrett,12894895436,609 Green Mountain,Stoney Creek,$849900,https://www.markgarrett.ca/,,,,not_found
+4,EDUARDO,PONTES,14164553800,2932 Remea,Mississauga (Erin Mills),$1295000,https://www.seventysevenpark.com/,,,,not_found
+3,SONI,CHACHAD,16472202301,14 Harbour,Hamilton (Lakeshore),$899900,http://www.sonichachad.com/,,,,not_found
+4,SHAMAIRAH,NOUFARO,16473609060,896 Apple,Milton (CB Cobban),$1524990,http://realestatespecialists.ca/,shamairah.noufaro@realestatespecialists.ca,82,valid,found
+3,Soni,Chachad,16472202301,14 Harbour,Stoney Creek,$899900,https://www.youtube.com/embed/Oc69OefJRUo,,,,not_found
+2,RICKLE,HUANG,16472958322,280 Lester,Waterloo,$399000,http://www.rickle.ca/,,,,not_found
+3,ANTHONY,GIANCOLA,14168988932,13 Cowan,Thorold (Allanburg/Thorold South),$679000,https://www.facebook.com/AGiancolaRealEstate/?ref=bookmarks,,,,invalid_input
+2,MICHELLE,DE GROOT,19053333500,23 Frederick,Hamilton (Crown Point),$399900,http://lovewhereyouliverealestate.ca/,,,,not_found
+2,John,Bahdi,19059330542,4644 Pettit,Niagara Falls (Morrison),$519900,https://www.facebook.com/JBAHDI,,,,invalid_input
+2,Michelle,De Groot,12893397640,23 Frederick,Hamilton,$399900,https://www.lovewhereyouliverealestate.ca/,,,,not_found
+3,Ryan,Monahan,15198657926,4 John,Brantford,$574900,http://twitter.com/rymon,,,,not_found
+4,RYAN,PRINCE,15196236200,220 Claremont,Kitchener,$1395000,http://www.princeofrealestate.com/,,,,not_found
+2,CHRIS,GEHL,12263386840,176 Edwin,Kitchener,$525000,http://www.lovethathouse.com/,chris@lovethathouse.com,81,accept_all,found
+3,Travis,Langeraap,12892371412,6 Scottswood,Caledonia,$880000,https://www.teamtravis.ca/,,,,not_found
+3,NANDA MUTHANNA,PUCHIMADA,19055982822,731 Elgin,Cambridge,$705000,http://www.golden-homes.ca/,,,,not_found
+3,ROUBLE,DHALIWAL,14162304479,140 Munro,Brantford,$564900,http://www.roubledhaliwal.com/,,,,not_found
+3,RODELIO A.,CUEVAS,14165652206,7 Erie,Brantford,$525800,http://www.hanapbahay.ca/,,,,not_found
+6,Sandra,Crumb,12892137270,4993 Rendall,Niagara Falls (Cherrywood),$799000,https://movingforwardwithsandra.com/,,,,not_found
+2,Patricia,Rende,19053997840,5280 Lakeshore Road Unit# 510,Burlington,$699000,https://www.royallepage.ca/PatriciaRende,patriciarende@royallepage.ca,98,valid,found
+3,JEANNE LENORE,SHONE,14168078430,6 Rembe,Hamilton (Hamilton Beach),$789000,http://jshone@royallepage.ca/,,,,invalid_input
+7,SAM ALLAN,MCDADI,19055021500,84 Pebbleridge,Oakville (SW Southwest),$7250000,http://www.mcdadi.com/,,,,not_found
+3,ALI,AHMED,12898883121,2223 Jillian,Oakville (WM Westmount),$995000,http://www.aliahmed.ca/,ali@aliahmed.ca,95,valid,found
+4,MICHAEL,NASARZEWSKI,16478990198,1239 Fox,Milton (DE Dempsey),$1399000,http://mikenasabroker.com/,,,,not_found
+4,Michael,Nasarzewski,16478990198,1239 Fox,Milton,$1399000,http://www.mikenasabroker.com/,,,,not_found
+3,CONCETTA,REDA,19053383737,2120 Marine,Oakville (BR Bronte),$1539000,http://www.conniereda.ca/,,,,not_found
+2,NANCY,HYNES,15194986206,81 Willow,Waterloo,$799000,http://www.nancyhyneshomes.com/,,,,not_found
+4,KIM,ADEMA TOPP,15197780206,85 Indian,Kitchener,$685000,http://www.kimtopphomes.com/,kim.adematopp@kimtopphomes.com,78,accept_all,found
+3,Melanie,Mackay,12269229262,63 Metcalfe Crescent Unit# C,Brantford,$404900,https://twitter.com/melanie_mackay,,,,not_found
+4,KIM,ADEMA TOPP,15195787300,85 Indian,Kitchener,$685000,http://www.kimtopphomes.com/,kim.adematopp@kimtopphomes.com,78,accept_all,found
+3,Victor,Yang,14167230999,2161 Lillykin,Oakville (RO River Oaks),$999000,http://www.victoryang.ca/,,,,not_found
+3,ALI,SALARIAN,16473305109,1121 Cooke,Burlington (LaSalle),$689000,https://ali-salarian.remaxsuccess.ca/,ali@remaxsuccess.ca,97,valid,found
+3,SUDARSHAN,SHARMA,14168178687,1080 Walden,Mississauga (Clarkson),$979000,http://realtorsharma.com/,,,,not_found
+4,Carol,Frick-Allon,19057340375,37 Spruceside,Pelham (Fonthill),$764900,https://www.facebook.com/fonthillhomes,,,,invalid_input
+5,Thomas,Baker,19056589488,1161 Haist,Pelham (Fonthill),$799000,https://www.collectiverealty.ca/,tbaker@collectiverealty.ca,98,valid,found
+5,ALTAF,MIAN,16477729777,374 Book,Grimsby (Grimsby Beach),$799998,http://www.inwest.ca/,,,,not_found
+1,JEAN CAROLE,WONG,14162697733,2025 Maria,Burlington (Brant),$639000,http://www.jeancarolewong.com/,,,,not_found
+2,Kimberley,Smith,19053215507,5130 St. George'S,Lincoln (Beamsville),$599900,https://kimberleysmithrealtor.com/,,,,not_found
+2,MUHAMMAD,CHHABRA,19058281122,41 Wilson,Hamilton (Beasley),$599900,http://www.chhabrahome.com/,,,,not_found
+6,PUNEET,BEDI,13657771569,1414 Harmsworth,Oakville (FA Falgarwood),$1479000,http://www.puneetbedi.com/,,,,not_found
+4,HASSAN ALI KHAN,MIR,19056704455,1059 Eager,Milton (CL Clarke),$1099999,http://www.hassanalimir.com/,,,,not_found
+3,Jamie,Allicock,15197740448,380 Lake Street Unit# 21,Grimsby,$639900,https://www.facebook.com/RCCsells/?fref=ts,,,,invalid_input
+5,ISABEL,GOMES,15198789761,272 German School,Brant (Paris),$3150000,http://www.isabelgomes.com/,,,,not_found
+4,PARTH DHARMESHBHAI,JANI,16479076386,92 Sundin,Haldimand,$779000,http://www.parthjani.com/,parth.jani@parthjani.com,76,accept_all,found
+4,FERRO,PAYMAN,14165500959,1296 Aymond,Oakville (JM Joshua Meadows),$1399999,https://aprealtygroup.ca/,,,,not_found
+5,OLIVIA,TORUN,19058552200,273 Savoy,Oakville (SW Southwest),$2298000,http://www.torunteam.com/,olivia@torunteam.com,82,valid,found
+1,RICHARD,HARRISON,19058695344,700 Dynes,Burlington (Roseland),$468000,http://www.richardharrison.ca/,,,,not_found
+2,Michael,St. Jean,12892398866,285 Beach,Hamilton,$739000,https://www.youtube.com/embed/Cmg3MgM_cck,,,,not_found
+5,Olivia,Torun,14168245555,273 Savoy,Oakville,$2298000,http://www.torunteam.com/,olivia@torunteam.com,82,valid,found
+5,ANAND,PERICHERLA,19055659933,114 Attwater,Cambridge,$1075000,http://gethomerealty.ca/,anand@gethomerealty.ca,98,valid,found
+3,MARK,GARRETT,12894895436,125 Voyager Pass,Hamilton (Binbrook),$749900,http://markgarrett.ca/,,,,not_found
+3,Mark,Garrett,12894895436,125 Voyager Pass,Binbrook,$749900,https://www.markgarrett.ca/,,,,not_found
+3,Paul,Makarenko,19055451188,11 Keith,Niagara-on-the-Lake,$579900,https://www.paulandadam.com/,paul@paulandadam.com,85,valid,found
+4,SARA,HAINES,19058778262,928 Raftis,Milton (CO Coates),$799000,http://www.sarahaines.ca/,sara@sarahaines.ca,85,valid,found
+4,Maria,Matusek,14162701087,91 Gouda,Cambridge,$1366000,http://mariamatusek.exprealty.com/,,,,not_found
+3,KYMBERLEY,MCKEE,12892288999,55 Prideaux,Niagara-on-the-Lake (Town),$2225000,https://sothebysrealty.ca/en/kymberley-mckee/,kymberley.mckee@sothebysrealty.ca,95,valid,found
+7,Martin,Smith,18889663111,16 Beulah,Hamilton (Kirkendall),$1294900,https://ontario.onepercentrealty.com/agents/1427,martin@onepercentrealty.com,96,valid,found
+4,BILL,MAHEY,14168317673,120 Dudhope,Cambridge,$499999,http://www.billmahey.com/,,,,not_found
+7,Martin,Smith,19053316570,16 Beulah,Hamilton,$1294900,https://www.evusto.ca/,,,,not_found
+4,ARCH,SHARMA,15198361072,765 Brandenburg,Waterloo,$899000,http://www.archhomes.ca/,arch.sharma@archhomes.ca,72,accept_all,found
+4,Arch,Sharma,12268870202,765 Brandenburg,Waterloo,$899000,http://www.archhomes.ca/,arch.sharma@archhomes.ca,72,accept_all,found
+1,Tina,Doyle,19053179050,125 Otto,Freelton,$149900,https://www.tinadoyle.com/,tina@tinadoyle.com,95,valid,found
+3,TEJ,DHALIWAL,14164001919,276 Fitzgerald,Milton (DE Dempsey),$889900,http://www.tejdhaliwal.com/,,,,not_found
+1,MUHAMMAD,KHURRAM,16478687890,335 Wheat Boom,Oakville (JM Joshua Meadows),$440000,http://www.homesbymk.ca/,,,,not_found
+5,LAWRENCE EDMUND,MAK,14162764895,5421 Rochelle,Mississauga (Churchill Meadows),$1000000,https://www.youtube.com/embed/1UTkul_Ge2Q,,,,not_found
+3,DANIEL,KETTLE,16479991115,2006 Lushes,Mississauga (Clarkson),$1320000,http://www.danielkettlehomes.com/,,,,not_found
+10,THOMAS,DELESPIERRE,19055682121,68 Harold,Hamilton (Ainslie Wood),$685000,http://www.delespierre.ca/,thomas@delespierre.ca,98,valid,found
+5,MIRO,LUKIC,15195911782,330 Grovehill,Kitchener,$999900,http://www.realestatemiro.ca/,,,,not_found
+3,HARWINDER SINGH,SANGHA,14166718701,113 English,Brantford,$599900,http://www.harwindersangha.com/,,,,not_found
+3,KHAN,NASIR,15196238800,70 Progress,Kitchener,$679900,https://www.nasirkhan.ca/,,,,not_found
+,MICHAEL,PHINNEY,19054668888,176 Millen,Hamilton (Stoney Creek),$475000,http://phinneyrealestate.com/,michael@phinneyrealestate.com,99,valid,found
+5,SHERRY,NEEBAR,14165758761,183 Kaitting,Oakville (GO Glenorchy),$1558000,http://sherryneebar.com/,,,,not_found
+,GEORGE,MORRISON,19054076422,4864 Mountainview,Lincoln (Beamsville),$3500000,http://georgemorrison.ca/,gmorrison@georgemorrison.ca,99,valid,found
