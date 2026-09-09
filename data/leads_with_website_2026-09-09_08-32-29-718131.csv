@@ -1,0 +1,445 @@
+Bedrooms,FirstName,LastName,Phone,Address,City,Price,Website,Email,HunterScore,HunterStatus,HunterOutcome
+3,Wally,Karout,17807184848,7812 18 Av,Edmonton,$629980,http://www.wallykarout.com/,wally@wallykarout.com,74,accept_all,found
+2,Dustin,Batuik,17804060099,11803 22 Av,Edmonton,$219500,http://dustinrealestate.com/,,,,not_found
+2,Wendy,Lam,17809936828,9523 160 Av,Edmonton,$169900,http://www.wendylam.ca/,,,,not_found
+2,Angela,Deblois,17802896416,2045 Grantham Co,Edmonton,$283500,https://buildrealestate.ca/,adeblois@buildrealestate.ca,82,accept_all,found
+3,Kent,Clark,17802394489,20743 56 Av,Edmonton,$430000,http://www.thenextgeneration.ca/,kent@thenextgeneration.ca,81,valid,found
+3,Prince,Gill,15879378487,710 Mattson Dr Sw,Edmonton,$349900,https://www.facebook.com/share/1BNiuTWUhB/?mibextid=wwXIfr,,,,invalid_input
+3,Denis,Rowley,17809087000,20745 99A Av,Edmonton,$449800,http://www.denisrowley.com/,denis@denisrowley.com,98,valid,found
+3,Yad,Dhillon,17807096032,4582 Warbler Lo,Edmonton,$399900,https://www.facebook.com/yaddhillon.ca,,,,invalid_input
+7,Yad,Dhillon,17807096032,3740 8 St Nw,Edmonton,$534900,https://www.facebook.com/yaddhillon.ca,,,,invalid_input
+1,Jody,Lambertus,17803995114,14608 93 Av Nw,Edmonton,$549000,https://jody-lambertus.c21.ca/,jody.lambertus@c21.ca,82,valid,found
+5,Michelle,Plach,17809654662,10514 134 St Nw,Edmonton,$2190000,https://www.honestdoor.com/,michelle@honestdoor.com,95,valid,found
+3,Shafin,Thawer,17809036465,17468 77 St Nw,Edmonton,$475000,http://www.thawer.com/,,,,not_found
+4,Michelle,Plach,17809654662,3911 117 St Nw,Edmonton,$595000,https://www.honestdoor.com/,michelle@honestdoor.com,95,valid,found
+5,Dena,Sutton,17808508156,Address Not Available,Edmonton,$899000,http://denasutton.ca/,,,,not_found
+1,Nate,Nagle,17809668154,400 Palisades Wy,Sherwood Park,$235000,https://www.nnhomes.ca/,,,,not_found
+3,Andy,Huynh,17807070598,544 22 St Sw,Edmonton,$569900,https://teamlegacycanada.com/,,,,not_found
+3,Andy,Huynh,17807070598,210 Stetson Lo,Ardrossan,$549948,https://teamlegacycanada.com/,,,,not_found
+3,Michelle,Plach,17809654662,11438 83 St Nw,Edmonton,$377000,https://www.honestdoor.com/,michelle@honestdoor.com,95,valid,found
+3,John,Carle,17809377534,10010 119 St Nw,Edmonton,$649900,https://www.johncarle.com/,,,,not_found
+5,Andy,Huynh,17807070598,22532 86 Av,Edmonton,$641128,https://teamlegacycanada.com/,,,,not_found
+3,Michelle,Plach,17809654662,9535 217 St Nw,Edmonton,$349999,https://www.honestdoor.com/,michelle@honestdoor.com,95,valid,found
+,Michelle,Plach,17809654662,4804 Knight Cr,Edmonton,$899900,https://www.honestdoor.com/,michelle@honestdoor.com,95,valid,found
+,Lisa,Leung,17809701788,9788 146 St Nw,Edmonton,$825000,https://lisa.leung@royallepage.ca/,,,,invalid_input
+3,David,Schmitz,17802667093,12424 77 St Nw,Edmonton,$300000,https://daveschmitz.ca/,dave@daveschmitz.ca,82,valid,found
+1,Cheryl,Kurek,17807207953,5001 Eton Bv,Sherwood Park,$245000,http://www.cherylkurek.com/,,,,not_found
+2,Jolene,Langelle,17809101317,1729 Keene Cr,Edmonton,$379000,http://www.jolenelangelle.com/,,,,not_found
+5,Heather,Morris,17807103337,10619 60A Av,Edmonton,$839900,https://morerealty.ca/,,,,not_found
+4,David,Nam,17809667753,4110 35 St Nw,Edmonton,$385000,https://www.linkedin.com/in/david-nam-3384b1231/,,,,not_found
+,John,Stobbe,17809881100,10209 92 St Nw,Edmonton,$399000,https://www.platinumpropertygroup.ca/,john@platinumpropertygroup.ca,81,valid,found
+2,Christyna,Blish,17807880829,10149 Saskatchewan,Edmonton,$309900,https://christyna.blish.2percentrealty.ca/index.html,christyna.blish@2percentrealty.ca,80,valid,found
+2,Sara,Kalke,17807107669,10147 112 St Nw,Edmonton,$229000,http://www.sarakalke.com/,sara@sarakalke.com,81,valid,found
+1,Natasha,Aiello,17808025940,10024 Jasper Av,Edmonton,$99900,http://www.homeinyeg.com/,natasha.aiello@homeinyeg.com,80,accept_all,found
+5,.,Ashpreet Singh,15875019929,6904 18 Av,Edmonton,$765000,https://ashpreetsingh.exprealty.com/,,,,invalid_input
+2,Shaun,Cunningham,17802650165,17927 92A,Edmonton,$425000,https://realestateinyeg.ca/,,,,not_found
+4,Francis,Fan,17804971288,9317 112 Av,Edmonton,$375000,http://www.francisfan.com/,,,,not_found
+2,Jerry,Raczkowski,17804884000,10108 125 St Nw,Edmonton,$645000,http://www.albertainvestor.com/,,,,not_found
+5,.,Amrinder Singh,13068383297,6716 97 Av,Edmonton,$2300000,https://www.instagram.com/casalomaestates,,,,invalid_input
+1,Julian,Szklarz,17804830601,13907 136 St Nw,Edmonton,$139900,http://www.juliansells.com/,,,,not_found
+3,Chantell,Grandy,17802315079,20506 128 Av,Edmonton,$449900,https://robertsonrealestategroup.ca/,,,,not_found
+4,Yad,Dhillon,17807096032,2115 32 St Nw,Edmonton,$384900,https://www.facebook.com/yaddhillon.ca,,,,invalid_input
+4,Yad,Dhillon,17807096032,1116 Cristall Cr,Edmonton,$534900,https://www.facebook.com/yaddhillon.ca,,,,invalid_input
+2,Thomas,Buchanan,17802376946,10035 Saskatchewan,Edmonton,$1450000,https://www.facebook.com/profile.php?id=100076730210005,,,,invalid_input
+2,Nooran,Ostadeian,17809530723,13625 34 St Nw,Edmonton,$159000,http://www.realtyedmonton.ca/,,,,not_found
+2,Tina,Fournier,17806950542,10531 117 St Nw,Edmonton,$239900,http://www.tinafournier.com/,,,,not_found
+,Victor,Moroz,17804996400,Spruce Grove,Spruce Grove,$1987000,http://www.victormorozcommercial.com/,,,,not_found
+4,Jennifer,Elander Bianchini,17804884000,6407 163 Av,Edmonton,$589900,http://www.homefinderedmonton.com/,,,,not_found
+3,Delaney,Robitaille,17809200276,9110 Scott Cr,Edmonton,$409000,https://www.instagram.com/delaneyyrobitaille/,delaneyrobitaille@instagram.com,81,accept_all,found
+3,Kassy,Draper,17802715277,7716 Ellesmere,Sherwood Park,$779000,https://www.kassydraper.com/,,,,not_found
+2,Sally,Munro,17804415457,11933 106 Av,Edmonton,$279900,http://www.sallymunro.com/,sally@sallymunro.com,81,valid,found
+4,Catherine,Manigo,17807109178,2019 Ware,Edmonton,$771000,https://www.catherinemanigo.ca/,,,,not_found
+5,Robert,Leishman,17809030096,10990 123 Street Nw,Edmonton,$674900,http://www.robleishman.com/,rob@robleishman.com,95,valid,found
+3,Julie,Cunningham,17809164877,3611 12 St Nw,Edmonton,$425000,https://www.facebook.com/JulieCunninghamRealEstate/?modal=admin_todo_tour,,,,invalid_input
+3,David,Estephan,17809382515,2530 Amerongen Cr,Edmonton,$899900,http://www.estephangroup.com/,david@estephangroup.com,80,accept_all,found
+3,Wally,Karout,17807184848,35 Mcleod Av,Spruce Grove,$383458,http://www.wallykarout.com/,wally@wallykarout.com,74,accept_all,found
+3,Wally,Karout,17807184848,41 Mcleod Av,Spruce Grove,$383458,http://www.wallykarout.com/,wally@wallykarout.com,74,accept_all,found
+5,Clare,Packer,17807189988,10670 61 Av,Edmonton,$399900,https://www.clarepacker.com/,clarepacker@remax.net,81,accept_all,found
+5,Allison,Meston,17809083003,2 Grandora Cr,St. Albert,$450000,http://allisonmeston.com/,,,,not_found
+4,Jordan,Daoust,17804059486,4207 157 Av,Edmonton,$579500,https://tetreaultdaoustteam.ca/,,,,not_found
+4,David,Lam,17808518881,1020 14 Av,Edmonton,$474600,http://www.davidlam.exprealty.com/,david.lam@exprealty.com,83,valid,found
+1,Sydney,Bober,17809379216,10360 102 St Nw,Edmonton,$1056875,https://www.mcleodrealty.ca/,,,,not_found
+2,Brent,Anderson,17806913644,13910 Stony Plain,Edmonton,$125000,https://theandersonco.ca/,brent@theandersonco.ca,98,valid,found
+4,Frank,Vanderbleek,17802425600,14031 106 Av,Edmonton,$689800,http://www.franklythebest.ca/,,,,not_found
+3,Alan,Gee,17804982187,129 Glenridding Ravine,Edmonton,$788888,http://www.alangee.com/,agee@alangee.com,61,accept_all,found
+6,Megan,Mohr,17802356891,14 Newport,Sherwood Park,$599900,http://www.hodgesandmohr.com/,megan@hodgesandmohr.com,82,valid,found
+5,Megan,Mohr,17802356891,133 Meadowview,Sherwood Park,$599900,http://www.hodgesandmohr.com/,megan@hodgesandmohr.com,82,valid,found
+3,Tony,Osarenkhoe,17802009690,9507 170 Av,Edmonton,$380000,https://www.facebook.com/TonyOsaRealtor,,,,invalid_input
+2,Cheryl,Linklater,17802577080,12408 15 Av,Edmonton,$259900,https://www.facebook.com/DaveLinklaterReMax,,,,invalid_input
+5,Peter,Taylor,17809167653,4209 25 Av,Edmonton,$449900,http://www.petersellshomes.ca/,peter@petersellshomes.ca,96,valid,found
+1,Clare,Packer,17807189988,14105 West Block,Edmonton,$549900,https://www.clarepacker.com/,clarepacker@remax.net,81,accept_all,found
+4,Jody,Bergen,17802326539,9917 162 St Nw,Edmonton,$810000,http://www.jodybergenrealtor.ca/,jodybergen@remax.net,81,accept_all,found
+2,Wally,Fakhreddine,17802387384,10333 112 St Nw,Edmonton,$199900,http://topedmontonrealestate.com/,wally@topedmontonrealestate.com,95,valid,found
+5,Kerri-lyn,Holland,17804397000,3741 Cameron Heights,Edmonton,$4995000,http://www.yeghousesearch.ca/,,,,not_found
+3,Crystal,Facette,17809846661,8827 138 Av,Edmonton,$376500,https://www.crystalfacette.com/,,,,not_found
+5,Arnold,Oliveros,17802646977,17928 93 Ave Nw,Edmonton,$449000,https://www.facebook.com/Realtor.arnold/,,,,invalid_input
+4,Min,Xie,17809665108,9540 178 Av,Edmonton,$500000,https://www.realtor.ca/agent/2130622/min-xie-201-11823-114-ave-nw-edmonton-alberta-t5g2y6,,,,not_found
+6,Amanuel,Chirom,15877084361,4021 117 Ave Av Nw,Edmonton,$465000,https://northedmontonhomesforsale.com/,,,,not_found
+1,Greg,Szafraniec,14036803090,116,Edmonton,$179800,http://www.calgaryhousehunters.com/,,,,not_found
+2,Sheryl,Stephens,17807175613,3639 109 Av,Edmonton,$295000,http://www.sherylstephens.ca/,,,,not_found
+3,Brenda,King,17809386077,11825 67 St Nw,Edmonton,$199900,http://loadergroup.kicrealty.com/,brenda.king@kicrealty.com,97,valid,found
+4,Denise,Royer,17804462012,7408 133 Av,Edmonton,$444900,https://www.blackmorerealestate.ca/,denise@blackmorerealestate.ca,82,valid,found
+4,Micah,Pelster,17802363450,12327 43 St Nw,Edmonton,$534900,https://micahpelster.com/,,,,not_found
+1,Patricia,Liviniuk,17804884000,400 Palisades Wy,Sherwood Park,$213900,http://www.thesoldsisters.ca/,pat@thesoldsisters.ca,99,valid,found
+4,Andy,Verhagen,17809078202,16893 58A,Edmonton,$637700,http://www.andyv.ca/,,,,not_found
+2,Wendy,Lam,17809936828,11925 77 St Nw,Edmonton,$169900,http://www.wendylam.ca/,,,,not_found
+1,Sarah,Keats,17809348514,11449 Ellerslie,Edmonton,$144900,http://sarahkeats.remax.ca/,skeats@remax.ca,80,accept_all,found
+7,Yad,Dhillon,17807096032,5137 1B Av,Edmonton,$670000,https://www.facebook.com/yaddhillon.ca,,,,invalid_input
+5,Carrine,Kowalchuk,17802987062,12721 117 St Nw,Edmonton,$409000,http://carrinekowalchuk.com/,carrine@carrinekowalchuk.com,57,accept_all,found
+2,Lucia,Arnieri,17809065768,11827 105 St Nw,Edmonton,$153000,http://www.luciarealty.com/,lucia@luciarealty.com,97,valid,found
+4,Justin,Lafavor,17804834848,14203 61 St Nw,Edmonton,$409900,http://www.empowerrealestategroup.com/,justin@empowerrealestategroup.com,96,valid,found
+3,Wally,Karout,17807184848,21135 25 Av,Edmonton,$439107,http://www.wallykarout.com/,wally@wallykarout.com,74,accept_all,found
+4,Biljana,Ceklic,17809777304,172 Galland Cr,Edmonton,$635000,http://www.biljanahomes.com/,,,,not_found
+3,Wally,Karout,17807184848,21215 25 Av,Edmonton,$450238,http://www.wallykarout.com/,wally@wallykarout.com,74,accept_all,found
+2,Adam,Benke,17802216106,10418 81 Av,Edmonton,$239900,https://www.facebook.com/adam.benke.90,,,,invalid_input
+4,Sandy,Kahlon,17809536576,101 Westwind,Spruce Grove,$439900,https://mukuloberoi.ca/,,,,not_found
+4,Sandy,Kahlon,17809536576,115 Westwind,Spruce Grove,$439900,https://mukuloberoi.ca/,,,,not_found
+4,Jackson,Ho,17809061338,13309 128 St Nw,Edmonton,$464000,http://www.jacksonho.ca/,,,,not_found
+2,Wally,Karout,17807184848,1324 9 St Nw,Edmonton,$374998,http://www.wallykarout.com/,wally@wallykarout.com,74,accept_all,found
+2,Wally,Karout,17807184848,1433 9 St Nw,Edmonton,$489998,http://www.wallykarout.com/,wally@wallykarout.com,74,accept_all,found
+2,Wally,Karout,17807184848,150 Cashman Cr,Edmonton,$244998,http://www.wallykarout.com/,wally@wallykarout.com,74,accept_all,found
+2,Wally,Karout,17807184848,4004 Savaryn,Edmonton,$249998,http://www.wallykarout.com/,wally@wallykarout.com,74,accept_all,found
+4,Sarah,Lizee,17802983637,Address Not Available,Edmonton,$578979,http://sarahlizee.ca/,,,,not_found
+2,Dave,Johnston,17809517371,279 Suder Greens,Edmonton,$295000,http://www.johnstonhomes.ca/,dave@johnstonhomes.ca,84,valid,found
+4,Lakhwinder,Brar,17809354565,1232 Cunningham,Edmonton,$679900,http://sukhihome.com/,,,,not_found
+4,Vic,Mutti,17802409018,1095 Starling,Edmonton,$575000,http://www.muttirealestate.ca/,,,,not_found
+3,Roopesh,Dewan,17802421111,2512 46A,Edmonton,$389900,http://www.roopeshdewan.com/,roopesh.dewan@roopeshdewan.com,76,accept_all,found
+3,Becca,Duiker,17809200594,20 Venice Bv,Spruce Grove,$357500,https://buywithbecca.ca/,,,,not_found
+1,Rick,Schmidt,17809078890,9835 113 St Nw,Edmonton,$148000,https://www.facebook.com/Rick-Schmidt-MaxWell-Polaris-102097141765600,,,,invalid_input
+5,Joseph,Yisak,17802666990,11427 141 Av,Edmonton,$519000,https://www.maxwellrealty.ca/agents/joseph-yisak/,jyisak@maxwellrealty.ca,97,valid,found
+2,Raymond,Corbiere,17809664663,13825 155 Av,Edmonton,$259000,http://www.raysellshomes.ca/,,,,not_found
+2,Vincent,Hiew,17802781668,12045 22 Av,Edmonton,$166000,http://www.vincenthiew.com/,,,,not_found
+3,Wendy,Lam,17809936828,11323 97 St Nw,Edmonton,$250000,http://www.wendylam.ca/,,,,not_found
+1,Gabriella,Maddalena-Makar,17808197877,10883 Saskatchewan,Edmonton,$134900,http://www.gabriellamakar.com/,,,,not_found
+1,John,Stobbe,17809881100,10205 92 St Nw,Edmonton,$399000,https://www.platinumpropertygroup.ca/,john@platinumpropertygroup.ca,81,valid,found
+3,Vincenzo,Fiacco,17806676978,21312 48 Av,Edmonton,$379900,http://www.vincefiacco.com/,,,,not_found
+3,Wally,Karout,17807184848,39 Leawood Li,Spruce Grove,$449681,http://www.wallykarout.com/,wally@wallykarout.com,74,accept_all,found
+3,Wally,Karout,17807184848,21305 131A Av,Edmonton,$383457,http://www.wallykarout.com/,wally@wallykarout.com,74,accept_all,found
+3,Wally,Karout,17807184848,21229 131A Av,Edmonton,$413508,http://www.wallykarout.com/,wally@wallykarout.com,74,accept_all,found
+4,Wally,Karout,17807184848,13125 214 St Nw,Edmonton,$435211,http://www.wallykarout.com/,wally@wallykarout.com,74,accept_all,found
+4,Wally,Karout,17807184848,13137 214 St Nw,Edmonton,$413508,http://www.wallykarout.com/,wally@wallykarout.com,74,accept_all,found
+3,Wally,Karout,17807184848,629 176 Av,Edmonton,$367695,http://www.wallykarout.com/,wally@wallykarout.com,74,accept_all,found
+3,Wally,Karout,17807184848,922 19 Av,Edmonton,$383457,http://www.wallykarout.com/,wally@wallykarout.com,74,accept_all,found
+3,Wally,Karout,17807184848,924 19 Av,Edmonton,$383457,http://www.wallykarout.com/,wally@wallykarout.com,74,accept_all,found
+3,Stephanie,Richter,17809083372,205 Weston,Spruce Grove,$339000,https://www.remax.ca/ab/stephanie-richter-p102270891-ag#,stephanierichter@remax.ca,77,accept_all,found
+4,Vincenzo,Fiacco,17806676978,9904 144 Av,Edmonton,$569900,http://www.vincefiacco.com/,,,,not_found
+3,Adam,Benke,17802216106,10636 120 St Nw,Edmonton,$159900,https://www.facebook.com/adam.benke.90,,,,invalid_input
+3,Christina,Bieniek,17809190201,811 Albany Cove,Edmonton,$775000,http://www.look4edmontonhomes.com/,,,,not_found
+5,Michael,Waddell,17809065634,11006 64 Av,Edmonton,$949900,http://www.michaelwaddell.ca/,,,,not_found
+2,Ch Tahir,Masud,17809880373,7331 South Terwillegar,Edmonton,$189000,http://tahirmasud.com/,,,,not_found
+1,Michelle,Zenon,17809098864,8930 149 St Nw,Edmonton,$79900,https://michellezenon.remaxrealestateedmonton.com/,,,,not_found
+3,Dana,Bradley,17802641812,1920 Millwoods Rd Nw,Edmonton,$329000,http://www.danabradley.ca/,,,,not_found
+2,Faisal,Rajan,17807083115,2703 79 St Nw,Edmonton,$149900,http://www.myedmontonagent.com/,,,,not_found
+5,Nam,Kular,17802671300,3519 22 St Nw,Edmonton,$519900,http://www.namkular.com/,,,,not_found
+4,Naidene,Petersen,17807228358,5928 11 Av Nw,Edmonton,$375000,https://naidenepetersen.edmontonhomesforsaleremaxrivercity.ca/,,,,not_found
+5,Albert,Kozel,17802333962,10637 128 St Nw,Edmonton,$1399900,http://www.albertkozel.com/,,,,not_found
+4,Ryan,Gillen,17807008355,28 Rosewood Wy,St. Albert,$649990,http://www.ryangillen.com/,,,,not_found
+1,Ning,Fu,17802335772,5125 Riverbend,Edmonton,$127000,https://www.realtor.ca/office/firm/290859/happy-home-wow-9622-83-ave-nw-edmonton-alberta-t6c1g2#page=1&sort=11-Ahttps://www.realtor.ca/office/firm/290859/happy-home-wow-9622-83-ave-nw-edmonton-alberta,,,,not_found
+4,Yad,Dhillon,17807096032,908 17 Av,Edmonton,$649900,https://www.facebook.com/yaddhillon.ca,,,,invalid_input
+4,Yad,Dhillon,17807096032,904 17 Av,Edmonton,$649900,https://www.facebook.com/yaddhillon.ca,,,,invalid_input
+5,Tina,Iftody,17806198454,13439 114 St Nw,Edmonton,$399909,http://www.findyouhomes.com/,,,,not_found
+4,Chris,Karampelas,17809377653,14 Stagecoach Li,Ardrossan,$759900,http://forsaleyeg.com/,chris@forsaleyeg.com,74,accept_all,found
+4,Micah,Pelster,17802363450,3889 85 St Nw,Edmonton,$349900,https://micahpelster.com/,,,,not_found
+4,Jakie,Ng,17802245566,12819 Woodbend,Edmonton,$1370000,https://www.arivl.ca/,jakie@arivl.ca,85,valid,found
+2,Shelly,Shumaker,17802970901,8306 108 St Nw,Edmonton,$399900,https://www.facebook.com/shellymshumakerrealestate,,,,invalid_input
+7,Mani,Bagga,17809055050,816 Wildwood Cr,Edmonton,$829800,https://www.youtube.com/embed/C_lPFY9uRCE,,,,not_found
+4,Marlise,Alves,17807199098,10548 40 St Nw,Edmonton,$485000,https://www.facebook.com/malves1616,,,,invalid_input
+1,Aleks,Radojcic,17806916683,8730 82 Av,Edmonton,$229900,http://www.movewithaleks.com/,,,,not_found
+3,Michael,Melnychuk,17808037355,17011 38 St Nw,Edmonton,$417500,http://www.michaelsells.ca/,,,,not_found
+4,Jazmin,Laframboise,17809959938,33 Dorian Wy,Sherwood Park,$540000,https://jazminlaframboise.exprealty.com/,,,,not_found
+2,Mina,Gayed,17809946462,10735 81 Av,Edmonton,$159900,https://minagayed.ca/,mina@minagayed.ca,85,accept_all,found
+2,Daylen,Proulx,17808871346,10 Ironwood,St. Albert,$349000,http://www.fernproulx.com/,,,,not_found
+5,Ali,Shaben,17804468622,10223 130 St Nw,Edmonton,$3299000,http://www.sablerealty.ca/,ashaben@sablerealty.ca,77,accept_all,found
+2,Ryan,Debler,17809957228,11511 130 St Nw,Edmonton,$125000,https://ryandebler.com/,,,,not_found
+3,Ryan,Lauber,17807174861,10830 159 St Nw,Edmonton,$395000,http://ryanlauber.com/,ryan@ryanlauber.com,98,valid,found
+3,Aleks,Radojcic,17806916683,6552 178 St Nw,Edmonton,$209900,http://www.movewithaleks.com/,,,,not_found
+5,Michael,Draper,17802421774,10968 35A Av,Edmonton,$425000,http://www.nexthomehub.ca/,michael@nexthomehub.ca,99,valid,found
+3,Matthew,Gillam,17809947432,21068 92B Av,Edmonton,$500000,http://matthewgillam.ca/,,,,not_found
+3,Wally,Karout,17807184848,7303 181 Av,Edmonton,$482998,http://www.wallykarout.com/,wally@wallykarout.com,74,accept_all,found
+3,Wally,Karout,17807184848,7307 181 Av,Edmonton,$482998,http://www.wallykarout.com/,wally@wallykarout.com,74,accept_all,found
+3,Wally,Karout,17807184848,7319 181 Av,Edmonton,$493498,http://www.wallykarout.com/,wally@wallykarout.com,74,accept_all,found
+3,Wally,Karout,17807184848,7339 181 Av,Edmonton,$493498,http://www.wallykarout.com/,wally@wallykarout.com,74,accept_all,found
+3,Wally,Karout,17807184848,7315 181 Av,Edmonton,$482998,http://www.wallykarout.com/,wally@wallykarout.com,74,accept_all,found
+3,Wally,Karout,17807184848,7331 181 Av,Edmonton,$493498,http://www.wallykarout.com/,wally@wallykarout.com,74,accept_all,found
+4,Robert,Hasek,17802350884,17363 120 St Nw,Edmonton,$449000,https://roberthasek.edmontonrealestatepro.ca/,,,,not_found
+3,Wally,Karout,17807184848,7327 181 Av,Edmonton,$493498,http://www.wallykarout.com/,wally@wallykarout.com,74,accept_all,found
+3,Sandy,Brar,15879204117,2710 66 St Sw,Edmonton,$310000,https://www.instagram.com/sandybrar_realtor/,sandybrar@instagram.com,84,accept_all,found
+3,Wally,Karout,17807184848,20932 16 Av,Edmonton,$551247,http://www.wallykarout.com/,wally@wallykarout.com,74,accept_all,found
+3,Wally,Karout,17807184848,20916 16 Av,Edmonton,$545997,http://www.wallykarout.com/,wally@wallykarout.com,74,accept_all,found
+2,Shelly,Reddy,17809195842,16807 100 Av,Edmonton,$165000,http://www.lewisestatesproperties.com/,,,,not_found
+3,Michael,Waddell,17809065634,10121 80 Av,Edmonton,$269900,http://www.michaelwaddell.ca/,,,,not_found
+3,Sarah,Leib,17809138322,483 Watt Bv,Edmonton,$414900,http://www.sarahleib.com/,,,,not_found
+2,Darlene,Strang,17809083131,9916 113 St Nw,Edmonton,$149800,http://www.darlenestrang.ca/,darlene@darlenestrang.ca,85,,found
+3,Alma,Hadzic,17802894822,160 Habitat Cr,Edmonton,$269900,http://www.almahadzic.com/,alma@almahadzic.com,78,accept_all,found
+3,Dorothy,Cornel,17806047740,3807 Weidle Cr,Edmonton,$449900,http://dorothycornelrealestate.ca/,dorothy.cornel@rivercityrealestate.ca,81,valid,found
+3,Kaitlyn,Gottlieb,17802311841,2015 74 St Sw,Edmonton,$449000,https://www.exclusiveedmonton.com/,kaitlyn@exclusiveedmonton.com,83,valid,found
+3,Michael,Connors,17809088089,2803 James Mowatt Tr Sw,Edmonton,$348000,http://www.michaelconnors.ca/,,,,not_found
+2,Jamie,Kinney,17802402145,10331 106 St Nw,Edmonton,$189500,http://jamiekinney.ca/,,,,not_found
+1,Moe,Yassine,17809991195,12436 86 St Nw,Edmonton,$175000,https://www.moeyassine.ca/,,,,not_found
+4,Viktoriya,Finkbeiner,17802717004,30 Hickory Tr,Spruce Grove,$639900,https://albertahomespecialist.ca/,,,,not_found
+2,Kerri-lyn,Holland,17804397000,1008 Rosenthal Bv,Edmonton,$299900,http://www.yeghousesearch.ca/,,,,not_found
+2,Cindy,Gannon,17809753918,10636 120 St Nw,Edmonton,$165000,http://www.gannonyeg.com/,cindy@gannonyeg.com,97,valid,found
+5,Andrijana,Jakovleska,17809376346,941 Picard,Edmonton,$859900,https://www.andrijanajakovleska.com/,,,,not_found
+4,Bryon,Rentz,17809943300,52313 Rge Rd 232,Rural Strathcona County,$979000,http://www.bryonrentz.com/,,,,not_found
+4,Joseph,Yisak,17802666990,11421 82 St Nw,Edmonton,$329900,https://www.maxwellrealty.ca/agents/joseph-yisak/,jyisak@maxwellrealty.ca,97,valid,found
+1,Leah-Mel,Icalla,17804506300,10504 99 Av Nw,Edmonton,$209000,http://www.polarissells.com/agents/Leah-Icalla,,,,not_found
+4,Vern,Pederson,17803605639,10 Deacon,Sherwood Park,$499900,https://www.royallepage.ca/en/agent/alberta/red-deer/vern-pederson/80308/,vernpederson@royallepage.ca,99,valid,found
+5,Jawad,Kahlon,17807085688,4208 Ramsay,Edmonton,$698000,http://www.edmonton-homes-search.com/,,,,not_found
+4,George,Fahmy,15879050600,211 Edgemont Gr,Edmonton,$774800,http://mozaicrealty.ca/,george@mozaicrealty.ca,98,valid,found
+5,Deepak,Chopra,17807106435,5410 Mcluhan En,Edmonton,$1148888,http://www.e4realty.ca/,deepak@e4realty.ca,97,valid,found
+3,Julian,Szklarz,17804830601,11026 155 St Nw,Edmonton,$367000,http://www.juliansells.com/,,,,not_found
+4,Janine,Casey,17809086262,8323 142 Av,Edmonton,$364900,https://twitter.com/JaninesCasey,,,,not_found
+2,Dave,Johnston,17809517371,7511 171 St Nw,Edmonton,$175000,http://www.johnstonhomes.ca/,dave@johnstonhomes.ca,84,valid,found
+3,Adam,Dirksen,17802227200,7208 156 St Nw,Edmonton,$1595000,http://www.adamdirksen.com/,adam@adamdirksen.com,95,valid,found
+3,David,Lam,17808518881,1838 188 St Nw,Edmonton,$508600,http://www.davidlam.exprealty.com/,david.lam@exprealty.com,83,valid,found
+3,David,Lam,17808518881,1711 8 St Nw,Edmonton,$504600,http://www.davidlam.exprealty.com/,david.lam@exprealty.com,83,valid,found
+3,David,Lam,17808518881,1836 188 St Nw,Edmonton,$514600,http://www.davidlam.exprealty.com/,david.lam@exprealty.com,83,valid,found
+2,Chris,Hedstrom,17804996678,9916 113 St Nw,Edmonton,$159900,http://www.chrishedstrom.com/,chris@chrishedstrom.com,80,valid,found
+3,Vincenzo,Fiacco,17806676978,9503 180A,Edmonton,$259900,http://www.vincefiacco.com/,,,,not_found
+3,David,Lam,17808518881,1713 8 St Nw,Edmonton,$505600,http://www.davidlam.exprealty.com/,david.lam@exprealty.com,83,valid,found
+3,Kaitlyn,Aldred,17807203887,53222 Range Road 272,Rural Parkland County,$55000,https://kaitlynaldred.exprealty.com/,,,,not_found
+3,David,Lam,17808518881,1327 9 St Nw,Edmonton,$431600,http://www.davidlam.exprealty.com/,david.lam@exprealty.com,83,valid,found
+4,Vincenzo,Fiacco,17806676978,18316 71 Av,Edmonton,$549900,http://www.vincefiacco.com/,,,,not_found
+6,Paul,Lamba,17809512378,1808 20 Av,Edmonton,$875000,http://www.paullamba.com/,paul@paullamba.com,96,valid,found
+2,David,Lam,17808518881,1329 9 St Nw,Edmonton,$415600,http://www.davidlam.exprealty.com/,david.lam@exprealty.com,83,valid,found
+2,Erik,Eisen,17802887613,7805 71 St Nw,Edmonton,$202000,https://www.flowstaterealty.ca/,eeisen@flowstaterealty.ca,85,valid,found
+3,Cathy,Cookson,17802172718,215 Saddleback,Edmonton,$389900,http://cathycookson.com/,cathy@cathycookson.com,96,valid,found
+4,Josh,Cudmore,17809776019,1311 Hawks Ridge Link,Edmonton,$729000,https://cudmorerealestate.com/,,,,not_found
+2,Wendy,Lam,17809936828,16311 95 St Nw,Edmonton,$172900,http://www.wendylam.ca/,,,,not_found
+3,Mani,Bagga,17809055050,5903 12 Av,Edmonton,$574900,https://www.youtube.com/embed/C_lPFY9uRCE,,,,not_found
+3,Devin,Lavallee,17809378721,2628 Donaghey Cr,Edmonton,$529900,http://devinlavallee.com/,,,,not_found
+,Terry,Major,17802123111,11818 37 Street,Edmonton,$1990000,https://www.facebook.com/profile.php?id=61571619129255,,,,invalid_input
+4,Greg,Steele,17809457800,16103 95 St Nw,Edmonton,$464900,http://www.gregsteele.ca/,greg@gregsteele.ca,81,valid,found
+3,Chris,Karampelas,17809377653,9 Stetson Lo,Ardrossan,$549900,http://forsaleyeg.com/,chris@forsaleyeg.com,74,accept_all,found
+3,Chris,Karampelas,17809377653,13 Stetson Lo,Ardrossan,$549900,http://forsaleyeg.com/,chris@forsaleyeg.com,74,accept_all,found
+1,Peter,Kubiczek,17809050170,301 Clareview Station,Edmonton,$134500,http://www.kubiczekteam.com/,,,,not_found
+3,Ryan,Debler,17809957228,11215 87 St Nw,Edmonton,$439700,https://ryandebler.com/,,,,not_found
+3,Simon,Roa,17809068933,18935 91 Av,Edmonton,$499900,http://theicon360.com/,,,,not_found
+3,Lance,Joumblat,17802321971,287 Macewan,Edmonton,$309900,https://www.facebook.com/LanceJoumblatCentury21/,,,,invalid_input
+4,Dallas,Moravec,17807077191,11311 Malmo,Edmonton,$550000,http://www.dallasm.com/,dallas.moravec@dallasm.com,80,accept_all,found
+7,Karnal,Singh,17807084217,3111 67 St Nw,Edmonton,$479990,https://www.maxwellrealty.ca/agent/karnal-singh/,,,,not_found
+4,Jonathan,Hull,17802212129,10739 52 St Nw,Edmonton,$499900,https://www.youtube.com/embed/5eDhvQPxyok,,,,not_found
+3,Mark,Malcolm,17809516258,4707 126 Av,Edmonton,$209900,http://www.markmalcolm.ca/,markmalcolm@remax.net,85,accept_all,found
+4,Thomas,Kube,17802706169,117 Paisley Ga,Edmonton,$675000,https://www.instagram.com/thomas.yeg/?igsh=OGQ5ZDc2ODk2ZA%3D%3D&utm_source=qr,thomaskube@instagram.com,85,accept_all,found
+4,Murray,Zelinski,17807199422,11708 135 St Nw,Edmonton,$449900,http://www.murrayzelinski.maxwellprogressive.com/,,,,not_found
+1,Charles,Ho,17809053328,8745 165 St Nw,Edmonton,$114900,https://charlesho.c21.ca/,charlesho@c21.ca,80,valid,found
+5,Chris,Karampelas,17809377653,8527 183 Ave Nw,Edmonton,$699500,http://forsaleyeg.com/,chris@forsaleyeg.com,74,accept_all,found
+4,Mina,Gayed,17809946462,9664 223 St Nw,Edmonton,$639900,https://minagayed.ca/,mina@minagayed.ca,85,accept_all,found
+2,Anna,Tomczyk,17809825233,2 Alpine Bv,St. Albert,$187500,http://www.greateredmontonrealestate.com/,anna@greateredmontonrealestate.com,95,valid,found
+6,Alan,Gee,17804982187,219 Buchanan Cl,Edmonton,$619800,http://www.alangee.com/,agee@alangee.com,61,accept_all,found
+5,Pradeep,Dubey,15875987799,12002 48 St Nw,Edmonton,$379000,https://gorealestate.ca/,,,,not_found
+4,David,Goodchild,17808190978,11220 23A Av,Edmonton,$589900,http://www.goodchildrealty.com/,david.goodchild@goodchildrealty.com,81,accept_all,found
+2,Ashley,Webber,15879891025,10883 Saskatchewan,Edmonton,$185000,https://calvinrealty.ca/,,,,not_found
+2,Colin,Bland,17809864711,604 62 St Sw,Edmonton,$199854,http://www.colinbland.com/,,,,not_found
+4,Ralph,Henze,17809187885,52063 Rge Road 225,Rural Strathcona County,$724900,https://www.facebook.com/RalphHenzeHomes/,,,,invalid_input
+2,Rad,Nastase,17809519244,6910 158A Av,Edmonton,$419000,https://www.youtube.com/embed/oJturYWrhRc,,,,not_found
+3,Mani,Bagga,17809055050,4350 23 St Nw,Edmonton,$314800,https://www.youtube.com/embed/C_lPFY9uRCE,,,,not_found
+3,Wendy,Theberge,17802787355,10524 75 Av,Edmonton,$489900,https://www.facebook.com/wendytsells/,,,,invalid_input
+4,Shelly,Reddy,17809195842,535 Pardee Bay,Edmonton,$599900,http://www.lewisestatesproperties.com/,,,,not_found
+5,Elan,Burns,17809533526,27 Highcliff,Sherwood Park,$579900,https://elanrealestate.ca/,elan@elanrealestate.ca,99,valid,found
+2,Michael,Draper,17802421774,3211 James Mowatt Tr,Edmonton,$189000,http://www.nexthomehub.ca/,michael@nexthomehub.ca,99,valid,found
+3,Moe,Yassine,17809991195,4863 Kinney,Edmonton,$839900,https://www.moeyassine.ca/,,,,not_found
+2,Trevor,Dunn,17809519966,12827 150 Av Nw,Edmonton,$569900,http://www.trevordunn.com/,,,,not_found
+,Hassan,Haymour,17809077504,13112 86 St Nw,Edmonton,$369900,https://www.haymourrealty.com/,hassan@haymourrealty.com,74,accept_all,found
+3,Megan,Mohr,17802356891,192 Catria Pt,Sherwood Park,$484900,http://www.hodgesandmohr.com/,megan@hodgesandmohr.com,82,valid,found
+4,Elan,Burns,17809533526,8 Summerland Wy,Sherwood Park,$439900,https://elanrealestate.ca/,elan@elanrealestate.ca,99,valid,found
+2,Rachelle,Cusworth,17809323843,35 Sturgeon,St. Albert,$559900,http://www.cusworth.ca/,,,,not_found
+2,Claude,Gaboury,17809825969,5751 189 St Nw,Edmonton,$329900,http://www.thegabouryteam.com/,,,,not_found
+5,Yad,Dhillon,17807096032,15816 64 St Nw,Edmonton,$589900,https://www.facebook.com/yaddhillon.ca,,,,invalid_input
+6,Vikaas,Kwatra,17804508899,4203 83 St Nw,Edmonton,$439000,https://century21smart.ca/,,,,not_found
+3,Prince,Bhatti,15875019955,1927 51 Street Sw,Edmonton,$499000,https://princebhatti.ca/,,,,not_found
+3,Shayne,Sharpe,17804466772,52356 Rge Road 221,Rural Strathcona County,$929500,http://www.sharpehomes.ca/,shayne@sharpehomes.ca,95,valid,found
+4,Ian,Robertson,17809371777,12 Gresham Bv,St. Albert,$1995000,http://www.robertsonrealestategroup.ca/,,,,not_found
+4,Corey,LeBlanc,17802039810,18040 89 St Nw,Edmonton,$504900,https://coreyleblancrealty.com/,,,,not_found
+5,Sandy,Kahlon,17809536576,5 Hillwood Tc,Spruce Grove,$851900,https://mukuloberoi.ca/,,,,not_found
+5,Naz,Grewal,17802339551,728 158 Avenue Ne,Edmonton,$999989,https://www.facebook.com/profile.php?id=100068029490891,,,,invalid_input
+4,Kathryn,Sharp,17808930917,407 Brintnell Bv,Edmonton,$550000,https://www.maxwellrealty.ca/agent/kathy-sharp/,ksharp@maxwellrealty.ca,95,valid,found
+5,Ricky,Singh,17808635020,12023 137 Av,Edmonton,$499900,https://www.rsgroupltd.ca/,,,,not_found
+5,Chris,Miller,17809665954,144 Gariepy Cr,Edmonton,$599900,https://www.youtube.com/embed/7rno_oaickM,,,,not_found
+7,Harnek,Atwal,17807101069,5107 17 Av,Edmonton,$629600,https://harnek-atwal.c21.ca/,harnek.atwal@c21.ca,83,valid,found
+4,Bill,Reid,17809823639,4027 74 St Nw,Edmonton,$509900,http://goo.gl/EAU6rv,,,,not_found
+3,Kunal,Sachdeva,17807080220,22711 84 Av,Edmonton,$365000,https://kunalsachdeva.ca/,,,,not_found
+4,Jaclyn,Baillie,17802433645,92 Nottingham Harbour,Sherwood Park,$1495000,https://kinrealestate.ca/,jaclyn@kinrealestate.ca,98,valid,found
+4,Kathy,Schmidt,17809941124,4820 109 Av,Edmonton,$525000,http://www.schmidtrealtygroup.com/,,,,not_found
+3,Nicholas,Golden,17804986437,9958 176 Av,Edmonton,$359900,http://www.nickgolden.com/,,,,not_found
+4,Sharon,Josey,17806997333,9 Halsted Co,Spruce Grove,$539900,http://www.sharonjosey.com/,sharon@sharonjosey.com,99,valid,found
+3,Lenny,Burt,17809380779,5319 3 Av,Edmonton,$319990,http://lennyburt.ca/,,,,not_found
+4,Barbara,Scott,17804994136,4904 11 Av,Edmonton,$450000,https://barbscott.ca/,,,,not_found
+3,Deepak,Chopra,17807106435,740 Daniels Wy,Edmonton,$344900,http://www.e4realty.ca/,deepak@e4realty.ca,97,valid,found
+2,Susan,Horon,17802661027,534 Lee Ridge,Edmonton,$169900,http://www.susanhoron.ca/,,,,not_found
+3,Patrick,Fields,17809152056,11918 86 St Nw,Edmonton,$299900,http://www.edmontonrealestateguy.com/,,,,not_found
+4,Vincenzo,Fiacco,17806676978,17206 111A,Edmonton,$519900,http://www.vincefiacco.com/,,,,not_found
+3,Errol,Scott,17802711114,125 Woodborough Wy,Edmonton,$249900,https://errolscott.exprealty.com/,,,,not_found
+2,Matthew,Labas,17808192615,175 Mcconachie,Edmonton,$429900,https://blacklabelpropertygroup.com/,matthew@blacklabelpropertygroup.com,80,valid,found
+3,Ann,Dawrant,17809406485,16211 78 Av,Edmonton,$619000,http://www.anndawrant.com/,ann@anndawrant.com,95,valid,found
+4,Dallas,Moravec,17807077191,9315 86 St Nw,Edmonton,$375000,http://www.dallasm.com/,dallas.moravec@dallasm.com,80,accept_all,found
+2,Ning,Fu,17802335772,9332 106A Av,Edmonton,$225000,https://www.realtor.ca/office/firm/290859/happy-home-wow-9622-83-ave-nw-edmonton-alberta-t6c1g2#page=1&sort=11-Ahttps://www.realtor.ca/office/firm/290859/happy-home-wow-9622-83-ave-nw-edmonton-alberta,,,,not_found
+4,Moe,Yassine,17809991195,1939 118 St Sw,Edmonton,$564999,https://www.moeyassine.ca/,,,,not_found
+5,Naz,Grewal,17802339551,15608 9 Street Ne,Edmonton,$829000,https://www.facebook.com/profile.php?id=100068029490891,,,,invalid_input
+4,Michael,Melnychuk,17808037355,20819 40 Av,Edmonton,$559900,http://www.michaelsells.ca/,,,,not_found
+2,Sabrina,Bright,17809065025,4403 23 St Nw,Edmonton,$175000,http://www.weselledmonton.com/,,,,not_found
+4,Leanne,Leuschen,17802427924,9082 Rosenthal Link Li Nw,Edmonton,$435000,https://www.leanneleuschen.ca/,,,,not_found
+4,Rhonda,Navratil,17809539777,8220 Summerside Grande Bv,Edmonton,$678000,http://www.trendsinhomes.com/,rhonda@trendsinhomes.com,85,valid,found
+2,Alexis,Hlady,17802335399,2947 26 St Nw,Edmonton,$180000,http://www.alexishomes.info/,,,,not_found
+1,Kelly,Grant,17802422469,9816 112 St Nw,Edmonton,$135000,https://www.muveteam.com/,kelly@muveteam.com,97,valid,found
+2,Wally,Karout,17807184848,13825 155 Av,Edmonton,$218900,http://www.wallykarout.com/,wally@wallykarout.com,74,accept_all,found
+3,David,Lam,17808518881,8704 183 Av,Edmonton,$537600,http://www.davidlam.exprealty.com/,david.lam@exprealty.com,83,valid,found
+3,Keri,Harstad,17808605279,95 Salisbury Wy,Sherwood Park,$529900,https://www.rootedrealty.ca/,keri@rootedrealty.ca,98,valid,found
+5,Wendy,Lam,17809936828,3723 63 St Nw,Edmonton,$349900,http://www.wendylam.ca/,,,,not_found
+3,Brian,Trofimuk,17809517015,14644 52 St Nw,Edmonton,$238700,https://briantrofimuk.remax.ca/,,,,not_found
+4,David,Lam,17808518881,20715 43 Av,Edmonton,$495600,http://www.davidlam.exprealty.com/,david.lam@exprealty.com,83,valid,found
+2,Dwight,Streu,17802335293,8759 81 Av,Edmonton,$355000,https://www.youtube.com/embed/NEIsIihCNCo,,,,not_found
+3,Ian,Kondics,17807173272,15 Ashbury Cr,Spruce Grove,$598500,https://www.ianandchantel.com/,,,,not_found
+4,David,Lam,17808518881,20711 43 Av,Edmonton,$499600,http://www.davidlam.exprealty.com/,david.lam@exprealty.com,83,valid,found
+3,DK,Shittu,15873345800,2905 141 St Sw,Edmonton,$339900,https://diekolashittu.exprealty.com/,,,,not_found
+3,Kunal,Sachdeva,17807080220,4118 6A,Edmonton,$459500,https://kunalsachdeva.ca/,,,,not_found
+2,Paul,Lamba,17809512378,12035 22 Av,Edmonton,$149999,http://www.paullamba.com/,paul@paullamba.com,96,valid,found
+4,Tyson,Moroz,17809200550,51 Vivian Wy,Spruce Grove,$599000,https://tysonmoroz.com/,,,,not_found
+4,Priscilla,Markus,15872009009,325 Annandale,Sherwood Park,$985000,https://www.priscillamarkusrealty.com/,,,,not_found
+4,Chris,Karampelas,17809377653,5605 Cautley Cv,Edmonton,$1699900,http://forsaleyeg.com/,chris@forsaleyeg.com,74,accept_all,found
+3,Tim,Jeong,17809409414,11813 11B Av Nw,Edmonton,$499900,https://www.timjeong.ca/,tim@timjeong.ca,84,valid,found
+4,Darin,Baxandall,17804415899,9333 148 St Nw,Edmonton,$929900,http://www.darinbaxandall.com/,,,,not_found
+3,Randeepak,Sandhu,15875667006,2410 32B,Edmonton,$490888,https://www.instagram.com/realtor.randeepak/,randeepaksandhu@instagram.com,80,accept_all,found
+2,Darlene,Strang,17809083131,1060 Mcconachie Bv,Edmonton,$165000,http://www.darlenestrang.ca/,darlene@darlenestrang.ca,95,valid,found
+3,Brent,Anderson,17806913644,1128 114 St Sw,Edmonton,$559900,https://theandersonco.ca/,brent@theandersonco.ca,98,valid,found
+6,Amanda,Olivari,17809099333,7089 Kiviaq Cr,Edmonton,$865000,http://www.amandaorealty.com/,,,,not_found
+3,Amanda,Olivari,17809099333,7093 Kiviaq Cr,Edmonton,$795000,http://www.amandaorealty.com/,,,,not_found
+4,Amanda,Olivari,17809099333,7087 Kiviaq Cr,Edmonton,$839900,http://www.amandaorealty.com/,,,,not_found
+3,Amanda,Olivari,17809099333,7091 Kiviaq Cr,Edmonton,$799000,http://www.amandaorealty.com/,,,,not_found
+3,David,Lam,17808518881,2816 190 St Nw,Edmonton,$569600,http://www.davidlam.exprealty.com/,david.lam@exprealty.com,83,valid,found
+4,Chris,Proctor,17807090811,10968 75 Av,Edmonton,$625000,http://www.proctorteam.com/,chris@proctorteam.com,98,valid,found
+3,Sheryl,Stephens,17807175613,12936 115 St Nw,Edmonton,$305000,http://www.sherylstephens.ca/,,,,not_found
+4,Brice,Laidler,17807771290,10819 92 St Nw,Edmonton,$417500,https://bricelaidler.com/,,,,not_found
+5,Oleksandr,Shyshyn,17808843309,16136 109A Av,Edmonton,$509900,https://www.facebook.com/oleksandr.v.shyshyn,,,,invalid_input
+4,Samuel,Ireland,17808935483,3839 117 St Nw,Edmonton,$539900,https://youtu.be/K5m3I7oTZ24,,,,not_found
+2,Glenn,Ewanchuk,17807181099,44 Rim,Edmonton,$109000,http://www.glennewanchuk.com/,glenn@glennewanchuk.com,99,valid,found
+5,Peter,Leveille,17809511064,783 Wheeler,Edmonton,$928000,http://www.abrealtylistings.com/,peter@abrealtylistings.com,95,valid,found
+2,Jonathan,Seeney,17809348985,400 Palisades Wy,Sherwood Park,$279900,https://www.facebook.com/SeeneySells,,,,invalid_input
+2,Sid,Cranston,17809513400,16303 95 Street Nw,Edmonton,$170000,http://www.sidcranston.ca/,sid@sidcranston.ca,83,accept_all,found
+3,Larry,Willes,17802374860,7 1283 Carter Crest Rd Nw,Edmonton,$369000,http://larrywilles.com/,,,,not_found
+4,Jacquie,Smith,17808876493,9457 79 St Nw,Edmonton,$489900,http://www.2percentrealtypro.ca/,,,,not_found
+3,Jennifer,Davis,17809207414,82 Heatherglen Cl,Spruce Grove,$418000,http://www.jenniferlindavis.com/,,,,not_found
+5,Justin,Vega,17807103979,8418 223 A,Edmonton,$799000,http://www.vegasells.com/,justin@vegasells.com,95,valid,found
+5,Shammi,Dhaliwal,17802784951,17128 2 St Nw,Edmonton,$1049000,https://www.shammidhaliwal.ca/,,,,not_found
+3,Moe,Yassine,17809991195,2270 Glenridding Bv,Edmonton,$419900,https://www.moeyassine.ca/,,,,not_found
+5,Enrique,Antuma,15873303362,54 Lakewood Vg,Edmonton,$179900,https://enriqueantuma.edmontonhomesforsaleremaxrivercity.ca/,,,,not_found
+5,Ryan,Debler,17809957228,9538 100A,Edmonton,$2695000,https://ryandebler.com/,,,,not_found
+5,Jiya,Bhalla,17809091118,6424 29 Av Sw,Edmonton,$828800,https://instagram.com/jiyasellsyeg_?igshid=MzMyNGUyNmU2YQ%3D%3D&utm_source=qr,jiyabhalla@instagram.com,85,accept_all,found
+4,George,Van De Walle,17809824247,198 Lee Ridge,Edmonton,$195000,http://www.georgevandewalle.com/,,,,not_found
+5,Sally,Munro,17804415457,10530 173A Av,Edmonton,$399900,http://www.sallymunro.com/,sally@sallymunro.com,81,valid,found
+5,Nadia,Glavonjic,15879904777,3211 5 Av,Edmonton,$749900,http://www.housesearchedmonton.com/,nadia@housesearchedmonton.com,74,accept_all,found
+4,Edward,Lastiwka,17804463800,4112 111B,Edmonton,$649500,http://www.edshomepage.com/,,,,not_found
+3,Ken,Kunkel,17809931199,1709 Turvey Bend Bn,Edmonton,$470000,https://www.kenkunkel.ca/,,,,not_found
+2,Shannon,Breen,17806608862,400 Palisades,Sherwood Park,$279900,https://shannonbreen.ca/,shannon@shannonbreen.ca,81,valid,found
+4,Doug,Best,17807189121,102 Coachman Wy,Sherwood Park,$589900,http://www.simplydbest.ca/,,,,not_found
+3,Abi,MacKenzie,18258861144,1908 Hammond,Edmonton,$519900,https://www.edmonton-realtor.com/,,,,not_found
+2,Nicole,Mazurak,17802222209,4403 23 St Nw,Edmonton,$199900,http://nicolesellshouses.ca/,,,,not_found
+5,Jeremy,Dehek,17809665396,10237 151 St Nw,Edmonton,$349900,https://www.facebook.com/jeremydehekyeg,,,,invalid_input
+3,Moe,Charara,17807074848,9919 79 St Nw,Edmonton,$499900,http://experiencerealtygroup.com/,,,,not_found
+4,Tanya,Wold,17802424226,6720 95 Av,Edmonton,$450000,http://soldbywold.ca/,,,,not_found
+2,Oleg,Shwartz,17809357777,7339 South Terwillegar,Edmonton,$199900,https://www.google.com/search?q=oleg+shwartz+initia+real+estate&oq=oleg+shwartz&gs_lcrp=EgZjaHJvbWUqBggBEEUYOzIGCAAQRRg5MgYIARBFGDsyCAgCEEUYJxg7MggIAxBFGCcYOzIGCAQQRRg9MgYIBRBFGD0yBggGEEUYPTIGCAcQRRhB,olegs@google.com,80,valid,found
+3,Moe,Yassine,17809991195,6004 Rosenthal Wy,Edmonton,$378888,https://www.moeyassine.ca/,,,,not_found
+,.,Ravneet Kaur,16479382050,12811 126 St Nw,Edmonton,$1585000,https://www.facebook.com/share/1LQwQBPxL3/?mibextid=wwXIfr,,,,invalid_input
+5,Adam,Benke,17802216106,15011 59 St Nw,Edmonton,$469900,https://www.facebook.com/adam.benke.90,,,,invalid_input
+2,Nicole,Toshack,17802211600,79 Bellerose,St. Albert,$249900,https://www.nicoletoshack.com/,nicole.toshack@nicoletoshack.com,83,accept_all,found
+4,Joshua,Currie,17802664452,570 Glenwright Cr,Edmonton,$639800,http://www.teamcurrie.com/,,,,not_found
+3,Jashandeep,Sidhu,17809058543,152 Ravenshire Wynd,Sherwood Park,$815000,https://www.facebook.com/Jashansells,,,,invalid_input
+3,Josh,Cudmore,17809776019,7950 91 Av,Edmonton,$399000,https://cudmorerealestate.com/,,,,not_found
+1,Jennifer,Davis,17809207414,806 10134 100 St Nw,Edmonton,$230000,http://www.jenniferlindavis.com/,,,,not_found
+4,Calvin,Hexter,17802382701,30 Kenilworth Cr,St. Albert,$669000,https://www.facebook.com/profile.php?id=772070076,,,,invalid_input
+3,Jonathan,Hull,17802212129,325 Hawks Ridge Bv,Edmonton,$514900,https://www.youtube.com/embed/5eDhvQPxyok,,,,not_found
+4,Adam,Dirksen,17802227200,10335 137 St Nw,Edmonton,$975000,http://www.adamdirksen.com/,adam@adamdirksen.com,95,valid,found
+5,Todd,Burke,17804054276,16 Lorne Cr,St. Albert,$649900,http://www.toddburkerealty.com/,,,,not_found
+2,Allison,Meston,17809083003,9809 110 St Nw,Edmonton,$240000,http://allisonmeston.com/,,,,not_found
+4,Yad,Dhillon,17807096032,8412 226 St Nw,Edmonton,$524900,https://www.facebook.com/yaddhillon.ca,,,,invalid_input
+1,Grant,Pankiw,17809056910,3207 James Mowatt Tr,Edmonton,$128888,http://www.grantpankiw.com/,,,,not_found
+1,Adam,Benke,17802216106,8621 100 St Nw,Edmonton,$299000,https://www.facebook.com/adam.benke.90,,,,invalid_input
+5,Elise,Pallard,17809082294,14640 88 Av,Edmonton,$775000,https://www.facebook.com/elisepallard,,,,invalid_input
+4,Morgan,Taylor,17802222287,8230 71 St Nw,Edmonton,$340000,https://www.facebook.com/morgantaylor.yegrealtor,,,,invalid_input
+3,Adela,Mudryk,17802422667,15420 44 St Nw,Edmonton,$578000,https://adelamudryk.c21.ca/,,,,not_found
+4,Jarnail,Bhatti,17802003303,3113 16A Av,Edmonton,$414900,https://www.realgrowthrealty.com/,,,,not_found
+4,Ryan,Debler,17809957228,8318 120 St Nw,Edmonton,$1797800,https://ryandebler.com/,,,,not_found
+4,Janice,Kosak,17802713900,550 Eagleson Wd,Edmonton,$828800,http://janicekosak.com/,janice.kosak@janicekosak.com,80,accept_all,found
+6,Morgan,Taylor,17802222287,9821 83 Av,Edmonton,$570000,https://www.facebook.com/morgantaylor.yegrealtor,,,,invalid_input
+4,John,Carle,17809377534,19 Newton,St. Albert,$824900,https://www.johncarle.com/,,,,not_found
+3,Sommer,Reid,17809667667,10439 14 Av Nw,Edmonton,$525000,https://www.livrealestate.ca/,sommer@livrealestate.ca,96,valid,found
+4,Janice,Kosak,17802713900,11109 University Av,Edmonton,$1198000,http://janicekosak.com/,janice.kosak@janicekosak.com,80,accept_all,found
+3,Wally,Karout,17807184848,7395 Keeler Cr,Edmonton,$450238,http://www.wallykarout.com/,wally@wallykarout.com,74,accept_all,found
+3,Wally,Karout,17807184848,7393 Keeler Cr,Edmonton,$439107,http://www.wallykarout.com/,wally@wallykarout.com,74,accept_all,found
+2,Sharon,Josey,17806997333,7317 118 St Nw,Edmonton,$199900,http://www.sharonjosey.com/,sharon@sharonjosey.com,99,valid,found
+3,Jonathan,Hull,17802212129,1107 Chahley Ct,Edmonton,$589900,https://www.youtube.com/embed/5eDhvQPxyok,,,,not_found
+2,Steve,Leddy,17809849399,10045 117 St Nw,Edmonton,$139900,http://www.steveleddy.ca/,,,,not_found
+1,Don,Cholak,17807188400,11453 Ellerslie,Edmonton,$139000,https://www.youtube.com/embed/Ljkc5SrFiEI,,,,not_found
+2,Jeff,Tidswell,17804315600,2520 52 St Nw,Edmonton,$299900,http://www.jefftidswell.ca/,,,,not_found
+3,Carrie,Banham-Posty,17809748062,11623 123 St Nw,Edmonton,$429900,http://www.carriebanhamposty.com/,,,,not_found
+2,Lindsay,Mercer,17806672202,8125 110 St Nw,Edmonton,$212000,https://www.facebook.com/MoveWithTheMercers,,,,invalid_input
+3,Denise,Royer,17804462012,20 Norman Co,St. Albert,$387000,https://www.blackmorerealestate.ca/,denise@blackmorerealestate.ca,82,valid,found
+5,Terry,Paranych,17804574777,706 Burley,Edmonton,$729900,http://www.paranych.com/,terry@paranych.com,97,valid,found
+2,Kerri-lyn,Holland,17804397000,9811 96A,Edmonton,$315000,http://www.yeghousesearch.ca/,,,,not_found
+1,Geordie,Morison,17802229666,11511 27 Av,Edmonton,$174900,http://www.yeglistings.com/,geordie@yeglistings.com,85,valid,found
+2,Sonia,Tarabay,17807076015,111 Festival Wy,Sherwood Park,$355000,http://www.soniasells.com/,,,,not_found
+5,Manveer,Maan,17809027454,4119 7 Av,Edmonton,$799750,https://www.facebook.com/MRG.yeg,,,,invalid_input
+3,Gillian,Stickney,17809185699,11930 100 Av,Edmonton,$2750000,http://www.gillianismyagent.com/,,,,not_found
+4,Deep,Nirwan,15873406367,4855 Hawthorn Bn,Edmonton,$578999,https://www.facebook.com/Er.nirwan,,,,invalid_input
+,Darin,Baxandall,17804415899,2 22459 Township Road 530,Rural Strathcona County,$749900,http://www.darinbaxandall.com/,,,,not_found
+,Darin,Baxandall,17804415899,3 22459 Township Road 530,Rural Strathcona County,$749900,http://www.darinbaxandall.com/,,,,not_found
+5,Amanda,Crow,17802978643,79 Woodstock,Sherwood Park,$724900,http://www.amandacrow.ca/,,,,not_found
+5,Joch,Hess,17809205742,73 Starling,Sherwood Park,$459900,http://www.acreages.com/,,,,not_found
+4,Anthony,Trang,17802174004,4020 166 Av,Edmonton,$534900,http://www.myedmontonhomesearcher.com/,,,,not_found
+5,Deep,Nirwan,15873406367,3071 Carpenter Ld,Edmonton,$698999,https://www.facebook.com/Er.nirwan,,,,invalid_input
+3,James,Mabey,17802646471,18315 89 Av,Edmonton,$185000,https://www.youtube.com/embed/tFL_E_vVfhQ,,,,not_found
+5,Matthew,Labas,17808192615,78 Goodridge,St. Albert,$634900,https://blacklabelpropertygroup.com/,matthew@blacklabelpropertygroup.com,80,valid,found
+4,Michael,Melnychuk,17808037355,4562 Chegwin Wd,Edmonton,$584900,http://www.michaelsells.ca/,,,,not_found
+5,Colin,Clowater,17802182657,7 Kirklees,Sherwood Park,$574900,https://www.instagram.com/colintherealtor/,colinclowater@instagram.com,81,accept_all,found
+2,Todd,Burke,17804054276,1945 105 St Nw,Edmonton,$110900,http://www.toddburkerealty.com/,,,,not_found
+1,Carson,Beier,17809603948,11503 76 Av,Edmonton,$275000,http://www.soldoncarson.com/,carson@soldoncarson.com,97,valid,found
+4,Erin,Willman,17802215801,73 Linwood Cr,St. Albert,$574900,http://www.erinwillman.com/,erin@erinwillman.com,96,valid,found
+2,Heather,Faulkner,17807107232,12035 83 St Nw,Edmonton,$250000,https://www.simplyrealestate.ca/,,,,not_found
+2,Lori,Frank,17809910717,11307 99 Av,Edmonton,$173900,https://www.lorifrankhomes.ca/,,,,not_found
+3,Brent,Anderson,17806913644,612 175A,Edmonton,$399900,https://theandersonco.ca/,brent@theandersonco.ca,98,valid,found
+3,Sean,Ducharme,15873363456,9008 Cooper Link Li,Edmonton,$499999,https://www.wingspanrealty.ca/,sean@wingspanrealty.ca,97,valid,found
+3,Yolanda,Gysbers,17809539337,1341 Breckenridge,Edmonton,$569900,https://yolandagysbers.com/,,,,not_found
+4,Graham,Ogden,17809081224,5214 Admiral Walter Hose,Edmonton,$640000,http://www.grahamogden.com/,graham@grahamogden.com,97,valid,found
+2,Abe,Sleiman,17807093733,12141 Jasper Av,Edmonton,$250000,http://abesleiman.com/,,,,not_found
+4,Ryan,Dutka,17809880002,14402 64 St Nw,Edmonton,$399900,https://www.youtube.com/embed/-CQkTjoCqQc,,,,not_found
+5,David,Goodchild,17808190978,12380 132 St Nw,Edmonton,$464900,http://www.goodchildrealty.com/,david.goodchild@goodchildrealty.com,81,accept_all,found
+4,Don,Brown,15879880312,13304 63 St Nw,Edmonton,$410000,https://www.youtube.com/embed/dxSojE-IKqA,,,,not_found
+1,Jarred,Lusk,17806991078,2590 Anderson Wy,Edmonton,$164900,https://linktr.ee/jarredsellsyeg,,,,not_found
+2,Carmen,Chiu,17809646762,11811 106 St Nw,Edmonton,$209900,https://www.carmenchiu.realtor/,,,,not_found
+3,Dallas,Moravec,17807077191,6054 107A,Edmonton,$575000,http://www.dallasm.com/,dallas.moravec@dallasm.com,80,accept_all,found
+3,Jolyn,Hall,17809095377,9704 165 St Nw,Edmonton,$335000,https://www.youtube.com/embed/tFj1FKgwNPY,,,,not_found
+2,Marko,Koltalo,17807185781,10179 105 St Nw,Edmonton,$250000,https://www.markoandmike.com/,,,,not_found
+3,Wally,Karout,17807184848,9709 Carson,Edmonton,$608998,http://www.wallykarout.com/,wally@wallykarout.com,74,accept_all,found
+4,Wally,Karout,17807184848,9705 Carson,Edmonton,$577497,http://www.wallykarout.com/,wally@wallykarout.com,74,accept_all,found
+2,Quenny Lou,Aquino Rocha,15878407615,11120 83 Av,Edmonton,$290000,https://quenny.muvehomes.ca/,,,,not_found
+3,Tawnie,Misik,17809027172,7132 182 Av,Edmonton,$599999,http://www.tawniemisik.com/,tawniemisik@royallepage.ca,97,valid,found
+2,Reanna,Bowden,17806680678,10945 21 Av,Edmonton,$220000,https://allhomes.co/,reanna@allhomes.co,84,valid,found
+4,Christine,Tetreault,17802684888,45 Lacombe,St. Albert,$939900,https://www.onepercentrealty.com/,christine@onepercentrealty.com,95,valid,found
+4,Simran,Brar,17807210647,9846 112 St Nw,Edmonton,$595000,https://homeanalytics.ca/,,,,not_found
+3,Conor,Salisbury,17807217892,1530 Tamarack Bv,Edmonton,$318000,http://www.conorsalisbury.ca/,,,,not_found
+3,Wally,Karout,17807184848,4368 Clayton Wy,Edmonton,$524997,http://www.wallykarout.com/,wally@wallykarout.com,74,accept_all,found
+2,Mark,Wilbert,17809088997,4029 Orchards,Edmonton,$309000,https://www.youtube.com/embed/_pV2BM9MEeU,,,,not_found
+5,Kunal,Sachdeva,17807080220,642 Adams Wy,Edmonton,$599000,https://kunalsachdeva.ca/,,,,not_found
+2,Mike,Racich,17809991044,10226 104 St Nw,Edmonton,$268000,https://www.mikeshouses.ca/,,,,not_found
+3,Wally,Karout,17807184848,4392 Clayton Wy,Edmonton,$566997,http://www.wallykarout.com/,wally@wallykarout.com,74,accept_all,found
+5,Kerry,Parsons,17802780351,7307 76 St Nw,Edmonton,$390000,http://www.kerryparsonsrealty.com/,kerry@kerryparsonsrealty.com,95,valid,found
+4,Christy,Cantera,17809745546,25 Galloway,Sherwood Park,$500000,https://www.linkedin.com/in/christy-cantera-19b11741/,,,,not_found
+4,Janice,Kosak,17802713900,11107 University Av,Edmonton,$699900,http://janicekosak.com/,janice.kosak@janicekosak.com,80,accept_all,found
+5,Manveer,Maan,17809027454,5261 Kimball Cr,Edmonton,$769500,https://www.facebook.com/MRG.yeg,,,,invalid_input
+2,Michael,Pino,17802388912,7331 South Terwillegar,Edmonton,$194800,http://www.pinorealtygroup.com/,michael@pinorealtygroup.com,97,valid,found
+3,Ricky,Hill,17807185608,14307 50 Av,Edmonton,$625000,http://www.riverbendricky.com/,,,,not_found
+5,Aidan,Woodfine,15878420710,14906 76 Av,Edmonton,$575000,https://www.muveteam.com/agents/aidan-woodfine/,aidan@muveteam.com,96,valid,found
+4,Dawn,Fraser,17802217568,11317 123 St Nw,Edmonton,$542500,http://www.dawnfraser.ca/,dawn@dawnfraser.ca,98,valid,found
+4,David,Centis,17809700703,7707 166 Av Nw,Edmonton,$739000,http://davidcentis.ca/,,,,not_found
+2,Ronald,Manson,17804469272,400 Palisades Wy,Sherwood Park,$319900,https://ronmansonhomes.com/,,,,not_found
+3,Wendi,Darling,17809513821,9719 65 Av,Edmonton,$475000,https://www.youtube.com/embed/WCxdAMfhiwU,,,,not_found
+4,Ray,Elwenni,17809648881,9323 75 Av,Edmonton,$850000,http://www.experiencerealtygroup.com/,,,,not_found
+3,Eric,Beaverford,17802881293,12130 124 St Nw,Edmonton,$349999,https://www.youtube.com/embed/kklz7RhwB4s,,,,not_found
+2,Michael,Pelley,17809648866,13825 155 Av,Edmonton,$229900,https://pelleycan.ca/,,,,not_found
+4,Alan,Gee,17804982187,3038 Dixon Ld,Edmonton,$628900,http://www.alangee.com/,agee@alangee.com,61,accept_all,found
+2,Cathy,Karleen,17803183925,1817 Mill Woods Rd E,Edmonton,$224900,https://www.facebook.com/CathyKarleenRealEstate/,,,,invalid_input
+5,Wally,Fakhreddine,17802387384,8952 81 Av,Edmonton,$469900,http://topedmontonrealestate.com/,wally@topedmontonrealestate.com,95,valid,found
+5,Michele,Wuerch,17802175685,1090 Armitage Cr,Edmonton,$748800,https://edmontonhomesales.ca/,michele@edmontonhomesales.ca,80,valid,found
+4,Bhavya,Soni,17807070479,215 Savoy Cr,Sherwood Park,$524900,https://www.opendreamdoors.com/,,,,not_found
+2,Trevor,Van Someren,18253334663,2755 109 St Nw,Edmonton,$415000,https://trevorvansomeren.c21.ca/,trevor.vansomeren@c21.ca,81,valid,found
+5,Kim,Murrell-Hebert,17809140407,14711 88 Av,Edmonton,$1124000,https://kim-murrell-hebert.c21.ca/,kim.murrell@c21.ca,84,valid,found
