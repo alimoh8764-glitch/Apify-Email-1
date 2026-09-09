@@ -149,20 +149,17 @@ def clean_bedrooms(value):
 
 def clean_address(value):
     """
-    Prefer a usable street address when Realtor.ca provides one.
+    Clean Realtor.ca street addresses while keeping useful fallback details.
 
-    Examples:
-      10109 80 ST NW, Edmonton...
-      -> 10109 80 ST NW
+    Rules:
+      5214 ADMIRAL WALTER HOSE ST NW -> 5214 Admiral Walter Hose
+      10109 80 ST NW                -> 10109 80 St Nw
+      404 NW                        -> 404 Nw
+      404                           -> 404
 
-      #3410 10360 102 ST NW, Edmonton...
-      -> 10360 102 ST NW
-
-      404, Calgary...
-      -> 404
-
-    If a street name/number cannot be identified reliably, fall back to
-    the previous behaviour: building number + direction, or just number.
+    If a real street name is present, trailing street type/direction tokens
+    are removed. If the address is only a numbered street (no street name),
+    those tokens are retained because they help identify the road.
     """
 
     if value is None:
@@ -174,93 +171,80 @@ def clean_address(value):
         return None
 
     # AddressText can contain extra location information after "|" or ",".
-    # Keep only the actual street-address portion.
     street = value.split("|")[0]
     street = street.split(",")[0]
     street = street.strip()
 
-    # Remove common leading unit/suite formats, for example:
-    #   #3410 10360 102 ST NW
-    #   Unit 12 10360 102 ST NW
-    #   12-10360 102 ST NW
+    # Remove common leading unit/suite formats.
     street = re.sub(
         r"^\s*#\s*[A-Za-z0-9-]+\s+",
         "",
         street,
         flags=re.IGNORECASE
     )
-
     street = re.sub(
         r"^\s*(?:UNIT|SUITE|APT|APARTMENT)\s+[A-Za-z0-9-]+\s+",
         "",
         street,
         flags=re.IGNORECASE
     )
-
     street = re.sub(
         r"^\s*[A-Za-z0-9]+\s*-\s*(?=\d+\b)",
         "",
         street
     )
 
-    # Normalize whitespace.
     street = re.sub(r"\s+", " ", street).strip()
 
     # Find the civic/building number.
     number_match = re.search(r"\b(\d+[A-Za-z]?)\b", street)
-
     if not number_match:
-        return street or None
+        return street.title() or None
 
     number = number_match.group(1)
-
-    # Everything after the civic number is a candidate street name.
     remainder = street[number_match.end():].strip(" -")
 
-    # A usable street portion should contain at least one street-name token.
-    # This accepts numbered streets such as "80 ST NW" as well as named
-    # streets such as "Main Street" or "17 Avenue SW".
+    if not remainder:
+        return number
+
+    direction_pattern = r"(?:NW|NE|SW|SE|N|S|E|W)"
     street_type_pattern = (
-        r"\b(?:ST|STREET|AVE|AVENUE|RD|ROAD|DR|DRIVE|BLVD|BOULEVARD|"
+        r"(?:ST|STREET|AVE|AVENUE|RD|ROAD|DR|DRIVE|BLVD|BOULEVARD|"
         r"TRAIL|TRL|WAY|CRES|CRESCENT|CRT|COURT|PL|PLACE|LN|LANE|"
         r"HWY|HIGHWAY|PKWY|PARKWAY|TER|TERRACE|CIR|CIRCLE|"
-        r"GDNS|GARDENS|GRV|GROVE|MEWS|RISE|ROW|SQ|SQUARE)\b"
+        r"GDNS|GARDENS|GRV|GROVE|MEWS|RISE|ROW|SQ|SQUARE)"
     )
 
-    has_street_type = bool(
-        re.search(street_type_pattern, remainder, re.IGNORECASE)
-    )
-
-    # Some Realtor.ca addresses may contain a valid named/numbered street
-    # without a standard suffix. Accept it when there is meaningful text
-    # beyond just a compass direction.
-    meaningful_remainder = re.sub(
-        r"\b(?:NW|NE|SW|SE|N|S|E|W)\b",
+    # Remove trailing compass direction temporarily so we can inspect the
+    # actual street portion.
+    without_direction = re.sub(
+        rf"\s+{direction_pattern}$",
         "",
         remainder,
         flags=re.IGNORECASE
-    )
-    meaningful_remainder = re.sub(
-        r"[^A-Za-z0-9]+",
+    ).strip()
+
+    # Remove a trailing road-type token temporarily as well.
+    name_candidate = re.sub(
+        rf"\s+{street_type_pattern}$",
         "",
-        meaningful_remainder
-    )
+        without_direction,
+        flags=re.IGNORECASE
+    ).strip()
 
-    if remainder and (has_street_type or len(meaningful_remainder) >= 2):
-        return f"{number} {remainder}".strip()
+    # A true named street contains letters before the street type. Numeric
+    # roads such as "80 ST NW" or "17 AVE SW" do not, so keep their suffixes.
+    has_named_street = bool(re.search(r"[A-Za-z]", name_candidate))
 
-    # Fallback to the old behaviour when no street name can be found.
-    direction_match = re.search(
-        r"\b(NW|NE|SW|SE)\b",
-        street,
-        re.IGNORECASE
-    )
+    if has_named_street:
+        # Named street: omit ST/AVE/etc. and compass direction, and normalize
+        # Realtor.ca's all-caps text to readable title case.
+        return f"{number} {name_candidate.title()}".strip()
 
-    if direction_match:
-        direction = direction_match.group(1).upper()
-        return f"{number} {direction}"
-
-    return number
+    # No street name found: keep the useful road type/direction as a fallback,
+    # but convert ALL CAPS to normal display casing.
+    fallback = remainder.title()
+    return f"{number} {fallback}".strip()
 
 
 # =========================================================
