@@ -1,0 +1,716 @@
+Bedrooms,FirstName,LastName,Phone,Address,City,Price,Website,Email,HunterScore,HunterStatus,HunterOutcome
+3,Jeffrey,Gauthier,16138621077,154 Presland,Ottawa,$575000,http://www.jeffreygauthier.ca/,,,,not_found
+2,Daniel,Poitras,18192102530,1040 Ch. De Montréal O.,Gatineau (Masson-Angers),$269900,https://equipedanielpoitras.ca/notre-equipe/,,,,not_found
+3,Augustin,Ntarindwa,15813077679,25 Rue Martineau,Gatineau (Gatineau),$499900,https://expquebec.com/fr/,,,,not_found
+3,Joanne,Wilson,16137695683,2423 Clementine,Ottawa,$588888,http://www.wilsonrealestate.ca/,,,,not_found
+1,Marie Anne,Faubert,18199309065,230 Rue De Dublin,Gatineau (Aylmer),$299900,http://www.remax-quebec.com/vision,,,,not_found
+3,Jeffrey,Gauthier,16138621077,929 Merivale,Ottawa,$699900,http://www.jeffreygauthier.ca/,,,,not_found
+2,Alan,Lan,13439888663,98 Boyce,Ottawa,$649000,http://www.facebook.com/Alan-Lan-Real-Estate-Agent-104904375155407,,,,invalid_input
+2,Jen,Parker,16133146111,1350 Hemlock,Ottawa,$449900,http://www.jenparker.ca/,,,,not_found
+5,Christine,Hauschild,16137995570,50 Marchvale,Ottawa,$1549000,http://www.christinehauschild.com/,christine@christinehauschild.com,99,valid,found
+2,Chad,Clost,16133247355,711 Churchill,Ottawa,$355000,http://www.chadclost.com/,chad@chadclost.com,84,accept_all,found
+2,Katherine,Cartier,18193284225,949 Route 105,Chelsea,$449000,http://www.c21macintyre.com/,,,,not_found
+3,Travis,Gordon,16138592254,387 Sweet Grass,Ottawa,$599000,http://www.travisgordon.com/,travis@travisgordon.com,84,valid,found
+3,Alain,Fournier,18192134747,127 Rue De La Spartan,Gatineau (Aylmer),$524900,http://www.alainfournier.ca/,alain@alainfournier.ca,81,valid,found
+5,Nantha,Aiyadurai,16138509931,1554 River,Ottawa,$3599000,http://www.nantha.ca/,,,,not_found
+3,Aziz,Maghrab,18199183899,202 Rue De L'Ours-Noir,Gatineau (Aylmer),$539900,https://azizcourtier.com/,,,,not_found
+3,Claudio,Cid,18193193099,157 Rue Fernand-Arvisais,Gatineau (Gatineau),$325000,http://claudiocid.com,claudio@claudiocid.com,98,accept_all,found
+,Olivier,Payne,14388887688,66 Rue Brodeur,Gatineau (Hull),$1800000,http://www.pmml.ca,olivier.payne@pmml.ca,99,valid,found
+3,Danika,Laramée,18196652265,86 Rue Limbour,Gatineau (Gatineau),$585000,http://martywaite.com/,danika@martywaite.com,84,valid,found
+2,Patti,Smith,16138661014,2785 Baseline,Ottawa,$325000,http://www.pattismithhomes.com/,patti@pattismithhomes.com,96,accept_all,found
+3,Yetta (Jette),Dekker,16138636058,5663 Ferdinand,Ottawa,$650000,http://www.dekkerteam.com/,yetta@dekkerteam.com,96,valid,found
+4,Tara,Scharf,16138531581,25 Moresby,Ottawa,$649900,http://www.tarascharf.com/,tara@tarascharf.com,77,,found
+3,Xavier,Chaaban,16138684400,983 Fieldfair,Ottawa,$949900,http://www.capitalgrouprealestate.ca/,xavier@capitalgrouprealestate.ca,95,valid,found
+4,Shane,Foley,16132861401,2414 Mcgee Side,Ottawa,$774900,http://www.foleypeeters.ca/,shane@foleypeeters.ca,84,valid,found
+2,Joni,Campbell,16133719972,3580 Rivergate,Ottawa,$849000,http://www.joniopeningdoors.com/,,,,not_found
+3,Sarah,Hunter,16138890171,4 Avon,Ottawa,$899900,http://www.sarahhunterhomes.com/,,,,not_found
+4,David,Tessier,16139780123,273 Central Park,Russell,$709900,https://www.tessierteam.ca/,david@tessierteam.ca,84,valid,found
+3,Constance,McCrea,16132914112,725 Coast,Ottawa,$1275000,http://www.constancemccrea.com/,,,,not_found
+1,Andrew,Clark,16138897056,1760 Cabaret,Ottawa,$329900,http://www.clarkhomesgroup.com/,andrew@clarkhomesgroup.com,78,accept_all,found
+2,Marnie,Bennett,16132338606,259 Shinny,Ottawa,$729900,https://www.youtube.com/embed/m0qg1N6iWvU,,,,not_found
+1,Martha,Howard,16133715244,489 Sussex,Ottawa,$419500,http://www.remaxhallmark.com/,,,,not_found
+3,Shane,Foley,16132861401,161 Mojave,Ottawa,$660000,http://www.foleypeeters.ca/,shane@foleypeeters.ca,84,valid,found
+5,Ahmed,Elhaddad,16138909557,12 Knockaderry,Ottawa,$799900,https://ahmedelhaddad.exprealty.com/,,,,not_found
+3,Yograj,Singh,16138902641,168 Maynooth,Ottawa,$799900,https://yograjsingh.ca/,yograj@yograjsingh.ca,80,valid,found
+4,Charles,Cheang,16138834473,1040 Karsh,Ottawa,$784900,https://www.charlescheang.ca/,charles@charlescheang.ca,85,valid,found
+3,Tyler,Laird,16136140412,3620 Albion,Ottawa,$799000,http://ottawacentral.evcanada.com/,tyler.laird@evcanada.com,80,valid,found
+3,Lucy,Webster,16138842809,408 Centenaire,Russell,$697900,http://www.macdonaldwebster.ca/,lucy@macdonaldwebster.ca,83,valid,found
+3,Milkan,Berhe,13435439559,9 Paddington Private,Ottawa,$359900,http://www.facebook.com/missmikaa,,,,invalid_input
+3,Monu,Arora,16133010655,118 Knoxdale,Ottawa,$549900,http://www.monuarora.com/,,,,not_found
+3,Louis-Philippe,Pidgeon,18197440807,341 Rue Fred-Forsythe,Gatineau (Aylmer),$625000,http://www.maisonsdeluxe.com/,,,,not_found
+3,Sarah,Cameron,16138624713,1088 Checkers,Ottawa,$689900,http://www.sarahcameronhomes.com/,sarah@sarahcameronhomes.com,83,valid,found
+4,Nancy,Benson,16137474747,109 Parkglen,Ottawa,$1295000,http://www.nancybenson.com/,nancy@nancybenson.com,82,valid,found
+3,Robert,Kearns,16134475320,81 Princess,Mississippi Mills,$579900,http://www.morrishometeam.com/,robert@morrishometeam.com,82,accept_all,found
+3,Marnie,Bennett,16132338606,837 Eastvale,Ottawa,$407800,https://www.youtube.com/embed/m0qg1N6iWvU,,,,not_found
+2,Justin,Wrigley,16138801607,168 Equinox,Russell,$549900,http://www.wrigleyteam.ca/,justin@wrigleyteam.ca,85,valid,found
+6,Omar,Kiki,16137628408,228 Woodroffe,Ottawa,$998000,http://www.facebook.com/omar.kiki.1,,,,invalid_input
+3,Akshay,Kurichh,16133153327,1992 Summerfields,Ottawa,$544900,http://akshaykurichh.royallepage.ca/,akshaykurichh@royallepage.ca,96,valid,found
+3,Ervy,Makamu,16132662028,1791 Queensdale,Ottawa,$994900,http://www.ervymak.com/,,,,not_found
+5,Robert,Kearns,16134475320,207 Dave Smith,Ottawa,$849900,http://www.morrishometeam.com/,robert@morrishometeam.com,82,accept_all,found
+2,Irina,Popova,16138832513,12 Corkstown,Ottawa,$374900,http://irinapopovahometeam.ca/,irina@irinapopovahometeam.ca,95,valid,found
+3,Melanie,Amo,16133024344,376 Twilight,Russell,$670000,http://melanieamo.ca/,,,,not_found
+3,Charlene,Van Hofwegen,16136129067,3125 Torwood,Ottawa,$1780000,http://cvhhomes.com/,,,,not_found
+4,Liam,Swords,16137027799,1388 Emerald Gate,Ottawa,$1400000,http://www.liamswords.com/,liam@liamswords.com,82,valid,found
+3,Sue,Patel,13432978755,36 Saffron,Ottawa,$589900,http://www.ottawarealestate.agency/,,,,not_found
+3,Sarah,Percival,16138837076,508 Hyssop,Ottawa,$649900,http://www.sarahpercival.ca/,,,,not_found
+3,Nancy,Benson,16137474747,142 River,Ottawa,$869900,http://www.nancybenson.com/,nancy@nancybenson.com,82,valid,found
+,Marty,Waite,18196650033,105 Ch. L'Escalade,Pontiac,$149900,http://martywaite.com/,marty@martywaite.com,80,valid,found
+3,Sylvie,Begin,16133027711,2093 Auburn Ridge,Ottawa,$885000,http://www.sylviebegin.com/,,,,not_found
+5,Robert,Marland,16137699157,35 Wilton,Ottawa,$1695000,http://www.robmarland.com/,rob@robmarland.com,97,valid,found
+3,Dan,Mayer,16133158363,1767 Trappist,Ottawa,$379000,http://www.lbhome.ca/,,,,not_found
+2,Samira,Shahbazian,16138539988,1505 Baseline,Ottawa,$328900,http://www.ottawarealestate.com/,samira@ottawarealestate.com,99,valid,found
+2,Philip,LeMay,18199237777,1180 Ch. D'Aylmer,Gatineau (Aylmer),$519500,http://philiplemay.com,,,,not_found
+3,Kevin,Feely,16139034913,3108 Burritts Rapids,Ottawa,$635000,http://www.feelyrealestate.com/,kevin@feelyrealestate.com,82,valid,found
+2,Alex,Fedorchuk,16137905723,3415 Cambrian,Ottawa,$399900,http://fedorchuk.ca/,alex@fedorchuk.ca,97,accept_all,found
+1,Stephanie,Norman,16136687169,349 Mcleod,Ottawa,$389900,http://www.stephaniekreplin.com/,,,,not_found
+4,Christine,Bussieres,16132902916,22 Woodhill,Ottawa,$849900,http://www.myottawahomeagent.com/,,,,not_found
+3,Laura,Voicu,16132186298,24 Raftus,Ottawa,$650000,http://www.voiculaura.com/,,,,not_found
+3,Christopher,Avalos,16138539431,61 Tobermory,Ottawa,$528800,http://www.dreamteam613.ca/,christopher@dreamteam613.ca,82,valid,found
+1,Tara,Scharf,16138531581,345 St Denis,Ottawa,$414900,http://www.tarascharf.com/,tara@tarascharf.com,77,,found
+4,Nim,Moussa,16132986461,636 Eagle Crest Heights,Ottawa,$1149000,http://www.moussagroup.ca/,,,,not_found
+,Debra,Cherry,16138757929,775 Kerwin,Ottawa,$300000,http://www.cherrypickhomes.com/,deb.cherry@evrealestate.com,85,valid,found
+3,Akshay,Kurichh,16133153327,1988 Boyer,Ottawa,$549900,http://akshaykurichh.royallepage.ca/,akshaykurichh@royallepage.ca,96,valid,found
+3,Jeff,Matheson,16136998163,3445 Uplands,Ottawa,$335000,https://jeffmatheson.exprealty.com/,,,,not_found
+4,Jason,Pilon,16138510993,1619 Sequoia,Ottawa,$949900,http://www.pilongroup.com/,jason@pilongroup.com,98,valid,found
+3,Anna,Tran,16138182409,622 Bellatrix Walk,Ottawa,$545000,http://www.annatran.com/,,,,not_found
+2,Sarah,Hunter,16138890171,75 Blueheart Bay,Ottawa,$528000,http://www.sarahhunterhomes.com/,,,,not_found
+3,Tyler,Laird,16136140412,309 Flora,Ottawa,$925000,http://ottawacentral.evcanada.com/,tyler.laird@evcanada.com,80,valid,found
+3,Ali,Saad,18196396697,101 Rue Prentiss,Gatineau (Aylmer),$424900,https://groupesaadavila.com/,,,,not_found
+2,Benjamin,Duguay,14503789143,9 Imp. Berthe Morisot,Gatineau (Gatineau),$312000,http://www.remax-professionnel.com/,benjamin.duguay@remax-quebec.com,98,valid,found
+3,Joni,Campbell,16133719972,909 Greenbriar,Ottawa,$380000,http://www.joniopeningdoors.com/,,,,not_found
+2,Robert,Marland,16137699157,71 Somerset,Ottawa,$415000,http://www.robmarland.com/,rob@robmarland.com,97,valid,found
+2,Shane,Foley,16132861401,682 Churchill,Ottawa,$425000,http://www.foleypeeters.ca/,shane@foleypeeters.ca,84,valid,found
+,Christopher,Dolan,16138635857,485 5Th Concession,Mississippi Mills,$274900,http://www.chrisdolan.ca/,,,,not_found
+3,John,Castle,16137937967,2000 Jasmine,Ottawa,$227000,http://johncastle.ca/,,,,not_found
+2,Tracy,McHale,16133272293,9 Holmwood,Ottawa,$749900,https://www.mchalerealestategroup.com/,tracy@mchalerealestategroup.com,89,accept_all,found
+6,Nick,Wilson,16138681281,127 Finn,Ottawa,$829900,http://www.nickoftime.ca/,nick@nickoftime.ca,99,accept_all,found
+2,Julian,Hyams,16137917760,1440 Heron,Ottawa,$249900,https://hyamsrealestate.com/,julian@hyamsrealestate.com,85,accept_all,found
+1,Jen,MacDonald,16138047653,280 Herzberg,Ottawa,$397000,http://www.macdonaldwebster.ca/,jen@macdonaldwebster.ca,84,valid,found
+3,Paddy,McCarthy,16132869376,1396 Micmac,Ottawa,$925000,http://www.andyandpaddy.com/,paddy@andyandpaddy.com,96,valid,found
+3,Tieseer,Alzubi,16132765883,561 Rioja,Ottawa,$629900,http://www.propertiesofottawa.com/,,,,not_found
+1,Pascal,Landry-Bourque,18193282964,76 Rue De Bruxelles,Gatineau (Aylmer),$219900,http://www.remax-quebec.com/vision,pascal.landry@remax-quebec.com,95,valid,found
+3,André,Cretinoir,18193191152,77 Rue De Dublin,Gatineau (Aylmer),$600000,https://outaouais.evrealestate.com/fr-CA,andre.cretinoir@evrealestate.com,85,valid,found
+3,Claudette,Leduc,16133713871,19 Crysler Station,North Stormont,$599900,http://www.your-home.ca/,,,,not_found
+4,Joni,Campbell,16133719972,861 Dunlevie,Ottawa,$1898000,http://www.joniopeningdoors.com/,,,,not_found
+3,Mat,Valois,16132299981,268 Horseshoe,Ottawa,$640000,http://www.matvalois.com/,,,,not_found
+4,Christine,Hauschild,16137995570,59 Naismith,Ottawa,$719000,http://www.christinehauschild.com/,christine@christinehauschild.com,99,valid,found
+1,Robert,Marland,16137699157,475 Laurier,Ottawa,$198000,http://www.robmarland.com/,rob@robmarland.com,97,valid,found
+3,Arian,Marius,16132627426,6529 Tooney,Ottawa,$749900,http://arianmarius.evrealestate.com/,arian.marius@evrealestate.com,82,valid,found
+5,Yograj,Singh,16138902641,1165 Klondike,Ottawa,$899000,https://yograjsingh.ca/,yograj@yograjsingh.ca,80,valid,found
+1,Arian,Marius,16132627426,805 Carling,Ottawa,$434900,http://arianmarius.evrealestate.com/,arian.marius@evrealestate.com,82,valid,found
+2,Maria,Guimaraes,16132822629,49 Jardin Private,Ottawa,$399900,http://www.mariaguimaraes.com/,,,,not_found
+2,Robert,Blake,16135520572,257 Botanica Private,Ottawa,$665000,http://www.bobblake.ca/,robertb@bobblake.ca,91,accept_all,found
+3,Hamid,Riahi,16132524797,944 Eve,Ottawa,$599900,http://www.weguaranteehomesales.com/,,,,not_found
+3,Casey,McGowan,16138785831,2625 Regina,Ottawa,$334900,http://www.caseymcgowan.com/,casey@caseymcgowan.com,98,valid,found
+5,Maz,Karimjee,16137997253,171 Powell,Ottawa,$1799999,http://www.mazkarimjee.ca/,,,,not_found
+6,Dominique,Milne,16138645566,22 Lynhurst,Ottawa,$1149900,http://www.dominiquemilne.com/,dominique@dominiquemilne.com,96,accept_all,found
+3,Alie,Mansour,16138842324,2506 Rollin,Clarence-Rockland,$659999,http://www.thevertexteam.com/,,,,not_found
+3,Marnie,Bennett,16132338606,153 Point Prim,Ottawa,$849900,https://www.youtube.com/embed/m0qg1N6iWvU,,,,not_found
+2,Janine,Edwards,16138996726,8150 Victoria,Ottawa,$439900,http://janinehogg.ca/,,,,not_found
+1,Charles,Cheang,16138834473,805 Carling,Ottawa,$399900,https://www.charlescheang.ca/,charles@charlescheang.ca,85,valid,found
+2,Kayla,Meyer,16134479336,646 Cummings,Ottawa,$279900,https://www.youtube.com/embed/LLK4-MZYt7s,,,,not_found
+,Michael,Pyman,16138789441,1071 & 1073 Heron,Ottawa,$1995000,http://www.collierscanada.com/,,,,not_found
+3,John,Bilder,16134473891,174 Compton,Ottawa,$799900,http://www.bilder.ca/,john@bilder.ca,96,valid,found
+,Paul J.,Bourque,16133245959,290 A Holmwood,Ottawa,$775000,http://www.teambourque.com/,paul@teambourque.com,80,valid,found
+,Paul J.,Bourque,16133245959,290 B Holmwood,Ottawa,$775000,http://www.teambourque.com/,paul@teambourque.com,80,valid,found
+3,Angela (Angie),White,16137882122,243 Eric Czapnik,Ottawa,$529900,http://www.paulrushforth.com/,angie@paulrushforth.com,97,valid,found
+2,Jeff,Matheson,16136998163,6 Windchime,Ottawa,$724900,https://jeffmatheson.exprealty.com/,,,,not_found
+3,Tom,Bastien,16138500690,2575 Sparkle,Ottawa,$475000,http://www.thebfteam.ca/,tom@thebfteam.ca,83,valid,found
+5,Maleeha,Peterson,16137625575,1255 Arbuste,Ottawa,$3385000,http://www.maleehasteve.com/,maleeha@maleehasteve.com,96,valid,found
+1,Nafis,Chowdhury,16138065984,212 Viewmount,Ottawa,$269900,http://chowdhuryrealestate.com/,nafis@chowdhuryrealestate.com,98,accept_all,found
+2,Owen,Powers,16133251821,959 North River,Ottawa,$549900,http://www.grindstonerealty.ca/,,,,not_found
+3,Owen,Powers,16133251821,203 Trollius,Ottawa,$629900,http://www.grindstonerealty.ca/,,,,not_found
+2,Jessika,Camara,18196616117,18 Rue De Bruxelles,Gatineau (Aylmer),$324900,https://flashimmobilier.ca/courtier/jessika-camara/,,,,not_found
+2,Danny,Kingsberry,18197435817,172 Rue Bisson,Gatineau (Hull),$399900,https://dannykingsberry.com/,,,,not_found
+3,Jeff,Matheson,16136998163,5434 Long Island,Ottawa,$749000,https://jeffmatheson.exprealty.com/,,,,not_found
+3,Kathy,McVeigh,16138597494,49 Glencairn,Ottawa,$1200000,https://kathymcveigh.royallepage.ca/,,,,not_found
+3,Jason,Pilon,16138510993,48 Jackman,Ottawa,$499900,http://www.pilongroup.com/,jason@pilongroup.com,98,valid,found
+3,Quinn Donohue,Ayling,16138508518,592 Caldwell,Lanark Highlands,$949900,http://quinnayling.ca/,,,,not_found
+4,Jeff,Matheson,16136998163,1166 Bordeau,Ottawa,$750000,https://jeffmatheson.exprealty.com/,,,,not_found
+3,David,Steen,16132664299,7 Calaveras,Ottawa,$559900,http://www.davidsteen.ca/,,,,not_found
+4,Eric,Longpre,16132965788,1645 Royal Orchard,Ottawa,$1095000,http://www.buyorsellinottawa.com/,,,,not_found
+3,Eric,Longpre,16132965788,346 Galloway,Ottawa,$639900,http://www.buyorsellinottawa.com/,,,,not_found
+2,Terry,Cayen,16137946873,4448 Harper,Ottawa,$649900,http://homeinfoottawa.com/,,,,not_found
+2,Reba,Wilson,16136685888,101 Queen,Ottawa,$895000,http://www.dreamproperties.com/,reba@dreamproperties.com,81,accept_all,found
+4,Scott,Arial,16138504542,2842 Grand Canal,Ottawa,$1099000,http://www.scottarial.com/,,,,not_found
+3,Alex,Fedorchuk,16137905723,132 Macassa,Ottawa,$774900,http://fedorchuk.ca/,alex@fedorchuk.ca,80,valid,found
+2,Sandy,Heard,16132763383,1285 Cahill,Ottawa,$245000,http://www.chrisandsandy.ca/,sandy@chrisandsandy.ca,97,valid,found
+2,Carol,Traversy,16132669628,12 Kittansett,Ottawa,$599900,http://caroltraversy.com/,,,,not_found
+4,Lise,Buma,16133163221,77 Tabitha,North Dundas,$629000,http://www.lisebuma.com/,lise@lisebuma.com,96,accept_all,found
+3,Lindsay,Spires,16136015444,814 Raglan,Ottawa,$739000,http://www.lindsayspires.ca/,lindsay@lindsayspires.ca,95,valid,found
+3,Denis,Montreuil,18193603210,198 Rue De La Petite-Ourse,Gatineau (Aylmer),$599900,https://denismontreuil.com,,,,not_found
+3,Joanne,Beaton,16134074309,374 Honeyborne,Mississippi Mills,$550000,http://www.joannebeaton.ca/,joanne@joannebeaton.ca,97,valid,found
+3,Pina,Alessi,16137626670,929 Verbena,Ottawa,$714900,https://www.pinaalessi.com/,pina@pinaalessi.com,84,valid,found
+2,Lori,Williams,16138675313,158F Valley Stream,Ottawa,$339000,http://www.ottawapropertygals.com/,,,,not_found
+3,Spinder,Hundal,16134109775,623 Wild Shore,Ottawa,$615000,http://www.spinderhundal.com/,,,,not_found
+4,Wayne,Clermont,16137209191,1673 Teslin,Ottawa,$849900,http://www.ottawahomesales.com/,wayne@ottawahomesales.com,95,valid,found
+5,Melissa,Hamilton,16132271670,649 Upper Dwyer Hill,Ottawa,$1500000,http://melissahamilton.com/,,,,not_found
+3,Marc-Antoine,Bourbonnais,15146226778,49 Rue De Dunkerque,Gatineau (Aylmer),$630000,http://www.remaxextra.com/,,,,not_found
+3,Murtaza,Siddiqui,16138051111,3462 River Run,Ottawa,$639999,https://www.youtube.com/embed/G7l7SbjWs1k,,,,not_found
+3,Mark,Hartley,16132192251,278 Lakeland,Lanark Highlands,$949900,http://www.markhartley.com/,,,,not_found
+4,Andre L.,Major,16132620606,109 Hopewell,Ottawa,$595000,http://www.andremajor.com/,,,,not_found
+4,Jeff,Birchmore,16136202400,1981 Bel-Air,Ottawa,$890000,http://moreottawahomes.com/,jeff@moreottawahomes.com,99,valid,found
+5,Christopher,Blenkiron,16139134665,1363 Du Golf,Clarence-Rockland,$849900,http://www.ottawaproperty.com/,chris@ottawaproperty.com,95,valid,found
+4,Lucie,Martel,16137425057,880 Concession,Alfred and Plantagenet,$625000,http://www.martels.ca/,lucie@martels.ca,84,valid,found
+3,Lucie,Martel,16137425057,879 Lawrence,Clarence-Rockland,$439900,http://www.martels.ca/,lucie@martels.ca,84,valid,found
+4,Frédéric,Durand,18197751972,195 Rue Thompson,Gatineau (Gatineau),$469900,https://fredericdurand.ca/,,,,not_found
+3,Bojan,Gakovic,18196649826,52 Rue Jean-Perrin,Gatineau (Gatineau),$439000,http://www.bojangakovic.expquebec.com/,,,,not_found
+3,Miguel,Legault,14187171696,167 Rue Mayburry,Gatineau (Hull),$449900,https://miguellegaultimmobilier.com/,,,,not_found
+4,Stephen,Haddad,16138630855,48 Hackett,Ottawa,$1095000,http://stephenhaddad.com/,,,,not_found
+2,Ishdeep,Singh,16138699931,2759 Carousel,Ottawa,$345000,https://www.facebook.com/profile.php?id=61564532501246,,,,invalid_input
+2,Carl,Hozjan,18192089354,150 Rue De Londres,Gatineau (Aylmer),$289900,http://www.flashimmobilier.ca/,,,,not_found
+3,Dinesh,Sharma,16138585708,607 Edenwylde,Ottawa,$679990,http://www.rightathomerealty.com/,dineshs@rightathomerealty.com,83,accept_all,found
+,Erzheng,Zhang,16473652479,3485 Smith,South Stormont,$129900,https://erzhengzhang.com/,erzheng@erzhengzhang.com,95,accept_all,found
+2,Jeff,Birchmore,16136202400,1715 Carsonby,Ottawa,$695000,http://moreottawahomes.com/,jeff@moreottawahomes.com,99,valid,found
+3,Raymond,Chin,16138663656,380 Appalachian,Ottawa,$699950,http://www.raymondchin.ca/,,,,not_found
+2,Laura,Voicu,16132186298,1032 Valin,Ottawa,$799900,http://www.voiculaura.com/,,,,not_found
+4,Mathieu,Doucet,18199211743,13 Rue De Marseille,Gatineau (Gatineau),$624900,http://www.equipedoucet.com/,mathieu@equipedoucet.com,99,valid,found
+3,Mario,Laframboise,18196657627,445 Rue De Cannes,Gatineau (Gatineau),$799000,http://www.remax-quebec.com/vision,mario.laframboise@remax-quebec.com,99,valid,found
+3,Benoit,Guindon,18193608205,23 Rue Des Vieux-Moulins,Gatineau (Aylmer),$639900,http://www.benoitguindon.com/,,,,not_found
+5,Jonathan,Doucet,18199239993,6 Rue De L'Alouette,Gatineau (Hull),$799900,http://www.equipedoucet.com/,jonathan@equipedoucet.com,99,valid,found
+3,Martin,Lécuyer,18196613084,285 Boul. De La Cité,Gatineau (Gatineau),$499900,https://remax-direct.com/fr/nos-courtiers/martin-lecuyer.html,martin.lecuyer@remax-quebec.com,95,valid,found
+3,Wanda,Clark,16132233310,514 Stanley Brothers,Mississippi Mills,$529900,http://www.clarkteam.ca/,,,,not_found
+5,Catherine,Swift,16138620673,439 John Aselford,Ottawa,$1999000,http://www.catherineswift.ca/,catherineswift@innovationrealty.ca,96,valid,found
+3,Xavier,Charron,18199627764,57 Rue Lasalle,Gatineau (Masson-Angers),$449900,http://www.xaviercharron.com/,xavier@xaviercharron.com,82,valid,found
+3,Jay,Al Shekargy,16132620508,32 Saffron,Ottawa,$564999,http://www.jayalshekargy.com/,,,,not_found
+2,Raymond,Chin,16138663656,215 Parkdale,Ottawa,$545000,http://www.raymondchin.ca/,,,,not_found
+4,Tom,Stathopoulos,16133274653,1747 Heron,Ottawa,$445000,http://www.tomtheagent.com/,tom@tomtheagent.com,98,valid,found
+4,Daniel,Brunet,18196430889,16 Rue Sanctuaire,Gatineau (Gatineau),$519900,http://www.royallepageoutaouais.ca/,,,,not_found
+4,Sujatha,Kumaraswami,16137694794,44 Drumso,Ottawa,$579999,http://www.suanrealestate.com/,,,,not_found
+3,Lindsay,Ralph,16135589999,186 Seabert,Arnprior,$539900,http://www.lindsayralph.ca/,lindsay@lindsayralph.ca,80,accept_all,found
+2,Jessika,Simpson,18192300865,671 Rue Jacques-Cartier,Gatineau (Gatineau),$389900,https://equipejessikasimpson.ca/,,,,not_found
+3,Johnny,Hunt,16138537653,1347 Metz,Ottawa,$714750,http://www.johnnyhunt.ca/,,,,not_found
+1,Dan,Mayer,16133158363,160 George,Ottawa,$539000,http://www.lbhome.ca/,,,,not_found
+3,Jeffrey,Usher,16132913272,451 Haresfield,Ottawa,$644900,http://www.grapevine.ca/,,,,not_found
+2,Meriam,Chebli,18736601918,346 Boul. Du Plateau,Gatineau (Hull),$309900,https://www.redachebli.com/,,,,not_found
+3,Chitra,Rajagopal Parameswaran,18073576853,230 Shallow Pond,Ottawa,$599900,https://www.facebook.com/profile.php?id=61561558201846,,,,invalid_input
+4,Abubakar,Mohammed Sani,14389934872,26 Rue Sylvain,Gatineau (Gatineau),$469800,https://remax-direct.com/,abubakar.mohammed@remax-quebec.com,96,valid,found
+4,Heather,Meunier,16137618343,3465 Mcbean,Ottawa,$699000,http://www.linkedin.com/in/heather-meunier-725225197/,,,,not_found
+3,Dawn,McKendry,16137975826,503 Stratas,Ottawa,$429900,http://www.dawnmckendry.ca/,dawn@dawnmckendry.ca,79,accept_all,found
+3,Luc,Richard,18196640594,47 Rue Des Cèdres,Val-des-Monts,$529900,http://www.lucrichard.ca/,luc@lucrichard.ca,78,accept_all,found
+3,Sheila,DeVries,16138665871,45 Turtle Point Private,Ottawa,$1095000,http://www.sheiladevries.ca/,,,,not_found
+2,Simon,Laroche,18195987556,65 Rue De Toulouse,Gatineau (Gatineau),$290000,http://www.remax-quebec.com/vision,simon.laroche@remax-quebec.com,95,valid,found
+5,Nicole,Rosenfeldt,16136124663,253 Berrigan,Ottawa,$999900,http://www.housesbynicole.com/,nicole@housesbynicole.com,78,accept_all,found
+4,Gabriel,Belisle-Dupuis,18193287173,123 Av. Frank-Robinson,Gatineau (Aylmer),$489900,http://gabrielbelisledupuis.com/,,,,not_found
+3,Norton,Ngo,16132776830,2619 Baynes Sound,Ottawa,$429999,http://nortonngo.ca/,norton@nortonngo.ca,67,accept_all,found
+,Lindsay,Ralph,16135589999,2818 Bellamy,Mississippi Mills,$429900,http://www.lindsayralph.ca/,lindsay@lindsayralph.ca,80,accept_all,found
+2,Julie,Parnell,16137626535,431 Golden Line,Mississippi Mills,$879000,http://michalefyke.com/,,,,not_found
+3,Ariane,B. Carle,18199239936,7 Rue Lemieux,Val-des-Monts,$499900,http://remax-direct.com/,,,,not_found
+6,Cathy,Tremblay,16138515395,31 Francis,Carleton Place,$729900,http://www.cathytremblay.ca/,,,,not_found
+3,Wen Han,Tang,15148065845,62 Rue Du Couguar,Gatineau (Aylmer),$575000,https://wenhan.ca/,,,,not_found
+4,Alain,Fournier,18192134747,22 Rue De La Méditerranée,Gatineau (Gatineau),$874900,http://www.alainfournier.ca/,alain@alainfournier.ca,81,valid,found
+2,Natalie,Belovic,16137201062,30 Charlevoix,Ottawa,$399000,http://www.urbanottawa.com/,natalie.belovic@urbanottawa.com,83,accept_all,found
+4,Janine,Edwards,16138996726,1044 Brazeau,Clarence-Rockland,$899900,http://janinehogg.ca/,,,,not_found
+2,Shelley,Callaghan,16133241798,1025 Grenon,Ottawa,$384000,http://www.movemeshelley.com/,shelley@movemeshelley.com,95,valid,found
+5,Marty,Waite,18196650033,15 Ch. Létourneau,Val-des-Monts,$824900,http://martywaite.com/,marty@martywaite.com,80,valid,found
+3,Andrew,Miller,16134477669,5 Argue,Ottawa,$799900,http://www.dreamhomeottawa.ca/,amiller@dreamhomeottawa.ca,83,,found
+2,Paul,Taillefer,18192307191,48 Rue Ste-Marie,Gatineau (Hull),$960000,http://www.paultaillefer.ca/,,,,not_found
+3,Manon,Lafrance,18199235274,269 Rue Martin,Plaisance,$579000,http://manonlafrance.com/,,,,not_found
+3,Mark,Duncan,16132929803,8 Mannington,Ottawa,$560000,http://www.markduncan.royallepage.ca/,markduncan@royallepage.ca,99,valid,found
+3,Jeremy,Irving,16132965555,50 Barnstone,Ottawa,$374900,http://www.irvingrealestate.ca/,jeremy@irvingrealestate.ca,46,,found
+2,Hussein,Mansour,16138080058,444 Via Verona,Ottawa,$399990,http://www.mansourrealty.ca/,hussein@mansourrealty.ca,38,,found
+4,Eric,Ritterrath,16138941502,729 Carnelian,Ottawa,$1195000,http://www.notablehomes.ca/,eric@notablehomes.ca,78,accept_all,found
+1,Eugine,Wong,16138782388,199 Slater,Ottawa,$359900,http://www.euginewong.com/,,,,not_found
+1,Ray,Smiley,16138181819,255 Bay,Ottawa,$449000,http://www.homeforsaleinottawa.com/,,,,not_found
+5,Jean-Yves,Plouffe,18193283683,57 Rue Boucher,Gatineau (Hull),$479900,http://www.remax-quebec.com/vision,jean-yves.plouffe@remax-quebec.com,97,valid,found
+3,Ruby,Xue,16132767777,235 Bandelier,Ottawa,$639900,https://rubyxue.com/,rubyxue@rubyxue.com,74,accept_all,found
+1,Arianne,Préville,18195761447,220 Boul. De L'Hôpital,Gatineau (Gatineau),$239900,http://remax-direct.com/,arianne.preville@remax-quebec.com,96,valid,found
+3,Nantha,Aiyadurai,16138509931,111 Harbour View,Ottawa,$619900,http://www.nantha.ca/,,,,not_found
+3,Moustafa,Elgendy,16132637704,67 Landover,Ottawa,$599000,http://elgendygroup.com/,,,,not_found
+4,Shalynn,Marsh,16134331696,116 Colina,Mississippi Mills,$399900,https://shalynnmarsh.royallepage.ca/,,,,not_found
+2,Arianne,Préville,18195761447,25 Boul. De L'Amérique-Française,Gatineau (Aylmer),$1099900,http://remax-direct.com/,arianne.preville@remax-quebec.com,96,valid,found
+4,Jacinthe,Bray,14505679067,103 Rue Du Pavillon,Gatineau (Aylmer),$529900,http://www.vachonbrayimmobilier.com/index.php,,,,not_found
+,Greg,Townley,16132827125,0 Bandy'S,McNab/Braeside,$159900,http://www.coldwellbankervalleywide.ca/,,,,not_found
+2,Patrick,Molla,18197447508,76 Ch. Du Lac,Gatineau (Gatineau),$509900,http://www.royallepageoutaouais.ca,,,,not_found
+2,Adam,Babineau,16136970689,86 Fourth,Arnprior,$525000,http://www.adambabineau.ca/,,,,not_found
+2,PAUL,ROUILLARD,12267829677,54 Adam,St. Albert,$515000,https://listitrealty.ca/,,,,not_found
+4,Gabriel,Belisle-Dupuis,18193287173,283 Rue De Gallichan,Gatineau (Gatineau),$429900,http://gabrielbelisledupuis.com/,,,,not_found
+5,Chioma,Iheozor,16472019150,413 Muirland,Ottawa,$1020000,http://chioma-iheozor.c21.ca/,chioma.iheozor@c21.ca,83,valid,found
+2,Marie-France,Lavigne,16133013213,400 C Rolling Meadow,Ottawa,$439000,https://mflrealtor.com/,,,,not_found
+4,Phil,Labbe,16133163707,7009 Notre Dame,Ottawa,$670000,https://www.weloveottawa.com/,phil@weloveottawa.com,78,accept_all,found
+4,Natalie,Belovic,16137201062,70 Laval,Ottawa,$840000,http://www.urbanottawa.com/,natalie.belovic@urbanottawa.com,83,accept_all,found
+2,Stephen,George,16138620306,144 Clarence,Ottawa,$624900,http://www.c21ottawa.com/,,,,not_found
+2,Eric,Fournier,16136014600,2224 Marble,Clarence-Rockland,$369900,https://fournierrealestategroup.ca/,,,,not_found
+3,Geoff,Walker,16137215551,699 Cartographe,Ottawa,$599900,http://www.walkerottawa.com/,,,,not_found
+3,Jason,Pilon,16138510993,4987 Frank Kenny,Ottawa,$499900,http://www.pilongroup.com/,jason@pilongroup.com,98,valid,found
+4,Matthew,Klein,16132187257,534 Nordmann Firr,Ottawa,$1199000,http://www.thegoatrealestate.com/,matthew@thegoatrealestate.com,81,accept_all,found
+3,Erin,Cormack,16132555770,648 Decoeur,Ottawa,$889000,http://www.erincormack.com/,,,,not_found
+3,Carole,Strasbourg,16137624043,82 Ch. Lebaudy,Gatineau (Gatineau),$549000,https://guilbaultservicesimmobiliers.com/,cstrasbourg@guilbaultservicesimmobiliers.com,97,valid,found
+3,Liliane,El-Helou,18199625005,1439 Rue Rolland,Gatineau (Gatineau),$598800,http://www.liliane.ca/,,,,not_found
+2,Yann,Quéré,18192829213,502 Rue Costello,Gatineau (Buckingham),$359900,https://yannquere.ca/,,,,not_found
+4,François,D'Aoust,18195104514,182 Ch. Vanier,Gatineau (Aylmer),$699900,https://elite.c21.ca/fr/,francois.daoust@c21.ca,85,valid,found
+3,Mario,Laframboise,18196657627,985 Ch. De Montréal O.,Gatineau (Masson-Angers),$534900,http://www.remax-quebec.com/vision,mario.laframboise@remax-quebec.com,99,valid,found
+3,Adam,Mills,16139025400,3 Benlark,Ottawa,$571000,https://www.youtube.com/embed/YpAb6yKhk3I,amills@youtube.com,80,valid,found
+4,Alex,Sarazin,16132981166,908 Pedigree,Ottawa,$869000,http://www.sarazinhomegroup.com/,,,,not_found
+2,Stephen,George,16138620306,505 St Laurent,Ottawa,$224000,http://www.c21ottawa.com/,,,,not_found
+3,Adam,Mills,16139025400,5643 Ficko,Ottawa,$569900,https://www.youtube.com/embed/YpAb6yKhk3I,amills@youtube.com,80,valid,found
+3,Matt,Richling,16132869501,1947 Hawker Private,Ottawa,$559900,http://www.newpurveyors.com/,,,,not_found
+4,Matt,Richling,16132869501,2007 Cessna Private,Ottawa,$1149900,http://www.newpurveyors.com/,,,,not_found
+3,Matt,Richling,16132869501,1928 Hawker Private,Ottawa,$589900,http://www.newpurveyors.com/,,,,not_found
+4,Jennifer,Chamberlain,16138185662,1152 Avignon,Russell,$850000,http://www.ottawa-homes.ca/,jenn@ottawa-homes.ca,97,valid,found
+4,Janine,Edwards,16138996726,727 Brome,Ottawa,$719000,http://janinehogg.ca/,,,,not_found
+,Christopher,Lacharity,16132408609,261 Cabrelle,Ottawa,$499000,http://www.chrislacharity.com/,,,,not_found
+3,Curtis,Murphy,16138758400,663 Jerome Jodoin,Ottawa,$629900,http://curtis-murphy.c21.ca/,curtis.murphy@c21.ca,83,valid,found
+2,Kevin,Feely,16139034913,69 Lignite Private,Ottawa,$560000,http://www.feelyrealestate.com/,kevin@feelyrealestate.com,82,valid,found
+4,Hamid,Riahi,16132524797,535 Dunbrack,Ottawa,$619000,http://www.weguaranteehomesales.com/,,,,not_found
+5,Santana,Campanale,16132902262,607 Via Amalfi,Ottawa,$684900,http://campanale.com/,santana@campanale.com,82,accept_all,found
+3,Douglas,Stuewe,16138682623,5 Chantilly Gate,Ottawa,$575000,http://www.dougstuewe.ca/,,,,not_found
+4,David,Tessier,16139780123,401 Bruges,Russell,$789900,https://www.tessierteam.ca/,david@tessierteam.ca,84,valid,found
+3,Alie,Mansour,16138842324,124 Kennevale,Ottawa,$749999,http://www.thevertexteam.com/,,,,not_found
+4,Sorin,Vaduva,16132629562,731 Ludgate,Ottawa,$1399880,https://www.youtube.com/embed/Hkees8xQvsg,,,,not_found
+3,Jay,Roxburgh,18733556622,47 Rue Fontaine,Gatineau (Hull),$564900,http://remax-direct.com/,jay.roxburgh@remax-quebec.com,95,valid,found
+2,Manuel,Silva,18192100102,2 Rue Martel,Gatineau (Aylmer),$775000,https://www.manuelsilva.ca/,manuel@manuelsilva.ca,97,valid,found
+2,Martin,Simard,18192461000,2162 Mtée Paiement,Val-des-Monts,$669900,http://www.equipesiroissimard.com/,martin@equipesiroissimard.com,82,valid,found
+3,Pierre,Alain,18195984316,59 Rue Hemlock,Gatineau (Aylmer),$489000,http://www.viacapitalevendu.com/courtiers/pierre-alain-5866/,,,,not_found
+3,Guy,Laurin,18192308822,118 Rue Des Marronniers,Gatineau (Aylmer),$524900,https://www.royallepageoutaouais.ca/notre-equipe/notre-equipe/details/,,,,not_found
+3,Jeffrey,Usher,16132913272,210 Clintonia,Ottawa,$659000,http://www.grapevine.ca/,jeff@grapevine.ca,95,valid,found
+3,Marnie,Bennett,16132338606,1200 Carp,Ottawa,$1298000,https://www.youtube.com/embed/m0qg1N6iWvU,,,,not_found
+3,Julian,Hyams,16137917760,21 Maplewood,Carleton Place,$199900,https://hyamsrealestate.com/,julian@hyamsrealestate.com,85,accept_all,found
+4,Jillian,Jarvis,16138504663,2710 River,Ottawa,$1888000,http://www.jillianjarvis.com/,,,,not_found
+2,Lei,Guo,16139867089,634 Chapman Mills,Ottawa,$405000,http://www.leiguorealty.com/,,,,not_found
+3,Jan,Ayres,16133275915,550 Concession 1,Alfred and Plantagenet,$419900,http://www.janayres.com/,jan@janayres.com,85,valid,found
+2,Isabelle,Ménard,18193512587,420 Av. Du Cheval-Blanc,Gatineau (Gatineau),$349900,https://www.isabellemenard.com/,,,,not_found
+4,Paul,Lavictoire,16138516032,639 Via Campanale,Ottawa,$654900,http://www.paulspropertiesrealestate.com/,,,,not_found
+3,Shane,Foley,16132861401,2317 Elmira,Ottawa,$625000,http://www.foleypeeters.ca/,shane@foleypeeters.ca,84,valid,found
+3,Hamid,Riahi,16132524797,320 Fullerton,Ottawa,$599000,http://www.weguaranteehomesales.com/,,,,not_found
+3,Katia,Khoury,16132228888,5 Rue De Maria,Gatineau (Gatineau),$849000,http://www.kwdistinction.com/,katia@kwdistinction.com,82,accept_all,found
+3,Martin,Simard,18192461000,1688 Rue Parisien,Gatineau (Gatineau),$469900,http://www.equipesiroissimard.com/,martin@equipesiroissimard.com,82,valid,found
+3,Véronique,Guillemette,18199625384,55 Rue Limbour,Gatineau (Gatineau),$599900,http://www.veronique-guillemette.com/,,,,not_found
+4,Karine,Séguin,18733538883,1123Z Boul. St-René O.,Gatineau (Gatineau),$399900,http://www.karineseguin.com/,karine@karineseguin.com,96,valid,found
+3,Dan,Seguin,16138998552,1349 Belcourt,Ottawa,$629900,http://www.seguinregroup.ca/,,,,not_found
+3,Maher,Samaha,16135182272,138 Acklam,Ottawa,$579000,https://mahersamaha.exprealty.careers/,,,,not_found
+5,Rajwinder,Toor,16134103341,767 Long Point,Ottawa,$1199900,https://rajwindertoor.royallepage.ca/,raj.toor@royallepage.ca,96,valid,found
+4,Ross,Lecky,16134477676,3312 Yorks Corners,Ottawa,$325000,http://www.rosslecky.com/,rosslecky@royallepage.ca,98,valid,found
+4,Jillian,Jarvis,16138504663,1671 Reindeer,Ottawa,$1599500,http://www.jillianjarvis.com/,,,,not_found
+2,Angela (Angie),White,16137882122,199 Kent,Ottawa,$339900,http://www.paulrushforth.com/,angie@paulrushforth.com,97,valid,found
+3,Sorin,Vaduva,16132629562,30 Sumner,Ottawa,$648880,https://www.youtube.com/embed/Hkees8xQvsg,,,,not_found
+1,Irene,Bilinski,16138581151,6470 Bilberry,Ottawa,$225000,http://www.irenebilinski.com/,ibilinski@irenebilinski.com,80,accept_all,found
+3,Nicolas,Gagnon,16138066362,1777 Tache,Ottawa,$649900,http://nickgagnon.com/,nicolas@nickgagnon.com,96,accept_all,found
+2,Kate,Dawes,16138825125,105 Crampton,Carleton Place,$444900,http://www.katedawes.ca/,kate@katedawes.ca,97,valid,found
+2,David,Tessier,16139780123,1887 Elmridge,Ottawa,$499000,https://www.tessierteam.ca/,david@tessierteam.ca,84,valid,found
+2,Carlos,Fernando,16132630579,808 Bronson,Ottawa,$485000,https://carlosinottawa.com/,,,,not_found
+3,Maz,Karimjee,16137997253,1147 Parkway,Ottawa,$674900,http://www.mazkarimjee.ca/,,,,not_found
+3,Karen,Button,16137968258,177 Birch,Beckwith,$499000,http://www.karenbutton.ca/,karen@karenbutton.ca,95,valid,found
+4,Philip,Stedman,16136971468,387 Campbell Side,Mississippi Mills,$789900,http://philipstedman.realtor/,,,,not_found
+5,Erica,Young,16136195713,3378 Bramble,Ottawa,$1198000,http://ericayoung.ca/,erica@ericayoung.ca,95,accept_all,found
+2,Joanne,Beaton,16134074309,1 Rosamond,Mississippi Mills,$425000,http://www.joannebeaton.ca/,joanne@joannebeaton.ca,97,valid,found
+2,Vyncent,Ledoux,18195931768,392 Boul. De La Cité,Gatineau (Gatineau),$774900,http://www.remax-quebec.com/vision,vyncent.ledoux@remax-quebec.com,98,valid,found
+4,Isabelle,Vigneault,18736551697,22 Rue Bissonnette,Gatineau (Gatineau),$539500,http://www.remaxvision.ca/,,,,not_found
+2,Anik,Maisonneuve,18193601028,37 4E Avenue O.,Gatineau (Gatineau),$239900,http://www.royallepageoutaouais.ca,,,,not_found
+4,Tao,Peng,16133341880,1136 Speedvale,Ottawa,$729900,http://taotaospace.ca/,,,,not_found
+3,Jason,Pilon,16138510993,47 Nancy,Russell,$745000,http://www.pilongroup.com/,jason@pilongroup.com,98,valid,found
+4,Natalie,Belovic,16137201062,21 Cremona,Ottawa,$789000,http://www.urbanottawa.com/,natalie.belovic@urbanottawa.com,83,accept_all,found
+4,Dave,Oikle,16133277653,115 Beaver Ridge,Ottawa,$899900,http://www.davidoikle.ca/,,,,not_found
+1,Tom,Bastien,16138500690,200 Inlet Private,Ottawa,$449900,http://www.thebfteam.ca/,tom@thebfteam.ca,83,valid,found
+4,Shane,Lanigan,16138821221,850 Tavistock,Ottawa,$975000,http://shanelanigan.com/,,,,not_found
+3,Thomas,Wolff,16133021556,2 Caribou,Ottawa,$679900,http://homesinottawa.com/,thomas@homesinottawa.com,96,valid,found
+5,Daniel,Poirier,18193608511,192 Rue Isaac-Jogues,Gatineau (Gatineau),$439900,http://www.danielpoirier.ca/,,,,not_found
+4,Paul,Dion,16132933337,5B Kemp,Ottawa,$1059000,http://dionrealestate.ca/,,,,not_found
+9,Jessica,Larocque,16138780688,136 Elm,Ottawa,$1700000,http://barrylarocque.ca/,jessica@barrylarocque.ca,98,valid,found
+5,Daniel,Poirier,18193608511,221 Ch. Assad,L'Ange-Gardien,$599900,http://www.danielpoirier.ca/,,,,not_found
+5,Diana,Delisle,16132905676,6004 Patchwork,Ottawa,$681790,http://dianadelisle.com/,,,,not_found
+3,Tristan,Pelletier,16139094565,157 Lacroix,Ottawa,$599900,http://www.pelletierteam.ca/,,,,not_found
+5,Anick,Paradis,18195929052,10Z Rue Du Débusquage,Gatineau (Masson-Angers),$462554,http://remax-direct.com/,anick.paradis@remax-quebec.com,99,valid,found
+2,Lei,Guo,16139867089,507 Takamose Private,Ottawa,$349800,http://www.leiguorealty.com/,,,,not_found
+5,Louis-Philippe,Pidgeon,18197440807,22 Rue Félix-Leclerc,Gatineau (Aylmer),$1225000,http://www.maisonsdeluxe.com/,,,,not_found
+,Sébastien,Tailleur,16138187892,1 Rue Hervé,Gatineau (Gatineau),$229900,http://www.royallepageoutaouais.ca/,,,,not_found
+2,Maxime,Flibotte,18199687188,303 Rue De La Côte-Des-Neiges,Gatineau (Gatineau),$292500,http://maximeflibotte.com/,,,,not_found
+6,Akash,Sharma,16138049117,4 Royal County Downs,Ottawa,$1695000,http://realtorakash.ca/,,,,not_found
+6,Tristan,Pelletier,16139094565,55 Maple Stand,Ottawa,$1110000,http://www.pelletierteam.ca/,,,,not_found
+4,Paul J.,Bourque,16133245959,2913 Danbury,Ottawa,$699900,http://www.teambourque.com/,paul@teambourque.com,80,valid,found
+2,Jonathan,Lamirande,18193281743,65 Imp. De La Roseraie,Gatineau (Hull),$269900,https://jonathanlamirande.com/,jonathan@jonathanlamirande.com,81,accept_all,found
+3,Jessika,Simpson,18192300865,1328 Route 105,Chelsea,$1114900,https://equipejessikasimpson.ca/,,,,not_found
+3,Magalie,Paradis,18192309600,1560 Boul. Maloney E.,Gatineau (Gatineau),$427335,https://www.mimmobilier.com/company/magalie-paradis,mparadis@mimmobilier.com,98,valid,found
+3,Nafis,Chowdhury,16138065984,216 Cityview,Ottawa,$599000,http://chowdhuryrealestate.com/,nafis@chowdhuryrealestate.com,84,valid,found
+5,Marnie,Bennett,16132338606,21 Summerwind,Ottawa,$990000,https://www.youtube.com/embed/m0qg1N6iWvU,,,,not_found
+3,Ben,Wightman,16138895011,28 Gamble,Ottawa,$699900,http://www.bensellshomes.ca/,,,,not_found
+3,Pierre,Alain,18195984316,424 Rue De La Terrasse-Eardley,Gatineau (Aylmer),$429900,http://www.viacapitalevendu.com/courtiers/pierre-alain-5866/,,,,not_found
+4,Stéphan,Casselman,18193280319,52 Rue Du Zéphyr,Gatineau (Hull),$745000,https://equipecasselman.com/,,,,not_found
+2,Terrence,Watters,18196354411,187 Rue De La Fabrique,Gatineau (Aylmer),$299000,http://www.terrencewatters.com/,,,,not_found
+3,Dominic,Aubrey,16137612290,7 Rue Gratton,Gatineau (Hull),$857500,http://remax-direct.com/,dominic.aubrey@remax-quebec.com,96,valid,found
+4,Jason,Pilon,16138510993,1290 St. Jean,Ottawa,$724900,http://www.pilongroup.com/,jason@pilongroup.com,98,valid,found
+4,Kelly,Ebbs,16137999768,1958 Neepawa,Ottawa,$1295000,http://www.kellyandkerry.com/,kellyebbs@royallepage.ca,95,valid,found
+7,Brittany,Brown,16132827653,101 Sentinel Pine,Ottawa,$1670000,http://www.bteamottawa.com/,,,,not_found
+3,Xavier,Charron,18199627764,62 Rue Oster,Gatineau (Gatineau),$349900,http://www.xaviercharron.com/,xavier@xaviercharron.com,82,valid,found
+,Patrick,Lynott,16134475585,11 Ch. Peerless,Chelsea,$375000,http://www.c21macintyre.com/,,,,not_found
+5,Ana,Ideias,16138833650,1121 Rocky Harbour,Ottawa,$849500,http://www.anaideias.com/,ana@anaideias.com,98,valid,found
+3,Justin,Millette,16137996894,413 Premiere,Clarence-Rockland,$594900,http://www.justinmillette.com/,,,,not_found
+5,Christopher,Avalos,16138539431,67 Bristling,Ottawa,$999900,http://www.dreamteam613.ca/,christopher@dreamteam613.ca,82,valid,found
+,Jen,MacDonald,16138047653,L3C9P1 Wilson Street,Mississippi Mills,$699900,http://www.macdonaldwebster.ca/,jen@macdonaldwebster.ca,84,valid,found
+4,Adam,Babineau,16136970689,13 Bathurst,Ottawa,$949000,http://www.adambabineau.ca/,,,,not_found
+2,Ryan,Philippe,16138189811,1202 158B Mcarthur,Ottawa,$234900,https://www.facebook.com/C21Ottawarealtor,,,,invalid_input
+3,Ali,Saad,18196396697,164 Rue Du Jockey,Gatineau (Aylmer),$549900,https://groupesaadavila.com/,,,,not_found
+4,Anthony,Remaud,18195008875,572 Rue Boisvert,Gatineau (Aylmer),$695000,https://anthonyremaud.com/,anthony.remaud@remax-quebec.com,97,valid,found
+3,Terrence,Watters,18196354411,38 Prom. Lakeview,Gatineau (Aylmer),$599900,http://www.terrencewatters.com/,,,,not_found
+4,Trisha,Shaver,16133028448,105 Brae,Ottawa,$795000,http://www.trishashaver.com/,trisha@trishashaver.com,99,valid,found
+3,Julian,Hyams,16137917760,17 Allan Moore,Ottawa,$764900,https://hyamsrealestate.com/,julian@hyamsrealestate.com,85,accept_all,found
+2,Ashley,Lavimodiere,16137201063,2759 Carousel,Ottawa,$299999,http://www.ashleysellsottawa.com/,ashley.lavimodiere@ashleysellsottawa.com,73,accept_all,found
+4,JEN,BLAIR MANLEY,16135514133,3285 Broadway,North Stormont,$738500,http://jbmanley.ca/,,,,not_found
+4,Karine,Séguin,18733538883,1123 Boul. St-René O.,Gatineau (Gatineau),$399900,http://www.karineseguin.com/,karine@karineseguin.com,96,valid,found
+1,Remi,Morvan,16137974120,340 Mcleod,Ottawa,$299900,http://www.morvangroup.ca/,remi@morvangroup.ca,96,valid,found
+3,Robert,Marland,16137699157,69 Echo,Ottawa,$1850000,http://www.robmarland.com/,rob@robmarland.com,97,valid,found
+5,Paul,Lavictoire,16138516032,111 Leo Moskos,Arnprior,$935000,http://www.paulspropertiesrealestate.com/,,,,not_found
+3,Samantha,Kerr,16132297565,24 Crampton,Carleton Place,$474900,http://www.samkerr.com/,,,,not_found
+3,Kevin,Feely,16139034913,15 Neely,Ottawa,$689999,http://www.feelyrealestate.com/,kevin@feelyrealestate.com,82,valid,found
+4,Marnie,Bennett,16132338606,21 Stonepath,Ottawa,$734800,https://www.youtube.com/embed/m0qg1N6iWvU,,,,not_found
+2,Brittany,Goving,16138589087,588 Foxlight,Ottawa,$479900,http://www.fetchinghomes.ca/,,,,not_found
+2,Vanya,Jodoin,16137916046,1279 Adirondack,Ottawa,$599900,https://www.linkedin.com/in/vanya-jodoin-9a1860283/,,,,not_found
+3,Glenn,Floyd,16132987676,53 Scrivens,Ottawa,$1375000,http://www.floydteam.ca/,,,,not_found
+2,Marty,Waite,18196650033,345 Boul. Wilfrid-Lavigne,Gatineau (Aylmer),$319900,http://martywaite.com/,marty@martywaite.com,80,valid,found
+4,Kena,Beryl,14388553851,41 Rue Du Campagnard,Gatineau (Gatineau),$454900,http://remax-direct.com/,kena.beryl@remax-quebec.com,97,valid,found
+4,Ettore,Lattanzio,16132955182,3318 Main,North Stormont,$429900,http://www.umberrealty.com/,ettorelattanzio@umberrealty.com,81,valid,found
+3,Phil,Xatruch,16132864574,1699E Lamoureux,Ottawa,$369900,http://www.xrealestate.ca/,,,,not_found
+2,Phillip G.,Marcus,16132913750,5791 Kelly Marie,Ottawa,$1599000,http://www.marcusteam.ca/,,,,not_found
+2,Omar,Hashem,16138677669,68 Metropole Private,Ottawa,$750000,http://www.omarhashem.ca/,omar@omarhashem.ca,81,valid,found
+3,Erica,Young,16136195713,873 Smyth,Ottawa,$599000,http://ericayoung.ca/,erica@ericayoung.ca,83,valid,found
+4,Joël,Simard,18193603184,143 Rue De Sauternes,Gatineau (Gatineau),$419800,http://www.remaxvision.ca/,,,,not_found
+4,Stephen,Rees,18736553051,200 Ch. Desjardins,Pontiac,$575000,https://www.flashimmobilier.ca/,,,,not_found
+3,Philip,LeMay,18199237777,226 Rue Des Hautes-Rives,Gatineau (Aylmer),$479500,http://philiplemay.com,,,,not_found
+3,Stephen,Rees,18736553051,93 Rue Bourgeau N.,Gatineau (Aylmer),$444000,https://www.flashimmobilier.ca/,,,,not_found
+2,Martin,Simard,18192461000,481 Boul. St-Raymond,Gatineau (Hull),$320000,http://www.equipesiroissimard.com/,martin@equipesiroissimard.com,82,valid,found
+4,Stephen,Rees,18736553051,330 Rue Des Framboisiers,Gatineau (Aylmer),$739900,https://www.flashimmobilier.ca/,,,,not_found
+4,Danielle,Cloutier,18197120230,412 Rue Jules-Bordet,Gatineau (Gatineau),$384000,http://www.daniellecloutier.com/,,,,not_found
+4,Stephen,Rees,18736553051,36 Rue Lortie,Gatineau (Aylmer),$539900,https://www.flashimmobilier.ca/,,,,not_found
+3,Mathieu,Doucet,18199211743,802 Boul. St-René E.,Gatineau (Gatineau),$424900,http://www.equipedoucet.com/,mathieu@equipedoucet.com,99,valid,found
+2,Laurie J.,Gagnier,16132959338,959 North River,Ottawa,$525000,http://www.myottawateam.com/,laurie@myottawateam.com,99,valid,found
+3,Suzie,Lamothe,16138895532,1404 Matheson,Ottawa,$719900,http://www.suzielamothe.ca/,,,,not_found
+3,John,Roberts,16137944926,1153 Bayview,Ottawa,$424900,http://www.johnwroberts.com/,john@johnwroberts.com,55,,found
+3,Gabriel,De Varennes,16137200490,759 Sanibel Private,Ottawa,$509000,http://www.gabrieldevarennes.com/,gabriel@gabrieldevarennes.com,79,accept_all,found
+4,Angela (Angie),White,16137882122,609 Dundonald,Ottawa,$839000,http://www.paulrushforth.com/,angie@paulrushforth.com,97,valid,found
+3,Sonat,Try,16132619951,201 Moorhead,Ottawa,$639900,http://www.sonattry.com/,,,,not_found
+6,Nancy,O'Dea,16132869881,7 Mid Pines,Ottawa,$1739990,http://odeateam.evrealestate.com/,nancy.odea@evrealestate.com,83,valid,found
+2,Adam,Mills,16139025400,1004 Beryl Private,Ottawa,$395000,https://www.youtube.com/embed/YpAb6yKhk3I,amills@youtube.com,80,valid,found
+4,Todd,Lyons,16137621763,151 Charlie'S,Ottawa,$1099000,http://www.ottawapowerhouse.com/,,,,not_found
+2,Jasmin (Jazz),Dicaire,16132667108,547 Ozawa Private,Ottawa,$489900,http://www.dicairehomes.ca/,,,,not_found
+3,Gabriel,De Varennes,16137200490,550 Wolffdale,Ottawa,$649000,http://www.gabrieldevarennes.com/,,,,not_found
+2,Serge,Guenette,16132992311,505 St Laurent,Ottawa,$249900,https://www.youtube.com/embed/uA__2W8GWJY,,,,not_found
+3,Sarah,Hunter,16138890171,53 Vaughan,Ottawa,$1098000,http://www.sarahhunterhomes.com/,,,,not_found
+,Gina Rose,Cristello,16138788157,6758 Rocque,Ottawa,$1599000,http://www.facebook.com/GinaRoseRealEstate/,,,,invalid_input
+3,Geoff,Walker,16137215551,425 Besserer,Ottawa,$995000,http://www.walkerottawa.com/,,,,not_found
+3,Hussein,Zeineddine,16134084082,13 Picasso,Ottawa,$789900,http://www.zarealestate.ca/,,,,not_found
+3,Glenn,Floyd,16132987676,1045 Morrison,Ottawa,$349900,http://www.floydteam.ca/,,,,not_found
+3,Émérik,Paiement,18195761218,270 Boul. D'Europe,Gatineau (Aylmer),$434900,https://emerik.expquebec.com/,,,,not_found
+3,Steeve,Bégin,18196642445,56 Rue De Chaumont,Gatineau (Hull),$519900,https://steevebegin.ca/,,,,not_found
+3,David,Tessier,16139780123,4233 Kelly Farm,Ottawa,$624900,https://www.tessierteam.ca/,david@tessierteam.ca,84,valid,found
+2,Lisa,Parr,16133559494,18 Daphne,Ottawa,$409900,http://www.howtofindhome.com/,lisa@howtofindhome.com,80,valid,found
+,Angela (Angie),White,16137882122,412 Country,Mississippi Mills,$299000,http://www.paulrushforth.com/,angie@paulrushforth.com,97,valid,found
+3,Angela (Angie),White,16137882122,597 Canotia,Ottawa,$439900,http://www.paulrushforth.com/,angie@paulrushforth.com,97,valid,found
+2,D. Clark,Munro,16134478684,326 Finner,Mississippi Mills,$534900,http://www.almonterealestateguy.ca/,,,,not_found
+4,Nim,Moussa,16132986461,238 Pursuit,Ottawa,$799800,http://www.moussagroup.ca/,,,,not_found
+2,Claude,Jobin,16138047979,236 Cathcart,Ottawa,$689900,http://www.claudejobin.com/,claude@claudejobin.com,84,valid,found
+2,Jason,MacDonald,16132975712,21 Bergeron Private,Ottawa,$439900,http://www.mpgrealty.ca/,jason@mpgrealty.ca,95,valid,found
+2,Jason,Pilon,16138510993,10 Prestige,Ottawa,$389900,http://www.pilongroup.com/,jason@pilongroup.com,98,valid,found
+4,Nick J.,Kyte,16138622012,1170 Ambercrest,Ottawa,$868800,https://www.youtube.com/embed/KIrNBzUlY1k,,,,not_found
+3,Geoff,Walker,16137215551,1380 Prince Of Wales,Ottawa,$300000,http://www.walkerottawa.com/,,,,not_found
+3,Shalynn,Marsh,16134331696,534 Barrick Hill,Ottawa,$619900,https://shalynnmarsh.royallepage.ca/,,,,not_found
+3,Tom,Bastien,16138500690,3133 Woodkilton,Ottawa,$1200000,http://www.thebfteam.ca/,tom@thebfteam.ca,83,valid,found
+3,Miguel,Legault,14187171696,347 Rue Jeanne-Mance,Gatineau (Gatineau),$749900,https://miguellegaultimmobilier.com/,,,,not_found
+3,TANYA,MYRE,16138721191,2807 Leonard,Clarence-Rockland,$589900,https://www.youtube.com/embed/lETWiMtZk4g,,,,not_found
+3,John,Creppin,16132352737,41 Pixley Private,Ottawa,$405000,http://www.creppinrealtygroup.com/,,,,not_found
+3,Lori,Williams,16138675313,9 Marco,Ottawa,$820000,http://www.ottawapropertygals.com/,,,,not_found
+4,Nicholas,Labrosse,16132276409,987 Neville,Ottawa,$785000,http://labrosserealestate.com/,nick@labrosserealestate.com,99,valid,found
+4,Rob,Mezger,16138646875,1416 Woodward,Ottawa,$744000,http://www.robmezger.com/,,,,not_found
+3,Margo,Lindsay,16137956274,455 Kintyre Private,Ottawa,$429000,http://thelindsayteam.ca/,,,,not_found
+3,Tim,Hewson,16136680644,3570 Dunrobin,Ottawa,$774900,http://www.agent613.ca/,tim@agent613.ca,81,,found
+6,PATRICK,PIETTE,16136626263,16767 Eighth,North Stormont,$350000,http://www.htreg.ca/,,,,not_found
+5,Qing,Zhu,16139863188,11 Langford,Ottawa,$999900,https://www.facebook.com/qingzhu.realestate/,,,,invalid_input
+1,Maxime,Grondin,16133242553,135 Springfield,Ottawa,$499000,http://www.teamgrondin.com/,,,,not_found
+3,Kathy,Kontogiannis,16138596302,250 Flodden,Ottawa,$834900,http://www.kathyk.ca/,,,,not_found
+4,Yanick,Dagenais,16136173834,601 Lake George,Alfred and Plantagenet,$670000,http://www.yanickdagenais.com/,yanick.dagenais@hallmarkottawa.com,99,valid,found
+4,Terry(Terrance),Barnes,16138526116,1236 Amesbrooke,Ottawa,$719900,http://www.sellingottawahomes.com/,,,,not_found
+2,Edmundo,Roa,16138645515,615 Longfields,Ottawa,$499900,http://www.soldbyroa.ca/,,,,not_found
+5,Dominique,Michaud,16137960100,1202 Montblanc,Russell,$719888,http://www.dominiquemichaud.com/,,,,not_found
+5,Ryan,Cooper,16139836258,10 Granite,Clarence-Rockland,$949900,http://www.nicehomesniceplaces.ca/,,,,not_found
+6,Geoff,Walker,16137215551,120 Strathcona,Ottawa,$1395000,http://www.walkerottawa.com/,,,,not_found
+4,Dominique,Michaud,16137960100,2385 Walkley,Ottawa,$514888,http://www.dominiquemichaud.com/,,,,not_found
+4,Michelle,Kupe,16135135775,6933 Notre Dame,Ottawa,$1075000,http://www.michellekupe.evrealestate.com/,michelle.kupe@evrealestate.com,83,valid,found
+4,Ahmad,Hage Hassan,16137094695,34 Cellini,Ottawa,$845000,https://www.youtube.com/embed/MA0Epj1KsAI,,,,not_found
+4,Natalie,Belovic,16137201062,60 Woodburn,Ottawa,$780000,http://www.urbanottawa.com/,natalie.belovic@urbanottawa.com,83,accept_all,found
+,Michelle,Kupe,16135135775,8 Davidson,Ottawa,$699800,http://www.michellekupe.evrealestate.com/,michelle.kupe@evrealestate.com,83,valid,found
+2,Jonathan,Lamirande,18193281743,462 Boul. Alexandre-Taché,Gatineau (Hull),$269900,https://jonathanlamirande.com/,,,,not_found
+3,Sylvain,Parisien,18192136809,39 Ch. Du Bocage,L'Ange-Gardien,$623000,http://www.remax-quebec.com/vision,sylvain.parisien@remax-quebec.com,95,valid,found
+3,Rachel,Viau,18199621188,115 Rue Monet,Cantley,$768000,http://rachel-viau.c21.ca/,rachel.viau@c21.ca,85,valid,found
+1,Dejan,Kalajdzic,18193288469,40 Rue Jos-Montferrand,Gatineau (Hull),$419000,http://www.lionimmobilier.ca/,,,,not_found
+10,Erik,Ménard,18192302626,38 Rue St-François,Gatineau (Hull),$749900,http://www.lesmaisons.ca/,erik@lesmaisons.ca,80,valid,found
+4,Nadia,Francis,16138500575,14 Peever,Carleton Place,$659000,http://www.linkedin.com/in/nadia-francis-a9b777230/,,,,not_found
+4,Micheline,Ladouceur,18197437981,11 Rue De Parme,Gatineau (Gatineau),$365000,https://propriodirect.com/micheline-ladouceur/,mladouceur@propriodirect.com,80,accept_all,found
+1,Alex,Gagnon,18196655097,40 Rue Jos-Montferrand,Gatineau (Hull),$368500,https://remax-direct.com/,alex.gagnon@remax-quebec.com,98,valid,found
+3,Liam,Kealey,16136988876,488 Bayview,Ottawa,$459900,http://www.kealeygroup.com/,liam@kealeygroup.com,99,valid,found
+3,Tara,Scharf,16138531581,1807 Axminster,Ottawa,$449900,http://www.tarascharf.com/,tara@tarascharf.com,77,,found
+4,Jacen,Matthews,16132968582,1941 Naskapi,Ottawa,$1190000,http://www.ottawadwellings.com/,,,,not_found
+3,Ben,Wightman,16138895011,1328 Lassiter,Ottawa,$314900,http://www.bensellshomes.ca/,,,,not_found
+3,Julia,Hay,16138507766,535 Hilson,Ottawa,$987400,http://www.juliahay.com/,jh@juliahay.com,63,accept_all,found
+3,Jessica,Fournier,16138820421,407 Centenaire,Russell,$659900,https://www.fournierrealestategroup.ca/,,,,not_found
+3,Rony,Rizk,16135137495,3344 Uplands,Ottawa,$364900,http://www.ronyrizk.com/,rony@ronyrizk.com,84,valid,found
+,J.F.,Perras,16132770623,3612 Chretien,Alfred and Plantagenet,$274900,http://www.perrasmoore.ca/,,,,not_found
+2,Liam,Swords,16137027799,301 Elite Private,Ottawa,$354900,http://www.liamswords.com/,liam@liamswords.com,82,valid,found
+4,Stephen,George,16138620306,6179 Voyageur,Ottawa,$849000,http://www.c21ottawa.com/,,,,not_found
+4,Martin,Séguin,18193603711,127 Rue De L'Épée,Gatineau (Gatineau),$650000,http://www.focusinc.ca/,martin@focusinc.ca,83,,found
+2,Vyncent,Ledoux,18195931768,147 Rue Laurette-Routhier,Gatineau (Masson-Angers),$387900,http://www.remax-quebec.com/vision,vyncent.ledoux@remax-quebec.com,98,valid,found
+3,Dominique,Patrice,18197908830,33 Rue De Dubuc,Gatineau (Gatineau),$305000,https://www.youtube.com/embed/9JInBNIdpt4,,,,not_found
+2,Mathieu,Arseneault,18196640629,54 Boul. Alexandre-Taché,Gatineau (Hull),$1095000,http://www.mathieuarseneault.com/,,,,not_found
+2,Isabel,Brisson Wathier,16132033838,51 Spadina,Ottawa,$509900,https://www.teamisabel.com/,,,,not_found
+2,Alain,Dussault,18196847000,139 Rue Fontaine,Gatineau (Hull),$459000,http://www.alaindussault.ca/,,,,not_found
+4,Happi,Muhar,16132927155,29 Okanagan,Ottawa,$1099000,http://www.happimuhar.com/,,,,not_found
+4,Selena,Tweedie,16137950094,281 Greystone,Mississippi Mills,$759000,https://www.youtube.com/embed/XTezBXVCpoY,,,,not_found
+4,Kelly,Ebbs,16137999768,10 Clarendon,Ottawa,$995000,http://www.kellyandkerry.com/,kellyebbs@royallepage.ca,95,valid,found
+2,Heather,Meunier,16137618343,129 Laurier,Casselman,$295000,http://www.linkedin.com/in/heather-meunier-725225197/,,,,not_found
+3,Paolo,Farago,16137248777,840 Cahill,Ottawa,$387900,http://www.premierottawa.ca/,,,,not_found
+2,Jean Marc,Baker,16139866272,795 Montreal,Ottawa,$359999,http://www.linkedin.com/in/jean-marc-baker-15b74b168,,,,not_found
+4,Sue,Meadus,16136971671,109 Meadowlands,Ottawa,$874900,http://maleehasteve.com/,sue@maleehasteve.com,97,valid,found
+3,Leeda,Tahiri,18193198220,942 Seagrave,Ottawa,$650000,http://www.exprealty.ca/,,,,not_found
+3,Richard,Renaud,16138808970,558 Laurier,Clarence-Rockland,$489000,https://richardrenaudrealestate.ca/,,,,not_found
+4,Marty,Waite,18196650033,286 Rue De La Galère,Gatineau (Gatineau),$449900,http://martywaite.com/,marty@martywaite.com,80,valid,found
+2,Marty,Waite,18196650033,368 Boul. Du Plateau,Gatineau (Aylmer),$269900,http://martywaite.com/,marty@martywaite.com,80,valid,found
+4,Jessika,Simpson,18192300865,8 Ch. Jenness,Chelsea,$899900,https://equipejessikasimpson.ca/,,,,not_found
+,Mathieu,Allard,16132778111,9 Rue Ludger-Duvernay,Gatineau (Hull),$269900,http://remax-direct.com/,mathieu.allard@remax-quebec.com,97,valid,found
+2,Isabelle,Hachey-Lamoureux,18199183327,135 Rue De Morency,Gatineau (Gatineau),$439900,http://remax-direct.com/,isabelle.hachey-lamoureux@remax-quebec.com,99,valid,found
+4,James,Wright,16136920606,134 Cedar Cove,Lanark Highlands,$1150000,http://www.ottawahomes.ca/,,,,not_found
+4,Sam,Moussa,16137151482,490 Central Park,Russell,$879000,http://www.sammoussa.com/,sam@sammoussa.com,80,valid,found
+3,Greg,Hamre,16132777712,6252 Castille,Ottawa,$425000,https://www.weknowottawa.com/,greghamre@weknowottawa.com,78,accept_all,found
+3,Veronique,Gagne,16132208812,8250 County Road 17,Clarence-Rockland,$289900,http://www.gagnehomes.ca/,,,,not_found
+2,Dan,Mayer,16133158363,880 Concession 1,Alfred and Plantagenet,$459000,http://www.lbhome.ca/,,,,not_found
+3,Anthony,Cava,16132273448,880 Eileen Vollick,Ottawa,$621900,http://anthonycava.ca/,,,,not_found
+4,Anthony,Cava,16132273448,876 Eileen Vollick,Ottawa,$631900,http://anthonycava.ca/,,,,not_found
+3,Anthony,Cava,16132273448,878 Eileen Vollick,Ottawa,$621900,http://anthonycava.ca/,,,,not_found
+3,Anthony,Cava,16132273448,112 Deltaview,Ottawa,$682900,http://anthonycava.ca/,,,,not_found
+3,Anthony,Cava,16132273448,110 Deltaview,Ottawa,$608900,http://anthonycava.ca/,,,,not_found
+2,Pascal,Landry-Bourque,18193282964,16 Rue Donald-St-Jacques,Gatineau (Gatineau),$399900,http://www.remax-quebec.com/vision,pascal.landry@remax-quebec.com,95,valid,found
+4,Stéphanie,Godin,18192103396,19 Rue De Blainville,Gatineau (Gatineau),$499900,http://stephaniegodin.ca/,,,,not_found
+2,Michaël,Désilets-Charlebois,18195987587,30 Rue Osgoode,Gatineau (Aylmer),$424900,http://www.remax-quebec.com/vision,michael.desilets@remax-quebec.com,98,valid,found
+3,Maxime,Flibotte,18199687188,47 Crois. De La Paix,Gatineau (Aylmer),$430000,http://maximeflibotte.com/,,,,not_found
+,Stéphan,Casselman,18193280319,180 Rue Harold,Gatineau (Gatineau),$199900,https://equipecasselman.com/,,,,not_found
+4,Philip,LeMay,18199237777,52 Rue Arthur-Quesnel,Gatineau (Aylmer),$544500,http://philiplemay.com,,,,not_found
+1,Yannick,Arseneault,18193606967,285 Rue Laurier,Gatineau (Hull),$174900,http://www.yannickarseneault.com/,,,,not_found
+,Stéphan,Casselman,18193280319,180Z Rue Harold,Gatineau (Gatineau),$199900,https://equipecasselman.com/,,,,not_found
+2,Dimitrios,Kalogeropoulos,16138838823,500 Laurier,Ottawa,$469000,http://www.agentdk.com/,,,,not_found
+2,Peter,Sardelis,16137257515,120 Grant Carman,Ottawa,$519900,https://www.youtube.com/embed/p2oeUWKn3fI,,,,not_found
+3,Antonella,Holmes,16137691516,484 Annable,North Dundas,$340000,http://www.hjrealestategroup.ca/,,,,not_found
+1,Carlos,Zarco Fragoso,16136179082,805 Carling,Ottawa,$485000,http://www.zarcoteam.com/,carlos@zarcoteam.com,81,valid,found
+4,Sam,Mezher,16132205220,1695 Old Montreal,Ottawa,$899900,http://sammezher.com/,,,,not_found
+3,Valerie,Payer,16132779395,2040 Sunland,Ottawa,$684900,http://www.familyfirstrealestate.ca/,valerie.payer@familyfirstrealestate.ca,83,accept_all,found
+5,Phillip G.,Marcus,16132913750,319 Glynn,Ottawa,$889000,http://www.marcusteam.ca/,pmarcus@marcusteam.ca,99,valid,found
+2,Husnain,Ali,16133270131,105 Champagne,Ottawa,$349900,http://halirealty.com/,husnain@halirealty.com,80,valid,found
+2,Anthony,Cava,16132273448,481 Lancaster,North Dundas,$678900,http://anthonycava.ca/,,,,not_found
+6,Filmer,Chu,16132626545,255 Stoneway,Ottawa,$799900,http://613realtor.ca/,filmer@613realtor.ca,64,accept_all,found
+4,Robert,Kearns,16134475320,2407 Rosewood,Ottawa,$1049900,http://www.morrishometeam.com/,robert@morrishometeam.com,82,accept_all,found
+1,Greg,Hamre,16132777712,300 Lisgar,Ottawa,$309900,https://www.weknowottawa.com/,greghamre@weknowottawa.com,78,accept_all,found
+4,Angela (Angie),White,16137882122,18 Dollard,Russell,$599900,http://www.paulrushforth.com/,angie@paulrushforth.com,97,valid,found
+3,Matt,Robinson,16132906474,31 Tamblyn,Ottawa,$665000,http://sleepwellrealty.com/,matt@sleepwellrealty.com,81,accept_all,found
+3,Marc,Tessier,18192091000,7 Rue Du Malbec,Gatineau (Aylmer),$499000,http://www.marctessier.ca/,,,,not_found
+2,CANDICE,LAFRAMBOISE,16135328885,150 Urbancrest Private,Ottawa,$344900,http://theraspberryrealestateagent.com/,,,,not_found
+2,Stephen,George,16138620306,345 Centrum,Ottawa,$274900,http://www.c21ottawa.com/,,,,not_found
+1,Chantal,Lafontaine,16132915099,179 George,Ottawa,$269000,http://www.linkedin.com/in/chantal-lafontaine-50194a94/,,,,not_found
+3,David,Darling,16138662252,2162 Rushton,Ottawa,$749900,http://www.daviddarling.ca/,,,,not_found
+4,Eric,Fournier,16133240019,112 Argile,Casselman,$1199000,http://www.ericfournierteam.ca/,,,,not_found
+3,Barry,Humphrey,16132966060,296 Riverdale,Ottawa,$1398000,http://www.barryhumphrey.ca/,,,,not_found
+4,Doug,Moss,16133251790,13 Shanel,Ottawa,$725000,http://www.creppinrealtygroup.com/,,,,not_found
+3,Jonathan,Doucet,18199239993,1294 Rue D'Alma,Gatineau (Gatineau),$549900,http://www.equipedoucet.com/,jonathan@equipedoucet.com,99,valid,found
+4,David,Tessier,16139780123,44 Ste Therese,Russell,$629900,https://www.tessierteam.ca/,david@tessierteam.ca,84,valid,found
+3,Jack,Hugh,18737000816,7 Ch. David,Chelsea,$599900,https://www.evrealestate.com/en/our-advisors/jack-hugh/c6778942-dab1-4,jack.hugh@evrealestate.com,83,valid,found
+3,Sylvain,Parisien,18192136809,65 Imp. De La Roseraie,Gatineau (Hull),$284900,http://www.remax-quebec.com/vision,sylvain.parisien@remax-quebec.com,95,valid,found
+3,Tristan,Pelletier,16139094565,430 Dalrymple,Clarence-Rockland,$439900,http://www.pelletierteam.ca/,,,,not_found
+4,Nancy,Dellin,16137942333,41 Aldgate,Ottawa,$610000,http://westottawaproperties.com/,nancy@westottawaproperties.com,95,valid,found
+2,Michale,Fyke,16137951706,154 Catherine,Beckwith,$939000,http://www.michalefyke.com/,michale@michalefyke.com,85,valid,found
+3,Raymond,Chin,16138663656,1793 Maple Grove,Ottawa,$609000,http://www.raymondchin.ca/,,,,not_found
+3,Jeff,Matheson,16136998163,4412 Wildmint,Ottawa,$525000,https://jeffmatheson.exprealty.com/,,,,not_found
+5,Nim,Moussa,16132986461,11 Taj,Ottawa,$1699000,http://www.moussagroup.ca/,,,,not_found
+3,Patricia,Howell,16137999430,164 Barrow,Ottawa,$429900,http://www.howellhomesottawa.com/,patricia@howellhomesottawa.com,99,valid,found
+3,Navi,Singh,16132661000,207 Willow Aster,Ottawa,$579900,http://www.navi.ca/,,,,not_found
+4,Lisa,Boulay,16138582428,520 David Manchester,Ottawa,$999999,http://www.ottawahouses.com/,,,,not_found
+4,STEVEN,LEVAC,16136778284,249 Romulus Private,Ottawa,$399999,http://www.stevenlevac.com/,stevenlevac@royallepage.ca,95,valid,found
+3,Chris,Nicholson,16137994006,460 Pattie,Carleton Place,$519000,http://www.chrisnicholson.ca/,chris@chrisnicholson.ca,95,valid,found
+3,Angela (Angie),White,16137882122,662 Lacroix,Clarence-Rockland,$529900,http://www.paulrushforth.com/,angie@paulrushforth.com,97,valid,found
+5,David,Tessier,16139780123,134 Lachaine,Russell,$815000,https://www.tessierteam.ca/,david@tessierteam.ca,84,valid,found
+3,Arianne,Préville,18195761447,89 Ch. Fraser,Gatineau (Aylmer),$789900,http://remax-direct.com/,arianne.preville@remax-quebec.com,96,valid,found
+3,Daniel,Poirier,18193608511,32 Rue De Poitiers,Gatineau (Gatineau),$529900,http://www.danielpoirier.ca/,,,,not_found
+4,Randa,Salib,16139837776,21 Avonmore,Ottawa,$899900,http://www.facebook.com/randasalibrealestate,,,,invalid_input
+2,Susan,Dunton,16136203870,11 Oblats,Ottawa,$879900,http://dunton.ca/,,,,not_found
+2,Maha,Shahbazian,16138626242,1124 Docteur Corbeil,Clarence-Rockland,$350000,http://www.ottawarealestate.com/,maha@ottawarealestate.com,97,valid,found
+3,Joseph,Rogers,16138904313,303 Westhill,Ottawa,$1495000,http://ottawacentral.evrealestate.com/,joseph.rogers@evrealestate.com,82,valid,found
+2,Joseph,Rogers,16138904313,103 Third,Ottawa,$599000,http://ottawacentral.evrealestate.com/,joseph.rogers@evrealestate.com,82,valid,found
+4,John,Bilder,16134473891,90 Chesterton,Ottawa,$599900,http://www.bilder.ca/,john@bilder.ca,96,valid,found
+4,Charles,Cheang,16138834473,3328 Findlay Creek,Ottawa,$979999,https://www.charlescheang.ca/,charles@charlescheang.ca,85,valid,found
+3,Dimitrios,Kalogeropoulos,16138838823,18 Centre,Clarence-Rockland,$439500,http://www.agentdk.com/,,,,not_found
+3,Fern,Beauchamp,16138181757,38 Duchesse,Russell,$614900,http://www.thebeauchampteam.ca/,fern@thebeauchampteam.ca,52,,found
+4,Jason,Polonski,16136019333,209 Quarter Horse,Ottawa,$859900,http://www.ottawarealtyman.com/,,,,not_found
+2,Peter,Azzi,18193296240,358 Ch. D'Aylmer,Gatineau (Aylmer),$264900,http://www.kwdistinction.com,peter.azzi@kw.com,96,valid,found
+1,Olivier,Parent,18193602217,295 Boul. St-Joseph,Gatineau (Hull),$199000,https://www.viacapitalevendu.com/courtiers/olivier-parent-1001189/,,,,not_found
+7,Bruce,Brown,16138596268,86 Wurtemburg,Ottawa,$1049900,http://www.ottawaagent.ca/,bruce.brown@ottawaagent.ca,93,accept_all,found
+3,Jason,Pilon,16138510993,26 Honore,The Nation,$689900,http://www.pilongroup.com/,jason@pilongroup.com,98,valid,found
+2,Angela (Angie),White,16137882122,70 Edenvale,Ottawa,$399900,http://www.paulrushforth.com/,angie@paulrushforth.com,97,valid,found
+3,Lei,Guo,16139867089,822 Chipping,Ottawa,$638000,http://www.leiguorealty.com/,,,,not_found
+3,BENSON,OLUWASINA,16478368322,352 Appalachian,Ottawa,$745000,http://www.bensonoluwasina.com/,,,,not_found
+3,Raymond,Chin,16138663656,2701 Pimlico,Ottawa,$389000,http://www.raymondchin.ca/,,,,not_found
+6,Martin,Lécuyer,18196613084,116 Ch. De L'Aventure,Pontiac,$972900,https://remax-direct.com/fr/nos-courtiers/martin-lecuyer.html,martin.lecuyer@remax-quebec.com,95,valid,found
+3,Nicole,Li,16138690653,308 Drumlish,Ottawa,$569900,http://www.nicolelihomes.com/,nicole@nicolelihomes.com,95,accept_all,found
+3,Debbie,Bravar,16138780542,725 Capricorn,Ottawa,$719900,http://www.debbiebravar.ca/,,,,not_found
+2,Sorin,Vaduva,16132629562,16 Stamford Private,Ottawa,$432880,https://www.youtube.com/embed/Hkees8xQvsg,,,,not_found
+2,Mike,Scerbo,16132229915,159 Salter,Ottawa,$349000,https://ontario.fidacityrealty.com/,,,,not_found
+3,Paul,Taillefer,18192307191,473 Rue St-Luc,Gatineau (Gatineau),$299900,http://www.paultaillefer.ca/,,,,not_found
+4,Ariane,Chabot,18732887653,58 Rue Lessard,Gatineau (Hull),$565000,https://elite.c21.ca/fr/,ariane.chabot@c21.ca,80,valid,found
+3,Paul,Lavictoire,16138516032,263 Maple Bend,McNab/Braeside,$650000,http://www.paulspropertiesrealestate.com/,,,,not_found
+5,Ryan,Cooper,16139836258,933 Kincaid,Ottawa,$849900,http://www.nicehomesniceplaces.ca/,ryancooper@nicehomesniceplaces.ca,96,valid,found
+3,Wayne,Clermont,16137209191,545 St Laurent,Ottawa,$599900,http://www.ottawahomesales.com/,wayne@ottawahomesales.com,95,valid,found
+5,Eugine,Wong,16138782388,912 Duxbury,Ottawa,$948888,http://www.euginewong.com/,,,,not_found
+3,Yong,Ling,16132960480,506 Pepperville,Ottawa,$629900,http://www.foreveryong.com/,,,,not_found
+3,Natasha,Young,16138991652,240 Sweetvalley,Ottawa,$735000,https://homewithnatasha.com/,,,,not_found
+3,Judy,Faulkner,16132314663,129 Fourth,Ottawa,$1195000,http://www.homesinottawa.com/,judy@homesinottawa.com,95,valid,found
+5,Pascal,Langevin,18197437744,149 Rue Leclerc,Gatineau (Gatineau),$539900,http://vendirect.ca/,,,,not_found
+2,Marc Junior,Lafleur,16137975261,345 Boul. Wilfrid-Lavigne,Gatineau (Aylmer),$314900,http://www.viacapitalevendu.com/courtiers/lafleur-marc-junior-1232,,,,not_found
+4,Bruno,Gamache,16138783310,400 Colmar,Russell,$789900,https://www.facebook.com/BrunoGamacheRealEstate,,,,invalid_input
+1,Grant,Holbrook,16132988888,205 Bolton,Ottawa,$399900,https://www.trinitystonerealty.com/,,,,not_found
+3,Christopher,Blenkiron,16139134665,3160 Dunning,Ottawa,$727900,http://www.ottawaproperty.com/,chris@ottawaproperty.com,95,valid,found
+3,Mario,Lemieux,16138899259,253 Cityview,Ottawa,$624900,http://www.mariolemieuxrealestate.com/,mario@mariolemieuxrealestate.com,82,accept_all,found
+3,Dan,Mayer,16133158363,1695 Lacasse,Clarence-Rockland,$418000,http://www.lbhome.ca/,,,,not_found
+1,Josée,Carrière,18196654466,61 Rue Côté,Gatineau (Aylmer),$459000,http://remax-direct.com/,josee.carriere@remax-quebec.com,99,valid,found
+6,Ryan,Jones,16133145075,351 Amiens,Ottawa,$779900,http://www.ryanjones.ca/,ryan@ryanjones.ca,80,valid,found
+5,Fern,Beauchamp,16138181757,2671 Champlain,Clarence-Rockland,$359900,http://www.thebeauchampteam.ca/,fbeauchamp@thebeauchampteam.ca,81,accept_all,found
+4,Charles,Sezlik,16137446697,1255 Remington,Ottawa,$879000,http://www.sezlik.com/,charles@sezlik.com,82,valid,found
+4,Marc,LaFontaine,16137205006,965 Beaudry,Ottawa,$649900,http://www.marclafontaine.com/,marc@marclafontaine.com,80,valid,found
+2,John,Roberts,16137944926,4614 Northwoods,Ottawa,$599900,http://www.johnwroberts.com/,,,,not_found
+4,Helen,Tang,13437002725,43 Evanshen,Ottawa,$869900,http://www.helentang.ca/,,,,not_found
+3,Marty,Waite,18196650033,114 Rue Du Carcajou,Gatineau (Aylmer),$529500,http://martywaite.com/,marty@martywaite.com,80,valid,found
+3,Sylvie,Charbonneau,18192082970,26 Rue Des Pyrénées,Gatineau (Hull),$299900,http://sylviecharbonneau.ca/,sylvie.charbonneau@remax-quebec.com,95,valid,found
+3,Kevin,Feely,16139034913,2165 Johnston,Ottawa,$729999,http://www.feelyrealestate.com/,kevin@feelyrealestate.com,82,valid,found
+6,Christal,Cameron,16137150435,3823 Drouin,Clarence-Rockland,$499000,https://www.facebook.com/ChristalCameronOttawaRealEstate/,,,,invalid_input
+5,Andre L.,Major,16132620606,559 Parkdale,Ottawa,$1990000,http://www.andremajor.com/,,,,not_found
+2,Wendy,Bell,16137976686,212 Viewmount,Ottawa,$270000,http://www.westottawaproperties.com/,wendy@westottawaproperties.com,96,valid,found
+4,Eric,Fournier,16133240019,683 Principale,Casselman,$834900,http://www.ericfournierteam.ca/,,,,not_found
+4,Lindsay,Spires,16136015444,541 Barrage,Casselman,$979000,http://www.lindsayspires.ca/,lindsay@lindsayspires.ca,96,valid,found
+3,James,Wright,16136920606,188 Adelaide,Mississippi Mills,$585000,http://www.ottawahomes.ca/,,,,not_found
+4,Onyiye,Abu,16135012308,784 Cappamore,Ottawa,$875000,http://www.teamrealty.ca/,,,,not_found
+3,Andrew,Herman,16138672710,6 Marchvale,Ottawa,$1585000,http://www.teamgrondin.com/,andrew@teamgrondin.com,80,valid,found
+3,Annick,Fleury,18195925152,275 Rue A.-Primeau,Gatineau (Gatineau),$424900,http://www.equipefleury.ca/,,,,not_found
+3,Patrick,Lebeau,18196356641,26 Rue Du Centre,Gatineau (Aylmer),$534900,https://outaouais.evimmobilier.com/,patrick.lebeau@evimmobilier.com,80,valid,found
+4,Vyncent,Ledoux,18195931768,18 Rue Des Dahlias,Gatineau (Gatineau),$424900,http://www.remax-quebec.com/vision,vyncent.ledoux@remax-quebec.com,98,valid,found
+4,Stéphanie,Gauvin,18196652457,1497 Route 105,Chelsea,$689900,http://www.gauvinimmobilier.com/,stephanie@gauvinimmobilier.com,97,valid,found
+,Michel,Desnoyers,16132238771,00 Part Of Lot 11 Gagne,Clarence-Rockland,$299900,http://www.micheldesnoyers.com/,michel@micheldesnoyers.com,97,valid,found
+4,Braden,McLean,16138669167,3318 Morningmist,Ottawa,$949900,http://www.mcleanteam.ca/,,,,not_found
+3,Nancy,O'Dea,16132869881,135 Barrette,Ottawa,$1299000,http://odeateam.evrealestate.com/,nancy.odea@evrealestate.com,83,valid,found
+2,Geoff,Walker,16137215551,513 Pantanal Private,Ottawa,$488407,http://www.walkerottawa.com/,,,,not_found
+4,Geoff,Walker,16137215551,501 Egret,Ottawa,$1170796,http://www.walkerottawa.com/,,,,not_found
+2,Beth,Bonvie,16137621048,130A Lindenshade,Ottawa,$369900,http://www.bethandandrew.ca/,,,,not_found
+2,Charlotte,Leitch,16138646910,16 Sheffield,Arnprior,$324900,http://www.charlotteleitch.com/,charlotte@charlotteleitch.com,81,valid,found
+3,John,Roberts,16137944926,4318 Stonecrest,Ottawa,$749900,http://www.johnwroberts.com/,,,,not_found
+3,Nadine,Larouche,16138531720,120 Vaughan,Mississippi Mills,$749900,http://laroucheandfordeco.com/,nadine@laroucheandfordeco.com,95,valid,found
+4,Daniel,Poitras,18192102530,22 Rue Des Montagnais,Gatineau (Aylmer),$724900,https://equipedanielpoitras.ca/notre-equipe/,,,,not_found
+3,Ali,Saad,18196396697,185 Crois. Du Grand-Palais,Gatineau (Aylmer),$499900,https://groupesaadavila.com/,,,,not_found
+2,Nancy,Galusha,16138537785,317 Metcalfe,Ottawa,$547000,http://www.nancygalusha.com/,,,,not_found
+3,Franco,Ippolito,16132221633,483 Pleasant Park,Ottawa,$949999,https://www.youtube.com/embed/pChh_tBhGF4,,,,not_found
+2,Kevin,Feely,16139034913,144 Ruth,Carleton Place,$335000,http://www.feelyrealestate.com/,kevin@feelyrealestate.com,82,valid,found
+5,Joey,Abrams,16136066406,2666 Yorks Corners,Ottawa,$899900,http://www.joeyabrams.ca/,,,,not_found
+1,Chris,Nicholson,16137994006,255 Bay,Ottawa,$395000,http://www.chrisnicholson.ca/,chris@chrisnicholson.ca,95,valid,found
+4,Moe,McIlwain,16132993100,20 Rutile,Clarence-Rockland,$788000,http://www.investproperty.ca/,moe@investproperty.ca,85,valid,found
+4,Bria,Riopelle,16133159534,55 Woodward,Carleton Place,$624900,http://paulspropertiesrealestate.com/,,,,not_found
+3,Dave,Oikle,16133277653,415 Arncliffe,Ottawa,$499900,http://www.davidoikle.ca/,david@davidoikle.ca,97,valid,found
+3,Caroline,Johnson,16132988833,28 Monterey,Ottawa,$549900,http://www.carolinejohnson.ca/,carolinejohnson@royallepage.ca,97,valid,found
+2,Jacques,Tremblay,16137612444,85 Rue Du Geai-Bleu,Gatineau (Hull),$525000,http://www.suttonexpert.com/,,,,not_found
+4,Joël,Simard,18193603184,41 Ch. Desaulniers,Val-des-Monts,$899000,http://www.remaxvision.ca/,,,,not_found
+3,Jonathan,Doucet,18199239993,165 Av. Des Jonquilles,Gatineau (Hull),$269900,http://www.equipedoucet.com/,,,,not_found
+4,Martin,Simard,18192461000,432 Rue P.-Labine,Gatineau (Gatineau),$509900,http://www.equipesiroissimard.com/,martin@equipesiroissimard.com,82,valid,found
+,Sepehr,Safaee,16137699302,26 Concord,Ottawa,$749900,http://www.yourottawarealestate.com/,,,,not_found
+2,Yanick,Dagenais,16136173834,185 Du Comte,Alfred and Plantagenet,$270000,http://www.yanickdagenais.com/,yanick.dagenais@hallmarkottawa.com,99,valid,found
+4,John,Roberts,16137944926,184 Charmont,Ottawa,$899900,http://www.johnwroberts.com/,,,,not_found
+5,Geoff,Walker,16137215551,3657 Revelstoke,Ottawa,$2400000,http://www.walkerottawa.com/,,,,not_found
+4,Sonat,Try,16132619951,1146 Halton,Ottawa,$699900,http://www.sonattry.com/,,,,not_found
+4,Abigail,Lindsay,16137915469,101 Grosvenor,Ottawa,$900000,http://thelindsayteam.ca/,,,,not_found
+4,Jeff,Matheson,16136998163,6530 Bunker,Ottawa,$995000,https://jeffmatheson.exprealty.com/,,,,not_found
+3,David,Tessier,16139780123,857 Cologne,Russell,$750000,https://www.tessierteam.ca/,david@tessierteam.ca,84,valid,found
+2,Gabriel,De Varennes,16137200490,1 Columbus,Ottawa,$449000,http://www.gabrieldevarennes.com/,,,,not_found
+2,Luc,Guiho,16132625818,397 Codds,Ottawa,$579900,http://www.lucguiho.com/,luc@lucguiho.com,99,valid,found
+4,David,Tessier,16139780123,6416 Saumure,Ottawa,$835000,https://www.tessierteam.ca/,david@tessierteam.ca,84,valid,found
+4,John,Bilder,16134473891,58 Zaatiik,Ottawa,$874900,http://www.bilder.ca/,john@bilder.ca,96,valid,found
+2,Marty,Waite,18196650033,222Z Rue Madaire,Gatineau (Aylmer),$317900,http://martywaite.com/,marty@martywaite.com,80,valid,found
+2,Marty,Waite,18196650033,222 Rue Madaire,Gatineau (Aylmer),$317900,http://martywaite.com/,marty@martywaite.com,80,valid,found
+3,Jason,Pilon,16138510993,244 Rolling Meadow,Ottawa,$584900,http://www.pilongroup.com/,jason@pilongroup.com,98,valid,found
+3,Murtaza,Siddiqui,16138051111,1125 Tischart,Ottawa,$739999,https://www.youtube.com/embed/G7l7SbjWs1k,,,,not_found
+4,Nafis,Chowdhury,16138065984,516 Arum,Ottawa,$719990,http://chowdhuryrealestate.com/,nafis@chowdhuryrealestate.com,84,valid,found
+3,Steven,Saab,16138635886,718 Percifor,Ottawa,$639900,http://www.mronepercent.ca/,,,,not_found
+4,Suzie,Ng,16133016295,43A Inverness,Ottawa,$2500000,http://www.dreamproperties.com/,sng@dreamproperties.com,84,accept_all,found
+4,Sophia,Choroshansky,16138539588,207 Quarter Horse,Ottawa,$848800,http://www.sophiaottawahomes.com/,sophia@sophiaottawahomes.com,95,valid,found
+2,Richard,Sarault,16132031544,330 Centrum,Ottawa,$375000,http://www.sarault.com/,richard@sarault.com,48,,found
+3,Murtaza,Siddiqui,16138051111,702 Tanguay,Ottawa,$290000,https://www.youtube.com/embed/G7l7SbjWs1k,,,,not_found
+3,Sonat,Try,16132619951,1184 Derry Side,Beckwith,$674900,http://www.sonattry.com/,,,,not_found
+4,Robert,Kearns,16134475320,270 Compton,Ottawa,$1049900,http://www.morrishometeam.com/,robert@morrishometeam.com,82,accept_all,found
+3,Mélanie,Cyr,18192460969,17 Rue Lemoyne,Gatineau (Gatineau),$429900,http://www.remax-quebec.com/vision,melanie.cyr@remax-quebec.com,99,valid,found
+3,Alain,Dussault,18196847000,305 Rue Des Forages,Gatineau (Aylmer),$499900,http://www.alaindussault.ca/,,,,not_found
+5,Kim,Tran,16138598088,1647 Boyer,Ottawa,$899900,http://www.teamtran.ca/,kim@teamtran.ca,80,valid,found
+3,Matt,Robinson,16132906474,147 Westphalian,Ottawa,$640000,http://sleepwellrealty.com/,matt@sleepwellrealty.com,81,accept_all,found
+4,Greg,Hamre,16132777712,78 Fieldgate,Ottawa,$634900,https://www.weknowottawa.com/,greghamre@weknowottawa.com,78,accept_all,found
+3,Greg,Hamre,16132777712,350 Sweetfern,Ottawa,$689900,https://www.weknowottawa.com/,greghamre@weknowottawa.com,78,accept_all,found
+3,Charlotte,Leitch,16138646910,232 Alicia,Arnprior,$449900,http://www.charlotteleitch.com/,charlotte@charlotteleitch.com,81,valid,found
+6,Nathalie,Whiteley,16132908906,731 Dovercourt,Ottawa,$979000,http://www.nathaliewhiteley.com/,,,,not_found
+,Betty,O'Rourke,16136686450,4103 Stonecrest,Ottawa,$139900,https://www.instagram.com/Bettyo.rourke,bettyorourke@instagram.com,82,accept_all,found
+4,Charles,Sezlik,16137446697,766 Eastbourne,Ottawa,$1679000,http://www.sezlik.com/,charles@sezlik.com,82,valid,found
+1,Carole,Wilson,16136689356,90 Landry,Ottawa,$379900,http://www.carolewilsonottawa.com/,,,,not_found
+2,Jennifer,Chamberlain,16138185662,78 Songbird Private,Ottawa,$499999,http://www.ottawa-homes.ca/,jenn@ottawa-homes.ca,97,valid,found
+3,Mo,Sleiman,16132766344,229 Vision,Ottawa,$639000,http://www.mosleiman.com/,mo-sleiman@coldwellbanker.ca,80,accept_all,found
+4,Kyle,Dawson,16133550181,1047 Richard,Ottawa,$749000,http://dawsonrealestate.ca/,kyle@dawsonrealestate.ca,96,valid,found
+2,Sujatha,Kumaraswami,16137694794,Address Not Available,Ottawa,$470000,http://www.suanrealestate.com/,,,,not_found
+3,Nicolas,Blackburn,16136012224,528 Browning,Ottawa,$579900,http://www.blackburnrealestate.ca/,nicolas@blackburnrealestate.ca,78,accept_all,found
+3,Greg,Hamre,16132777712,1530 Royal Orchard,Ottawa,$1150000,https://www.weknowottawa.com/,greghamre@weknowottawa.com,78,accept_all,found
+4,Greg,Hamre,16132777712,108 Jade,Clarence-Rockland,$650000,https://www.weknowottawa.com/,greghamre@weknowottawa.com,78,accept_all,found
+2,Vicki,Pinder,16133240042,470 Laurier,Ottawa,$389900,http://www.pinderpower.com/,vicki@pinderpower.com,97,valid,found
+2,Adam,Mills,16139025400,515 St Laurent,Ottawa,$249900,https://www.youtube.com/embed/YpAb6yKhk3I,amills@youtube.com,80,valid,found
+3,Joanne,Goneau,16138515982,59 Evergreen,Ottawa,$699900,http://www.joannegoneau.com/,joanne@joannegoneau.com,99,valid,found
+4,Carmen,Veres,16132221206,642 Tillbury,Ottawa,$1795000,http://www.carmenveres.ca/,,,,not_found
+2,Jason,Pilon,16138510993,230 Titanium Private,Ottawa,$669900,http://www.pilongroup.com/,jason@pilongroup.com,98,valid,found
+6,Erin,Phillips,16136210478,14 Kanata Rockeries Private,Ottawa,$3299000,http://phillipsandco.ca/,erin@phillipsandco.ca,99,valid,found
+3,Kevin,Coady,16133149728,201 Trailgate,Ottawa,$949900,https://coadyrealestategroup.com/,kevin@coadyrealestategroup.com,85,valid,found
+4,Dimitrios,Kalogeropoulos,16138838823,39 Pondhawk,Ottawa,$950000,http://www.agentdk.com/,,,,not_found
+1,Jeff,Matheson,16136998163,201 Parkdale,Ottawa,$329900,https://jeffmatheson.exprealty.com/,,,,not_found
+,Macha,Khoudja Poirier,18192105300,8 Rue Tex-Lecor,Cantley,$225000,http://www.royallepageoutaouais.ca,,,,not_found
+2,Jonathan,Doucet,18199239993,96 Rue Du Stratus,Gatineau (Hull),$314900,http://www.equipedoucet.com/,,,,not_found
+1,Patrick,Hamelin,18193288826,175 Rue Leduc,Gatineau (Hull),$399900,http://www.patrickhamelin.com/,,,,not_found
+4,Amanda,Riley,16138660606,1262 Rodney,North Dundas,$590000,https://www.youtube.com/embed/HpBwqoPLQJU,,,,not_found
+2,Jason,Pilon,16138510993,25 Stitch,Ottawa,$499900,http://www.pilongroup.com/,jason@pilongroup.com,98,valid,found
+5,Kevin,Feely,16139034913,16 Bridlegate,Ottawa,$1100000,http://www.feelyrealestate.com/,kevin@feelyrealestate.com,82,valid,found
+2,Irina,Popova,16138832513,1035 Bank,Ottawa,$1089900,http://irinapopovahometeam.ca/,irina@irinapopovahometeam.ca,95,valid,found
+3,Catherine,Joyce,16132963169,6068 Ridgelea,Ottawa,$649900,http://www.lockerealestategroup.com/,,,,not_found
+3,Patti,Smith,16138661014,366 Meadowbreeze,Ottawa,$739900,http://www.pattismithhomes.com/,patti@pattismithhomes.com,80,valid,found
+3,Émérik,Paiement,18195761218,52 Rue De Drapeau,Gatineau (Gatineau),$349800,https://emerik.expquebec.com/,,,,not_found
+6,Véronique,Guillemette,18199625384,188 Boul. Riel,Gatineau (Hull),$649900,http://www.veronique-guillemette.com/,,,,not_found
+3,Raoul,Nsabimana,18194529222,216 Rue De St-Vallier,Gatineau (Gatineau),$1038900,http://www.remaxvision.ca/,,,,not_found
+2,Marc,Pageau,18192464636,240 Boul. De L'Hôpital,Gatineau (Gatineau),$309900,http://www.marcpageau.ca/,,,,not_found
+3,Dulaksha,Herath,16138515279,19 Ellery,Ottawa,$649000,http://dulakshaherath.com/,,,,not_found
+3,Wayne,Clermont,16137209191,20 Fairhaven,Ottawa,$1149000,http://www.ottawahomesales.com/,wayne@ottawahomesales.com,95,valid,found
+1,Jamie,Sabourin,16137969045,1025 Grenon,Ottawa,$249900,http://www.qteam.ca/,jamie@qteam.ca,99,valid,found
+2,René,Duguay,18199233724,19 Rue Garneau,Gatineau (Hull),$437000,https://remax-direct.com/,rene.duguay@remax-quebec.com,99,valid,found
+1,Daniel,Poirier,18193608511,450 Boul. Wilfrid-Lavigne,Gatineau (Aylmer),$229900,http://www.danielpoirier.ca/,,,,not_found
+4,Serge,Papineau,16138686652,257 Lavergne,Ottawa,$879900,http://www.facebook.com/sergetheottawarealtor,,,,invalid_input
+4,Jennifer,Chamberlain,16138185662,39 Kyle,Ottawa,$1125000,http://www.ottawa-homes.ca/,jenn@ottawa-homes.ca,97,valid,found
+4,Daniel,Carrière,18193292636,36 Imp. Du Saros,Gatineau (Gatineau),$459900,http://www.remax-quebec.com/vision,danielcarriere@remax-quebec.com,98,valid,found
+4,Patrick,Hamelin,18193288826,72 Rue Chimo,Gatineau (Aylmer),$849900,http://www.patrickhamelin.com/,,,,not_found
+4,Terry(Terrance),Barnes,16138526116,66 Bateman,Ottawa,$915000,http://www.sellingottawahomes.com/,,,,not_found
+3,Dionne,Caldwell,16136987740,140 Rideau,Ottawa,$1050000,http://www.caldwell-realty.ca/,dcaldwell@caldwell-realty.ca,99,valid,found
+3,Manon,Croteau,18193604477,23 Rue Valois,Gatineau (Gatineau),$565000,http://remax-direct.com/,manon.croteau@remax-quebec.com,97,valid,found
+4,Véronique,Guillemette,18199625384,20 Rue Des Duchesses,Cantley,$1099000,http://www.veronique-guillemette.com/,,,,not_found
+5,Alain,Fournier,18192134747,309 Rue Gérard-Binette,Gatineau (Aylmer),$789900,http://www.alainfournier.ca/,alain@alainfournier.ca,81,valid,found
+4,Cédrick,Larabie,18192106879,121 Boul. Montclair,Gatineau (Hull),$399900,http://www.flashimmobilier.ca/,,,,not_found
+4,Mathieu,Arseneault,18196640629,26 Rue De Beaumarchais,Gatineau (Aylmer),$899900,http://www.mathieuarseneault.com/,,,,not_found
+3,Marty,Waite,18196650033,44 Rue Conrad-Valéra,Gatineau (Aylmer),$859900,http://martywaite.com/,marty@martywaite.com,80,valid,found
+4,Jennifer,Aunger-Ritchie,16132855602,54 Morris,Carleton Place,$899000,http://jenniferaunger-ritchie.royallepage.ca/,jennifera@royallepage.ca,95,valid,found
+3,Joanne,Gauthier,16139831186,3314 Nixon,Ottawa,$575000,http://www.equityone.ca/,joanne@equityone.ca,83,valid,found
+4,Mike,Ryan,16132964123,767 Claude,Ottawa,$549900,http://www.ottawacityhomes.com/,mryan@ottawacityhomes.com,97,valid,found
+4,Nicholas,Fundytus,16134002000,1068 St Germain,Ottawa,$725000,https://www.youtube.com/embed/DtK4zk1gWEE,,,,not_found
+2,Paul,Czan,16132621286,3275 Saint Joseph,Ottawa,$379900,http://pcre-group.ca/,,,,not_found
+3,Jillian,Jarvis,16138504663,152 Mattingly,Ottawa,$645500,http://www.jillianjarvis.com/,,,,not_found
+2,Médéric,Souccar,18197439192,67 Rue Du Coteau,Gatineau (Gatineau),$209900,http://www.remaxvision.ca/,,,,not_found
+3,Guy,Vézeau,18197908282,1504 Rue Atmec,Gatineau (Gatineau),$449900,https://guilbaultservicesimmobiliers.com/,gvezeau@guilbaultservicesimmobiliers.com,99,valid,found
+2,Yann,Quéré,18192829213,564 Boul. De L'Hôpital,Gatineau (Gatineau),$519900,https://yannquere.ca/,,,,not_found
+3,Jimmy,Arseneault,18196647755,614 Av. Des Tilleuls,Gatineau (Aylmer),$539900,http://www.jimmyarseneault.com/,,,,not_found
+3,Stéphan,Casselman,18193280319,52 Rue Dubé,Gatineau (Gatineau),$509000,https://equipecasselman.com/,,,,not_found
+2,Keith,Bray,16134072729,201 Parkdale,Ottawa,$349900,http://www.thetulipteam.com/,keith@thetulipteam.com,81,accept_all,found
+3,Anthony,Cava,16132273448,111 Deltaview,Ottawa,$624900,http://anthonycava.ca/,,,,not_found
+3,Anthony,Cava,16132273448,109 Deltaview,Ottawa,$625900,http://anthonycava.ca/,,,,not_found
+4,Anthony,Cava,16132273448,107 Deltaview,Ottawa,$690900,http://anthonycava.ca/,,,,not_found
+3,Anthony,Cava,16132273448,852 Eileen Vollick,Ottawa,$642900,http://anthonycava.ca/,,,,not_found
+3,Anthony,Cava,16132273448,826 Eileen Vollick,Ottawa,$608900,http://anthonycava.ca/,,,,not_found
+1,Christopher,Barker,16136129555,197 Lisgar,Ottawa,$585000,http://www.rhodesbarker.com/,,,,not_found
+4,Vicki,Pinder,16133240042,218 Conservancy,Ottawa,$899900,http://www.pinderpower.com/,vicki@pinderpower.com,97,valid,found
+3,Chris,Lambert,16132668350,1607 Sommet,Ottawa,$439000,https://www.chrislambert.realtor/,,,,not_found
+3,Marty,Waite,18196650033,315 Av. Des Calèches,Gatineau (Aylmer),$549900,http://martywaite.com/,marty@martywaite.com,80,valid,found
+2,Manon,Croteau,18193604477,40 Rue Des Châteaux-Des-Bois,Gatineau (Aylmer),$409999,http://remax-direct.com/,manon.croteau@remax-quebec.com,97,valid,found
+5,Dominick,Prévost-Bernier,18199680307,147 Rue Jean-Xxiii,Gatineau (Buckingham),$279800,https://expquebec.com/fr/,,,,not_found
+2,Charbel,Mehanna,18192300996,71 Rue Bellehumeur,Gatineau (Gatineau),$294900,https://remax-direct.com/,charbel.mehanna@remax-quebec.com,95,valid,found
