@@ -1,1 +1,8 @@
-
+Bedrooms,FirstName,LastName,Phone,Address,City,Price,Website,Email,HunterScore,HunterStatus
+1,Heather,Natividad,14038359670,404,Calgary,484999,http://heathernatividad.cirrealty.ca/,hnatividad@cirrealty.ca,98,valid
+2,Gladys,Imoukhuede,15872285812,4414,Calgary,329999,https://gladysimoukhuede.alberta.cirrealty.ca/,gimoukhuede@cirrealty.ca,95,valid
+3 + 2,Lindsay,Winship,14038313303,8344 NW,Calgary,639900,http://www.winshipassociates.ca/,lindsay@winshipassociates.ca,97,valid
+3,Daniel,Weiner,14033897969,2275 SW,Calgary,749000,http://www.danielweiner.ca/,daniel@danielweiner.ca,97,valid
+2,Tammy,Lambert,14039340937,182,Strathmore,489900,https://tammylambert.cirrealty.ca/,tlambert@cirrealty.ca,98,valid
+3 + 1,Tanya,Eklund,14038637434,23 SW,Calgary,849900,http://www.tanyaeklundgroup.ca/,tanya@tanyaeklundgroup.ca,83,valid
+2 + 1,Parker,Toppings,15872293825,506 NW,Calgary,649900,https://riverliferealestate.com/,parker@riverliferealestate.com,82,valid
