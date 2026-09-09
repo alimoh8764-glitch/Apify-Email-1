@@ -1,0 +1,21 @@
+Bedrooms,FirstName,LastName,Phone,Address,City,Price,Website,Email,HunterScore,HunterStatus,HunterOutcome
+1,Heather,Natividad,14038359670,404,Calgary,484999,http://heathernatividad.cirrealty.ca/,hnatividad@cirrealty.ca,98,valid,found
+3 + 1,Jordan,Helwerda,14035190495,2431 NW,Calgary,1275000,http://www.bestcalgaryhomes.com/,,,,not_found
+2,Gladys,Imoukhuede,15872285812,4414,Calgary,329999,https://gladysimoukhuede.alberta.cirrealty.ca/,gimoukhuede@cirrealty.ca,95,valid,found
+3 + 2,Lindsay,Winship,14038313303,8344 NW,Calgary,639900,http://www.winshipassociates.ca/,lindsay@winshipassociates.ca,97,valid,found
+3,Daniel,Weiner,14033897969,2275 SW,Calgary,749000,http://www.danielweiner.ca/,daniel@danielweiner.ca,97,valid,found
+2,YM,Kwon,15877034327,202,Calgary,294999,http://karealestate.ca/,,,,not_found
+2,Tammy,Lambert,14039340937,182,Strathmore,489900,https://tammylambert.cirrealty.ca/,tlambert@cirrealty.ca,98,valid,found
+2,Sarah,Solomon,14032594141,211,Calgary,380000,http://www.janeneandsarah.com/,,,,not_found
+2,Mike,Abou Daher,14038099386,427,Calgary,319900,https://mikeaboudaher.com/,,,,not_found
+2,Barbara,Daroux,14038609318,305,Calgary,299900,http://www.kirbycox.com/,,,,not_found
+1,Steve,Strachan,14038625344,40 NW,Calgary,669000,https://www.youtube.com/embed/phL75hv0S1M,,,,not_found
+3 + 1,Kevin,Corbett,15878324828,620 NW,Calgary,849000,https://facebook.com/distinctandco,,,,invalid_input
+3 + 1,Joel,Semmens,14032834700,2235 NW,Calgary,2895000,http://www.joelsemmens.com/,,,,not_found
+4 + 2,Grace,Yan,14036606778,63,Rural Rocky View County,2188888,http://www.topglobalrealestate.com/,,,,not_found
+3 + 1,Tanya,Eklund,14038637434,23 SW,Calgary,849900,http://www.tanyaeklundgroup.ca/,tanya@tanyaeklundgroup.ca,83,valid,found
+3,Grant,Smith,14032782900,444 SE,Calgary,489900,http://www.southcalgaryhomes.com/,grantsmith@remax.net,84,accept_all,found
+2,Wendy,Sorenson,14036302505,1301,Calgary,419000,http://www.wendysorenson.com/,,,,not_found
+3,Kevin,Huynh,14038356159,27 NW,Calgary,385000,http://homesbykevin.ca/,,,,not_found
+2 + 1,Parker,Toppings,15872293825,506 NW,Calgary,649900,https://riverliferealestate.com/,parker@riverliferealestate.com,82,valid,found
+3,Gladys,Imoukhuede,15872285812,57,Calgary,299900,https://gladysimoukhuede.alberta.cirrealty.ca/,gimoukhuede@cirrealty.ca,95,valid,found
