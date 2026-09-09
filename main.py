@@ -90,6 +90,7 @@ def clean_text(value):
 
 
 def clean_price(value):
+    """Return prices in $123456 format."""
     if value is None:
         return None
 
@@ -104,10 +105,42 @@ def clean_price(value):
         return None
 
     try:
-        return int(float(cleaned))
+        amount = int(float(cleaned))
+        return f"${amount}"
 
     except ValueError:
         return None
+
+
+def clean_bedrooms(value):
+    """
+    Normalize bedroom counts.
+
+    Examples:
+        3 + 2 -> 5
+        2+1   -> 3
+        4     -> 4
+
+    If the value is not a simple numeric addition, keep the original text.
+    """
+    if value is None:
+        return None
+
+    text = str(value).strip()
+
+    if not text:
+        return None
+
+    # Add bedroom components when Realtor returns values such as "3 + 2".
+    if re.fullmatch(r"\d+\s*(?:\+\s*\d+)+", text):
+        return str(sum(int(number) for number in re.findall(r"\d+", text)))
+
+    # Keep a normal single bedroom count clean.
+    if re.fullmatch(r"\d+", text):
+        return text
+
+    # Safe fallback: preserve unexpected source values instead of guessing.
+    return text
 
 
 # =========================================================
@@ -116,11 +149,20 @@ def clean_price(value):
 
 def clean_address(value):
     """
-    10109 80 ST NW, Edmonton...
-    -> 10109 NW
+    Prefer a usable street address when Realtor.ca provides one.
 
-    #3410 10360 102 ST NW...
-    -> 10360 NW
+    Examples:
+      10109 80 ST NW, Edmonton...
+      -> 10109 80 ST NW
+
+      #3410 10360 102 ST NW, Edmonton...
+      -> 10360 102 ST NW
+
+      404, Calgary...
+      -> 404
+
+    If a street name/number cannot be identified reliably, fall back to
+    the previous behaviour: building number + direction, or just number.
     """
 
     if value is None:
@@ -131,30 +173,83 @@ def clean_address(value):
     if not value:
         return None
 
-    # Keep only street portion
+    # AddressText can contain extra location information after "|" or ",".
+    # Keep only the actual street-address portion.
     street = value.split("|")[0]
     street = street.split(",")[0]
     street = street.strip()
 
-    # Remove leading unit number such as #3410
+    # Remove common leading unit/suite formats, for example:
+    #   #3410 10360 102 ST NW
+    #   Unit 12 10360 102 ST NW
+    #   12-10360 102 ST NW
     street = re.sub(
-        r"^\s*#\s*\d+\s+",
+        r"^\s*#\s*[A-Za-z0-9-]+\s+",
+        "",
+        street,
+        flags=re.IGNORECASE
+    )
+
+    street = re.sub(
+        r"^\s*(?:UNIT|SUITE|APT|APARTMENT)\s+[A-Za-z0-9-]+\s+",
+        "",
+        street,
+        flags=re.IGNORECASE
+    )
+
+    street = re.sub(
+        r"^\s*[A-Za-z0-9]+\s*-\s*(?=\d+\b)",
         "",
         street
     )
 
-    # Building number
-    number_match = re.search(
-        r"\b(\d+)\b",
-        street
-    )
+    # Normalize whitespace.
+    street = re.sub(r"\s+", " ", street).strip()
+
+    # Find the civic/building number.
+    number_match = re.search(r"\b(\d+[A-Za-z]?)\b", street)
 
     if not number_match:
-        return street
+        return street or None
 
     number = number_match.group(1)
 
-    # Direction
+    # Everything after the civic number is a candidate street name.
+    remainder = street[number_match.end():].strip(" -")
+
+    # A usable street portion should contain at least one street-name token.
+    # This accepts numbered streets such as "80 ST NW" as well as named
+    # streets such as "Main Street" or "17 Avenue SW".
+    street_type_pattern = (
+        r"\b(?:ST|STREET|AVE|AVENUE|RD|ROAD|DR|DRIVE|BLVD|BOULEVARD|"
+        r"TRAIL|TRL|WAY|CRES|CRESCENT|CRT|COURT|PL|PLACE|LN|LANE|"
+        r"HWY|HIGHWAY|PKWY|PARKWAY|TER|TERRACE|CIR|CIRCLE|"
+        r"GDNS|GARDENS|GRV|GROVE|MEWS|RISE|ROW|SQ|SQUARE)\b"
+    )
+
+    has_street_type = bool(
+        re.search(street_type_pattern, remainder, re.IGNORECASE)
+    )
+
+    # Some Realtor.ca addresses may contain a valid named/numbered street
+    # without a standard suffix. Accept it when there is meaningful text
+    # beyond just a compass direction.
+    meaningful_remainder = re.sub(
+        r"\b(?:NW|NE|SW|SE|N|S|E|W)\b",
+        "",
+        remainder,
+        flags=re.IGNORECASE
+    )
+    meaningful_remainder = re.sub(
+        r"[^A-Za-z0-9]+",
+        "",
+        meaningful_remainder
+    )
+
+    if remainder and (has_street_type or len(meaningful_remainder) >= 2):
+        return f"{number} {remainder}".strip()
+
+    # Fallback to the old behaviour when no street name can be found.
     direction_match = re.search(
         r"\b(NW|NE|SW|SE)\b",
         street,
@@ -356,7 +451,7 @@ def extract_records(listings):
         )
 
         rows.append({
-            "Bedrooms": clean_text(bedrooms),
+            "Bedrooms": clean_bedrooms(bedrooms),
             "FirstName": clean_text(first_name),
             "LastName": clean_text(last_name),
             "Phone": phone,
