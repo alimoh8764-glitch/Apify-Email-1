@@ -2,7 +2,6 @@ import os
 import re
 import time
 from io import StringIO
-from datetime import datetime, timezone
 from urllib.parse import urlparse
 
 import pandas as pd
@@ -25,6 +24,8 @@ GITHUB_FOLDER = os.getenv("GITHUB_FOLDER", "data")
 
 APIFY_TOKEN = os.getenv("APIFY_TOKEN")
 HUNTER_API_KEY = os.getenv("HUNTER_API_KEY")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-5.6-luna")
 
 
 if not GITHUB_TOKEN:
@@ -38,6 +39,9 @@ if not APIFY_TOKEN:
 
 if not HUNTER_API_KEY:
     raise RuntimeError("Missing Railway variable: HUNTER_API_KEY")
+
+if not OPENAI_API_KEY:
+    raise RuntimeError("Missing Railway variable: OPENAI_API_KEY")
 
 
 github = Github(GITHUB_TOKEN)
@@ -429,6 +433,14 @@ def extract_records(listings):
             ]
         )
 
+        public_remarks = get_nested(
+            listing,
+            [
+                "moreDetails",
+                "PublicRemarks"
+            ]
+        )
+
         phone = build_phone(
             area_code,
             phone_number
@@ -443,6 +455,7 @@ def extract_records(listings):
             "City": clean_text(city),
             "Price": clean_price(price),
             "Website": clean_text(website),
+            "PublicRemarks": clean_text(public_remarks),
         })
 
     return rows
@@ -463,6 +476,7 @@ def clean_dataframe(rows):
         "City",
         "Price",
         "Website",
+        "PublicRemarks",
     ]
 
     df = pd.DataFrame(
@@ -913,6 +927,281 @@ def enrich_website_leads(with_website):
 
 
 
+
+# =========================================================
+# OPENAI PERSONALIZATION DETAIL EXTRACTOR
+# =========================================================
+
+PERSONALIZATION_INSTRUCTIONS = """You are a precise data-extraction assistant for a real estate cold-email tool. Your only job is to pull ONE concrete, specific, non-generic detail from a property listing description that could be referenced in a personalized email opener to the listing agent.
+
+RULES:
+- Only extract from these categories, in priority order:
+  1. A named appliance, brand, or material upgrade (e.g. "LG WashTower", "quartz countertops", "stainless steel appliances")
+  2. An unusual structural or layout feature (e.g. "up/down duplex", "in-law suite", "walkout basement", "2.5 storey")
+  3. A notable build year if unusually old or new
+  4. A specific outdoor feature (e.g. "pool", "walkout to backyard", "wraparound deck")
+- NEVER use subjective/marketing adjectives from the listing (e.g. "beautiful", "stunning", "meticulously maintained", "charming", "cozy"). Only extract concrete nouns/facts.
+- NEVER paraphrase the agent's sales language back — extract a plain factual detail, not a rephrased compliment.
+- Output must be a short phrase, 6-10 words max, no full sentences, no punctuation at the end.
+- If no detail fits these categories, or the listing is too generic, output exactly: NONE
+- Do not invent or infer details not explicitly stated in the text.
+
+Output format (strict):
+DETAIL: <phrase or NONE>
+CONFIDENCE: <high/medium/low>"""
+
+
+def extract_openai_output_text(payload):
+    """Extract assistant text from an OpenAI Responses API JSON payload."""
+    pieces = []
+
+    for item in payload.get("output", []) or []:
+        if not isinstance(item, dict):
+            continue
+
+        for content in item.get("content", []) or []:
+            if not isinstance(content, dict):
+                continue
+
+            if content.get("type") == "output_text":
+                value = content.get("text")
+                if value:
+                    pieces.append(str(value))
+
+    return "\n".join(pieces).strip()
+
+
+def parse_personalization_response(text):
+    """
+    Parse the strict two-line response:
+      DETAIL: ...
+      CONFIDENCE: high/medium/low
+    """
+    if not text:
+        return None
+
+    detail_match = re.search(
+        r"(?im)^DETAIL:\s*(.+?)\s*$",
+        text
+    )
+    confidence_match = re.search(
+        r"(?im)^CONFIDENCE:\s*(high|medium|low)\s*$",
+        text
+    )
+
+    if not detail_match or not confidence_match:
+        return None
+
+    detail = detail_match.group(1).strip()
+    confidence = confidence_match.group(1).strip().lower()
+
+    if detail.upper() == "NONE":
+        return {
+            "detail": "NONE",
+            "confidence": confidence,
+            "outcome": "no_detail",
+        }
+
+    # Enforce the user's 6-10 word requirement ourselves as a safety check.
+    word_count = len(re.findall(r"\b[\w'-]+\b", detail))
+
+    if word_count < 6 or word_count > 10:
+        return None
+
+    # Remove accidental terminal punctuation without otherwise rewriting text.
+    detail = detail.rstrip(" .,!?:;")
+
+    return {
+        "detail": detail,
+        "confidence": confidence,
+        "outcome": "found",
+    }
+
+
+def openai_extract_personalized_detail(public_remarks):
+    """
+    Send PublicRemarks to OpenAI and return one concrete personalization detail.
+
+    Outcomes:
+      found
+      no_detail
+      invalid_input
+      api_error
+    """
+    if public_remarks is None:
+        return {
+            "detail": "NONE",
+            "confidence": "low",
+            "outcome": "invalid_input",
+        }
+
+    public_remarks = str(public_remarks).strip()
+
+    if not public_remarks:
+        return {
+            "detail": "NONE",
+            "confidence": "low",
+            "outcome": "invalid_input",
+        }
+
+    url = "https://api.openai.com/v1/responses"
+
+    headers = {
+        "Authorization": f"Bearer {OPENAI_API_KEY}",
+        "Content-Type": "application/json",
+    }
+
+    body = {
+        "model": OPENAI_MODEL,
+        "instructions": PERSONALIZATION_INSTRUCTIONS,
+        "input": (
+            "PROPERTY LISTING DESCRIPTION:\n"
+            + public_remarks
+        ),
+        "max_output_tokens": 100,
+    }
+
+    for attempt in range(3):
+        try:
+            response = requests.post(
+                url,
+                headers=headers,
+                json=body,
+                timeout=45,
+            )
+        except requests.RequestException as exc:
+            print(
+                "OpenAI connection error:",
+                exc
+            )
+
+            if attempt < 2:
+                time.sleep(2 ** attempt)
+                continue
+
+            return {
+                "detail": None,
+                "confidence": None,
+                "outcome": "api_error",
+            }
+
+        if response.status_code == 200:
+            try:
+                payload = response.json()
+                output_text = extract_openai_output_text(payload)
+                parsed = parse_personalization_response(output_text)
+            except Exception as exc:
+                print(
+                    "OpenAI response parse error:",
+                    exc
+                )
+                parsed = None
+
+            if parsed is not None:
+                return parsed
+
+            print(
+                "OpenAI returned unexpected format:",
+                output_text[:300] if 'output_text' in locals() else ""
+            )
+
+            if attempt < 2:
+                time.sleep(1)
+                continue
+
+            return {
+                "detail": None,
+                "confidence": None,
+                "outcome": "api_error",
+            }
+
+        if response.status_code in (408, 409, 429, 500, 502, 503, 504):
+            print(
+                "OpenAI temporary error:",
+                response.status_code,
+                "attempt:",
+                attempt + 1
+            )
+
+            if attempt < 2:
+                time.sleep(2 ** attempt)
+                continue
+
+        else:
+            print(
+                "OpenAI request error:",
+                response.status_code,
+                response.text[:500]
+            )
+
+        return {
+            "detail": None,
+            "confidence": None,
+            "outcome": "api_error",
+        }
+
+    return {
+        "detail": None,
+        "confidence": None,
+        "outcome": "api_error",
+    }
+
+
+def enrich_personalization(valid_email_leads):
+    """
+    Run OpenAI ONLY on Hunter-valid email leads.
+
+    Adds:
+      PersonalizedDetail
+      PersonalizationConfidence
+      PersonalizationOutcome
+    """
+    enriched = valid_email_leads.copy()
+
+    enriched["PersonalizedDetail"] = pd.NA
+    enriched["PersonalizationConfidence"] = pd.NA
+    enriched["PersonalizationOutcome"] = pd.NA
+
+    for index, row in enriched.iterrows():
+        remarks = row.get("PublicRemarks")
+
+        if pd.isna(remarks):
+            result = {
+                "detail": "NONE",
+                "confidence": "low",
+                "outcome": "invalid_input",
+            }
+        else:
+            result = openai_extract_personalized_detail(
+                str(remarks)
+            )
+
+        enriched.at[
+            index,
+            "PersonalizedDetail"
+        ] = result["detail"]
+
+        enriched.at[
+            index,
+            "PersonalizationConfidence"
+        ] = result["confidence"]
+
+        enriched.at[
+            index,
+            "PersonalizationOutcome"
+        ] = result["outcome"]
+
+        print(
+            "Personalization:",
+            row.get("FirstName"),
+            row.get("LastName"),
+            result["outcome"],
+            result["detail"]
+        )
+
+    return enriched
+
+
 # =========================================================
 # UPDATE PERSISTENT EMAILLEADS.CSV ON GITHUB
 # =========================================================
@@ -983,9 +1272,13 @@ def update_email_leads_file(
         "City",
         "Price",
         "Website",
+        "PublicRemarks",
         "Email",
         "HunterScore",
         "HunterStatus",
+        "PersonalizedDetail",
+        "PersonalizationConfidence",
+        "PersonalizationOutcome",
     ]
 
     for column in email_columns:
@@ -1162,6 +1455,147 @@ def update_email_leads_file(
             return len(new_email_leads)
 
         raise
+
+
+# =========================================================
+# UPDATE VALID EMAILS WITH NO PERSONALIZED SENTENCE
+# =========================================================
+
+def update_no_personalization_file(
+    repo,
+    leads
+):
+    """
+    Cumulative holding file for Hunter-valid email leads that did not receive
+    a usable personalization detail, including OpenAI/API failures so no valid
+    email lead is silently lost.
+    """
+
+    path = (
+        f"{GITHUB_FOLDER}/"
+        "Emails Valid no personlised sentence.csv"
+    )
+
+    columns = [
+        "Bedrooms",
+        "FirstName",
+        "LastName",
+        "Phone",
+        "Address",
+        "City",
+        "Price",
+        "Website",
+        "PublicRemarks",
+        "Email",
+        "HunterScore",
+        "HunterStatus",
+        "PersonalizedDetail",
+        "PersonalizationConfidence",
+        "PersonalizationOutcome",
+    ]
+
+    leads = leads.copy()
+
+    for column in columns:
+        if column not in leads.columns:
+            leads[column] = pd.NA
+
+    leads = leads[columns]
+
+    if "Email" in leads.columns:
+        leads["Email"] = (
+            leads["Email"]
+            .astype("string")
+            .str.strip()
+            .str.lower()
+        )
+
+    try:
+        existing_file = repo.get_contents(
+            path,
+            ref=GITHUB_BRANCH
+        )
+
+        existing_text = (
+            existing_file
+            .decoded_content
+            .decode("utf-8")
+        )
+
+        if existing_text.strip():
+            existing_df = pd.read_csv(
+                StringIO(existing_text),
+                dtype="string"
+            )
+        else:
+            existing_df = pd.DataFrame(
+                columns=columns
+            )
+
+        for column in columns:
+            if column not in existing_df.columns:
+                existing_df[column] = pd.NA
+
+        existing_df = existing_df[columns]
+
+        combined = pd.concat(
+            [existing_df, leads],
+            ignore_index=True
+        )
+
+        combined = combined.drop_duplicates(
+            subset=["Email"],
+            keep="last"
+        )
+
+        repo.update_file(
+            path=path,
+            message=(
+                "Update Emails Valid no "
+                "personlised sentence.csv"
+            ),
+            content=combined.to_csv(index=False),
+            sha=existing_file.sha,
+            branch=GITHUB_BRANCH,
+        )
+
+        print(
+            "Updated:",
+            path,
+            "total held leads:",
+            len(combined)
+        )
+
+        return len(combined)
+
+    except GithubException as exc:
+        if exc.status == 404:
+            leads = leads.drop_duplicates(
+                subset=["Email"],
+                keep="last"
+            )
+
+            repo.create_file(
+                path=path,
+                message=(
+                    "Create Emails Valid no "
+                    "personlised sentence.csv"
+                ),
+                content=leads.to_csv(index=False),
+                branch=GITHUB_BRANCH,
+            )
+
+            print(
+                "Created:",
+                path,
+                "held leads:",
+                len(leads)
+            )
+
+            return len(leads)
+
+        raise
+
 
 # =========================================================
 # UPDATE PERSISTENT FBLEADS.CSV ON GITHUB
@@ -1695,8 +2129,46 @@ async def apify_webhook(
 
 
     print(
-        "New VALID email leads:",
+        "Hunter-valid email candidates:",
         len(new_email_leads)
+    )
+
+    # =====================================================
+    # 7B. OPENAI PERSONALIZATION - VALID EMAIL LEADS ONLY
+    # =====================================================
+
+    personalized_valid_leads = enrich_personalization(
+        new_email_leads
+    )
+
+    new_email_leads = (
+        personalized_valid_leads[
+            personalized_valid_leads[
+                "PersonalizationOutcome"
+            ] == "found"
+        ]
+        .copy()
+        .reset_index(drop=True)
+    )
+
+    no_personalization_leads = (
+        personalized_valid_leads[
+            personalized_valid_leads[
+                "PersonalizationOutcome"
+            ] != "found"
+        ]
+        .copy()
+        .reset_index(drop=True)
+    )
+
+    print(
+        "Personalized valid email leads:",
+        len(new_email_leads)
+    )
+
+    print(
+        "Valid emails with no usable personalization:",
+        len(no_personalization_leads)
     )
 
     print(
@@ -1707,6 +2179,9 @@ async def apify_webhook(
 
     # =====================================================
     # 8. CREATE MASTER CSV FILES
+    #
+    # Use fixed filenames so every webhook run updates the
+    # same files instead of creating timestamped CSVs.
     # =====================================================
 
     with_website_csv = (
@@ -1721,24 +2196,13 @@ async def apify_webhook(
     )
 
 
-    timestamp = datetime.now(
-        timezone.utc
-    ).strftime(
-        "%Y-%m-%d_%H-%M-%S-%f"
-    )
-
-
     with_website_filename = (
-        f"{GITHUB_FOLDER}/"
-        f"leads_with_website_"
-        f"{timestamp}.csv"
+        f"{GITHUB_FOLDER}/leads_with_website.csv"
     )
 
 
     without_website_filename = (
-        f"{GITHUB_FOLDER}/"
-        f"leads_without_website_"
-        f"{timestamp}.csv"
+        f"{GITHUB_FOLDER}/leads_without_website.csv"
     )
 
 
@@ -1760,56 +2224,80 @@ async def apify_webhook(
         # + Hunter email results
         # -----------------------------------------
 
-        repo.create_file(
-
-            path=
+        try:
+            existing_with_website = repo.get_contents(
                 with_website_filename,
+                ref=GITHUB_BRANCH
+            )
 
-            message=(
-                "Add Hunter-enriched website "
-                f"leads {timestamp}"
-            ),
+            repo.update_file(
+                path=with_website_filename,
+                message="Update leads_with_website.csv",
+                content=with_website_csv,
+                sha=existing_with_website.sha,
+                branch=GITHUB_BRANCH,
+            )
 
-            content=
-                with_website_csv,
+            print(
+                "Updated:",
+                with_website_filename
+            )
 
-            branch=
-                GITHUB_BRANCH,
-        )
+        except GithubException as exc:
+            if exc.status == 404:
+                repo.create_file(
+                    path=with_website_filename,
+                    message="Create leads_with_website.csv",
+                    content=with_website_csv,
+                    branch=GITHUB_BRANCH,
+                )
 
-
-        print(
-            "Uploaded:",
-            with_website_filename
-        )
+                print(
+                    "Created:",
+                    with_website_filename
+                )
+            else:
+                raise
 
 
         # -----------------------------------------
         # NO WEBSITE FILE
         # -----------------------------------------
 
-        repo.create_file(
-
-            path=
+        try:
+            existing_without_website = repo.get_contents(
                 without_website_filename,
+                ref=GITHUB_BRANCH
+            )
 
-            message=(
-                "Add leads without website "
-                f"{timestamp}"
-            ),
+            repo.update_file(
+                path=without_website_filename,
+                message="Update leads_without_website.csv",
+                content=without_website_csv,
+                sha=existing_without_website.sha,
+                branch=GITHUB_BRANCH,
+            )
 
-            content=
-                without_website_csv,
+            print(
+                "Updated:",
+                without_website_filename
+            )
 
-            branch=
-                GITHUB_BRANCH,
-        )
+        except GithubException as exc:
+            if exc.status == 404:
+                repo.create_file(
+                    path=without_website_filename,
+                    message="Create leads_without_website.csv",
+                    content=without_website_csv,
+                    branch=GITHUB_BRANCH,
+                )
 
-
-        print(
-            "Uploaded:",
-            without_website_filename
-        )
+                print(
+                    "Created:",
+                    without_website_filename
+                )
+            else:
+                raise
 
 
         # -----------------------------------------
@@ -1823,6 +2311,18 @@ async def apify_webhook(
             update_email_leads_file(
                 repo,
                 new_email_leads
+            )
+        )
+
+
+        # -----------------------------------------
+        # VALID EMAILS WITHOUT PERSONALIZATION
+        # -----------------------------------------
+
+        total_no_personalization_leads = (
+            update_no_personalization_file(
+                repo,
+                no_personalization_leads
             )
         )
 
@@ -1902,6 +2402,18 @@ async def apify_webhook(
 
         "email_leads_file":
             f"{GITHUB_FOLDER}/EmailLeads.csv",
+
+        "valid_emails_without_personalization":
+            len(no_personalization_leads),
+
+        "total_valid_emails_without_personalization":
+            total_no_personalization_leads,
+
+        "no_personalization_file":
+            (
+                f"{GITHUB_FOLDER}/"
+                "Emails Valid no personlised sentence.csv"
+            ),
 
         "new_fb_leads":
             len(new_fb_leads),
