@@ -2,7 +2,6 @@ import os
 import re
 import time
 from io import StringIO
-from datetime import datetime, timezone
 from urllib.parse import urlparse
 
 import pandas as pd
@@ -24,7 +23,9 @@ GITHUB_BRANCH = os.getenv("GITHUB_BRANCH", "main")
 GITHUB_FOLDER = os.getenv("GITHUB_FOLDER", "data")
 
 APIFY_TOKEN = os.getenv("APIFY_TOKEN")
-HUNTER_API_KEY = os.getenv("HUNTER_API_KEY")
+BOUNCER_API_KEY = os.getenv("BOUNCER_API_KEY")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-5.6-luna")
 
 
 if not GITHUB_TOKEN:
@@ -36,8 +37,11 @@ if not GITHUB_REPO:
 if not APIFY_TOKEN:
     raise RuntimeError("Missing Railway variable: APIFY_TOKEN")
 
-if not HUNTER_API_KEY:
-    raise RuntimeError("Missing Railway variable: HUNTER_API_KEY")
+if not BOUNCER_API_KEY:
+    raise RuntimeError("Missing Railway variable: BOUNCER_API_KEY")
+
+if not OPENAI_API_KEY:
+    raise RuntimeError("Missing Railway variable: OPENAI_API_KEY")
 
 
 github = Github(GITHUB_TOKEN)
@@ -239,6 +243,7 @@ def extract_records(listings):
             "Price": clean_price(listing.get("list_price")),
             "Website": clean_text(listing.get("primary_agent_href")),
             "Email": clean_text(listing.get("primary_agent_email")),
+            "PublicRemarks": clean_text(listing.get("description_text")),
         })
 
     return rows
@@ -260,6 +265,7 @@ def clean_dataframe(rows):
         "Price",
         "Website",
         "Email",
+        "PublicRemarks",
     ]
 
     df = pd.DataFrame(rows, columns=columns)
@@ -269,7 +275,7 @@ def clean_dataframe(rows):
 
     df = df.dropna(how="all")
 
-    for column in ["FirstName", "LastName", "City", "Website", "Email"]:
+    for column in ["FirstName", "LastName", "City", "Website", "Email", "PublicRemarks"]:
         df[column] = df[column].astype("string").str.strip()
 
     df["Phone"] = df["Phone"].astype("string")
@@ -338,363 +344,186 @@ def get_domain_from_website(website):
 
 
 # =========================================================
-# HUNTER EMAIL VERIFIER
+# BOUNCER EMAIL VERIFIER
 # =========================================================
 
-def hunter_verify_email(email):
-    """
-    Verify an actor-provided email with Hunter.
-
-    outcomes:
-      verified       -> Hunter returned a completed status
-      invalid_input  -> missing/malformed email
-      suppressed     -> Hunter privacy suppression (451)
-      api_error      -> temporary/permanent API failure
-
-    Hunter can return statuses including:
-      valid, invalid, accept_all, webmail, disposable, unknown
-    """
-
+def bouncer_verify_email(email):
+    """Verify an actor-provided email with Bouncer's real-time API."""
     email = clean_text(email)
-
     if not email or "@" not in email:
-        return {
-            "outcome": "invalid_input",
-            "email": email,
-            "score": None,
-            "verification_status": None,
-        }
+        return {"outcome": "invalid_input", "email": email, "status": None, "reason": None}
 
-    url = "https://api.hunter.io/v2/email-verifier"
+    url = "https://api.usebouncer.com/v1/email/verify"
+    headers = {"x-api-key": BOUNCER_API_KEY}
+    params = {"email": email, "timeout": 30}
 
-    params = {
-        "email": email,
-        "api_key": HUNTER_API_KEY,
-    }
-
-    # A 202 means Hunter is still processing. Re-requesting the same
-    # verification does not create another verification charge.
-    for attempt in range(6):
-
+    for attempt in range(3):
         try:
-            response = requests.get(
-                url,
-                params=params,
-                timeout=30
-            )
-
+            response = requests.get(url, headers=headers, params=params, timeout=35)
         except requests.RequestException as exc:
-            print("Hunter verifier connection error:", email, exc)
-
-            if attempt < 5:
-                time.sleep(min(2 ** attempt, 10))
+            print("Bouncer connection error:", email, exc)
+            if attempt < 2:
+                time.sleep(2 ** attempt)
                 continue
-
-            return {
-                "outcome": "api_error",
-                "email": email,
-                "score": None,
-                "verification_status": None,
-            }
+            return {"outcome": "api_error", "email": email, "status": None, "reason": None}
 
         if response.status_code == 200:
             try:
                 payload = response.json()
             except Exception:
-                return {
-                    "outcome": "api_error",
-                    "email": email,
-                    "score": None,
-                    "verification_status": None,
-                }
+                return {"outcome": "api_error", "email": email, "status": None, "reason": None}
 
-            data = payload.get("data") or {}
+            if isinstance(payload, list):
+                data = payload[0] if payload else {}
+            elif isinstance(payload, dict):
+                data = payload
+            else:
+                data = {}
+
             status = clean_text(data.get("status"))
-            score = data.get("score")
+            reason = clean_text(data.get("reason"))
             verified_email = clean_text(data.get("email")) or email
-
-            print(
-                "Hunter VERIFIED:",
-                verified_email,
-                "status:",
-                status,
-                "score:",
-                score
-            )
-
+            print("Bouncer VERIFIED:", verified_email, "status:", status, "reason:", reason)
             return {
                 "outcome": "verified",
                 "email": verified_email,
-                "score": score,
-                "verification_status": status,
+                "status": status,
+                "reason": reason,
             }
 
-        if response.status_code == 202:
-            print("Hunter verification still processing:", email)
-
-            if attempt < 5:
-                time.sleep(3)
+        if response.status_code in (408, 409, 429, 500, 502, 503, 504):
+            if attempt < 2:
+                time.sleep(2 ** attempt)
                 continue
+            return {"outcome": "api_error", "email": email, "status": None, "reason": None}
 
-            return {
-                "outcome": "api_error",
-                "email": email,
-                "score": None,
-                "verification_status": None,
-            }
+        print("Bouncer verifier error:", response.status_code, email, response.text[:300])
+        return {"outcome": "invalid_input", "email": email, "status": None, "reason": None}
 
-        if response.status_code == 451:
-            print("Hunter SUPPRESSED:", email)
-            return {
-                "outcome": "suppressed",
-                "email": email,
-                "score": None,
-                "verification_status": None,
-            }
+    return {"outcome": "api_error", "email": email, "status": None, "reason": None}
 
-        # Hunter documents 403 for rate limiting. Keep common transient
-        # server statuses here too.
-        if response.status_code in (403, 429, 500, 502, 503, 504, 222):
-            print(
-                "Hunter verifier temporary error:",
-                response.status_code,
-                "attempt:",
-                attempt + 1,
-                email
-            )
 
-            if attempt < 5:
-                time.sleep(min(2 ** attempt, 10))
-                continue
+# =========================================================
+# OPENAI PERSONALIZATION
+# =========================================================
 
-            return {
-                "outcome": "api_error",
-                "email": email,
-                "score": None,
-                "verification_status": None,
-            }
+PERSONALIZATION_INSTRUCTIONS = """You are a precise data-extraction assistant for a real estate cold-email tool. Your only job is to pull ONE concrete, specific, non-generic detail from a property listing description that could be referenced in a personalized email opener to the listing agent.
 
-        print(
-            "Hunter verifier error:",
-            response.status_code,
-            email,
-            response.text[:300]
-        )
+RULES:
+- Only extract from these categories, in priority order:
+  1. A named appliance, brand, or material upgrade (e.g. "LG WashTower", "quartz countertops", "stainless steel appliances")
+  2. An unusual structural or layout feature (e.g. "up/down duplex", "in-law suite", "walkout basement", "2.5 storey")
+  3. A notable build year if unusually old or new
+  4. A specific outdoor feature (e.g. "pool", "walkout to backyard", "wraparound deck")
+- NEVER use subjective/marketing adjectives from the listing. Only extract concrete nouns/facts.
+- NEVER paraphrase the agent's sales language back — extract a plain factual detail, not a rephrased compliment.
+- Output must be a short phrase, 6-10 words max, no full sentences, no punctuation at the end.
+- If no detail fits these categories, or the listing is too generic, output exactly: NONE
+- Do not invent or infer details not explicitly stated in the text.
 
-        return {
-            "outcome": "invalid_input",
-            "email": email,
-            "score": None,
-            "verification_status": None,
-        }
+Output format (strict):
+DETAIL: <phrase or NONE>
+CONFIDENCE: <high/medium/low>"""
 
-    return {
-        "outcome": "api_error",
-        "email": email,
-        "score": None,
-        "verification_status": None,
+def extract_openai_output_text(payload):
+    parts = []
+    for item in payload.get("output") or []:
+        for content in item.get("content") or []:
+            if content.get("type") == "output_text" and content.get("text"):
+                parts.append(content["text"])
+    return "\n".join(parts).strip()
+
+def parse_personalization_response(text):
+    text = (text or "").strip()
+    m = re.search(r"DETAIL:\s*(.+?)\s*\nCONFIDENCE:\s*(high|medium|low)\s*$", text, re.I | re.S)
+    if not m:
+        return {"detail": "NONE", "confidence": "low", "outcome": "parse_error"}
+    detail = m.group(1).strip().rstrip(".,;:!?")
+    confidence = m.group(2).lower()
+    if detail.upper() == "NONE":
+        return {"detail": "NONE", "confidence": confidence, "outcome": "no_detail"}
+    if not 6 <= len(detail.split()) <= 10:
+        return {"detail": "NONE", "confidence": confidence, "outcome": "parse_error"}
+    return {"detail": detail, "confidence": confidence, "outcome": "found"}
+
+def openai_extract_personalized_detail(public_remarks):
+    public_remarks = clean_text(public_remarks)
+    if not public_remarks:
+        return {"detail": "NONE", "confidence": "low", "outcome": "invalid_input"}
+
+    url = "https://api.openai.com/v1/responses"
+    headers = {
+        "Authorization": f"Bearer {OPENAI_API_KEY}",
+        "Content-Type": "application/json",
     }
-
-
-# =========================================================
-# HUNTER EMAIL FINDER FALLBACK
-# =========================================================
-
-def hunter_find_email(first_name, last_name, website):
-    """
-    Used only when Actor #2 did NOT provide an email.
-    """
-
-    domain = get_domain_from_website(website)
-
-    if not first_name or not last_name or not domain:
-        return {
-            "outcome": "invalid_input",
-            "email": None,
-            "score": None,
-            "verification_status": None,
-            "domain": domain,
-        }
-
-    url = "https://api.hunter.io/v2/email-finder"
-
-    params = {
-        "domain": domain,
-        "first_name": str(first_name).strip(),
-        "last_name": str(last_name).strip(),
-        "api_key": HUNTER_API_KEY,
+    body = {
+        "model": OPENAI_MODEL,
+        "instructions": PERSONALIZATION_INSTRUCTIONS,
+        "input": "PROPERTY LISTING DESCRIPTION:\n" + public_remarks,
+        "max_output_tokens": 100,
     }
 
     for attempt in range(3):
         try:
-            response = requests.get(url, params=params, timeout=30)
+            response = requests.post(url, headers=headers, json=body, timeout=45)
         except requests.RequestException as exc:
-            print("Hunter Finder connection error:", first_name, last_name, exc)
-
+            print("OpenAI connection error:", exc)
             if attempt < 2:
                 time.sleep(2 ** attempt)
                 continue
-
-            return {
-                "outcome": "api_error",
-                "email": None,
-                "score": None,
-                "verification_status": None,
-                "domain": domain,
-            }
+            return {"detail": "NONE", "confidence": "low", "outcome": "api_error"}
 
         if response.status_code == 200:
             try:
                 payload = response.json()
             except Exception:
-                return {
-                    "outcome": "api_error",
-                    "email": None,
-                    "score": None,
-                    "verification_status": None,
-                    "domain": domain,
-                }
+                return {"detail": "NONE", "confidence": "low", "outcome": "api_error"}
+            return parse_personalization_response(extract_openai_output_text(payload))
 
-            data = payload.get("data") or {}
-            email = clean_text(data.get("email"))
-            score = data.get("score")
-            verification = data.get("verification") or {}
-            status = clean_text(verification.get("status"))
-
-            if email:
-                print(
-                    "Hunter Finder FOUND:",
-                    first_name,
-                    last_name,
-                    email,
-                    "status:",
-                    status,
-                    "score:",
-                    score
-                )
-                return {
-                    "outcome": "found",
-                    "email": email,
-                    "score": score,
-                    "verification_status": status,
-                    "domain": domain,
-                }
-
-            print("Hunter Finder NO EMAIL:", first_name, last_name, domain)
-            return {
-                "outcome": "not_found",
-                "email": None,
-                "score": None,
-                "verification_status": None,
-                "domain": domain,
-            }
-
-        if response.status_code == 451:
-            return {
-                "outcome": "suppressed",
-                "email": None,
-                "score": None,
-                "verification_status": None,
-                "domain": domain,
-            }
-
-        if response.status_code in (403, 429, 500, 502, 503, 504):
+        if response.status_code in (408, 409, 429, 500, 502, 503, 504):
             if attempt < 2:
                 time.sleep(2 ** attempt)
                 continue
 
-            return {
-                "outcome": "api_error",
-                "email": None,
-                "score": None,
-                "verification_status": None,
-                "domain": domain,
-            }
+        print("OpenAI error:", response.status_code, response.text[:300])
+        return {"detail": "NONE", "confidence": "low", "outcome": "api_error"}
 
-        return {
-            "outcome": "invalid_input",
-            "email": None,
-            "score": None,
-            "verification_status": None,
-            "domain": domain,
-        }
+    return {"detail": "NONE", "confidence": "low", "outcome": "api_error"}
 
-    return {
-        "outcome": "api_error",
-        "email": None,
-        "score": None,
-        "verification_status": None,
-        "domain": domain,
-    }
-
-
-# =========================================================
-# ENRICH ACTOR #2 LEADS WITH HUNTER
-# =========================================================
-
-def enrich_leads_with_hunter(df):
-    """
-    Priority:
-      1. Actor-provided email -> Hunter Email Verifier
-      2. No actor email + usable personal website -> Hunter Email Finder
-      3. No email and no usable Finder inputs -> FB routing
-    """
-
+def enrich_leads_with_bouncer(df):
     enriched = df.copy()
-
-    enriched["HunterScore"] = pd.NA
-    enriched["HunterStatus"] = pd.NA
-    enriched["HunterOutcome"] = pd.NA
-    enriched["EmailSource"] = pd.NA
+    enriched["BouncerStatus"] = pd.NA
+    enriched["BouncerReason"] = pd.NA
+    enriched["BouncerOutcome"] = pd.NA
+    enriched["EmailSource"] = "actor"
 
     for index, row in enriched.iterrows():
-
-        actor_email = row.get("Email")
-        first_name = row.get("FirstName")
-        last_name = row.get("LastName")
-        website = row.get("Website")
-
-        has_email = pd.notna(actor_email) and str(actor_email).strip() != ""
-
-        if has_email:
-            result = hunter_verify_email(str(actor_email))
-            enriched.at[index, "EmailSource"] = "actor"
-
-        else:
-            has_finder_inputs = (
-                pd.notna(first_name)
-                and pd.notna(last_name)
-                and pd.notna(website)
-                and str(first_name).strip() != ""
-                and str(last_name).strip() != ""
-                and str(website).strip() != ""
-            )
-
-            if not has_finder_inputs:
-                enriched.at[index, "HunterOutcome"] = "not_found"
-                enriched.at[index, "EmailSource"] = "none"
-                continue
-
-            result = hunter_find_email(
-                str(first_name),
-                str(last_name),
-                str(website)
-            )
-            enriched.at[index, "EmailSource"] = "hunter_finder"
-
-        enriched.at[index, "HunterOutcome"] = result["outcome"]
-
+        email = row.get("Email")
+        if pd.isna(email) or str(email).strip() == "":
+            enriched.at[index, "BouncerOutcome"] = "not_found"
+            enriched.at[index, "EmailSource"] = "none"
+            continue
+        result = bouncer_verify_email(str(email))
+        enriched.at[index, "BouncerOutcome"] = result["outcome"]
         if result.get("email"):
             enriched.at[index, "Email"] = str(result["email"]).strip().lower()
-
-        if result.get("score") is not None:
-            enriched.at[index, "HunterScore"] = result["score"]
-
-        if result.get("verification_status") is not None:
-            enriched.at[index, "HunterStatus"] = result["verification_status"]
-
+        if result.get("status") is not None:
+            enriched.at[index, "BouncerStatus"] = result["status"]
+        if result.get("reason") is not None:
+            enriched.at[index, "BouncerReason"] = result["reason"]
     return enriched
 
+def enrich_personalization(valid_email_leads):
+    enriched = valid_email_leads.copy()
+    enriched["PersonalizedDetail"] = pd.NA
+    enriched["PersonalizationConfidence"] = pd.NA
+    enriched["PersonalizationOutcome"] = pd.NA
+    for index, row in enriched.iterrows():
+        result = openai_extract_personalized_detail(row.get("PublicRemarks"))
+        enriched.at[index, "PersonalizedDetail"] = result["detail"]
+        enriched.at[index, "PersonalizationConfidence"] = result["confidence"]
+        enriched.at[index, "PersonalizationOutcome"] = result["outcome"]
+    return enriched
 
 # =========================================================
 # UPDATE PERSISTENT EMAILLEADS.CSV ON GITHUB
@@ -707,8 +536,8 @@ def update_email_leads_file(
     """
     EmailLeads.csv is cumulative.
 
-    Contains ONLY leads where Hunter found an email
-    AND HunterStatus is exactly "valid".
+    Contains ONLY actor-provided emails that Bouncer marked deliverable
+    and for which OpenAI produced a usable personalization detail.
 
     Existing valid leads are preserved.
     New leads are appended.
@@ -767,9 +596,13 @@ def update_email_leads_file(
         "Price",
         "Website",
         "Email",
-        "HunterScore",
-        "HunterStatus",
+        "PublicRemarks",
+        "BouncerStatus",
+        "BouncerReason",
         "EmailSource",
+        "PersonalizedDetail",
+        "PersonalizationConfidence",
+        "PersonalizationOutcome",
     ]
 
     for column in email_columns:
@@ -789,10 +622,8 @@ def update_email_leads_file(
         .str.lower()
     )
 
-    # Safety: EmailLeads.csv should contain ONLY
-    # Hunter-verified valid emails and never blank emails.
-    new_email_leads["HunterStatus"] = (
-        new_email_leads["HunterStatus"]
+    new_email_leads["BouncerStatus"] = (
+        new_email_leads["BouncerStatus"]
         .astype("string")
         .str.strip()
         .str.lower()
@@ -804,7 +635,7 @@ def update_email_leads_file(
             &
             (new_email_leads["Email"] != "")
             &
-            (new_email_leads["HunterStatus"] == "valid")
+            (new_email_leads["BouncerStatus"] == "deliverable")
         ]
         .copy()
     )
@@ -846,9 +677,8 @@ def update_email_leads_file(
             existing_df[email_columns]
         )
 
-        # Keep ONLY Hunter-verified valid emails from older runs too.
-        existing_df["HunterStatus"] = (
-            existing_df["HunterStatus"]
+        existing_df["BouncerStatus"] = (
+            existing_df["BouncerStatus"]
             .astype("string")
             .str.strip()
             .str.lower()
@@ -856,7 +686,7 @@ def update_email_leads_file(
 
         existing_df = (
             existing_df[
-                existing_df["HunterStatus"] == "valid"
+                existing_df["BouncerStatus"] == "deliverable"
             ]
             .copy()
         )
@@ -994,9 +824,10 @@ def update_fb_leads_file(
         "Price",
         "Website",
         "Email",
-        "HunterScore",
-        "HunterStatus",
-        "HunterOutcome",
+        "PublicRemarks",
+        "BouncerStatus",
+        "BouncerReason",
+        "BouncerOutcome",
         "EmailSource",
     ]
 
@@ -1148,6 +979,133 @@ def update_fb_leads_file(
 
 
 # =========================================================
+# UPDATE VALID EMAILS WITHOUT PERSONALIZATION
+# =========================================================
+
+def update_no_personalization_file(repo, leads):
+    path = f"{GITHUB_FOLDER}/Emails Valid no personlised sentence.csv"
+    columns = [
+        "Bedrooms", "FirstName", "LastName", "Phone", "Address", "City",
+        "Price", "Website", "Email", "PublicRemarks", "BouncerStatus",
+        "BouncerReason", "EmailSource", "PersonalizedDetail",
+        "PersonalizationConfidence", "PersonalizationOutcome",
+    ]
+    leads = leads.copy()
+    for c in columns:
+        if c not in leads.columns:
+            leads[c] = pd.NA
+    leads = leads[columns]
+    leads["Email"] = leads["Email"].astype("string").str.strip().str.lower()
+
+    try:
+        existing_file = repo.get_contents(path, ref=GITHUB_BRANCH)
+        text = existing_file.decoded_content.decode("utf-8")
+        existing = pd.read_csv(StringIO(text), dtype="string") if text.strip() else pd.DataFrame(columns=columns)
+        for c in columns:
+            if c not in existing.columns:
+                existing[c] = pd.NA
+        combined = pd.concat([existing[columns], leads], ignore_index=True)
+        combined = combined[combined["Email"].notna() & (combined["Email"] != "")].drop_duplicates(subset=["Email"], keep="last")
+        repo.update_file(path=path, message="Update valid emails without personalization", content=combined.to_csv(index=False), sha=existing_file.sha, branch=GITHUB_BRANCH)
+        return len(combined)
+    except GithubException as exc:
+        if exc.status == 404:
+            initial = leads[leads["Email"].notna() & (leads["Email"] != "")].drop_duplicates(subset=["Email"], keep="last")
+            repo.create_file(path=path, message="Create valid emails without personalization", content=initial.to_csv(index=False), branch=GITHUB_BRANCH)
+            return len(initial)
+        raise
+
+
+
+# =========================================================
+# UPDATE ONE PERSISTENT FILE PER CATEGORY
+# =========================================================
+
+def update_category_file(repo, path, new_rows, message_label):
+    """Append new rows into one stable GitHub CSV and remove duplicates.
+
+    This prevents timestamped file spam. Emails are the preferred dedupe key;
+    rows without an email are deduplicated by agent/listing identity fields.
+    """
+    new_rows = new_rows.copy()
+
+    try:
+        existing_file = repo.get_contents(path, ref=GITHUB_BRANCH)
+        text = existing_file.decoded_content.decode("utf-8")
+        existing = (
+            pd.read_csv(StringIO(text), dtype="string")
+            if text.strip()
+            else pd.DataFrame(columns=new_rows.columns)
+        )
+    except GithubException as exc:
+        if exc.status != 404:
+            raise
+        existing_file = None
+        existing = pd.DataFrame(columns=new_rows.columns)
+
+    all_columns = list(dict.fromkeys(list(existing.columns) + list(new_rows.columns)))
+    for column in all_columns:
+        if column not in existing.columns:
+            existing[column] = pd.NA
+        if column not in new_rows.columns:
+            new_rows[column] = pd.NA
+
+    combined = pd.concat(
+        [existing[all_columns], new_rows[all_columns]],
+        ignore_index=True,
+    )
+
+    if "Email" in combined.columns:
+        combined["Email"] = (
+            combined["Email"].astype("string").str.strip().str.lower()
+        )
+
+        with_email = combined[
+            combined["Email"].notna() & (combined["Email"] != "")
+        ].drop_duplicates(subset=["Email"], keep="last")
+
+        without_email = combined[
+            combined["Email"].isna() | (combined["Email"] == "")
+        ].copy()
+
+        identity_columns = [
+            c for c in ["FirstName", "LastName", "Phone", "Address", "Website"]
+            if c in without_email.columns
+        ]
+        if identity_columns:
+            without_email = without_email.drop_duplicates(
+                subset=identity_columns, keep="last"
+            )
+        else:
+            without_email = without_email.drop_duplicates(keep="last")
+
+        combined = pd.concat([with_email, without_email], ignore_index=True)
+    else:
+        combined = combined.drop_duplicates(keep="last")
+
+    csv_content = combined.to_csv(index=False)
+
+    if existing_file is None:
+        repo.create_file(
+            path=path,
+            message=f"Create {message_label}",
+            content=csv_content,
+            branch=GITHUB_BRANCH,
+        )
+    else:
+        repo.update_file(
+            path=path,
+            message=f"Update {message_label}",
+            content=csv_content,
+            sha=existing_file.sha,
+            branch=GITHUB_BRANCH,
+        )
+
+    print("Updated category file:", path, "total rows:", len(combined))
+    return len(combined)
+
+
+# =========================================================
 # HEALTH CHECK
 # =========================================================
 
@@ -1157,7 +1115,7 @@ def health():
     return {
         "status": "ok",
         "service": (
-            "Apify Realtor.com Actor #2 + Hunter Verification"
+            "Apify Realtor.com Actor #2 + Bouncer + OpenAI"
         ),
         "webhook": "/webhook"
     }
@@ -1305,10 +1263,7 @@ async def apify_webhook(
 
 
     # =====================================================
-    # 5. HUNTER PROCESSING
-    #
-    # Actor email exists -> Hunter Verifier.
-    # No actor email + personal website -> Hunter Finder fallback.
+    # 5. BOUNCER VERIFICATION + OPENAI PERSONALIZATION
     # =====================================================
 
     actor_email_count = int(df["Email"].notna().sum())
@@ -1316,98 +1271,78 @@ async def apify_webhook(
 
     print("Actor-provided emails:", actor_email_count)
     print("Actor rows without email:", actor_no_email_count)
-    print("Starting Hunter verification / fallback enrichment...")
+    print("Starting Bouncer verification...")
 
-    enriched_leads = enrich_leads_with_hunter(df)
+    enriched_leads = enrich_leads_with_bouncer(df)
 
-    normalized_hunter_status = (
-        enriched_leads["HunterStatus"]
-        .astype("string")
-        .str.strip()
-        .str.lower()
-        .fillna("")
+    normalized_bouncer_status = (
+        enriched_leads["BouncerStatus"]
+        .astype("string").str.strip().str.lower().fillna("")
     )
-
     normalized_outcome = (
-        enriched_leads["HunterOutcome"]
-        .astype("string")
-        .str.strip()
-        .str.lower()
-        .fillna("")
+        enriched_leads["BouncerOutcome"]
+        .astype("string").str.strip().str.lower().fillna("")
     )
 
-    # Only Hunter status == valid enters EmailLeads.csv.
-    new_email_leads = (
+    bouncer_valid_leads = (
         enriched_leads[
             enriched_leads["Email"].notna()
-            & (normalized_hunter_status == "valid")
+            & (normalized_bouncer_status == "deliverable")
         ]
-        .copy()
-        .reset_index(drop=True)
+        .copy().reset_index(drop=True)
     )
 
-    # Normal completed non-valid results go to FBleads.csv.
-    # Privacy suppression and API failures are deliberately excluded.
+    personalized_valid_leads = enrich_personalization(bouncer_valid_leads)
+    normalized_personalization = (
+        personalized_valid_leads["PersonalizationOutcome"]
+        .astype("string").str.strip().str.lower().fillna("")
+    )
+
+    new_email_leads = (
+        personalized_valid_leads[normalized_personalization == "found"]
+        .copy().reset_index(drop=True)
+    )
+    no_personalization_leads = (
+        personalized_valid_leads[normalized_personalization != "found"]
+        .copy().reset_index(drop=True)
+    )
+
     new_fb_leads = (
         enriched_leads[
-            (
-                normalized_outcome.isin(["not_found"])
-            )
-            |
-            (
-                normalized_outcome.isin(["verified", "found"])
-                & (normalized_hunter_status != "valid")
-            )
+            (normalized_outcome == "not_found")
+            | ((normalized_outcome == "verified") & (normalized_bouncer_status != "deliverable"))
         ]
-        .copy()
-        .reset_index(drop=True)
+        .copy().reset_index(drop=True)
     )
 
-    hunter_valid = int((normalized_hunter_status == "valid").sum())
-    hunter_non_valid = int(
-        (
-            normalized_outcome.isin(["verified", "found"])
-            & (normalized_hunter_status != "valid")
-        ).sum()
-    )
-    hunter_not_found = int((normalized_outcome == "not_found").sum())
-    hunter_errors = int((normalized_outcome == "api_error").sum())
-    hunter_suppressed = int((normalized_outcome == "suppressed").sum())
+    bouncer_deliverable = int((normalized_bouncer_status == "deliverable").sum())
+    bouncer_non_deliverable = int(((normalized_outcome == "verified") & (normalized_bouncer_status != "deliverable")).sum())
+    bouncer_not_found = int((normalized_outcome == "not_found").sum())
+    bouncer_errors = int((normalized_outcome == "api_error").sum())
 
-    print("Hunter valid:", hunter_valid)
-    print("Hunter non-valid:", hunter_non_valid)
-    print("Hunter no email:", hunter_not_found)
-    print("Hunter API errors:", hunter_errors)
-    print("Hunter suppressed:", hunter_suppressed)
-    print("New VALID email leads:", len(new_email_leads))
+    print("Bouncer deliverable:", bouncer_deliverable)
+    print("Bouncer non-deliverable:", bouncer_non_deliverable)
+    print("No actor email:", bouncer_not_found)
+    print("Bouncer API errors:", bouncer_errors)
+    print("New personalized email leads:", len(new_email_leads))
+    print("Valid emails without personalization:", len(no_personalization_leads))
     print("New FB leads:", len(new_fb_leads))
-
 
     # =====================================================
     # 8. CREATE MASTER CSV FILES
     # =====================================================
 
-    enriched_csv = enriched_leads.to_csv(index=False)
+    # Keep ONE persistent file per lead category.
+    # These files are updated cumulatively instead of creating timestamped copies.
+    enriched_filename = f"{GITHUB_FOLDER}/actor2_enriched_leads.csv"
+    no_actor_email_filename = f"{GITHUB_FOLDER}/actor2_no_original_email.csv"
 
-    no_actor_email_csv = (
+    no_actor_email_leads = (
         enriched_leads[
             enriched_leads["EmailSource"] != "actor"
         ]
-        .to_csv(index=False)
-    )
-
-    timestamp = datetime.now(timezone.utc).strftime(
-        "%Y-%m-%d_%H-%M-%S-%f"
-    )
-
-    enriched_filename = (
-        f"{GITHUB_FOLDER}/"
-        f"actor2_enriched_leads_{timestamp}.csv"
-    )
-
-    no_actor_email_filename = (
-        f"{GITHUB_FOLDER}/"
-        f"actor2_no_original_email_{timestamp}.csv"
+        .copy()
+        .reset_index(drop=True)
     )
 
 
@@ -1423,37 +1358,29 @@ async def apify_webhook(
 
 
         # -----------------------------------------
-        # FULL ACTOR #2 ENRICHED SNAPSHOT
+        # ONE PERSISTENT FILE PER CATEGORY
         # -----------------------------------------
 
-        repo.create_file(
-            path=enriched_filename,
-            message=f"Add Actor #2 enriched leads {timestamp}",
-            content=enriched_csv,
-            branch=GITHUB_BRANCH,
+        total_enriched_master = update_category_file(
+            repo,
+            enriched_filename,
+            enriched_leads,
+            "Actor #2 enriched leads",
         )
 
-        print("Uploaded:", enriched_filename)
-
-        # -----------------------------------------
-        # ROWS THAT DID NOT START WITH AN ACTOR EMAIL
-        # -----------------------------------------
-
-        repo.create_file(
-            path=no_actor_email_filename,
-            message=f"Add Actor #2 no-original-email leads {timestamp}",
-            content=no_actor_email_csv,
-            branch=GITHUB_BRANCH,
+        total_no_actor_email_master = update_category_file(
+            repo,
+            no_actor_email_filename,
+            no_actor_email_leads,
+            "Actor #2 no-original-email leads",
         )
-
-        print("Uploaded:", no_actor_email_filename)
 
 
         # -----------------------------------------
         # EMAILLEADS.CSV
         #
-        # Actor email or Finder email that Hunter
-        # confirmed with HunterStatus == valid.
+        # Actor-provided email that Bouncer marked deliverable
+        # and OpenAI successfully personalized.
         # -----------------------------------------
 
         total_email_leads = (
@@ -1463,13 +1390,15 @@ async def apify_webhook(
             )
         )
 
+        total_no_personalization_leads = update_no_personalization_file(
+            repo, no_personalization_leads
+        )
+
 
         # -----------------------------------------
         # FBLEADS.CSV
         #
-        # Normal completed no-email / non-valid results
-        # (accept_all, unknown, invalid, webmail,
-        # disposable, etc.).
+        # No actor email or Bouncer-completed non-deliverable results.
         # -----------------------------------------
 
         total_fb_leads = (
@@ -1506,17 +1435,20 @@ async def apify_webhook(
         "records_after_cleaning": len(df),
         "actor_provided_emails": actor_email_count,
         "actor_rows_without_email": actor_no_email_count,
-        "hunter_valid": hunter_valid,
-        "hunter_non_valid": hunter_non_valid,
-        "hunter_no_email": hunter_not_found,
-        "hunter_api_errors": hunter_errors,
-        "hunter_suppressed": hunter_suppressed,
+        "bouncer_deliverable": bouncer_deliverable,
+        "bouncer_non_deliverable": bouncer_non_deliverable,
+        "bouncer_api_errors": bouncer_errors,
         "new_email_leads": len(new_email_leads),
         "total_email_leads": total_email_leads,
         "email_leads_file": f"{GITHUB_FOLDER}/EmailLeads.csv",
+        "valid_emails_without_personalization": len(no_personalization_leads),
+        "total_valid_emails_without_personalization": total_no_personalization_leads,
+        "no_personalization_file": f"{GITHUB_FOLDER}/Emails Valid no personlised sentence.csv",
         "new_fb_leads": len(new_fb_leads),
         "total_fb_leads": total_fb_leads,
         "fb_leads_file": f"{GITHUB_FOLDER}/FBleads.csv",
         "enriched_file": enriched_filename,
+        "total_enriched_master": total_enriched_master,
         "no_original_email_file": no_actor_email_filename,
+        "total_no_original_email_master": total_no_actor_email_master,
     }
