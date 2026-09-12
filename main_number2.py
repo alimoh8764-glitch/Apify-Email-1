@@ -407,22 +407,54 @@ def bouncer_verify_email(email):
 # OPENAI PERSONALIZATION
 # =========================================================
 
-PERSONALIZATION_INSTRUCTIONS = """You are a precise data-extraction assistant for a real estate cold-email tool. Your only job is to pull ONE concrete, specific, non-generic detail from a property listing description that could be referenced in a personalized email opener to the listing agent.
+PERSONALIZATION_INSTRUCTIONS = """You write ONE short, natural personalization comment for a real estate cold email.
+
+Read the property listing description and choose ONE concrete, specific detail that is genuinely worth commenting on. Then write a casual human reaction that shows you understood why that detail matters.
+
+The goal is NOT to extract or restate a fact. The goal is to sound like a real person looked at the listing, noticed something specific, and had a quick sensible thought about it.
+
+STYLE FORMULA:
+specific detail noticed + natural opinion/reaction + practical reason it matters
 
 RULES:
-- Only extract from these categories, in priority order:
-  1. A named appliance, brand, or material upgrade (e.g. "LG WashTower", "quartz countertops", "stainless steel appliances")
-  2. An unusual structural or layout feature (e.g. "up/down duplex", "in-law suite", "walkout basement", "2.5 storey")
-  3. A notable build year if unusually old or new
-  4. A specific outdoor feature (e.g. "pool", "walkout to backyard", "wraparound deck")
-- NEVER use subjective/marketing adjectives from the listing. Only extract concrete nouns/facts.
-- NEVER paraphrase the agent's sales language back — extract a plain factual detail, not a rephrased compliment.
-- Output must be a short phrase, 6-10 words max, no full sentences, no punctuation at the end.
-- If no detail fits these categories, or the listing is too generic, output exactly: NONE
-- Do not invent or infer details not explicitly stated in the text.
+- Mention the actual feature, upgrade, renovation, layout, or property detail so the agent immediately knows what you noticed.
+- Prefer details that give you something meaningful to say: major system replacements, renovations, useful layout features, notable outdoor features, quality materials/appliances, or other practical upgrades.
+- Explain naturally why the detail is useful, convenient, valuable, or saves the next owner hassle/money/time when that conclusion is reasonable from the listing.
+- Sound casual and conversational, like a person talking to another person.
+- Use plain everyday language.
+- Do NOT sound like marketing copy, a property brochure, a real estate analyst, or an AI.
+- Do NOT simply repeat the listing fact.
+- Do NOT use vague filler such as "strong selling point", "big-ticket updates have been handled", "great feature", "nice property", "impressive", "stunning", "beautiful", "gorgeous", or similar generic compliments.
+- Do NOT force a joke, pun, clever line, or exaggerated enthusiasm.
+- Do NOT invent facts or benefits that are not reasonably supported by the listing.
+- Do NOT claim something will definitely increase value, reduce bills, prevent repairs, or produce another outcome unless the listing itself supports that claim.
+- Keep the comment roughly 10-22 words.
+- Do not include the agent name, property address, listing price, greeting, or the rest of the email.
+- Do not ask a question.
+- Do not put quotation marks around the line.
+- If there is no specific detail that supports a natural, useful comment, output exactly NONE.
+
+TONE EXAMPLES:
+
+Listing detail: "HVAC system replaced in 2019"
+Good: The HVAC replacement in 2019 was a good move, definitely saves the next owner from one of those headaches
+
+Listing detail: "New roof installed in 2023"
+Good: Getting the roof done in 2023 was smart, that's one major job the next owner won't have hanging over them
+
+Listing detail: "Walkout basement with separate entrance"
+Good: That separate basement entrance is handy, gives the next owner a lot more flexibility with how they use the space
+
+Listing detail: "Wraparound deck"
+Good: That wraparound deck is a nice touch, I can see the next owner getting a lot of use out of it
+
+Listing detail: "Quartz countertops"
+Bad: Quartz countertops are a strong selling point
+Bad: The quartz countertops are stunning
+Bad: Nice to see the big-ticket upgrades have been handled
 
 Output format (strict):
-DETAIL: <phrase or NONE>
+LINE: <comment or NONE>
 CONFIDENCE: <high/medium/low>"""
 
 def extract_openai_output_text(payload):
@@ -435,14 +467,14 @@ def extract_openai_output_text(payload):
 
 def parse_personalization_response(text):
     text = (text or "").strip()
-    m = re.search(r"DETAIL:\s*(.+?)\s*\nCONFIDENCE:\s*(high|medium|low)\s*$", text, re.I | re.S)
+    m = re.search(r"LINE:\s*(.+?)\s*\nCONFIDENCE:\s*(high|medium|low)\s*$", text, re.I | re.S)
     if not m:
         return {"detail": "NONE", "confidence": "low", "outcome": "parse_error"}
-    detail = m.group(1).strip().rstrip(".,;:!?")
+    detail = m.group(1).strip().strip('"').strip("'")
     confidence = m.group(2).lower()
     if detail.upper() == "NONE":
         return {"detail": "NONE", "confidence": confidence, "outcome": "no_detail"}
-    if not 6 <= len(detail.split()) <= 10:
+    if not 10 <= len(detail.split()) <= 22:
         return {"detail": "NONE", "confidence": confidence, "outcome": "parse_error"}
     return {"detail": detail, "confidence": confidence, "outcome": "found"}
 
@@ -515,12 +547,12 @@ def enrich_leads_with_bouncer(df):
 
 def enrich_personalization(valid_email_leads):
     enriched = valid_email_leads.copy()
-    enriched["PersonalizedDetail"] = pd.NA
+    enriched["PersonalizedLine"] = pd.NA
     enriched["PersonalizationConfidence"] = pd.NA
     enriched["PersonalizationOutcome"] = pd.NA
     for index, row in enriched.iterrows():
         result = openai_extract_personalized_detail(row.get("PublicRemarks"))
-        enriched.at[index, "PersonalizedDetail"] = result["detail"]
+        enriched.at[index, "PersonalizedLine"] = result["detail"]
         enriched.at[index, "PersonalizationConfidence"] = result["confidence"]
         enriched.at[index, "PersonalizationOutcome"] = result["outcome"]
     return enriched
@@ -600,7 +632,7 @@ def update_email_leads_file(
         "BouncerStatus",
         "BouncerReason",
         "EmailSource",
-        "PersonalizedDetail",
+        "PersonalizedLine",
         "PersonalizationConfidence",
         "PersonalizationOutcome",
     ]
@@ -987,7 +1019,7 @@ def update_no_personalization_file(repo, leads):
     columns = [
         "Bedrooms", "FirstName", "LastName", "Phone", "Address", "City",
         "Price", "Website", "Email", "PublicRemarks", "BouncerStatus",
-        "BouncerReason", "EmailSource", "PersonalizedDetail",
+        "BouncerReason", "EmailSource", "PersonalizedLine",
         "PersonalizationConfidence", "PersonalizationOutcome",
     ]
     leads = leads.copy()
