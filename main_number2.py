@@ -428,7 +428,7 @@ RULES:
 - Do NOT force a joke, pun, clever line, or exaggerated enthusiasm.
 - Do NOT invent facts or benefits that are not reasonably supported by the listing.
 - Do NOT claim something will definitely increase value, reduce bills, prevent repairs, or produce another outcome unless the listing itself supports that claim.
-- Keep the comment roughly 10-22 words.
+- Keep the comment between 10 and 17 words.
 - Do not include the agent name, property address, listing price, greeting, or the rest of the email.
 - Do not ask a question.
 - Do not put quotation marks around the line.
@@ -466,16 +466,66 @@ def extract_openai_output_text(payload):
     return "\n".join(parts).strip()
 
 def parse_personalization_response(text):
-    text = (text or "").strip()
-    m = re.search(r"LINE:\s*(.+?)\s*\nCONFIDENCE:\s*(high|medium|low)\s*$", text, re.I | re.S)
-    if not m:
+    """Parse OpenAI's personalization without throwing away good lines over minor formatting."""
+    raw = (text or "").strip()
+
+    if not raw:
         return {"detail": "NONE", "confidence": "low", "outcome": "parse_error"}
-    detail = m.group(1).strip().strip('"').strip("'")
-    confidence = m.group(2).lower()
-    if detail.upper() == "NONE":
+
+    # Remove accidental Markdown code fences.
+    raw = re.sub(r"^```(?:text)?\s*", "", raw, flags=re.I)
+    raw = re.sub(r"\s*```$", "", raw).strip()
+
+    # Confidence is useful metadata, but it should never decide whether a good line survives.
+    confidence_match = re.search(
+        r"CONFIDENCE\s*:\s*(high|medium|low)",
+        raw,
+        re.I,
+    )
+    confidence = confidence_match.group(1).lower() if confidence_match else "medium"
+
+    # Preferred format: LINE: <comment>
+    line_match = re.search(
+        r"(?:^|\n)\s*(?:[-*]\s*)?LINE\s*:\s*(.+?)(?=\n\s*(?:[-*]\s*)?CONFIDENCE\s*:|\Z)",
+        raw,
+        re.I | re.S,
+    )
+
+    if line_match:
+        detail = line_match.group(1).strip()
+    else:
+        # Fallback: if the model returned only the sentence, keep it instead of discarding the lead.
+        candidate_lines = []
+        for line in raw.splitlines():
+            cleaned = line.strip()
+            if not cleaned:
+                continue
+            if re.match(r"^(?:[-*]\s*)?CONFIDENCE\s*:", cleaned, re.I):
+                continue
+            cleaned = re.sub(r"^(?:[-*]\s*)?(?:LINE\s*:)?\s*", "", cleaned, flags=re.I)
+            if cleaned:
+                candidate_lines.append(cleaned)
+
+        detail = " ".join(candidate_lines).strip()
+
+    detail = detail.strip().strip('"').strip("'").strip()
+
+    if not detail or detail.upper() == "NONE":
         return {"detail": "NONE", "confidence": confidence, "outcome": "no_detail"}
-    if not 10 <= len(detail.split()) <= 22:
+
+    # Remove an accidental trailing confidence field if it ended up on the same line.
+    detail = re.sub(
+        r"\s+CONFIDENCE\s*:\s*(high|medium|low)\s*$",
+        "",
+        detail,
+        flags=re.I,
+    ).strip()
+
+    # Keep personalization concise enough to drop naturally into the cold email.
+    word_count = len(detail.split())
+    if word_count < 8 or word_count > 17:
         return {"detail": "NONE", "confidence": confidence, "outcome": "parse_error"}
+
     return {"detail": detail, "confidence": confidence, "outcome": "found"}
 
 def openai_extract_personalized_detail(public_remarks):
@@ -492,7 +542,7 @@ def openai_extract_personalized_detail(public_remarks):
         "model": OPENAI_MODEL,
         "instructions": PERSONALIZATION_INSTRUCTIONS,
         "input": "PROPERTY LISTING DESCRIPTION:\n" + public_remarks,
-        "max_output_tokens": 100,
+        "max_output_tokens": 160,
     }
 
     for attempt in range(3):
@@ -510,7 +560,20 @@ def openai_extract_personalized_detail(public_remarks):
                 payload = response.json()
             except Exception:
                 return {"detail": "NONE", "confidence": "low", "outcome": "api_error"}
-            return parse_personalization_response(extract_openai_output_text(payload))
+
+            raw_output = extract_openai_output_text(payload)
+            print("OpenAI raw personalization:", repr(raw_output[:500]))
+
+            parsed = parse_personalization_response(raw_output)
+
+            # If OpenAI returned something malformed, give it another chance instead of
+            # immediately throwing a valid email into the no-personalization file.
+            if parsed["outcome"] == "parse_error" and attempt < 2:
+                print("OpenAI personalization parse error; retrying...")
+                time.sleep(1)
+                continue
+
+            return parsed
 
         if response.status_code in (408, 409, 429, 500, 502, 503, 504):
             if attempt < 2:
