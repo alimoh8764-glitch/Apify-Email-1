@@ -414,7 +414,7 @@ Read the property listing description and choose ONE concrete, specific detail t
 The goal is NOT to extract or restate a fact. The goal is to sound like a real person looked at the listing, noticed something specific, and had a quick sensible thought about it.
 
 STYLE FORMULA:
-specific detail noticed + natural opinion/reaction + practical reason it matters
+specific detail noticed + natural reaction/opinion + practical reason it matters
 
 RULES:
 - Mention the actual feature, upgrade, renovation, layout, or property detail so the agent immediately knows what you noticed.
@@ -422,36 +422,49 @@ RULES:
 - Explain naturally why the detail is useful, convenient, valuable, or saves the next owner hassle/money/time when that conclusion is reasonable from the listing.
 - Sound casual and conversational, like a person talking to another person.
 - Use plain everyday language.
+- Keep the comment between 10 and 17 words.
+- The line MUST be a complete thought and MUST NOT end mid-sentence.
 - Do NOT sound like marketing copy, a property brochure, a real estate analyst, or an AI.
 - Do NOT simply repeat the listing fact.
-- Do NOT use vague filler such as "strong selling point", "big-ticket updates have been handled", "great feature", "nice property", "impressive", "stunning", "beautiful", "gorgeous", or similar generic compliments.
 - Do NOT force a joke, pun, clever line, or exaggerated enthusiasm.
 - Do NOT invent facts or benefits that are not reasonably supported by the listing.
 - Do NOT claim something will definitely increase value, reduce bills, prevent repairs, or produce another outcome unless the listing itself supports that claim.
-- Keep the comment between 10 and 17 words.
-- Do not include the agent name, property address, listing price, greeting, or the rest of the email.
-- Do not ask a question.
-- Do not put quotation marks around the line.
-- If there is no specific detail that supports a natural, useful comment, output exactly NONE.
+- Do NOT include the agent name, property address, listing price, greeting, or the rest of the email.
+- Do NOT ask a question.
+- Do NOT put quotation marks around the line.
 
-TONE EXAMPLES:
+AVOID REPETITIVE AI PHRASES:
+- Do not overuse "handy", "reassuring", "genuinely useful", "nice touch", "strong selling point", "big-ticket updates", or "great feature".
+- Do not default to the phrase "the next owner" in every response.
+- Vary the sentence structure naturally.
+- Prefer direct, ordinary phrasing such as "smart move", "one less thing to worry about", "that should make life easier", "saves someone a headache", or other natural wording when it fits.
+- Do not use the same sentence pattern every time.
+
+GOOD STYLE EXAMPLES:
 
 Listing detail: "HVAC system replaced in 2019"
-Good: The HVAC replacement in 2019 was a good move, definitely saves the next owner from one of those headaches
+Good: Replacing the HVAC in 2019 was a smart move, saves someone a headache down the line
 
 Listing detail: "New roof installed in 2023"
-Good: Getting the roof done in 2023 was smart, that's one major job the next owner won't have hanging over them
+Good: Getting the roof done in 2023 was smart, one less major job to worry about
 
 Listing detail: "Walkout basement with separate entrance"
-Good: That separate basement entrance is handy, gives the next owner a lot more flexibility with how they use the space
+Good: That separate basement entrance gives the place a lot more flexibility without complicating the main living space
 
-Listing detail: "Wraparound deck"
-Good: That wraparound deck is a nice touch, I can see the next owner getting a lot of use out of it
+Listing detail: "Upstairs laundry room"
+Good: Keeping the laundry upstairs makes everyday life easier, especially with all the bedrooms on that level
 
-Listing detail: "Quartz countertops"
-Bad: Quartz countertops are a strong selling point
-Bad: The quartz countertops are stunning
+Listing detail: "Detached garage with workshop"
+Good: That garage workshop setup is ideal for someone who actually needs proper space for tools and projects
+
+BAD STYLE EXAMPLES:
+Bad: The quartz countertops are a strong selling point
+Bad: The brand-new roof is reassuring
 Bad: Nice to see the big-ticket upgrades have been handled
+Bad: That feature is genuinely useful for the next owner
+Bad: The separate entrance is handy, giving the next owner flexibility
+
+If there is no specific detail that supports a natural, useful comment, output exactly NONE.
 
 Output format (strict):
 LINE: <comment or NONE>
@@ -466,7 +479,7 @@ def extract_openai_output_text(payload):
     return "\n".join(parts).strip()
 
 def parse_personalization_response(text):
-    """Parse OpenAI's personalization without throwing away good lines over minor formatting."""
+    """Parse and validate OpenAI personalization without saving broken/truncated lines."""
     raw = (text or "").strip()
 
     if not raw:
@@ -476,7 +489,6 @@ def parse_personalization_response(text):
     raw = re.sub(r"^```(?:text)?\s*", "", raw, flags=re.I)
     raw = re.sub(r"\s*```$", "", raw).strip()
 
-    # Confidence is useful metadata, but it should never decide whether a good line survives.
     confidence_match = re.search(
         r"CONFIDENCE\s*:\s*(high|medium|low)",
         raw,
@@ -494,7 +506,7 @@ def parse_personalization_response(text):
     if line_match:
         detail = line_match.group(1).strip()
     else:
-        # Fallback: if the model returned only the sentence, keep it instead of discarding the lead.
+        # Fallback: if OpenAI returned only the sentence, keep it.
         candidate_lines = []
         for line in raw.splitlines():
             cleaned = line.strip()
@@ -513,7 +525,6 @@ def parse_personalization_response(text):
     if not detail or detail.upper() == "NONE":
         return {"detail": "NONE", "confidence": confidence, "outcome": "no_detail"}
 
-    # Remove an accidental trailing confidence field if it ended up on the same line.
     detail = re.sub(
         r"\s+CONFIDENCE\s*:\s*(high|medium|low)\s*$",
         "",
@@ -521,9 +532,38 @@ def parse_personalization_response(text):
         flags=re.I,
     ).strip()
 
-    # Keep personalization concise enough to drop naturally into the cold email.
-    word_count = len(detail.split())
+    # Keep personalization concise.
+    words = detail.split()
+    word_count = len(words)
     if word_count < 8 or word_count > 17:
+        return {"detail": "NONE", "confidence": confidence, "outcome": "parse_error"}
+
+    # Reject obvious unfinished/truncated endings.
+    bad_last_words = {
+        "a", "an", "the", "and", "or", "but", "to", "from", "with", "for",
+        "of", "in", "on", "at", "by", "into", "over", "under", "than", "that",
+        "this", "those", "these", "their", "your", "his", "her", "its", "some",
+        "any", "more"
+    }
+
+    last_word = re.sub(r"[^A-Za-z']", "", words[-1]).lower()
+    if last_word in bad_last_words:
+        return {"detail": "NONE", "confidence": confidence, "outcome": "parse_error"}
+
+    # Reject trailing punctuation/patterns that strongly suggest the sentence was cut off.
+    if re.search(r"[-–—,:;/]\s*$", detail):
+        return {"detail": "NONE", "confidence": confidence, "outcome": "parse_error"}
+
+    # Reject a few templated phrases we specifically want to avoid.
+    lower = detail.lower()
+    banned_phrases = [
+        "strong selling point",
+        "big-ticket updates",
+        "genuinely useful",
+        "nice property",
+        "great feature",
+    ]
+    if any(phrase in lower for phrase in banned_phrases):
         return {"detail": "NONE", "confidence": confidence, "outcome": "parse_error"}
 
     return {"detail": detail, "confidence": confidence, "outcome": "found"}
@@ -569,7 +609,14 @@ def openai_extract_personalized_detail(public_remarks):
             # If OpenAI returned something malformed, give it another chance instead of
             # immediately throwing a valid email into the no-personalization file.
             if parsed["outcome"] == "parse_error" and attempt < 2:
-                print("OpenAI personalization parse error; retrying...")
+                print("OpenAI personalization parse error or truncated line; retrying...")
+                # On retry, make the formatting/completeness requirement extra explicit.
+                body["input"] = (
+                    "PROPERTY LISTING DESCRIPTION:\n"
+                    + public_remarks
+                    + "\n\nIMPORTANT: Return one COMPLETE natural sentence, 10-17 words, "
+                      "then CONFIDENCE. Do not end mid-thought."
+                )
                 time.sleep(1)
                 continue
 
