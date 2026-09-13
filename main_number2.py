@@ -407,71 +407,76 @@ def bouncer_verify_email(email):
 # OPENAI PERSONALIZATION
 # =========================================================
 
-PERSONALIZATION_INSTRUCTIONS = """You write ONE short, natural personalization comment for a real estate cold email.
+PERSONALIZATION_INSTRUCTIONS = """
+You write ONE very short, casual personalization line for a real-estate cold email.
 
-Read the property listing description and choose ONE concrete, specific detail that is genuinely worth commenting on. Then write a casual human reaction that shows you understood why that detail matters.
+Your job is NOT to describe or sell the property. Your job is to sound like a real person who skimmed the listing, noticed one specific thing, and had a quick reaction to it.
 
-The goal is NOT to extract or restate a fact. The goal is to sound like a real person looked at the listing, noticed something specific, and had a quick sensible thought about it.
+STYLE:
+- Pick ONE concrete, specific detail from the listing.
+- React to it naturally instead of explaining its practical value.
+- Sound casual, spontaneous, and slightly opinionated.
+- Prefer simple reactions such as "that's genius", "that's a smart setup", "that just makes sense", "that's pretty rare", "that's a nice touch", or similarly natural wording WHEN they genuinely fit.
+- Vary the reaction and sentence structure. Do not reuse the same reaction on every listing.
+- Contractions and conversational wording are welcome.
+- Prefer the shortest natural version of the thought.
+- Aim for 7-12 words. Never intentionally pad a line just to reach a word count.
+- The line must be a complete thought.
+- The personalization is only a quick aside before the sender asks a question.
 
-STYLE FORMULA:
-specific detail noticed + natural reaction/opinion + practical reason it matters
+DETAIL SELECTION:
+- Prefer unusual, clever, memorable, recently upgraded, or genuinely distinctive details.
+- A detail that makes someone naturally think "that's smart", "that's unusual", or "that's cool" is better than a generic bedroom, countertop, or open-plan feature.
+- Do not invent anything that is not clearly supported by the listing.
 
-RULES:
-- Mention the actual feature, upgrade, renovation, layout, or property detail so the agent immediately knows what you noticed.
-- Prefer details that give you something meaningful to say: major system replacements, renovations, useful layout features, notable outdoor features, quality materials/appliances, or other practical upgrades.
-- Explain naturally why the detail is useful, convenient, valuable, or saves the next owner hassle/money/time when that conclusion is reasonable from the listing.
-- Sound casual and conversational, like a person talking to another person.
-- Use plain everyday language.
-- Aim for 10-12 words. Brevity matters more than fully explaining the feature.
-- The line MUST be a complete thought and MUST NOT end mid-sentence.
-- Treat the personalization as a quick aside, not the focus of the email.
-- Make one specific observation and move on.
-- Prefer a shorter natural line over a detailed explanation.
-- Do NOT sound like marketing copy, a property brochure, a real estate analyst, or an AI.
-- Do NOT simply repeat the listing fact.
-- Do NOT force a joke, pun, clever line, or exaggerated enthusiasm.
-- Do NOT invent facts or benefits that are not reasonably supported by the listing.
-- Do NOT claim something will definitely increase value, reduce bills, prevent repairs, or produce another outcome unless the listing itself supports that claim.
-- Do NOT include the agent name, property address, listing price, greeting, or the rest of the email.
-- Do NOT ask a question.
-- Do NOT put quotation marks around the line.
+DO NOT:
+- Do not sound like a property brochure, realtor, copywriter, or AI.
+- Do not explain obvious benefits just to make the sentence longer.
+- Avoid phrases like "real everyday value", "provides flexibility", "enhanced convenience", "strong selling point", "genuinely useful", "reassuring", "big-ticket updates", "ideal for", or "the next owner".
+- Do not default to formulas like "X makes Y easier" or "X gives buyers Y".
+- Do not mention the agent, address, price, greeting, or the rest of the email.
+- Do not ask a question.
+- Do not use quotation marks.
+- Do not force a joke, pun, or exaggerated compliment.
+- Do not make unsupported claims.
 
-AVOID REPETITIVE AI PHRASES:
-- Do not overuse "handy", "reassuring", "genuinely useful", "nice touch", "strong selling point", "big-ticket updates", or "great feature".
-- Do not default to the phrase "the next owner" in every response.
-- Vary the sentence structure naturally.
-- Prefer direct, ordinary phrasing such as "smart move", "one less thing to worry about", "that should make life easier", "saves someone a headache", or other natural wording when it fits.
-- Do not use the same sentence pattern every time.
+GOOD EXAMPLES:
+Listing: laundry room can also be used as a desk/office area
+LINE: That laundry room doubling as a desk is genius.
+CONFIDENCE: high
 
-GOOD STYLE EXAMPLES:
+Listing: laundry is upstairs beside the bedrooms
+LINE: Putting the laundry upstairs just makes sense.
+CONFIDENCE: high
 
-Listing detail: "HVAC system replaced in 2019"
-Good: Replacing the HVAC in 2019 was a smart move, saves someone a headache down the line
+Listing: property has no HOA and allows chickens
+LINE: No HOA and you can keep chickens? That's pretty rare.
+CONFIDENCE: high
 
-Listing detail: "New roof installed in 2023"
-Good: Getting the roof done in 2023 was smart, one less major job to worry about
+Listing: garage includes a proper workshop
+LINE: That workshop in the garage is a really nice touch.
+CONFIDENCE: high
 
-Listing detail: "Walkout basement with separate entrance"
-Good: That separate basement entrance gives the place a lot more flexibility without complicating the main living space
+Listing: separate basement entrance
+LINE: That separate basement entrance is such a smart setup.
+CONFIDENCE: high
 
-Listing detail: "Upstairs laundry room"
-Good: Keeping the laundry upstairs makes everyday life easier, especially with all the bedrooms on that level
+Listing: first-floor guest suite with full bathroom
+LINE: That downstairs guest suite is actually a great setup.
+CONFIDENCE: high
 
-Listing detail: "Detached garage with workshop"
-Good: That garage workshop setup is ideal for someone who actually needs proper space for tools and projects
+BAD EXAMPLES:
+LINE: The laundry area gives that extra space real everyday value.
+LINE: The new roof is reassuring for the next owner.
+LINE: The separate entrance provides buyers with additional flexibility.
+LINE: The quartz countertops are a strong selling point.
+LINE: The workshop is genuinely useful for future homeowners.
+LINE: Having the pantry near the kitchen should make everyday storage much easier.
 
-BAD STYLE EXAMPLES:
-Bad: The quartz countertops are a strong selling point
-Bad: The brand-new roof is reassuring
-Bad: Nice to see the big-ticket upgrades have been handled
-Bad: That feature is genuinely useful for the next owner
-Bad: The separate entrance is handy, giving the next owner flexibility
-
-If there is no specific detail that supports a natural, useful comment, output exactly NONE.
-
-Output format (strict):
+OUTPUT EXACTLY:
 LINE: <comment or NONE>
-CONFIDENCE: <high/medium/low>"""
+CONFIDENCE: <high/medium/low>
+"""
 
 def extract_openai_output_text(payload):
     parts = []
@@ -538,7 +543,7 @@ def parse_personalization_response(text):
     # Keep personalization concise.
     words = detail.split()
     word_count = len(words)
-    if word_count < 8 or word_count > 15:
+    if word_count < 6 or word_count > 15:
         return {"detail": "NONE", "confidence": confidence, "outcome": "parse_error"}
 
     # Reject obvious unfinished/truncated endings.
@@ -565,6 +570,11 @@ def parse_personalization_response(text):
         "genuinely useful",
         "nice property",
         "great feature",
+        "real everyday value",
+        "provides flexibility",
+        "enhanced convenience",
+        "reassuring for the next owner",
+        "the next owner",
     ]
     if any(phrase in lower for phrase in banned_phrases):
         return {"detail": "NONE", "confidence": confidence, "outcome": "parse_error"}
