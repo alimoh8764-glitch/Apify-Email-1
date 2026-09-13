@@ -414,9 +414,13 @@ Your job is NOT to describe or sell the property. Your job is to sound like a re
 
 STYLE:
 - Pick ONE concrete, specific detail from the listing.
-- React to it naturally instead of explaining its practical value.
+- Make a quick natural observation or reaction to it.
+- OBSERVATION FIRST, COMPLIMENT SECOND. Most lines should simply notice something interesting rather than praise it.
+- Compliment a feature only when praise genuinely feels natural and deserved.
+- Excessive compliments sound salesy, so do not hunt for something to praise.
+- Neutral reactions such as "that just makes sense", "that's a pretty rare combo", "opens up a lot of options", or "interesting having..." are preferred.
+- Strong praise such as "genius", "brilliant", "amazing", "perfect", or "great setup" should be occasional, not the default.
 - Sound casual, spontaneous, and slightly opinionated.
-- Prefer simple reactions such as "that's genius", "that's a smart setup", "that just makes sense", "that's pretty rare", "that's a nice touch", or similarly natural wording WHEN they genuinely fit.
 - Vary the reaction and sentence structure. Do not reuse the same reaction on every listing.
 - Contractions and conversational wording are welcome.
 - Prefer the shortest natural version of the thought.
@@ -438,31 +442,34 @@ DO NOT:
 - Do not ask a question.
 - Do not use quotation marks.
 - Do not force a joke, pun, or exaggerated compliment.
+- Do not compliment every listing.
+- Do not use praise merely to sound personalized.
+- Avoid repeatedly calling features genius, brilliant, amazing, perfect, great, impressive, or fantastic.
 - Do not make unsupported claims.
 
 GOOD EXAMPLES:
-Listing: laundry room can also be used as a desk/office area
-LINE: That laundry room doubling as a desk is genius.
-CONFIDENCE: high
-
 Listing: laundry is upstairs beside the bedrooms
 LINE: Putting the laundry upstairs just makes sense.
 CONFIDENCE: high
 
 Listing: property has no HOA and allows chickens
-LINE: No HOA and you can keep chickens? That's pretty rare.
-CONFIDENCE: high
-
-Listing: garage includes a proper workshop
-LINE: That workshop in the garage is a really nice touch.
+LINE: No HOA and chickens allowed is a pretty rare combo.
 CONFIDENCE: high
 
 Listing: separate basement entrance
-LINE: That separate basement entrance is such a smart setup.
+LINE: That separate basement entrance opens up a lot of options.
 CONFIDENCE: high
 
-Listing: first-floor guest suite with full bathroom
-LINE: That downstairs guest suite is actually a great setup.
+Listing: guest suite is completely separate downstairs
+LINE: Interesting having the guest suite completely separate downstairs.
+CONFIDENCE: high
+
+Listing: garage includes a proper workshop
+LINE: That workshop tucked into the garage is a nice little bonus.
+CONFIDENCE: high
+
+Listing: laundry room can also be used as a desk/office area
+LINE: That laundry room doubling as a desk is genius.
 CONFIDENCE: high
 
 BAD EXAMPLES:
