@@ -415,7 +415,12 @@ Your job is NOT to describe or sell the property. Your job is to sound like a re
 STYLE:
 - Pick ONE concrete, specific detail from the listing.
 - Make a quick natural observation or reaction to it.
-- OBSERVATION FIRST, COMPLIMENT SECOND. Most lines should simply notice something interesting rather than praise it.
+- OBSERVATION FIRST, COMPLIMENT SECOND.
+- LIGHT WIT is welcome when the feature naturally creates an obvious everyday connection.
+- The wit should feel effortless and mildly amusing, not like a punchline.
+- You may connect a listing feature to a common-sense everyday situation when the connection is obvious.
+- Do NOT invent a detailed scenario, character, lifestyle, or story just to make the line funny.
+- If no natural witty angle exists, use a sharp neutral observation instead.
 - Compliment a feature only when praise genuinely feels natural and deserved.
 - Excessive compliments sound salesy, so do not hunt for something to praise.
 - Neutral reactions such as "that just makes sense", "that's a pretty rare combo", "opens up a lot of options", or "interesting having..." are preferred.
@@ -442,6 +447,9 @@ DO NOT:
 - Do not ask a question.
 - Do not use quotation marks.
 - Do not force a joke, pun, or exaggerated compliment.
+- Do not create sitcom-style scenarios or made-up household stories.
+- Do not assume specific hobbies, family situations, or buyer behavior unless the listing strongly supports the connection.
+- A small smile is the goal; a punchline is not.
 - Do not compliment every listing.
 - Do not use praise merely to sound personalized.
 - Avoid repeatedly calling features genius, brilliant, amazing, perfect, great, impressive, or fantastic.
@@ -449,7 +457,15 @@ DO NOT:
 
 GOOD EXAMPLES:
 Listing: laundry is upstairs beside the bedrooms
-LINE: Putting the laundry upstairs just makes sense.
+LINE: Laundry upstairs means no carrying baskets up and down all day.
+CONFIDENCE: high
+
+Listing: oversized walk-in pantry
+LINE: That giant pantry could hide a serious snack problem.
+CONFIDENCE: high
+
+Listing: no carpet anywhere
+LINE: No carpet anywhere? That's a dream for someone with dogs.
 CONFIDENCE: high
 
 Listing: property has no HOA and allows chickens
@@ -464,15 +480,12 @@ Listing: guest suite is completely separate downstairs
 LINE: Interesting having the guest suite completely separate downstairs.
 CONFIDENCE: high
 
-Listing: garage includes a proper workshop
-LINE: That workshop tucked into the garage is a nice little bonus.
-CONFIDENCE: high
-
 Listing: laundry room can also be used as a desk/office area
 LINE: That laundry room doubling as a desk is genius.
 CONFIDENCE: high
 
 BAD EXAMPLES:
+LINE: Three-car garage? Someone's finally keeping the bikes out of the kitchen.
 LINE: The laundry area gives that extra space real everyday value.
 LINE: The new roof is reassuring for the next owner.
 LINE: The separate entrance provides buyers with additional flexibility.
