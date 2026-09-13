@@ -422,8 +422,11 @@ RULES:
 - Explain naturally why the detail is useful, convenient, valuable, or saves the next owner hassle/money/time when that conclusion is reasonable from the listing.
 - Sound casual and conversational, like a person talking to another person.
 - Use plain everyday language.
-- Keep the comment between 10 and 17 words.
+- Aim for 10-12 words. Brevity matters more than fully explaining the feature.
 - The line MUST be a complete thought and MUST NOT end mid-sentence.
+- Treat the personalization as a quick aside, not the focus of the email.
+- Make one specific observation and move on.
+- Prefer a shorter natural line over a detailed explanation.
 - Do NOT sound like marketing copy, a property brochure, a real estate analyst, or an AI.
 - Do NOT simply repeat the listing fact.
 - Do NOT force a joke, pun, clever line, or exaggerated enthusiasm.
@@ -535,7 +538,7 @@ def parse_personalization_response(text):
     # Keep personalization concise.
     words = detail.split()
     word_count = len(words)
-    if word_count < 8 or word_count > 17:
+    if word_count < 8 or word_count > 15:
         return {"detail": "NONE", "confidence": confidence, "outcome": "parse_error"}
 
     # Reject obvious unfinished/truncated endings.
@@ -614,7 +617,7 @@ def openai_extract_personalized_detail(public_remarks):
                 body["input"] = (
                     "PROPERTY LISTING DESCRIPTION:\n"
                     + public_remarks
-                    + "\n\nIMPORTANT: Return one COMPLETE natural sentence, 10-17 words, "
+                    + "\n\nIMPORTANT: Return one COMPLETE natural sentence, ideally 10-12 words and never more than 15 words, "
                       "then CONFIDENCE. Do not end mid-thought."
                 )
                 time.sleep(1)
