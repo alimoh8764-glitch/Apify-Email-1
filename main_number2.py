@@ -415,7 +415,9 @@ Your job is NOT to describe or sell the property. Your job is to sound like a re
 STYLE:
 - Pick ONE concrete, specific detail from the listing.
 - Make a quick natural observation or reaction to it.
-- OBSERVATION FIRST, COMPLIMENT SECOND.
+- OBSERVATION FIRST. A natural everyday connection is second. Complimenting the design is a distant third.
+- When a detail is already unusual or interesting, simply react to what makes it unusual; do not tack on praise afterward.
+- Do not finish an observation with generic approval just because the sentence needs an ending.
 - LIGHT WIT is welcome when the feature naturally creates an obvious everyday connection.
 - The wit should feel effortless and mildly amusing, not like a punchline.
 - You may connect a listing feature to a common-sense everyday situation when the connection is obvious.
@@ -442,6 +444,7 @@ DO NOT:
 - Do not sound like a property brochure, realtor, copywriter, or AI.
 - Do not explain obvious benefits just to make the sentence longer.
 - Avoid phrases like "real everyday value", "provides flexibility", "enhanced convenience", "strong selling point", "genuinely useful", "reassuring", "big-ticket updates", "ideal for", or "the next owner".
+- Never use filler approval phrases such as "thoughtful touch", "nice touch", "nice detail", "thoughtful detail", "great touch", "great feature", "smart design", or "well thought out".
 - Do not default to formulas like "X makes Y easier" or "X gives buyers Y".
 - Do not mention the agent, address, price, greeting, or the rest of the email.
 - Do not ask a question.
@@ -484,7 +487,22 @@ Listing: laundry room can also be used as a desk/office area
 LINE: That laundry room doubling as a desk is genius.
 CONFIDENCE: high
 
+Listing: 1,200-square-foot wired workshop with its own toilet
+LINE: A wired workshop that size with its own toilet is pretty rare.
+CONFIDENCE: high
+
+Listing: three separate flex spaces
+LINE: Three separate flex spaces gives the place plenty of wiggle room.
+CONFIDENCE: high
+
+Listing: two staircases lead to the second floor
+LINE: Two separate staircases upstairs is pretty unusual, you don't see that often.
+CONFIDENCE: high
+
 BAD EXAMPLES:
+LINE: Interesting having such a private guest suite—it's a thoughtful touch.
+LINE: Two staircases to the second floor—that's an unusually thoughtful touch.
+LINE: No carpet anywhere is a pretty nice detail.
 LINE: Three-car garage? Someone's finally keeping the bikes out of the kitchen.
 LINE: The laundry area gives that extra space real everyday value.
 LINE: The new roof is reassuring for the next owner.
@@ -595,6 +613,14 @@ def parse_personalization_response(text):
         "enhanced convenience",
         "reassuring for the next owner",
         "the next owner",
+        "thoughtful touch",
+        "nice touch",
+        "nice detail",
+        "thoughtful detail",
+        "great touch",
+        "great feature",
+        "smart design",
+        "well thought out",
     ]
     if any(phrase in lower for phrase in banned_phrases):
         return {"detail": "NONE", "confidence": confidence, "outcome": "parse_error"}
