@@ -1,6 +1,7 @@
 import os
 import re
 import time
+from datetime import datetime, timezone
 from io import StringIO
 from urllib.parse import urlparse
 
@@ -244,6 +245,14 @@ def extract_records(listings):
             "Website": clean_text(listing.get("primary_agent_href")),
             "Email": clean_text(listing.get("primary_agent_email")),
             "PublicRemarks": clean_text(listing.get("description_text")),
+            # Listing identity / age / live-status fields from Actor #2.
+            "PropertyID": clean_text(listing.get("property_id")),
+            "ListingID": clean_text(listing.get("listing_id")),
+            "PropertyURL": clean_text(listing.get("href")),
+            "ListDate": clean_text(listing.get("list_date")),
+            "ActorStatus": clean_text(listing.get("status")),
+            "ActorDisplayStatus": clean_text(listing.get("display_status")),
+            "ActorIsPending": listing.get("flag_is_pending"),
         })
 
     return rows
@@ -256,60 +265,54 @@ def extract_records(listings):
 def clean_dataframe(rows):
 
     columns = [
-        "Bedrooms",
-        "FirstName",
-        "LastName",
-        "Phone",
-        "Address",
-        "City",
-        "Price",
-        "Website",
-        "Email",
-        "PublicRemarks",
+        "Bedrooms", "FirstName", "LastName", "Phone", "Address", "City",
+        "Price", "Website", "Email", "PublicRemarks", "PropertyID",
+        "ListingID", "PropertyURL", "ListDate", "ActorStatus",
+        "ActorDisplayStatus", "ActorIsPending",
     ]
 
     df = pd.DataFrame(rows, columns=columns)
-
     if df.empty:
         return df
 
     df = df.dropna(how="all")
 
-    for column in ["FirstName", "LastName", "City", "Website", "Email", "PublicRemarks"]:
+    text_columns = [
+        "FirstName", "LastName", "City", "Website", "Email", "PublicRemarks",
+        "PropertyID", "ListingID", "PropertyURL", "ListDate", "ActorStatus",
+        "ActorDisplayStatus",
+    ]
+    for column in text_columns:
         df[column] = df[column].astype("string").str.strip()
 
     df["Phone"] = df["Phone"].astype("string")
 
-    for column in ["Website", "Email"]:
+    for column in ["Website", "Email", "PropertyURL", "ListDate", "PropertyID", "ListingID"]:
         df[column] = df[column].replace({
-            "": pd.NA,
-            "None": pd.NA,
-            "none": pd.NA,
-            "nan": pd.NA,
-            "<NA>": pd.NA,
+            "": pd.NA, "None": pd.NA, "none": pd.NA, "nan": pd.NA, "<NA>": pd.NA,
         })
 
     df["Email"] = df["Email"].str.lower()
 
-    # Prefer deduplication by email when present, while still protecting
-    # against duplicate listing-agent rows with no email.
-    with_email = df[df["Email"].notna()].drop_duplicates(
-        subset=["Email"], keep="first"
+    # IMPORTANT: do not dedupe by email here. One agent can have several listings
+    # with different ages/statuses. Keep one row per property/listing first; we
+    # dedupe by email only after Week 2/3 + live-status filtering.
+    with_property_id = df[df["PropertyID"].notna()].drop_duplicates(
+        subset=["PropertyID"], keep="last"
     )
+    without_property_id = df[df["PropertyID"].isna()].copy()
+    if not without_property_id.empty:
+        fallback_keys = ["ListingID", "PropertyURL", "FirstName", "LastName", "Address"]
+        fallback_keys = [c for c in fallback_keys if c in without_property_id.columns]
+        without_property_id = without_property_id.drop_duplicates(
+            subset=fallback_keys, keep="last"
+        )
 
-    without_email = df[df["Email"].isna()].drop_duplicates(
-        subset=["FirstName", "LastName", "Phone", "Address"],
-        keep="first"
-    )
+    df = pd.concat([with_property_id, without_property_id], ignore_index=True)
 
-    df = pd.concat([with_email, without_email], ignore_index=True)
-
-    # Keep a row if we have at least some agent identity/contact information.
     df = df.dropna(
-        subset=["FirstName", "LastName", "Phone", "Email"],
-        how="all"
+        subset=["FirstName", "LastName", "Phone", "Email"], how="all"
     )
-
     return df.reset_index(drop=True)
 
 
@@ -341,6 +344,209 @@ def get_domain_from_website(website):
 
     except Exception:
         return None
+
+
+# =========================================================
+# WEEK BUCKETS + REALTOR.COM LIVE STATUS GATE
+# =========================================================
+
+ACTIVE_REALTOR_STATUSES = {
+    "for_sale", "for sale", "active", "ready_to_build", "ready to build",
+}
+INACTIVE_REALTOR_STATUSES = {
+    "pending", "contingent", "sold", "off_market", "off market",
+    "not_for_sale", "not for sale", "withdrawn", "expired", "closed",
+}
+
+
+def truthy(value):
+    if value is None or pd.isna(value):
+        return False
+    return str(value).strip().lower() in {"1", "true", "yes", "y", "t"}
+
+
+def normalize_status(value):
+    value = clean_text(value)
+    if not value:
+        return ""
+    return re.sub(r"[\s-]+", "_", value.lower())
+
+
+def add_week_bucket(df, now=None):
+    """Bucket listings by real list_date: Week 1=0-7, Week 2=8-14, Week 3=15-21 days."""
+    result = df.copy()
+    if now is None:
+        now = datetime.now(timezone.utc)
+    now_ts = pd.Timestamp(now)
+    if now_ts.tzinfo is None:
+        now_ts = now_ts.tz_localize("UTC")
+    else:
+        now_ts = now_ts.tz_convert("UTC")
+
+    list_dates = pd.to_datetime(result["ListDate"], utc=True, errors="coerce")
+    # Calendar age avoids a listing flipping buckets just because it was posted
+    # a few hours earlier/later in the day.
+    today = now_ts.normalize()
+    list_days = list_dates.dt.normalize()
+    age_days = (today - list_days).dt.days
+
+    result["ListingAgeDays"] = age_days.astype("Int64")
+    result["LeadWeek"] = pd.NA
+    result.loc[age_days.between(0, 7, inclusive="both"), "LeadWeek"] = "Week 1"
+    result.loc[age_days.between(8, 14, inclusive="both"), "LeadWeek"] = "Week 2"
+    result.loc[age_days.between(15, 21, inclusive="both"), "LeadWeek"] = "Week 3"
+    return result
+
+
+def actor_status_allows_live_check(row):
+    """Cheap pre-filter. Known pending/sold/off-market rows never hit Bouncer."""
+    if truthy(row.get("ActorIsPending")):
+        return False, "actor_pending"
+
+    display_status = normalize_status(row.get("ActorDisplayStatus"))
+    status = normalize_status(row.get("ActorStatus"))
+
+    inactive = {normalize_status(x) for x in INACTIVE_REALTOR_STATUSES}
+    if display_status in inactive:
+        return False, f"actor_{display_status}"
+    if status in inactive:
+        return False, f"actor_{status}"
+
+    return True, "actor_pass"
+
+
+def _first_realtor_status_from_html(html):
+    """Read the earliest main-property-looking status signal from Realtor HTML/JSON."""
+    if not html:
+        return None
+
+    patterns = [
+        r'["\\]display_status["\\]\s*:\s*["\\]([A-Za-z_ -]+)["\\]',
+        r'["\\]displayStatus["\\]\s*:\s*["\\]([A-Za-z_ -]+)["\\]',
+        r'["\\]status["\\]\s*:\s*["\\](for_sale|ready_to_build|pending|contingent|sold|off_market|not_for_sale|withdrawn|expired|closed)["\\]',
+    ]
+
+    matches = []
+    for pattern in patterns:
+        for match in re.finditer(pattern, html, flags=re.I):
+            matches.append((match.start(), normalize_status(match.group(1))))
+
+    if matches:
+        matches.sort(key=lambda item: item[0])
+        return matches[0][1]
+
+    # Conservative text fallback. Only use strong page-level wording.
+    head = html[:250000].lower()
+    title_match = re.search(r"<title[^>]*>(.*?)</title>", head, flags=re.I | re.S)
+    title = re.sub(r"<[^>]+>", " ", title_match.group(1)) if title_match else ""
+    title = re.sub(r"\s+", " ", title).strip()
+
+    if any(term in title for term in ["off market", "recently sold", "property sold", "pending"]):
+        for term, status in [
+            ("off market", "off_market"), ("recently sold", "sold"),
+            ("property sold", "sold"), ("pending", "pending"),
+        ]:
+            if term in title:
+                return status
+    if "for sale" in title:
+        return "for_sale"
+    return None
+
+
+def check_realtor_live_status(property_url):
+    """
+    Load the exact Actor #2 href immediately before Bouncer.
+    Only an explicit active/for-sale result is contactable.
+    404/410 and sold/pending/off-market are rejected.
+    Blocks/timeouts/ambiguous pages are HELD, never treated as active.
+    """
+    property_url = clean_text(property_url)
+    if not property_url:
+        return {"contactable": False, "outcome": "missing_url", "status": None, "http_status": None}
+
+    headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/128.0.0.0 Safari/537.36"
+        ),
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Cache-Control": "no-cache",
+    }
+
+    for attempt in range(3):
+        try:
+            response = requests.get(
+                property_url, headers=headers, timeout=25, allow_redirects=True
+            )
+        except requests.RequestException as exc:
+            print("Realtor live-check connection error:", property_url, exc)
+            if attempt < 2:
+                time.sleep(2 ** attempt)
+                continue
+            return {"contactable": False, "outcome": "request_error", "status": None, "http_status": None}
+
+        code = response.status_code
+        if code in (404, 410):
+            return {"contactable": False, "outcome": "not_found", "status": "off_market", "http_status": code}
+
+        if code in (408, 429, 500, 502, 503, 504):
+            if attempt < 2:
+                time.sleep(2 ** attempt)
+                continue
+            return {"contactable": False, "outcome": "request_error", "status": None, "http_status": code}
+
+        # A block/challenge is NOT evidence that the listing is active.
+        if code in (401, 403):
+            return {"contactable": False, "outcome": "blocked", "status": None, "http_status": code}
+
+        if code != 200:
+            return {"contactable": False, "outcome": "http_error", "status": None, "http_status": code}
+
+        status = _first_realtor_status_from_html(response.text)
+        active = {normalize_status(x) for x in ACTIVE_REALTOR_STATUSES}
+        inactive = {normalize_status(x) for x in INACTIVE_REALTOR_STATUSES}
+
+        if status in active:
+            return {"contactable": True, "outcome": "active", "status": status, "http_status": code}
+        if status in inactive:
+            return {"contactable": False, "outcome": "inactive", "status": status, "http_status": code}
+
+        # Ambiguous 200 page: hold it. Never spend Bouncer credits or contact it.
+        return {"contactable": False, "outcome": "ambiguous", "status": status, "http_status": code}
+
+    return {"contactable": False, "outcome": "request_error", "status": None, "http_status": None}
+
+
+def enrich_with_live_realtor_status(df):
+    checked = df.copy()
+    checked["LiveRealtorStatus"] = pd.NA
+    checked["LiveStatusOutcome"] = pd.NA
+    checked["LiveHTTPStatus"] = pd.NA
+    checked["LiveContactable"] = False
+
+    for index, row in checked.iterrows():
+        actor_ok, actor_reason = actor_status_allows_live_check(row)
+        if not actor_ok:
+            checked.at[index, "LiveStatusOutcome"] = actor_reason
+            checked.at[index, "LiveContactable"] = False
+            continue
+
+        result = check_realtor_live_status(row.get("PropertyURL"))
+        checked.at[index, "LiveRealtorStatus"] = result.get("status")
+        checked.at[index, "LiveStatusOutcome"] = result.get("outcome")
+        checked.at[index, "LiveHTTPStatus"] = result.get("http_status")
+        checked.at[index, "LiveContactable"] = bool(result.get("contactable"))
+
+    return checked
+
+
+def update_week_file(repo, week_name, rows):
+    """Persist one stable CSV inside each Week 1/2/3 GitHub folder."""
+    safe_week = week_name.replace("/", "-")
+    path = f"{GITHUB_FOLDER}/{safe_week} leads/leads.csv"
+    return update_category_file(repo, path, rows, f"{safe_week} leads")
 
 
 # =========================================================
@@ -798,6 +1004,9 @@ def update_email_leads_file(
         "Website",
         "Email",
         "PublicRemarks",
+        "PropertyID", "ListingID", "PropertyURL", "ListDate", "ListingAgeDays", "LeadWeek",
+        "ActorStatus", "ActorDisplayStatus", "ActorIsPending", "LiveRealtorStatus",
+        "LiveStatusOutcome", "LiveHTTPStatus", "LiveContactable",
         "BouncerStatus",
         "BouncerReason",
         "EmailSource",
@@ -1026,6 +1235,9 @@ def update_fb_leads_file(
         "Website",
         "Email",
         "PublicRemarks",
+        "PropertyID", "ListingID", "PropertyURL", "ListDate", "ListingAgeDays", "LeadWeek",
+        "ActorStatus", "ActorDisplayStatus", "ActorIsPending", "LiveRealtorStatus",
+        "LiveStatusOutcome", "LiveHTTPStatus", "LiveContactable",
         "BouncerStatus",
         "BouncerReason",
         "BouncerOutcome",
@@ -1187,7 +1399,10 @@ def update_no_personalization_file(repo, leads):
     path = f"{GITHUB_FOLDER}/Emails Valid no personlised sentence.csv"
     columns = [
         "Bedrooms", "FirstName", "LastName", "Phone", "Address", "City",
-        "Price", "Website", "Email", "PublicRemarks", "BouncerStatus",
+        "Price", "Website", "Email", "PublicRemarks",
+        "PropertyID", "ListingID", "PropertyURL", "ListDate", "ListingAgeDays", "LeadWeek",
+        "ActorStatus", "ActorDisplayStatus", "ActorIsPending", "LiveRealtorStatus",
+        "LiveStatusOutcome", "LiveHTTPStatus", "LiveContactable", "BouncerStatus",
         "BouncerReason", "EmailSource", "PersonalizedLine",
         "PersonalizationConfidence", "PersonalizationOutcome",
     ]
@@ -1316,7 +1531,7 @@ def health():
     return {
         "status": "ok",
         "service": (
-            "Apify Realtor.com Actor #2 + Bouncer + OpenAI"
+            "Apify Realtor.com Actor #2 + Weekly Buckets + Live Status + Bouncer + OpenAI"
         ),
         "webhook": "/webhook"
     }
@@ -1464,17 +1679,62 @@ async def apify_webhook(
 
 
     # =====================================================
-    # 5. BOUNCER VERIFICATION + OPENAI PERSONALIZATION
+    # 5. WEEK BUCKETS -> WEEK 2/3 -> LIVE REALTOR CHECK
+    #    -> BOUNCER -> OPENAI
     # =====================================================
 
-    actor_email_count = int(df["Email"].notna().sum())
-    actor_no_email_count = len(df) - actor_email_count
+    df = add_week_bucket(df)
 
-    print("Actor-provided emails:", actor_email_count)
-    print("Actor rows without email:", actor_no_email_count)
-    print("Starting Bouncer verification...")
+    week1_leads = df[df["LeadWeek"] == "Week 1"].copy().reset_index(drop=True)
+    week2_leads = df[df["LeadWeek"] == "Week 2"].copy().reset_index(drop=True)
+    week3_leads = df[df["LeadWeek"] == "Week 3"].copy().reset_index(drop=True)
+    outside_21_days = df[df["LeadWeek"].isna()].copy().reset_index(drop=True)
 
-    enriched_leads = enrich_leads_with_bouncer(df)
+    print("Week 1 leads (0-7 days):", len(week1_leads))
+    print("Week 2 leads (8-14 days):", len(week2_leads))
+    print("Week 3 leads (15-21 days):", len(week3_leads))
+    print("Outside 0-21 days / invalid list_date:", len(outside_21_days))
+
+    # We STORE Week 1 but do not contact it. Only Week 2 + Week 3 are eligible.
+    contact_candidates = pd.concat([week2_leads, week3_leads], ignore_index=True)
+
+    # Prefer the older listing when the same email appears more than once, then
+    # contact that agent only once in this run.
+    if not contact_candidates.empty:
+        contact_candidates = contact_candidates.sort_values(
+            by="ListingAgeDays", ascending=False, na_position="last"
+        )
+        with_email = contact_candidates[
+            contact_candidates["Email"].notna() & (contact_candidates["Email"] != "")
+        ].drop_duplicates(subset=["Email"], keep="first")
+        without_email = contact_candidates[
+            contact_candidates["Email"].isna() | (contact_candidates["Email"] == "")
+        ]
+        contact_candidates = pd.concat([with_email, without_email], ignore_index=True)
+
+    print("Week 2/3 contact candidates after email dedupe:", len(contact_candidates))
+    print("Starting Realtor.com live-status gate BEFORE Bouncer...")
+
+    live_checked_candidates = enrich_with_live_realtor_status(contact_candidates)
+    live_contactable = live_checked_candidates[
+        live_checked_candidates["LiveContactable"] == True
+    ].copy().reset_index(drop=True)
+    live_rejected_or_held = live_checked_candidates[
+        live_checked_candidates["LiveContactable"] != True
+    ].copy().reset_index(drop=True)
+
+    print("Live Realtor active/contactable:", len(live_contactable))
+    print("Live Realtor rejected/held:", len(live_rejected_or_held))
+
+    # Only now count/spend on email verification.
+    actor_email_count = int(live_contactable["Email"].notna().sum())
+    actor_no_email_count = len(live_contactable) - actor_email_count
+
+    print("Contactable actor-provided emails:", actor_email_count)
+    print("Contactable rows without email:", actor_no_email_count)
+    print("Starting Bouncer verification ONLY for live active Week 2/3 listings...")
+
+    enriched_leads = enrich_leads_with_bouncer(live_contactable)
 
     normalized_bouncer_status = (
         enriched_leads["BouncerStatus"]
@@ -1559,6 +1819,24 @@ async def apify_webhook(
 
 
         # -----------------------------------------
+        # WEEK 1 / WEEK 2 / WEEK 3 FOLDERS
+        # Week 1 is storage only. Week 2/3 are the outreach pool.
+        # -----------------------------------------
+
+        total_week1 = update_week_file(repo, "Week 1", week1_leads)
+        total_week2 = update_week_file(repo, "Week 2", week2_leads)
+        total_week3 = update_week_file(repo, "Week 3", week3_leads)
+
+        # Keep a separate audit file for Week 2/3 properties that were rejected
+        # or held by the live Realtor.com gate. They never reach Bouncer.
+        total_live_rejected = update_category_file(
+            repo,
+            f"{GITHUB_FOLDER}/Live Status Rejected or Held/leads.csv",
+            live_rejected_or_held,
+            "Live Status Rejected or Held",
+        )
+
+        # -----------------------------------------
         # ONE PERSISTENT FILE PER CATEGORY
         # -----------------------------------------
 
@@ -1634,8 +1912,19 @@ async def apify_webhook(
         "dataset_id": dataset_id,
         "records_downloaded": len(listings),
         "records_after_cleaning": len(df),
-        "actor_provided_emails": actor_email_count,
-        "actor_rows_without_email": actor_no_email_count,
+        "week_1_leads": len(week1_leads),
+        "week_2_leads": len(week2_leads),
+        "week_3_leads": len(week3_leads),
+        "outside_21_days_or_invalid_date": len(outside_21_days),
+        "week_2_3_contact_candidates": len(contact_candidates),
+        "live_realtor_contactable": len(live_contactable),
+        "live_realtor_rejected_or_held": len(live_rejected_or_held),
+        "actor_provided_emails_after_live_gate": actor_email_count,
+        "actor_rows_without_email_after_live_gate": actor_no_email_count,
+        "total_week_1_file": total_week1,
+        "total_week_2_file": total_week2,
+        "total_week_3_file": total_week3,
+        "total_live_rejected_or_held": total_live_rejected,
         "bouncer_deliverable": bouncer_deliverable,
         "bouncer_non_deliverable": bouncer_non_deliverable,
         "bouncer_api_errors": bouncer_errors,
