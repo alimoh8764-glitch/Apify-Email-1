@@ -542,11 +542,108 @@ def enrich_with_live_realtor_status(df):
     return checked
 
 
-def update_week_file(repo, week_name, rows):
-    """Persist one stable CSV inside each Week 1/2/3 GitHub folder."""
+def week_file_path(week_name):
     safe_week = week_name.replace("/", "-")
-    path = f"{GITHUB_FOLDER}/{safe_week} leads/leads.csv"
-    return update_category_file(repo, path, rows, f"{safe_week} leads")
+    return f"{GITHUB_FOLDER}/{safe_week} leads/leads.csv"
+
+
+def read_github_csv(repo, path):
+    """Read a GitHub CSV. Missing/empty files return an empty DataFrame."""
+    try:
+        content_file = repo.get_contents(path, ref=GITHUB_BRANCH)
+        text = content_file.decoded_content.decode("utf-8")
+        if not text.strip():
+            return pd.DataFrame()
+        return pd.read_csv(StringIO(text), dtype="string")
+    except GithubException as exc:
+        if exc.status == 404:
+            return pd.DataFrame()
+        raise
+
+
+def dedupe_listing_rows(df):
+    """Keep one current row per property, falling back safely when PropertyID is missing."""
+    if df.empty:
+        return df.copy()
+
+    work = df.copy()
+    for column in ["PropertyID", "ListingID", "PropertyURL", "Address", "FirstName", "LastName"]:
+        if column not in work.columns:
+            work[column] = pd.NA
+
+    with_property = work[
+        work["PropertyID"].notna() & (work["PropertyID"].astype("string").str.strip() != "")
+    ].drop_duplicates(subset=["PropertyID"], keep="last")
+
+    without_property = work[
+        work["PropertyID"].isna() | (work["PropertyID"].astype("string").str.strip() == "")
+    ].copy()
+    fallback = ["ListingID", "PropertyURL", "Address", "FirstName", "LastName"]
+    without_property = without_property.drop_duplicates(subset=fallback, keep="last")
+    return pd.concat([with_property, without_property], ignore_index=True)
+
+
+def load_and_rebucket_week_leads(repo, fresh_df):
+    """
+    Rolling conveyor belt.
+
+    Load all three existing week files, merge today's fresh Actor rows, dedupe by
+    property, recalculate age from the ORIGINAL ListDate, then return mutually
+    exclusive Week 1 / Week 2 / Week 3 frames. A property therefore MOVES folders
+    as it ages instead of remaining permanently in the week where it first landed.
+    Rows older than 21 days (or with invalid dates) fall out of the active buckets.
+    """
+    stored_frames = []
+    for week_name in ["Week 1", "Week 2", "Week 3"]:
+        existing = read_github_csv(repo, week_file_path(week_name))
+        if not existing.empty:
+            stored_frames.append(existing)
+
+    frames = stored_frames + [fresh_df.copy()]
+    combined = pd.concat(frames, ignore_index=True, sort=False) if frames else fresh_df.copy()
+    combined = dedupe_listing_rows(combined)
+    combined = add_week_bucket(combined)
+
+    week1 = combined[combined["LeadWeek"] == "Week 1"].copy().reset_index(drop=True)
+    week2 = combined[combined["LeadWeek"] == "Week 2"].copy().reset_index(drop=True)
+    week3 = combined[combined["LeadWeek"] == "Week 3"].copy().reset_index(drop=True)
+    expired = combined[combined["LeadWeek"].isna()].copy().reset_index(drop=True)
+    return week1, week2, week3, expired
+
+
+def replace_week_file(repo, week_name, rows):
+    """
+    Replace (not append) a week's CSV with its CURRENT members.
+    This is what physically removes a lead from Week 1 when it becomes Week 2,
+    and from Week 2 when it becomes Week 3.
+    """
+    path = week_file_path(week_name)
+    rows = rows.copy()
+    csv_content = rows.to_csv(index=False)
+
+    try:
+        existing_file = repo.get_contents(path, ref=GITHUB_BRANCH)
+        repo.update_file(
+            path=path,
+            message=f"Rebucket {week_name} leads",
+            content=csv_content,
+            sha=existing_file.sha,
+            branch=GITHUB_BRANCH,
+        )
+    except GithubException as exc:
+        if exc.status != 404:
+            raise
+        # GitHub has no real empty folders. Only create the path once there is
+        # at least one lead; otherwise it will appear automatically later.
+        if rows.empty:
+            return 0
+        repo.create_file(
+            path=path,
+            message=f"Create {week_name} leads",
+            content=csv_content,
+            branch=GITHUB_BRANCH,
+        )
+    return len(rows)
 
 
 # =========================================================
@@ -1683,12 +1780,17 @@ async def apify_webhook(
     #    -> BOUNCER -> OPENAI
     # =====================================================
 
-    df = add_week_bucket(df)
-
-    week1_leads = df[df["LeadWeek"] == "Week 1"].copy().reset_index(drop=True)
-    week2_leads = df[df["LeadWeek"] == "Week 2"].copy().reset_index(drop=True)
-    week3_leads = df[df["LeadWeek"] == "Week 3"].copy().reset_index(drop=True)
-    outside_21_days = df[df["LeadWeek"].isna()].copy().reset_index(drop=True)
+    # Load the EXISTING Week 1/2/3 files first, merge today's fresh scrape,
+    # then re-age everything. This turns the week folders into a rolling
+    # conveyor belt instead of permanent storage buckets.
+    try:
+        repo = github.get_repo(GITHUB_REPO)
+        week1_leads, week2_leads, week3_leads, outside_21_days = (
+            load_and_rebucket_week_leads(repo, df)
+        )
+    except GithubException as exc:
+        print("GitHub error while loading week buckets:", exc)
+        raise HTTPException(status_code=500, detail=f"GitHub error: {exc.data}")
 
     print("Week 1 leads (0-7 days):", len(week1_leads))
     print("Week 2 leads (8-14 days):", len(week2_leads))
@@ -1813,19 +1915,18 @@ async def apify_webhook(
 
     try:
 
-        repo = github.get_repo(
-            GITHUB_REPO
-        )
-
+        # repo was already loaded before re-bucketing the existing Week files.
 
         # -----------------------------------------
         # WEEK 1 / WEEK 2 / WEEK 3 FOLDERS
         # Week 1 is storage only. Week 2/3 are the outreach pool.
         # -----------------------------------------
 
-        total_week1 = update_week_file(repo, "Week 1", week1_leads)
-        total_week2 = update_week_file(repo, "Week 2", week2_leads)
-        total_week3 = update_week_file(repo, "Week 3", week3_leads)
+        # IMPORTANT: replace each file with its current membership. Do not append.
+        # This physically moves aging properties between folders and removes 22+ day rows.
+        total_week1 = replace_week_file(repo, "Week 1", week1_leads)
+        total_week2 = replace_week_file(repo, "Week 2", week2_leads)
+        total_week3 = replace_week_file(repo, "Week 3", week3_leads)
 
         # Keep a separate audit file for Week 2/3 properties that were rejected
         # or held by the live Realtor.com gate. They never reach Bouncer.
