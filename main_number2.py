@@ -547,11 +547,46 @@ def week_file_path(week_name):
     return f"{GITHUB_FOLDER}/{safe_week} leads/leads.csv"
 
 
+def read_github_text(repo, path, content_file=None):
+    """
+    Safely read a GitHub text file.
+
+    PyGithub's .decoded_content only works when GitHub returns encoding=base64.
+    For larger files GitHub can return encoding='none'; in that case fetch the
+    raw download URL instead.
+    """
+    if content_file is None:
+        content_file = repo.get_contents(path, ref=GITHUB_BRANCH)
+
+    encoding = (getattr(content_file, "encoding", None) or "").lower()
+    if encoding == "base64":
+        return content_file.decoded_content.decode("utf-8-sig")
+
+    download_url = getattr(content_file, "download_url", None)
+    if download_url:
+        response = requests.get(download_url, timeout=60)
+        response.raise_for_status()
+        return response.content.decode("utf-8-sig")
+
+    # Last-resort GitHub raw-content request using the authenticated token.
+    raw_url = (
+        f"https://raw.githubusercontent.com/{GITHUB_REPO}/"
+        f"{GITHUB_BRANCH}/{path}"
+    )
+    response = requests.get(
+        raw_url,
+        headers={"Authorization": f"Bearer {GITHUB_TOKEN}"},
+        timeout=60,
+    )
+    response.raise_for_status()
+    return response.content.decode("utf-8-sig")
+
+
 def read_github_csv(repo, path):
     """Read a GitHub CSV. Missing/empty files return an empty DataFrame."""
     try:
         content_file = repo.get_contents(path, ref=GITHUB_BRANCH)
-        text = content_file.decoded_content.decode("utf-8")
+        text = read_github_text(repo, path, content_file)
         if not text.strip():
             return pd.DataFrame()
         return pd.read_csv(StringIO(text), dtype="string")
@@ -1080,9 +1115,7 @@ def update_email_leads_file(
             )
 
             existing_text = (
-                existing_file
-                .decoded_content
-                .decode("utf-8")
+                read_github_text(repo, email_path, existing_file)
             )
 
             if not existing_text.strip():
@@ -1171,9 +1204,7 @@ def update_email_leads_file(
         )
 
         existing_text = (
-            existing_file
-            .decoded_content
-            .decode("utf-8")
+            read_github_text(repo, email_path, existing_file)
         )
 
         if existing_text.strip():
@@ -1377,11 +1408,7 @@ def update_fb_leads_file(
         )
 
 
-        existing_text = (
-            existing_file
-            .decoded_content
-            .decode("utf-8")
-        )
+        existing_text = read_github_text(repo, fb_path, existing_file)
 
 
         if existing_text.strip():
@@ -1521,7 +1548,7 @@ def update_sms_leads_file(repo, new_sms_leads):
         print("No new SMS leads this run.")
         try:
             existing_file = repo.get_contents(sms_path, ref=GITHUB_BRANCH)
-            text = existing_file.decoded_content.decode("utf-8")
+            text = read_github_text(repo, sms_path, existing_file)
             if not text.strip():
                 return 0
             return len(pd.read_csv(StringIO(text), dtype="string"))
@@ -1551,7 +1578,7 @@ def update_sms_leads_file(repo, new_sms_leads):
 
     try:
         existing_file = repo.get_contents(sms_path, ref=GITHUB_BRANCH)
-        text = existing_file.decoded_content.decode("utf-8")
+        text = read_github_text(repo, sms_path, existing_file)
         existing = pd.read_csv(StringIO(text), dtype="string") if text.strip() else pd.DataFrame(columns=sms_columns)
 
         for column in sms_columns:
@@ -1616,7 +1643,7 @@ def update_no_personalization_file(repo, leads):
 
     try:
         existing_file = repo.get_contents(path, ref=GITHUB_BRANCH)
-        text = existing_file.decoded_content.decode("utf-8")
+        text = read_github_text(repo, path, existing_file)
         existing = pd.read_csv(StringIO(text), dtype="string") if text.strip() else pd.DataFrame(columns=columns)
         for c in columns:
             if c not in existing.columns:
@@ -1648,7 +1675,7 @@ def update_category_file(repo, path, new_rows, message_label):
 
     try:
         existing_file = repo.get_contents(path, ref=GITHUB_BRANCH)
-        text = existing_file.decoded_content.decode("utf-8")
+        text = read_github_text(repo, path, existing_file)
         existing = (
             pd.read_csv(StringIO(text), dtype="string")
             if text.strip()
