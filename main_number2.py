@@ -26,6 +26,7 @@ GITHUB_FOLDER = os.getenv("GITHUB_FOLDER", "data")
 APIFY_TOKEN = os.getenv("APIFY_TOKEN")
 BOUNCER_API_KEY = os.getenv("BOUNCER_API_KEY")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+NUMVERIFY_API_KEY = os.getenv("NUMVERIFY_API_KEY")
 OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-5.6-luna")
 
 
@@ -43,6 +44,9 @@ if not BOUNCER_API_KEY:
 
 if not OPENAI_API_KEY:
     raise RuntimeError("Missing Railway variable: OPENAI_API_KEY")
+
+if not NUMVERIFY_API_KEY:
+    raise RuntimeError("Missing Railway variable: NUMVERIFY_API_KEY")
 
 
 github = Github(GITHUB_TOKEN)
@@ -1530,6 +1534,86 @@ def update_fb_leads_file(
 
 
 # =========================================================
+# NUMVERIFY MOBILE GATE
+# =========================================================
+
+def numverify_phone(phone):
+    """Allow SMS only when Numverify says the number is valid AND mobile."""
+    phone = clean_phone(phone)
+    if not phone:
+        return {"outcome": "invalid", "valid": False, "line_type": None, "carrier": None, "country": None}
+
+    url = "https://apilayer.net/api/validate"
+    params = {"access_key": NUMVERIFY_API_KEY, "number": phone, "country_code": "US", "format": 1}
+
+    for attempt in range(3):
+        try:
+            response = requests.get(url, params=params, timeout=30)
+        except requests.RequestException as exc:
+            print("Numverify connection error:", phone, exc)
+            if attempt < 2:
+                time.sleep(2 ** attempt)
+                continue
+            return {"outcome": "api_error", "valid": None, "line_type": None, "carrier": None, "country": None}
+
+        if response.status_code in (408, 409, 429, 500, 502, 503, 504):
+            if attempt < 2:
+                time.sleep(2 ** attempt)
+                continue
+            return {"outcome": "api_error", "valid": None, "line_type": None, "carrier": None, "country": None}
+
+        if response.status_code != 200:
+            print("Numverify HTTP error:", response.status_code, phone, response.text[:300])
+            return {"outcome": "api_error", "valid": None, "line_type": None, "carrier": None, "country": None}
+
+        try:
+            data = response.json()
+        except Exception:
+            return {"outcome": "api_error", "valid": None, "line_type": None, "carrier": None, "country": None}
+
+        # Numverify can return HTTP 200 with an API-level error payload.
+        if data.get("success") is False or data.get("error"):
+            print("Numverify API error:", phone, data.get("error"))
+            return {"outcome": "api_error", "valid": None, "line_type": None, "carrier": None, "country": None}
+
+        valid = data.get("valid") is True
+        line_type = (clean_text(data.get("line_type")) or "").lower()
+        carrier = clean_text(data.get("carrier"))
+        country = clean_text(data.get("country_code"))
+
+        if valid and line_type == "mobile":
+            outcome = "verified_mobile"
+        elif not valid:
+            outcome = "invalid"
+        else:
+            outcome = "non_mobile"
+
+        print("Numverify:", phone, "valid=", valid, "line_type=", line_type, "outcome=", outcome)
+        return {"outcome": outcome, "valid": valid, "line_type": line_type or None, "carrier": carrier, "country": country}
+
+    return {"outcome": "api_error", "valid": None, "line_type": None, "carrier": None, "country": None}
+
+
+def apply_numverify_mobile_gate(df):
+    """Return (verified_mobile, held_api_errors, rejected_invalid_or_non_mobile)."""
+    checked = df.copy()
+    for col in ["NumverifyValid", "NumverifyLineType", "NumverifyCarrier", "NumverifyCountry", "NumverifyOutcome"]:
+        checked[col] = pd.NA
+
+    for index, row in checked.iterrows():
+        result = numverify_phone(row.get("Phone"))
+        checked.at[index, "NumverifyValid"] = result.get("valid")
+        checked.at[index, "NumverifyLineType"] = result.get("line_type")
+        checked.at[index, "NumverifyCarrier"] = result.get("carrier")
+        checked.at[index, "NumverifyCountry"] = result.get("country")
+        checked.at[index, "NumverifyOutcome"] = result.get("outcome")
+
+    verified = checked[checked["NumverifyOutcome"] == "verified_mobile"].copy().reset_index(drop=True)
+    held = checked[checked["NumverifyOutcome"] == "api_error"].copy().reset_index(drop=True)
+    rejected = checked[checked["NumverifyOutcome"].isin(["invalid", "non_mobile"])].copy().reset_index(drop=True)
+    return verified, held, rejected
+
+# =========================================================
 # UPDATE PERSISTENT SMS.CSV ON GITHUB
 # =========================================================
 
@@ -1564,6 +1648,8 @@ def update_sms_leads_file(repo, new_sms_leads):
         "Price", "Website", "Email", "PublicRemarks",
         "PropertyID", "ListingID", "PropertyURL", "ListDate", "ListingAgeDays", "LeadWeek",
         "ActorStatus", "ActorDisplayStatus", "ActorIsPending",
+        "NumverifyValid", "NumverifyLineType", "NumverifyCarrier",
+        "NumverifyCountry", "NumverifyOutcome",
     ]
     for column in sms_columns:
         if column not in new_sms_leads.columns:
@@ -1575,6 +1661,11 @@ def update_sms_leads_file(repo, new_sms_leads):
     website_blank = ~has_value(new_sms_leads["Website"])
     phone_present = has_value(new_sms_leads["Phone"])
     new_sms_leads = new_sms_leads[email_blank & website_blank & phone_present].copy()
+    new_sms_leads = new_sms_leads[
+        (new_sms_leads["NumverifyOutcome"] == "verified_mobile") &
+        (new_sms_leads["NumverifyValid"].astype("string").str.lower() == "true") &
+        (new_sms_leads["NumverifyLineType"].astype("string").str.lower() == "mobile")
+    ].copy()
 
     try:
         existing_file = repo.get_contents(sms_path, ref=GITHUB_BRANCH)
@@ -1584,6 +1675,13 @@ def update_sms_leads_file(repo, new_sms_leads):
         for column in sms_columns:
             if column not in existing.columns:
                 existing[column] = pd.NA
+
+        # Strict guarantee: legacy/unverified/non-mobile rows do not remain in SMS.csv.
+        existing = existing[
+            (existing["NumverifyOutcome"].astype("string").str.lower() == "verified_mobile") &
+            (existing["NumverifyValid"].astype("string").str.lower() == "true") &
+            (existing["NumverifyLineType"].astype("string").str.lower() == "mobile")
+        ].copy()
 
         combined = pd.concat([existing[sms_columns], new_sms_leads], ignore_index=True)
         combined = combined.drop_duplicates(
@@ -1961,9 +2059,15 @@ async def apify_webhook(
         if not no_email_leads.empty else no_email_leads.copy()
     )
 
+    sms_candidates_before_numverify = len(new_sms_leads)
+    new_sms_leads, sms_numverify_held, sms_numverify_rejected = apply_numverify_mobile_gate(new_sms_leads)
+
     print("No-email leads diverted out of Week buckets:", len(no_email_leads))
     print("No-email + website -> FB:", len(no_email_fb_leads))
-    print("No-email + no website + phone -> SMS:", len(new_sms_leads))
+    print("No-email + no website + phone -> Numverify candidates:", sms_candidates_before_numverify)
+    print("Numverify valid mobile -> SMS:", len(new_sms_leads))
+    print("Numverify held/API error:", len(sms_numverify_held))
+    print("Numverify rejected invalid/non-mobile:", len(sms_numverify_rejected))
     print("No email/website/phone -> no-contact:", len(no_contact_leads))
 
     # We STORE Week 1 but do not contact it. Only Week 2 + Week 3 are eligible.
