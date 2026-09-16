@@ -313,6 +313,7 @@ def email_week_path(row: Dict[str, str]) -> Optional[str]:
 
 
 def dedupe_key(row: Dict[str, str]) -> str:
+    """Primary key used for within-run property dedupe."""
     for col in ("PropertyID", "ListingID", "PropertyURL"):
         if clean(row.get(col)):
             return f"{col}:{clean(row.get(col)).lower()}"
@@ -320,6 +321,67 @@ def dedupe_key(row: Dict[str, str]) -> str:
     if address.strip("|"):
         return f"address:{address}"
     return f"contact:{clean(row.get('Email')).lower()}|{normalize_phone(row.get('Phone', ''))}"
+
+
+def dedupe_identifiers(row: Dict[str, str]) -> set:
+    """
+    Independent duplicate identifiers.
+
+    A row is a duplicate if ANY strong identifier has already been seen:
+    property/listing identity, individual email, or individual phone.
+    Phone is the chosen person-level Phone field; office phone is never used.
+    """
+    ids = set()
+
+    for col in ("PropertyID", "ListingID", "PropertyURL"):
+        value = clean(row.get(col)).lower()
+        if value:
+            ids.add(f"{col.lower()}:{value}")
+
+    address = "|".join(clean(row.get(c)).lower() for c in ("Address", "City", "State", "Zip"))
+    if address.strip("|"):
+        ids.add(f"address:{address}")
+
+    email = normalize_email(row.get("Email", ""))
+    if email:
+        ids.add(f"email:{email}")
+
+    phone = normalize_phone(row.get("Phone", ""))
+    phone_digits = re.sub(r"\D", "", phone)
+    if len(phone_digits) == 10:
+        ids.add(f"phone:{phone_digits}")
+
+    return ids
+
+
+def listing_sort_date(row: Dict[str, str]):
+    """Newest listing first; invalid/missing dates sort last."""
+    value = clean(row.get("ListDate"))
+    try:
+        return datetime.fromisoformat(value[:10]).date() if value else datetime.min.date()
+    except ValueError:
+        return datetime.min.date()
+
+
+def dedupe_rows_strong(rows: List[Dict[str, str]]) -> List[Dict[str, str]]:
+    """
+    Keep one lead when property/listing ID OR individual email OR individual
+    phone matches. Newest listing wins, which keeps an agent attached to their
+    freshest listing/week.
+    """
+    normalized = [{c: clean(row.get(c)) for c in OUTPUT_COLUMNS} for row in rows]
+    normalized.sort(key=listing_sort_date, reverse=True)
+
+    seen = set()
+    kept = []
+    for row in normalized:
+        identifiers = dedupe_identifiers(row)
+        if identifiers and identifiers & seen:
+            continue
+        kept.append(row)
+        seen.update(identifiers)
+
+    return kept
 
 
 def github_headers():
@@ -377,16 +439,7 @@ def append_bucket(path: str, new_rows: List[Dict[str, str]]) -> int:
     if not new_rows:
         return 0
     existing, sha = github_read_csv(path)
-    merged = existing + new_rows
-    seen = set()
-    final = []
-    # Newest copy wins while preserving a stable cumulative file.
-    for row in reversed(merged):
-        key = dedupe_key(row)
-        if key not in seen:
-            seen.add(key)
-            final.append({c: clean(row.get(c)) for c in OUTPUT_COLUMNS})
-    final.reverse()
+    final = dedupe_rows_strong(existing + new_rows)
     github_write_csv(path, final, sha)
     return len(final) - len(existing)
 
@@ -415,15 +468,10 @@ def rebuild_email_week_buckets(new_email_rows: List[Dict[str, str]]) -> Dict[str
 
     all_rows.extend(new_email_rows)
 
-    # Newest copy wins across all email files.
-    deduped: Dict[str, Dict[str, str]] = {}
-    order: List[str] = []
-    for row in all_rows:
-        normalized = {c: clean(row.get(c)) for c in OUTPUT_COLUMNS}
-        key = dedupe_key(normalized)
-        if key not in deduped:
-            order.append(key)
-        deduped[key] = normalized
+    # Strong dedupe across ALL email week files. If the same property,
+    # individual email, or individual phone appears more than once, keep the
+    # newest listing only.
+    deduped_rows = dedupe_rows_strong(all_rows)
 
     week_rows = {
         WEEK1_FILE: [],
@@ -433,8 +481,7 @@ def rebuild_email_week_buckets(new_email_rows: List[Dict[str, str]]) -> Dict[str
     aged_out = 0
     missing_list_date = 0
 
-    for key in order:
-        row = deduped[key]
+    for row in deduped_rows:
         path = email_week_path(row)
         if path:
             week_rows[path].append(row)
@@ -531,13 +578,19 @@ async def apify_webhook(request: Request):
         buckets = {FB_FILE: [], SMS_FILE: []}
         ignored = 0
         run_seen = set()
+        unique_run_count = 0
 
-        for item in items:
-            lead = format_lead(item)
-            key = dedupe_key(lead)
-            if key in run_seen:
+        # Process newest listings first so, when one person has multiple
+        # properties in the same batch, their freshest listing is retained.
+        formatted_leads = [format_lead(item) for item in items]
+        formatted_leads.sort(key=listing_sort_date, reverse=True)
+
+        for lead in formatted_leads:
+            identifiers = dedupe_identifiers(lead)
+            if identifiers and identifiers & run_seen:
                 continue
-            run_seen.add(key)
+            run_seen.update(identifiers)
+            unique_run_count += 1
 
             bucket = route_lead(lead)
             if bucket == "EMAIL":
@@ -568,7 +621,7 @@ async def apify_webhook(request: Request):
             "ok": True,
             "dataset_id": dataset_id,
             "dataset_items": len(items),
-            "unique_items": len(run_seen),
+            "unique_items": unique_run_count,
             "ignored": ignored,
             "email_routed_this_run": len(email_rows),
             "files": totals,
