@@ -64,12 +64,24 @@ def first(item: Dict[str, Any], paths: List[str]) -> str:
     return ""
 
 
+def format_person_name(value: str) -> str:
+    value = clean(value)
+    if not value:
+        return ""
+    # Fix source data like BRAD / brad without mangling already mixed-case names.
+    if value.isupper() or value.islower():
+        return value.title()
+    return value
+
+
 def split_name(name: str):
     name = re.sub(r"\s+", " ", clean(name)).strip()
     if not name:
         return "", ""
     parts = name.split(" ")
-    return parts[0], " ".join(parts[1:]) if len(parts) > 1 else ""
+    first = format_person_name(parts[0])
+    last = format_person_name(" ".join(parts[1:])) if len(parts) > 1 else ""
+    return first, last
 
 
 def normalize_phone(phone: str) -> str:
@@ -425,4 +437,3 @@ async def apify_webhook(request: Request):
         raise
     except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc))
-
