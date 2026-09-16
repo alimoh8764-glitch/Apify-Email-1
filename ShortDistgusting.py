@@ -25,7 +25,7 @@ SMS_FILE = f"{DATA_FOLDER}/SMS.csv"
 OUTPUT_COLUMNS = [
     "FirstName", "LastName", "Email", "Phone", "Website",
     "Address", "City", "State", "Zip", "Price", "Bedrooms",
-    "Bathrooms", "SqFt", "PublicRemarks", "PropertyID",
+    "Bathrooms", "SqFt", "PropertyID",
     "ListingID", "PropertyURL", "ListDate", "DaysOnMarket",
     "Status", "OfficeName", "Source", "ProcessedAt"
 ]
@@ -237,7 +237,6 @@ def format_lead(item: Dict[str, Any]) -> Dict[str, str]:
         "Bedrooms": first(item, ["beds"]),
         "Bathrooms": first(item, ["baths", "baths_consolidated", "baths_total"]),
         "SqFt": first(item, ["sqft"]),
-        "PublicRemarks": first(item, ["text", "description_text", "description"]),
         "PropertyID": property_id(item),
         "ListingID": listing_id(item),
         "PropertyURL": property_url(item),
@@ -426,3 +425,4 @@ async def apify_webhook(request: Request):
         raise
     except Exception as exc:
         raise HTTPException(status_code=500, detail=str(exc))
+
