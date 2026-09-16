@@ -18,7 +18,10 @@ GITHUB_BRANCH = os.getenv("GITHUB_BRANCH", "main").strip()
 WEBHOOK_SECRET = os.getenv("WEBHOOK_SECRET", "").strip()
 
 DATA_FOLDER = os.getenv("DATA_FOLDER", "DataShortDisgusting").strip().strip("/")
-EMAIL_FILE = f"{DATA_FOLDER}/Email.csv"
+LEGACY_EMAIL_FILE = f"{DATA_FOLDER}/Email.csv"
+WEEK1_FILE = f"{DATA_FOLDER}/Week1.csv"
+WEEK2_FILE = f"{DATA_FOLDER}/Week2.csv"
+WEEK3_FILE = f"{DATA_FOLDER}/Week3.csv"
 FB_FILE = f"{DATA_FOLDER}/FB.csv"
 SMS_FILE = f"{DATA_FOLDER}/SMS.csv"
 
@@ -170,12 +173,15 @@ def choose_contact(item: Dict[str, Any]):
 
 
 def listing_date(item: Dict[str, Any]) -> str:
-    # Find the most recent Listed/Relisted event rather than blindly using history/0.
+    """
+    Return the newest genuine 'Listed' event only.
+    Price changes, listing removals, relists, pending/sold events, etc. are ignored.
+    """
     candidates = []
     for i in range(40):
         event = clean(getv(item, f"history/{i}/event_name")).lower()
         date = clean(getv(item, f"history/{i}/date"))
-        if date and event in {"listed", "relisted"}:
+        if date and event == "listed":
             try:
                 candidates.append(datetime.fromisoformat(date[:10]).date())
             except ValueError:
@@ -266,11 +272,43 @@ def route_lead(lead: Dict[str, str]) -> Optional[str]:
     if not clean(lead.get("FirstName")):
         return None
     if lead["Email"]:
-        return EMAIL_FILE
+        return "EMAIL"
     if lead["Website"]:
         return FB_FILE
     if lead["Phone"]:
         return SMS_FILE
+    return None
+
+
+def refresh_days_on_market(row: Dict[str, str]) -> Optional[int]:
+    """
+    Recalculate age from ListDate every time a webhook runs.
+    This is what makes a lead automatically move Week1 -> Week2 -> Week3 over time.
+    """
+    ld = clean(row.get("ListDate"))
+    if not ld:
+        return None
+    try:
+        listed = datetime.fromisoformat(ld[:10]).date()
+    except ValueError:
+        return None
+
+    days = max(0, (datetime.now(timezone.utc).date() - listed).days)
+    row["ListDate"] = listed.isoformat()
+    row["DaysOnMarket"] = str(days)
+    return days
+
+
+def email_week_path(row: Dict[str, str]) -> Optional[str]:
+    days = refresh_days_on_market(row)
+    if days is None:
+        return None
+    if 0 <= days <= 7:
+        return WEEK1_FILE
+    if 8 <= days <= 14:
+        return WEEK2_FILE
+    if 15 <= days <= 21:
+        return WEEK3_FILE
     return None
 
 
@@ -299,9 +337,22 @@ def github_read_csv(path: str):
         return [], None
     r.raise_for_status()
     data = r.json()
-    raw = base64.b64decode(data["content"]).decode("utf-8-sig")
+    sha = data.get("sha")
+
+    encoded = clean(data.get("content"))
+    if encoded and data.get("encoding") == "base64":
+        raw = base64.b64decode(encoded).decode("utf-8-sig")
+    else:
+        # GitHub may omit inline content for larger files. Fetch the raw file instead.
+        download_url = clean(data.get("download_url"))
+        if not download_url:
+            return [], sha
+        raw_r = requests.get(download_url, headers=github_headers(), timeout=60)
+        raw_r.raise_for_status()
+        raw = raw_r.content.decode("utf-8-sig")
+
     rows = list(csv.DictReader(io.StringIO(raw))) if raw.strip() else []
-    return rows, data.get("sha")
+    return rows, sha
 
 
 def github_write_csv(path: str, rows: List[Dict[str, str]], sha: Optional[str]):
@@ -338,6 +389,78 @@ def append_bucket(path: str, new_rows: List[Dict[str, str]]) -> int:
     final.reverse()
     github_write_csv(path, final, sha)
     return len(final) - len(existing)
+
+
+
+def rebuild_email_week_buckets(new_email_rows: List[Dict[str, str]]) -> Dict[str, Any]:
+    """
+    Rebuild ALL email week buckets on every successful Actor run.
+
+    Existing Week1/2/3 rows are loaded, combined with this run's email leads,
+    deduped, their age is recalculated from ListDate using today's UTC date,
+    and then the files are rewritten. Leads older than 21 days disappear from
+    the active week buckets automatically.
+
+    LEGACY_EMAIL_FILE is also imported if it exists so an older Email.csv can
+    be migrated into the week system.
+    """
+    sources = [LEGACY_EMAIL_FILE, WEEK1_FILE, WEEK2_FILE, WEEK3_FILE]
+    all_rows: List[Dict[str, str]] = []
+    shas: Dict[str, Optional[str]] = {}
+
+    for path in sources:
+        rows, sha = github_read_csv(path)
+        shas[path] = sha
+        all_rows.extend(rows)
+
+    all_rows.extend(new_email_rows)
+
+    # Newest copy wins across all email files.
+    deduped: Dict[str, Dict[str, str]] = {}
+    order: List[str] = []
+    for row in all_rows:
+        normalized = {c: clean(row.get(c)) for c in OUTPUT_COLUMNS}
+        key = dedupe_key(normalized)
+        if key not in deduped:
+            order.append(key)
+        deduped[key] = normalized
+
+    week_rows = {
+        WEEK1_FILE: [],
+        WEEK2_FILE: [],
+        WEEK3_FILE: [],
+    }
+    aged_out = 0
+    missing_list_date = 0
+
+    for key in order:
+        row = deduped[key]
+        path = email_week_path(row)
+        if path:
+            week_rows[path].append(row)
+        else:
+            if clean(row.get("ListDate")):
+                aged_out += 1
+            else:
+                missing_list_date += 1
+
+    # Rewrite all week files every run, so movement/removal is automatic.
+    for path in (WEEK1_FILE, WEEK2_FILE, WEEK3_FILE):
+        _, sha = github_read_csv(path)
+        github_write_csv(path, week_rows[path], sha)
+
+    # If an old Email.csv exists, clear it after migration so it cannot become
+    # a stale fourth email bucket.
+    if shas.get(LEGACY_EMAIL_FILE):
+        github_write_csv(LEGACY_EMAIL_FILE, [], shas[LEGACY_EMAIL_FILE])
+
+    return {
+        WEEK1_FILE: len(week_rows[WEEK1_FILE]),
+        WEEK2_FILE: len(week_rows[WEEK2_FILE]),
+        WEEK3_FILE: len(week_rows[WEEK3_FILE]),
+        "aged_out_over_21_days": aged_out,
+        "ignored_missing_list_date": missing_list_date,
+    }
 
 
 def extract_dataset_id(payload: Dict[str, Any]) -> str:
@@ -404,7 +527,8 @@ async def apify_webhook(request: Request):
             raise RuntimeError("Could not find defaultDatasetId in Apify webhook")
 
         items = fetch_dataset(dataset_id)
-        buckets = {EMAIL_FILE: [], FB_FILE: [], SMS_FILE: []}
+        email_rows: List[Dict[str, str]] = []
+        buckets = {FB_FILE: [], SMS_FILE: []}
         ignored = 0
         run_seen = set()
 
@@ -414,13 +538,28 @@ async def apify_webhook(request: Request):
             if key in run_seen:
                 continue
             run_seen.add(key)
+
             bucket = route_lead(lead)
-            if bucket:
+            if bucket == "EMAIL":
+                # Email leads require a valid Listed date and are assigned to
+                # Week1/2/3 by current age.
+                if email_week_path(lead):
+                    email_rows.append(lead)
+                else:
+                    ignored += 1
+            elif bucket:
                 buckets[bucket].append(lead)
             else:
                 ignored += 1
 
-        totals = {}
+        # Critical behavior: every webhook recalculates ALL existing email leads,
+        # not just the new batch. A 6-day-old Week1 lead will therefore become
+        # Week2 automatically when a later batch runs after it reaches day 8.
+        email_totals = rebuild_email_week_buckets(email_rows)
+
+        totals = {
+            "email_weeks": email_totals,
+        }
         for path, rows in buckets.items():
             added = append_bucket(path, rows)
             totals[path] = {"routed_this_run": len(rows), "newly_added": added}
@@ -430,7 +569,8 @@ async def apify_webhook(request: Request):
             "dataset_id": dataset_id,
             "dataset_items": len(items),
             "unique_items": len(run_seen),
-            "ignored_no_contact": ignored,
+            "ignored": ignored,
+            "email_routed_this_run": len(email_rows),
             "files": totals,
         }
     except HTTPException:
