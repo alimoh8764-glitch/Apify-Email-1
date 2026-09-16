@@ -17,9 +17,10 @@ GITHUB_REPO = os.getenv("GITHUB_REPO", "").strip()  # owner/repo
 GITHUB_BRANCH = os.getenv("GITHUB_BRANCH", "main").strip()
 WEBHOOK_SECRET = os.getenv("WEBHOOK_SECRET", "").strip()
 
-EMAIL_FILE = os.getenv("EMAIL_FILE", "Email.csv")
-FB_FILE = os.getenv("FB_FILE", "FB.csv")
-SMS_FILE = os.getenv("SMS_FILE", "SMS.csv")
+DATA_FOLDER = os.getenv("DATA_FOLDER", "DataShortDisgusting").strip().strip("/")
+EMAIL_FILE = f"{DATA_FOLDER}/Email.csv"
+FB_FILE = f"{DATA_FOLDER}/FB.csv"
+SMS_FILE = f"{DATA_FOLDER}/SMS.csv"
 
 OUTPUT_COLUMNS = [
     "FirstName", "LastName", "Email", "Phone", "Website",
@@ -106,43 +107,53 @@ def advertiser_phone(item: Dict[str, Any], idx: int) -> str:
 
 
 def choose_contact(item: Dict[str, Any]):
-    # Prefer a direct agent email and keep the matching agent name/phone.
+    """
+    Choose a person-level contact only when that SAME contact has a usable name.
+    A nameless email/phone/website is deliberately ignored rather than being
+    paired with a name from a different agent/advertiser.
+    """
+
+    # Prefer direct agent email + matching agent name/phone.
     for i in range(4):
+        name = clean(getv(item, f"agents/{i}/agent_name"))
         email = clean(getv(item, f"agents/{i}/agent_email"))
-        if email:
+        if name and email:
             return (
-                clean(getv(item, f"agents/{i}/agent_name")),
+                name,
                 email,
                 clean(getv(item, f"agents/{i}/agent_phone")),
                 ""
             )
 
-    # Then advertiser email; advertiser href is the preferred personal website.
+    # Then advertiser email + matching advertiser name/site/phone.
     for i in range(2):
+        name = clean(getv(item, f"advertisers/{i}/name"))
         email = clean(getv(item, f"advertisers/{i}/email"))
-        if email:
+        if name and email:
             return (
-                clean(getv(item, f"advertisers/{i}/name")),
+                name,
                 email,
                 advertiser_phone(item, i),
                 clean(getv(item, f"advertisers/{i}/href"))
             )
 
-    # No email: preserve best available person/contact data for FB/SMS routing.
+    # No email: use a named agent for FB/SMS routing.
     for i in range(4):
         name = clean(getv(item, f"agents/{i}/agent_name"))
-        phone = clean(getv(item, f"agents/{i}/agent_phone"))
-        if name or phone:
+        if name:
+            phone = clean(getv(item, f"agents/{i}/agent_phone"))
             website = first(item, ["advertisers/0/href", "advertisers/1/href"])
             return name, "", phone, website
 
+    # Or a named advertiser.
     for i in range(2):
         name = clean(getv(item, f"advertisers/{i}/name"))
-        website = clean(getv(item, f"advertisers/{i}/href"))
-        phone = advertiser_phone(item, i)
-        if name or website or phone:
+        if name:
+            website = clean(getv(item, f"advertisers/{i}/href"))
+            phone = advertiser_phone(item, i)
             return name, "", phone, website
 
+    # Absolutely no named person = throw the lead away.
     return "", "", "", ""
 
 
@@ -240,6 +251,9 @@ def format_lead(item: Dict[str, Any]) -> Dict[str, str]:
 
 
 def route_lead(lead: Dict[str, str]) -> Optional[str]:
+    # Hard gate: never save a lead without a person name.
+    if not clean(lead.get("FirstName")):
+        return None
     if lead["Email"]:
         return EMAIL_FILE
     if lead["Website"]:
