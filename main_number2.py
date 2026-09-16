@@ -583,14 +583,20 @@ def dedupe_listing_rows(df):
     return pd.concat([with_property, without_property], ignore_index=True)
 
 
+def has_value(series):
+    """True where a pandas Series contains a real non-blank value."""
+    return series.notna() & (series.astype("string").str.strip() != "")
+
+
 def load_and_rebucket_week_leads(repo, fresh_df):
     """
-    Rolling conveyor belt.
+    Rolling EMAIL conveyor belt.
 
-    Load all three existing week files, merge today's fresh Actor rows, dedupe by
-    property, recalculate age from the ORIGINAL ListDate, then return mutually
-    exclusive Week 1 / Week 2 / Week 3 frames. A property therefore MOVES folders
-    as it ages instead of remaining permanently in the week where it first landed.
+    Week 1 / Week 2 / Week 3 contain ONLY leads that have an actor-provided email.
+    Existing no-email rows already stored in old week files are removed on the next
+    run and returned for FB/SMS routing.
+
+    Email leads are re-aged from the ORIGINAL ListDate and move Week 1 -> 2 -> 3.
     Rows older than 21 days (or with invalid dates) fall out of the active buckets.
     """
     stored_frames = []
@@ -602,14 +608,22 @@ def load_and_rebucket_week_leads(repo, fresh_df):
     frames = stored_frames + [fresh_df.copy()]
     combined = pd.concat(frames, ignore_index=True, sort=False) if frames else fresh_df.copy()
     combined = dedupe_listing_rows(combined)
-    combined = add_week_bucket(combined)
 
-    week1 = combined[combined["LeadWeek"] == "Week 1"].copy().reset_index(drop=True)
-    week2 = combined[combined["LeadWeek"] == "Week 2"].copy().reset_index(drop=True)
-    week3 = combined[combined["LeadWeek"] == "Week 3"].copy().reset_index(drop=True)
-    expired = combined[combined["LeadWeek"].isna()].copy().reset_index(drop=True)
-    return week1, week2, week3, expired
+    if "Email" not in combined.columns:
+        combined["Email"] = pd.NA
 
+    email_mask = has_value(combined["Email"])
+    no_email = combined[~email_mask].copy().reset_index(drop=True)
+    email_only = combined[email_mask].copy().reset_index(drop=True)
+
+    email_only = add_week_bucket(email_only)
+
+    week1 = email_only[email_only["LeadWeek"] == "Week 1"].copy().reset_index(drop=True)
+    week2 = email_only[email_only["LeadWeek"] == "Week 2"].copy().reset_index(drop=True)
+    week3 = email_only[email_only["LeadWeek"] == "Week 3"].copy().reset_index(drop=True)
+    expired = email_only[email_only["LeadWeek"].isna()].copy().reset_index(drop=True)
+
+    return week1, week2, week3, expired, no_email
 
 def replace_week_file(repo, week_name, rows):
     """
@@ -1489,6 +1503,96 @@ def update_fb_leads_file(
 
 
 # =========================================================
+# UPDATE PERSISTENT SMS.CSV ON GITHUB
+# =========================================================
+
+def update_sms_leads_file(repo, new_sms_leads):
+    """
+    SMS.csv is cumulative.
+
+    Contains leads with:
+    - NO email
+    - NO website
+    - a usable phone number
+    """
+    sms_path = f"{GITHUB_FOLDER}/SMS.csv"
+
+    if new_sms_leads.empty:
+        print("No new SMS leads this run.")
+        try:
+            existing_file = repo.get_contents(sms_path, ref=GITHUB_BRANCH)
+            text = existing_file.decoded_content.decode("utf-8")
+            if not text.strip():
+                return 0
+            return len(pd.read_csv(StringIO(text), dtype="string"))
+        except GithubException as exc:
+            if exc.status == 404:
+                return 0
+            raise
+
+    new_sms_leads = new_sms_leads.copy()
+
+    sms_columns = [
+        "Bedrooms", "FirstName", "LastName", "Phone", "Address", "City",
+        "Price", "Website", "Email", "PublicRemarks",
+        "PropertyID", "ListingID", "PropertyURL", "ListDate", "ListingAgeDays", "LeadWeek",
+        "ActorStatus", "ActorDisplayStatus", "ActorIsPending",
+    ]
+    for column in sms_columns:
+        if column not in new_sms_leads.columns:
+            new_sms_leads[column] = pd.NA
+    new_sms_leads = new_sms_leads[sms_columns]
+
+    # Enforce the SMS rule again at the file boundary.
+    email_blank = ~has_value(new_sms_leads["Email"])
+    website_blank = ~has_value(new_sms_leads["Website"])
+    phone_present = has_value(new_sms_leads["Phone"])
+    new_sms_leads = new_sms_leads[email_blank & website_blank & phone_present].copy()
+
+    try:
+        existing_file = repo.get_contents(sms_path, ref=GITHUB_BRANCH)
+        text = existing_file.decoded_content.decode("utf-8")
+        existing = pd.read_csv(StringIO(text), dtype="string") if text.strip() else pd.DataFrame(columns=sms_columns)
+
+        for column in sms_columns:
+            if column not in existing.columns:
+                existing[column] = pd.NA
+
+        combined = pd.concat([existing[sms_columns], new_sms_leads], ignore_index=True)
+        combined = combined.drop_duplicates(
+            subset=["Phone", "PropertyID", "ListingID", "Address"],
+            keep="last",
+        )
+        repo.update_file(
+            path=sms_path,
+            message="Update SMS.csv",
+            content=combined.to_csv(index=False),
+            sha=existing_file.sha,
+            branch=GITHUB_BRANCH,
+        )
+        print("Updated:", sms_path, "total SMS leads:", len(combined))
+        return len(combined)
+
+    except GithubException as exc:
+        if exc.status == 404:
+            initial = new_sms_leads.drop_duplicates(
+                subset=["Phone", "PropertyID", "ListingID", "Address"],
+                keep="last",
+            )
+            if initial.empty:
+                return 0
+            repo.create_file(
+                path=sms_path,
+                message="Create SMS.csv",
+                content=initial.to_csv(index=False),
+                branch=GITHUB_BRANCH,
+            )
+            print("Created:", sms_path, "SMS leads:", len(initial))
+            return len(initial)
+        raise
+
+
+# =========================================================
 # UPDATE VALID EMAILS WITHOUT PERSONALIZATION
 # =========================================================
 
@@ -1785,7 +1889,7 @@ async def apify_webhook(
     # conveyor belt instead of permanent storage buckets.
     try:
         repo = github.get_repo(GITHUB_REPO)
-        week1_leads, week2_leads, week3_leads, outside_21_days = (
+        week1_leads, week2_leads, week3_leads, outside_21_days, no_email_leads = (
             load_and_rebucket_week_leads(repo, df)
         )
     except GithubException as exc:
@@ -1796,6 +1900,44 @@ async def apify_webhook(
     print("Week 2 leads (8-14 days):", len(week2_leads))
     print("Week 3 leads (15-21 days):", len(week3_leads))
     print("Outside 0-21 days / invalid list_date:", len(outside_21_days))
+
+    # -----------------------------------------------------
+    # CHANNEL ROUTING FOR LEADS WITH NO EMAIL
+    # -----------------------------------------------------
+    # Week buckets are email-only. No-email leads bypass Week 1/2/3 completely:
+    #   website present -> FBLeads.csv
+    #   no website + phone present -> SMS.csv
+    #   no email + no website + no phone -> no-contact/discard
+    if not no_email_leads.empty:
+        # Add age/week metadata for reporting only; these rows do NOT enter week files.
+        no_email_leads = add_week_bucket(no_email_leads)
+
+    no_email_has_website = (
+        has_value(no_email_leads["Website"])
+        if not no_email_leads.empty else pd.Series(dtype=bool)
+    )
+    no_email_has_phone = (
+        has_value(no_email_leads["Phone"])
+        if not no_email_leads.empty else pd.Series(dtype=bool)
+    )
+
+    no_email_fb_leads = (
+        no_email_leads[no_email_has_website].copy().reset_index(drop=True)
+        if not no_email_leads.empty else no_email_leads.copy()
+    )
+    new_sms_leads = (
+        no_email_leads[(~no_email_has_website) & no_email_has_phone].copy().reset_index(drop=True)
+        if not no_email_leads.empty else no_email_leads.copy()
+    )
+    no_contact_leads = (
+        no_email_leads[(~no_email_has_website) & (~no_email_has_phone)].copy().reset_index(drop=True)
+        if not no_email_leads.empty else no_email_leads.copy()
+    )
+
+    print("No-email leads diverted out of Week buckets:", len(no_email_leads))
+    print("No-email + website -> FB:", len(no_email_fb_leads))
+    print("No-email + no website + phone -> SMS:", len(new_sms_leads))
+    print("No email/website/phone -> no-contact:", len(no_contact_leads))
 
     # We STORE Week 1 but do not contact it. Only Week 2 + Week 3 are eligible.
     contact_candidates = pd.concat([week2_leads, week3_leads], ignore_index=True)
@@ -1870,13 +2012,22 @@ async def apify_webhook(
         .copy().reset_index(drop=True)
     )
 
-    new_fb_leads = (
+    bouncer_fb_leads = (
         enriched_leads[
-            (normalized_outcome == "not_found")
-            | ((normalized_outcome == "verified") & (normalized_bouncer_status != "deliverable"))
+            (normalized_outcome == "verified") & (normalized_bouncer_status != "deliverable")
         ]
         .copy().reset_index(drop=True)
     )
+
+    # FB receives:
+    # 1) no-email leads that DO have a website, plus
+    # 2) the existing fallback for Bouncer-completed non-deliverable emails.
+    new_fb_leads = pd.concat(
+        [no_email_fb_leads, bouncer_fb_leads],
+        ignore_index=True,
+        sort=False,
+    )
+    new_fb_leads = dedupe_listing_rows(new_fb_leads)
 
     bouncer_deliverable = int((normalized_bouncer_status == "deliverable").sum())
     bouncer_non_deliverable = int(((normalized_outcome == "verified") & (normalized_bouncer_status != "deliverable")).sum())
@@ -1919,7 +2070,7 @@ async def apify_webhook(
 
         # -----------------------------------------
         # WEEK 1 / WEEK 2 / WEEK 3 FOLDERS
-        # Week 1 is storage only. Week 2/3 are the outreach pool.
+        # Week 1/2/3 are EMAIL-ONLY. Week 1 is storage; Week 2/3 are the email outreach pool.
         # -----------------------------------------
 
         # IMPORTANT: replace each file with its current membership. Do not append.
@@ -1988,6 +2139,13 @@ async def apify_webhook(
             )
         )
 
+        # -----------------------------------------
+        # SMS.CSV
+        #
+        # No email + no website + usable phone.
+        # -----------------------------------------
+        total_sms_leads = update_sms_leads_file(repo, new_sms_leads)
+
 
     except GithubException as exc:
 
@@ -2038,6 +2196,10 @@ async def apify_webhook(
         "new_fb_leads": len(new_fb_leads),
         "total_fb_leads": total_fb_leads,
         "fb_leads_file": f"{GITHUB_FOLDER}/FBleads.csv",
+        "new_sms_leads": len(new_sms_leads),
+        "total_sms_leads": total_sms_leads,
+        "sms_leads_file": f"{GITHUB_FOLDER}/SMS.csv",
+        "no_contact_leads": len(no_contact_leads),
         "enriched_file": enriched_filename,
         "total_enriched_master": total_enriched_master,
         "no_original_email_file": no_actor_email_filename,
