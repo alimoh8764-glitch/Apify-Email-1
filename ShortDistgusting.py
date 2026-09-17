@@ -534,17 +534,37 @@ def extract_dataset_id(payload: Dict[str, Any]) -> str:
     return ""
 
 
-def fetch_dataset(dataset_id: str) -> List[Dict[str, Any]]:
+def iter_dataset_pages(dataset_id: str, page_size: int = 200):
+    """
+    Stream the Apify dataset in small pages instead of loading the entire
+    Realtor dataset into Railway RAM at once.
+    """
     url = f"https://api.apify.com/v2/datasets/{dataset_id}/items"
-    params = {"clean": "true", "format": "json"}
-    if APIFY_TOKEN:
-        params["token"] = APIFY_TOKEN
-    r = requests.get(url, params=params, timeout=180)
-    r.raise_for_status()
-    data = r.json()
-    if not isinstance(data, list):
-        raise RuntimeError("Apify dataset response was not a JSON list")
-    return data
+    offset = 0
+
+    while True:
+        params = {
+            "clean": "true",
+            "format": "json",
+            "offset": offset,
+            "limit": page_size,
+        }
+        if APIFY_TOKEN:
+            params["token"] = APIFY_TOKEN
+
+        r = requests.get(url, params=params, timeout=180)
+        r.raise_for_status()
+        page = r.json()
+        if not isinstance(page, list):
+            raise RuntimeError("Apify dataset response was not a JSON list")
+        if not page:
+            break
+
+        yield page
+        offset += len(page)
+
+        if len(page) < page_size:
+            break
 
 
 def check_config():
@@ -573,16 +593,26 @@ async def apify_webhook(request: Request):
         if not dataset_id:
             raise RuntimeError("Could not find defaultDatasetId in Apify webhook")
 
-        items = fetch_dataset(dataset_id)
+        # Never hold the raw 5K Realtor dataset in RAM. Fetch 200 records,
+        # immediately shrink them to our compact lead columns, then discard
+        # the raw page.
+        formatted_leads: List[Dict[str, str]] = []
+        dataset_items = 0
+
+        for page in iter_dataset_pages(dataset_id, page_size=200):
+            dataset_items += len(page)
+            for item in page:
+                formatted_leads.append(format_lead(item))
+
         email_rows: List[Dict[str, str]] = []
         buckets = {FB_FILE: [], SMS_FILE: []}
         ignored = 0
         run_seen = set()
         unique_run_count = 0
 
-        # Process newest listings first so, when one person has multiple
-        # properties in the same batch, their freshest listing is retained.
-        formatted_leads = [format_lead(item) for item in items]
+        # Sort only the compact leads globally. This preserves the rule that
+        # the newest listing wins for duplicate property/email/phone contacts,
+        # even when duplicates were fetched on different pages.
         formatted_leads.sort(key=listing_sort_date, reverse=True)
 
         for lead in formatted_leads:
@@ -594,8 +624,6 @@ async def apify_webhook(request: Request):
 
             bucket = route_lead(lead)
             if bucket == "EMAIL":
-                # Email leads require a valid Listed date and are assigned to
-                # Week1/2/3 by current age.
                 if email_week_path(lead):
                     email_rows.append(lead)
                 else:
@@ -620,7 +648,7 @@ async def apify_webhook(request: Request):
         return {
             "ok": True,
             "dataset_id": dataset_id,
-            "dataset_items": len(items),
+            "dataset_items": dataset_items,
             "unique_items": unique_run_count,
             "ignored": ignored,
             "email_routed_this_run": len(email_rows),
