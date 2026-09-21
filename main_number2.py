@@ -3,7 +3,7 @@ import re
 import csv
 import requests
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Body
 from typing import Any
 
 
@@ -635,7 +635,7 @@ def run(listings):
 # ============================================================
 
 @app.post("/process")
-async def process_payload(payload: Any):
+async def process_payload(payload: Any = Body(...)):
     """
     Receive Realtor/Apify listings and process them.
 
