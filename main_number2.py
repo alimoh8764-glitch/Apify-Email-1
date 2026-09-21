@@ -1,21 +1,21 @@
 import os
 import re
+import csv
 import requests
+from urllib.parse import urlparse
 
 
 NUMVERIFY_API_KEY = os.getenv("NUMVERIFY_API_KEY")
 NUMVERIFY_URL = "https://apilayer.net/api/validate"
 
 
+# =========================================================
+# PHONE NORMALIZATION
+# =========================================================
+
 def normalize_phone(area_code, phone_number):
     """
-    Converts:
-    (403) 613-4163
-    403-613-4163
-    +1 403 613 4163
-
-    Into:
-    14036134163
+    Canadian/NANP number -> 1XXXXXXXXXX
     """
 
     area_code = str(area_code or "")
@@ -32,25 +32,17 @@ def normalize_phone(area_code, phone_number):
     return None
 
 
+# =========================================================
+# NUMVERIFY
+# =========================================================
+
 def verify_phone_numverify(phone):
-    """
-    Verify phone using Numverify.
-
-    Returns:
-    {
-        "valid": True,
-        "country_code": "CA",
-        "carrier": "...",
-        "line_type": "mobile"
-    }
-    """
-
     if not phone:
         return None
 
     if not NUMVERIFY_API_KEY:
         raise RuntimeError(
-            "NUMVERIFY_API_KEY environment variable is missing."
+            "NUMVERIFY_API_KEY is missing from environment variables."
         )
 
     try:
@@ -66,57 +58,74 @@ def verify_phone_numverify(phone):
         )
 
         response.raise_for_status()
-
         data = response.json()
 
-        # Numverify API-level error
+        # Numverify API error
         if data.get("success") is False:
-            print(
-                "Numverify error:",
-                data.get("error")
-            )
+            print(f"Numverify API error: {data.get('error')}")
             return None
 
         return {
-            "valid": data.get("valid", False),
+            "valid": bool(data.get("valid")),
             "country_code": data.get("country_code"),
             "carrier": data.get("carrier"),
-            "line_type": data.get("line_type"),
+            "line_type": str(
+                data.get("line_type") or ""
+            ).lower().strip(),
         }
 
     except requests.RequestException as exc:
-        print(f"Numverify request failed for {phone}: {exc}")
+        print(f"Numverify failed for {phone}: {exc}")
         return None
 
+
+# =========================================================
+# ADDRESS
+# =========================================================
 
 def shorten_address(address):
     """
     5207 28 Avenue SE|Calgary, Alberta T2B1N3
-
-    becomes:
-
+    ->
     5207 28 Avenue SE
     """
 
     if not address:
         return None
 
-    return str(address).split("|")[0].strip() or None
+    address = str(address).strip()
+    address = address.split("|")[0].strip()
 
+    return address or None
+
+
+# =========================================================
+# WEBSITE CLEANING
+# =========================================================
+
+def clean_website(website):
+    if not website:
+        return None
+
+    website = str(website).strip()
+
+    if not website:
+        return None
+
+    return website
+
+
+# =========================================================
+# GET INDIVIDUAL PHONE
+# =========================================================
 
 def get_first_phone(individual):
-    """
-    Gets the first valid-looking phone belonging
-    to the individual Realtor/agent.
-    """
-
     phones = individual.get("Phones") or []
 
     for phone in phones:
-
         normalized = normalize_phone(
             phone.get("AreaCode"),
-            phone.get("PhoneNumber")
+            phone.get("PhoneNumber"),
         )
 
         if normalized:
@@ -125,11 +134,51 @@ def get_first_phone(individual):
     return None
 
 
-def transform_listing(listing):
+# =========================================================
+# FIND WEBSITE
+# =========================================================
+
+def get_website(listing, individual):
     """
-    Convert one Realtor listing into a cleaned lead.
+    Realtor payloads can place websites in different
+    locations, so check the common possibilities.
+
+    Adjust/add fields here if your exact Apify payload
+    uses another website field.
     """
 
+    candidates = [
+        individual.get("Website"),
+        individual.get("WebsiteURL"),
+        individual.get("WebSite"),
+        listing.get("Website"),
+        listing.get("WebsiteURL"),
+    ]
+
+    # Organization sometimes contains website
+    organizations = listing.get("Organization") or []
+
+    for org in organizations:
+        candidates.extend([
+            org.get("Website"),
+            org.get("WebsiteURL"),
+            org.get("WebSite"),
+        ])
+
+    for website in candidates:
+        cleaned = clean_website(website)
+
+        if cleaned:
+            return cleaned
+
+    return None
+
+
+# =========================================================
+# EXTRACT RAW LEAD
+# =========================================================
+
+def extract_lead(listing):
     individuals = listing.get("Individual") or []
 
     if not individuals:
@@ -138,37 +187,11 @@ def transform_listing(listing):
     individual = individuals[0]
 
     first_name = individual.get("FirstName")
-
     phone = get_first_phone(individual)
-
-    if not phone:
-        return None
-
-    # -------------------------
-    # Verify with Numverify
-    # -------------------------
-
-    verification = verify_phone_numverify(phone)
-
-    if not verification:
-        return None
-
-    # Reject invalid numbers
-    if not verification["valid"]:
-        return None
-
-    # Make sure Numverify says Canada
-    if verification["country_code"] != "CA":
-        return None
-
-    # -------------------------
-    # Property
-    # -------------------------
+    website = get_website(listing, individual)
 
     more_details = listing.get("moreDetails") or {}
-
     property_data = more_details.get("Property") or {}
-
     address_data = property_data.get("Address") or {}
 
     city = address_data.get("City")
@@ -192,48 +215,212 @@ def transform_listing(listing):
         "city": city,
         "community": community,
         "address": address,
-
-        # Numverify information
-        "phone_valid": verification["valid"],
-        "phone_type": verification["line_type"],
-        "carrier": verification["carrier"],
+        "website": website,
     }
 
 
-def transform_listings(listings):
-    """
-    Process full Apify payload.
+# =========================================================
+# PROCESS ALL LISTINGS
+# =========================================================
 
-    Also deduplicates agents by phone number so
-    Numverify isn't called repeatedly for the same agent.
-    """
+def process_listings(listings):
 
-    results = []
+    mobile_leads = []
+    fb_leads = []
 
-    seen_phones = set()
+    # Prevent duplicate phone verification
+    verification_cache = {}
+
+    # Prevent duplicate output
+    mobile_seen = set()
+    fb_seen = set()
 
     for listing in listings:
 
-        # Check phone BEFORE calling Numverify
-        individuals = listing.get("Individual") or []
+        lead = extract_lead(listing)
 
-        if not individuals:
+        if not lead:
             continue
 
-        raw_phone = get_first_phone(individuals[0])
+        phone = lead["phone"]
+        website = lead["website"]
 
-        if not raw_phone:
+        verification = None
+
+        # -------------------------------------------------
+        # VERIFY PHONE
+        # -------------------------------------------------
+
+        if phone:
+
+            if phone in verification_cache:
+                verification = verification_cache[phone]
+
+            else:
+                print(f"Verifying {phone}...")
+
+                verification = verify_phone_numverify(phone)
+
+                verification_cache[phone] = verification
+
+        # -------------------------------------------------
+        # VERIFIED MOBILE
+        # -------------------------------------------------
+
+        is_mobile = False
+
+        if verification:
+
+            valid = verification.get("valid")
+            country = verification.get("country_code")
+            line_type = verification.get("line_type")
+
+            if (
+                valid is True
+                and country == "CA"
+                and line_type == "mobile"
+            ):
+                is_mobile = True
+
+        if is_mobile:
+
+            if phone not in mobile_seen:
+
+                mobile_seen.add(phone)
+
+                mobile_leads.append({
+                    "phone": phone,
+                    "first_name": lead["first_name"],
+                    "city": lead["city"],
+                    "community": lead["community"],
+                    "address": lead["address"],
+                    "carrier": verification.get("carrier"),
+                })
+
+            # If it's mobile, DON'T put it into FB.
             continue
 
-        # Avoid duplicate agent + duplicate Numverify API charge
-        if raw_phone in seen_phones:
-            continue
+        # -------------------------------------------------
+        # FB LEADS
+        # -------------------------------------------------
+        #
+        # Anything that isn't a verified mobile
+        # but DOES have a website.
+        #
+        # This includes landlines with websites.
+        # -------------------------------------------------
 
-        seen_phones.add(raw_phone)
+        if website:
 
-        lead = transform_listing(listing)
+            # Website is the best fallback dedupe key
+            key = website.lower()
 
-        if lead:
-            results.append(lead)
+            if key not in fb_seen:
 
-    return results
+                fb_seen.add(key)
+
+                fb_leads.append({
+                    "phone": phone,
+                    "first_name": lead["first_name"],
+                    "city": lead["city"],
+                    "community": lead["community"],
+                    "address": lead["address"],
+                    "website": website,
+                    "phone_valid": (
+                        verification.get("valid")
+                        if verification
+                        else False
+                    ),
+                    "phone_type": (
+                        verification.get("line_type")
+                        if verification
+                        else None
+                    ),
+                    "carrier": (
+                        verification.get("carrier")
+                        if verification
+                        else None
+                    ),
+                })
+
+    return mobile_leads, fb_leads
+
+
+# =========================================================
+# SAVE CSV
+# =========================================================
+
+def save_csv(filename, rows, fields):
+
+    with open(
+        filename,
+        "w",
+        newline="",
+        encoding="utf-8-sig"
+    ) as file:
+
+        writer = csv.DictWriter(
+            file,
+            fieldnames=fields
+        )
+
+        writer.writeheader()
+
+        for row in rows:
+            writer.writerow(row)
+
+
+# =========================================================
+# MAIN
+# =========================================================
+
+def run(listings):
+
+    mobile_leads, fb_leads = process_listings(listings)
+
+    # ---------------------------------------------
+    # VERIFIED MOBILE LEADS
+    # ---------------------------------------------
+
+    save_csv(
+        "mobile_leads.csv",
+        mobile_leads,
+        [
+            "phone",
+            "first_name",
+            "city",
+            "community",
+            "address",
+            "carrier",
+        ],
+    )
+
+    # ---------------------------------------------
+    # WEBSITE / FB LEADS
+    # ---------------------------------------------
+
+    save_csv(
+        "FB.csv",
+        fb_leads,
+        [
+            "phone",
+            "first_name",
+            "city",
+            "community",
+            "address",
+            "website",
+            "phone_valid",
+            "phone_type",
+            "carrier",
+        ],
+    )
+
+    print()
+    print("==============================")
+    print("PROCESSING COMPLETE")
+    print("==============================")
+    print(f"Verified mobile leads: {len(mobile_leads)}")
+    print(f"FB / website leads:    {len(fb_leads)}")
+    print("==============================")
+
+    return mobile_leads, fb_leads
