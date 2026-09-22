@@ -383,21 +383,9 @@ def get_address(data):
     """
     Clean Realtor.ca property address.
 
-    Examples:
-
-    23 Penworth Crescent SE|Calgary, Alberta T2A4C5
-        -> 23 Penworth Crescent SE
-
-    49, 1055 72 Avenue NW|Calgary, Alberta T2K5S4
-        -> 1055 72 Avenue NW
-
-    301, 55 Wolf Hollow Crescent SE|Calgary, Alberta T2X5K9
-        -> 55 Wolf Hollow Crescent SE
-
-    1506, 9800 Horton Road SW|Calgary, Alberta T2V5B5
-        -> 9800 Horton Road SW
-
-    Condo/unit numbers are intentionally removed.
+    Named roads lose trailing NE/NW/SE/SW.
+    Numbered roads keep the direction.
+    Condo/unit numbers are removed.
     """
 
     address = first_value(
@@ -409,11 +397,11 @@ def get_address(data):
     if not address:
         return ""
 
-    # Remove city / province / postal code after Realtor's | separator.
+    # Remove city / province / postal code.
     address = address.split("|", 1)[0].strip()
 
-    # Remove a leading condo/unit number when Realtor formats the address as:
-    # 49, 1055 72 Avenue NW -> 1055 72 Avenue NW
+    # Remove leading condo/unit number.
+    # 301, 55 Wolf Hollow Crescent SE -> 55 Wolf Hollow Crescent SE
     address = re.sub(
         r"^\s*(?:unit\s*)?#?\s*[A-Za-z0-9-]+\s*,\s*",
         "",
@@ -422,7 +410,7 @@ def get_address(data):
         flags=re.IGNORECASE,
     )
 
-    # Remove an explicit unit/suite suffix if one appears at the end.
+    # Remove explicit unit/suite suffix at the end.
     address = re.sub(
         r"\s+(?:apt|apartment|unit|suite|ste|#)\s*[A-Za-z0-9-]+\s*$",
         "",
@@ -430,8 +418,32 @@ def get_address(data):
         flags=re.IGNORECASE,
     )
 
-    # Normalize extra whitespace.
     address = re.sub(r"\s+", " ", address).strip()
+
+    # Look at the road portion after the house number.
+    # If it begins with a number, it is a numbered road and
+    # NE/NW/SE/SW should be kept.
+    parts = address.split(maxsplit=1)
+
+    if len(parts) == 2:
+        road_part = parts[1]
+
+        numbered_road = bool(
+            re.match(
+                r"^\d+(?:st|nd|rd|th)?\b",
+                road_part,
+                re.IGNORECASE,
+            )
+        )
+
+        # Named road: remove trailing direction.
+        if not numbered_road:
+            address = re.sub(
+                r"\s+(?:NE|NW|SE|SW)\s*$",
+                "",
+                address,
+                flags=re.IGNORECASE,
+            ).strip()
 
     return address
 
