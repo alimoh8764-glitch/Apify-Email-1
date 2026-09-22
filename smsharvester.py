@@ -2,31 +2,44 @@
 SMS HARVESTER
 =============
 
-Apify -> Railway webhook -> Realtor.ca lead extraction
--> NumVerify -> SMS / Facebook routing
+Apify webhook -> Railway -> fetch Realtor.ca dataset
+-> clean leads -> NumVerify -> route leads
 
-FINAL OUTPUT COLUMNS:
-1. first_name
-2. phone_number
-3. city
-4. community
-5. price
-6. address
-7. bedrooms
-8. website
-9. registration_number
+ROUTING
+-------
+Valid mobile:
+    -> SMS Leads
 
-ROUTING:
-- Valid MOBILE -> SMS Leads
-- Valid LANDLINE + website -> Facebook Leads
-- Valid LANDLINE + no website -> Discard
-- Invalid -> Discard
-- Unsupported line type -> Discard
-- NumVerify API failure -> Verification Errors
+Valid landline + website:
+    -> Facebook Leads
 
-ENVIRONMENT VARIABLES:
-NUMVERIFY_API_KEY=your_numverify_key
-APIFY_API_TOKEN=your_apify_token
+Valid landline + no website:
+    -> Discard
+
+Invalid:
+    -> Discard
+
+NumVerify failure:
+    -> Verification Errors
+
+
+FINAL COLUMN ORDER
+------------------
+first_name
+phone_number
+city
+community
+price
+address
+bedrooms
+website
+registration_number
+
+
+RAILWAY ENVIRONMENT VARIABLES
+-----------------------------
+NUMVERIFY_API_KEY
+APIFY_API_TOKEN
 """
 
 import os
@@ -68,12 +81,12 @@ COLUMNS = [
 
 
 # ============================================================
-# GENERAL CLEANING
+# BASIC CLEANING
 # ============================================================
 
 def clean(value):
     """
-    Convert null / blank / NaN-like values into an empty string.
+    Convert null / blank / NaN-like values into empty strings.
     """
 
     if value is None:
@@ -94,17 +107,93 @@ def clean(value):
     return value
 
 
+# ============================================================
+# NESTED + FLATTENED APIFY READER
+# ============================================================
+
+def get_nested(data, path):
+    """
+    Supports BOTH formats.
+
+    FLATTENED:
+        {
+            "Individual/0/Phones/0/AreaCode": "403"
+        }
+
+    NESTED:
+        {
+            "Individual": [
+                {
+                    "Phones": [
+                        {
+                            "AreaCode": "403"
+                        }
+                    ]
+                }
+            ]
+        }
+
+    This is important because CSV exports and live Apify JSON
+    can have different structures.
+    """
+
+    # --------------------------------------------------------
+    # TRY EXACT FLATTENED KEY FIRST
+    # --------------------------------------------------------
+
+    if isinstance(data, dict) and path in data:
+        return data[path]
+
+    # --------------------------------------------------------
+    # OTHERWISE WALK NESTED JSON
+    # --------------------------------------------------------
+
+    current = data
+
+    for part in path.split("/"):
+
+        # Dictionary
+        if isinstance(current, dict):
+
+            if part not in current:
+                return None
+
+            current = current[part]
+
+        # List
+        elif isinstance(current, list):
+
+            try:
+                index = int(part)
+
+            except ValueError:
+                return None
+
+            if index < 0 or index >= len(current):
+                return None
+
+            current = current[index]
+
+        else:
+            return None
+
+    return current
+
+
 def first_value(data, *keys):
     """
-    Return the first populated field from the supplied keys.
+    Return the first populated value.
 
-    Supports both the standard and moreDetails Realtor.ca
-    fields from the Apify output.
+    Works with both:
+    - flattened Apify records
+    - nested Apify JSON
     """
 
     for key in keys:
 
-        value = clean(data.get(key))
+        value = clean(
+            get_nested(data, key)
+        )
 
         if value:
             return value
@@ -141,7 +230,7 @@ def get_first_name(data):
 
 
 # ============================================================
-# REGISTRATION / REALTOR INDIVIDUAL ID
+# REGISTRATION NUMBER / REALTOR INDIVIDUAL ID
 # ============================================================
 
 def get_registration_number(data):
@@ -159,10 +248,12 @@ def get_registration_number(data):
 
 def get_phone(data):
     """
-    Get the INDIVIDUAL agent's phone.
+    Get the INDIVIDUAL Realtor's phone.
 
-    We deliberately avoid using the brokerage/organization
-    phone number.
+    We do NOT intentionally use:
+        Organization/Phones
+
+    because that could be the brokerage phone.
     """
 
     area_code = first_value(
@@ -177,6 +268,7 @@ def get_phone(data):
         "moreDetails/Individual/0/Phones/0/PhoneNumber",
     )
 
+    # Remove formatting
     area_digits = re.sub(
         r"\D",
         "",
@@ -191,16 +283,26 @@ def get_phone(data):
 
     number = area_digits + phone_digits
 
-    # Standard 10-digit US/Canadian number
+    # --------------------------------------------------------
+    # NORMAL US / CANADA NUMBER
+    # --------------------------------------------------------
+
     if len(number) == 10:
         return "1" + number
 
-    # Already has North American country code
+    # --------------------------------------------------------
+    # ALREADY HAS +1 / COUNTRY CODE
+    # --------------------------------------------------------
+
     if (
         len(number) == 11
         and number.startswith("1")
     ):
         return number
+
+    # --------------------------------------------------------
+    # BAD / MISSING NUMBER
+    # --------------------------------------------------------
 
     return ""
 
@@ -237,6 +339,7 @@ def get_community(data):
 
 def get_price(data):
 
+    # Prefer clean numeric price
     value = first_value(
         data,
         "Property/PriceUnformattedValue",
@@ -251,7 +354,10 @@ def get_price(data):
         except (ValueError, TypeError):
             pass
 
-    # Fallback to formatted price
+    # --------------------------------------------------------
+    # FALLBACK TO FORMATTED PRICE
+    # --------------------------------------------------------
+
     value = first_value(
         data,
         "Property/Price",
@@ -271,7 +377,7 @@ def get_price(data):
 
 
 # ============================================================
-# SHORTENED ADDRESS
+# SHORTENED PROPERTY ADDRESS
 # ============================================================
 
 def get_address(data):
@@ -297,12 +403,12 @@ def get_address(data):
     # Realtor.ca separator
     address = address.split("|")[0]
 
-    # Additional fallback
+    # Additional safety
     address = address.split(",")[0]
 
     address = address.strip()
 
-    # Remove apartment/unit information
+    # Remove unit / apartment / suite information
     address = re.sub(
         r"\s+(?:apt|apartment|unit|suite|ste|#)"
         r"\s*[\w-]+.*$",
@@ -320,16 +426,23 @@ def get_address(data):
 
 def get_bedrooms(data):
     """
-    Examples:
+    Realtor examples:
 
-    3       -> 3
-    3 + 2   -> 5
-    4 + 1   -> 5
+        3       -> 3
+        3 + 2   -> 5
+        4 + 1   -> 5
+
+    Returns TOTAL bedrooms.
     """
 
     value = first_value(
         data,
+
+        # IMPORTANT:
+        # This exists in your actual Realtor/Apify data.
         "Building/Bedrooms",
+
+        # Fallback
         "moreDetails/Building/Bedrooms",
     )
 
@@ -356,9 +469,9 @@ def get_bedrooms(data):
 
 def get_website(data):
     """
-    Individual agent website.
+    Get the INDIVIDUAL agent website.
 
-    Does not intentionally substitute the brokerage website.
+    Do not intentionally substitute the brokerage website.
     """
 
     return first_value(
@@ -373,6 +486,9 @@ def get_website(data):
 # ============================================================
 
 def build_lead(data):
+    """
+    Creates the final nine columns in the exact required order.
+    """
 
     return {
         "first_name":
@@ -412,11 +528,11 @@ def numverify(phone_number):
     """
     Python calls NumVerify directly.
 
-    We care about:
-    - valid
-    - line_type
-    - country_code
-    - carrier
+    We use:
+        valid
+        line_type
+        country_code
+        carrier
     """
 
     if not phone_number:
@@ -472,7 +588,10 @@ def numverify(phone_number):
             "carrier": "",
         }
 
-    # NumVerify API-level error
+    # --------------------------------------------------------
+    # NUMVERIFY API ERROR
+    # --------------------------------------------------------
+
     if result.get("success") is False:
 
         return {
@@ -513,21 +632,21 @@ def numverify(phone_number):
 
 def route_lead(data):
     """
-    FINAL ROUTING:
+    FINAL ROUTING LOGIC:
 
-    VALID + MOBILE
+    VALID MOBILE
         -> SMS
 
-    VALID + LANDLINE + WEBSITE
+    VALID LANDLINE + WEBSITE
         -> FACEBOOK
 
-    VALID + LANDLINE + NO WEBSITE
+    VALID LANDLINE + NO WEBSITE
         -> DISCARD
 
     INVALID
         -> DISCARD
 
-    UNKNOWN/OTHER LINE TYPE
+    UNKNOWN / OTHER LINE TYPE
         -> DISCARD
 
     NUMVERIFY FAILURE
@@ -539,7 +658,7 @@ def route_lead(data):
     phone = lead["phone_number"]
 
     # --------------------------------------------------------
-    # NO PHONE
+    # NO USABLE PHONE
     # --------------------------------------------------------
 
     if not phone:
@@ -551,13 +670,13 @@ def route_lead(data):
         )
 
     # --------------------------------------------------------
-    # NUMVERIFY
+    # CALL NUMVERIFY
     # --------------------------------------------------------
 
     verification = numverify(phone)
 
     # --------------------------------------------------------
-    # API ERROR
+    # NUMVERIFY FAILED
     # --------------------------------------------------------
 
     if not verification["success"]:
@@ -569,7 +688,7 @@ def route_lead(data):
         )
 
     # --------------------------------------------------------
-    # INVALID
+    # INVALID NUMBER
     # --------------------------------------------------------
 
     if not verification["valid"]:
@@ -581,7 +700,7 @@ def route_lead(data):
         )
 
     # --------------------------------------------------------
-    # US / CANADA ONLY
+    # ONLY US / CANADA
     # --------------------------------------------------------
 
     if verification["country_code"] not in {
@@ -615,7 +734,10 @@ def route_lead(data):
 
     if line_type == "landline":
 
-        # Landline WITH website -> Facebook
+        # ----------------------------------------------------
+        # LANDLINE + WEBSITE -> FACEBOOK
+        # ----------------------------------------------------
+
         if clean(lead["website"]):
 
             return (
@@ -624,7 +746,10 @@ def route_lead(data):
                 "landline_with_website",
             )
 
-        # Landline WITHOUT website -> discard
+        # ----------------------------------------------------
+        # LANDLINE + NO WEBSITE -> DISCARD
+        # ----------------------------------------------------
+
         return (
             "discard",
             lead,
@@ -632,7 +757,7 @@ def route_lead(data):
         )
 
     # --------------------------------------------------------
-    # ALL OTHER LINE TYPES
+    # OTHER TYPES DO NOT GO TO SMS
     # --------------------------------------------------------
 
     return (
@@ -643,13 +768,10 @@ def route_lead(data):
 
 
 # ============================================================
-# PROCESS ALL RECORDS
+# PROCESS ALL REALTOR RECORDS
 # ============================================================
 
 def process_payload(payload):
-    """
-    Process actual Realtor/Apify dataset records.
-    """
 
     if isinstance(payload, dict):
         records = [payload]
@@ -724,19 +846,26 @@ def process_payload(payload):
 
             stats["discarded"] += 1
 
+        # ----------------------------------------------------
+        # RAILWAY LOG
+        # ----------------------------------------------------
+
         print(
             f"[{index}/{len(records)}] "
             f"{lead['first_name']} | "
             f"{lead['phone_number']} | "
             f"{destination} | "
-            f"{reason}"
+            f"{reason}",
+            flush=True,
         )
 
-        # Small pause between NumVerify requests
+        # Small pause for NumVerify
         time.sleep(0.1)
 
     return {
         "folder_name": "SMS Leads",
+
+        "columns": COLUMNS,
 
         "sms_sheet": {
             "name": "SMS Leads",
@@ -759,21 +888,24 @@ def process_payload(payload):
 
 
 # ============================================================
-# APIFY DATASET FETCHING
+# FIND APIFY DATASET ID
 # ============================================================
 
 def find_dataset_id(payload):
     """
-    Find defaultDatasetId in common Apify webhook structures.
+    Apify's webhook may contain the Actor run information
+    rather than the actual Realtor records.
 
-    Apify webhooks may contain the Actor run information
-    rather than the actual dataset rows.
+    Find defaultDatasetId from common locations.
     """
 
     if not isinstance(payload, dict):
         return ""
 
-    # Common location
+    # --------------------------------------------------------
+    # RESOURCE
+    # --------------------------------------------------------
+
     resource = payload.get("resource")
 
     if isinstance(resource, dict):
@@ -785,7 +917,10 @@ def find_dataset_id(payload):
         if dataset_id:
             return dataset_id
 
-    # Alternative eventData location
+    # --------------------------------------------------------
+    # EVENT DATA
+    # --------------------------------------------------------
+
     event_data = payload.get("eventData")
 
     if isinstance(event_data, dict):
@@ -797,7 +932,10 @@ def find_dataset_id(payload):
         if dataset_id:
             return dataset_id
 
-    # Direct location fallback
+    # --------------------------------------------------------
+    # DIRECT
+    # --------------------------------------------------------
+
     dataset_id = clean(
         payload.get("defaultDatasetId")
     )
@@ -808,12 +946,14 @@ def find_dataset_id(payload):
     return ""
 
 
+# ============================================================
+# FETCH ACTUAL APIFY DATASET
+# ============================================================
+
 def fetch_apify_dataset(dataset_id):
     """
-    Fetch actual dataset items from Apify.
-
-    APIFY_API_TOKEN is optional for public datasets
-    but required for private datasets.
+    Fetch the actual dataset items after receiving the
+    Actor webhook.
     """
 
     if not dataset_id:
@@ -832,6 +972,7 @@ def fetch_apify_dataset(dataset_id):
         "format": "json",
     }
 
+    # Required for private datasets
     if APIFY_API_TOKEN:
         params["token"] = APIFY_API_TOKEN
 
@@ -851,35 +992,48 @@ def fetch_apify_dataset(dataset_id):
             "Apify dataset response was not a list."
         )
 
+    print(
+        f"Downloaded {len(data)} records from Apify.",
+        flush=True,
+    )
+
     return data
 
 
 # ============================================================
-# DETECT ACTUAL DATASET PAYLOAD
+# DETECT REALTOR RECORD
 # ============================================================
 
 def looks_like_realtor_record(payload):
     """
-    Determine whether Apify sent an actual Realtor dataset
-    record rather than an Actor event.
+    Detect Realtor records in either:
+
+    - flattened CSV-like format
+    - nested live Apify JSON
     """
 
     if not isinstance(payload, dict):
         return False
 
-    possible_fields = {
+    possible_fields = [
         "Individual/0/FirstName",
         "moreDetails/Individual/0/FirstName",
         "Property/Address/AddressText",
         "moreDetails/Property/Address/AddressText",
         "Building/Bedrooms",
         "moreDetails/Building/Bedrooms",
-    }
+    ]
 
-    return any(
-        key in payload
-        for key in possible_fields
-    )
+    for field in possible_fields:
+
+        value = clean(
+            get_nested(payload, field)
+        )
+
+        if value:
+            return True
+
+    return False
 
 
 # ============================================================
@@ -888,36 +1042,48 @@ def looks_like_realtor_record(payload):
 
 def main(payload):
     """
-    Supports BOTH:
+    Supports:
 
-    1. Apify sends actual dataset records
+    OPTION 1:
+    Apify sends a list of actual dataset records.
 
-    OR
+    OPTION 2:
+    Apify sends one actual Realtor record.
 
-    2. Apify sends an Actor webhook containing
-       defaultDatasetId.
+    OPTION 3:
+    Apify sends Actor webhook containing defaultDatasetId.
 
-    In case #2, Python automatically fetches the dataset.
+    For option 3 we automatically fetch the dataset.
     """
 
     # --------------------------------------------------------
-    # APIFY SENT A LIST OF DATASET ITEMS
+    # ACTUAL DATASET LIST
     # --------------------------------------------------------
 
     if isinstance(payload, list):
 
+        print(
+            f"Received {len(payload)} dataset records directly.",
+            flush=True,
+        )
+
         return process_payload(payload)
 
     # --------------------------------------------------------
-    # APIFY SENT ONE ACTUAL REALTOR RECORD
+    # ONE REALTOR RECORD
     # --------------------------------------------------------
 
     if looks_like_realtor_record(payload):
 
+        print(
+            "Received Realtor record directly.",
+            flush=True,
+        )
+
         return process_payload(payload)
 
     # --------------------------------------------------------
-    # APIFY SENT ACTOR RUN WEBHOOK
+    # APIFY ACTOR EVENT
     # --------------------------------------------------------
 
     dataset_id = find_dataset_id(payload)
@@ -926,7 +1092,8 @@ def main(payload):
 
         print(
             f"Apify webhook received. "
-            f"Fetching dataset: {dataset_id}"
+            f"Fetching dataset: {dataset_id}",
+            flush=True,
         )
 
         dataset = fetch_apify_dataset(
@@ -936,12 +1103,12 @@ def main(payload):
         return process_payload(dataset)
 
     # --------------------------------------------------------
-    # UNKNOWN PAYLOAD
+    # UNKNOWN
     # --------------------------------------------------------
 
     raise ValueError(
-        "Webhook received, but no Realtor records or "
-        "Apify defaultDatasetId were found."
+        "Webhook received, but no Realtor records "
+        "or Apify defaultDatasetId were found."
     )
 
 
@@ -951,7 +1118,7 @@ def main(payload):
 
 app = FastAPI(
     title="SMS Harvester",
-    version="1.0.0",
+    version="1.1.0",
 )
 
 
@@ -965,7 +1132,7 @@ def health_check():
     return {
         "status": "online",
         "service": "SMS Harvester",
-        "version": "1.0.0",
+        "version": "1.1.0",
     }
 
 
@@ -978,26 +1145,36 @@ def health():
 
 
 # ============================================================
-# APIFY WEBHOOK ENDPOINT
+# APIFY WEBHOOK
 # ============================================================
 
 @app.post("/apify-webhook")
 async def apify_webhook(request: Request):
     """
-    PUBLIC ENDPOINT FOR APIFY.
+    Apify HTTP webhook destination.
 
-    Apify sends an HTTP POST here.
+    Flow:
 
-    The endpoint:
-    1. Reads JSON body
-    2. Determines whether it contains dataset rows or an
-       Actor run event
-    3. Fetches dataset if necessary
-    4. Cleans Realtor data
-    5. Runs NumVerify
-    6. Routes leads
-    7. Returns SMS/Facebook results
+    APIFY
+        ↓
+    Railway
+        ↓
+    /apify-webhook
+        ↓
+    Get dataset
+        ↓
+    Extract Realtor data
+        ↓
+    NumVerify
+        ↓
+    MOBILE → SMS
+    LANDLINE + WEBSITE → FACEBOOK
+    EVERYTHING ELSE → DISCARD
     """
+
+    # --------------------------------------------------------
+    # READ JSON
+    # --------------------------------------------------------
 
     try:
 
@@ -1009,6 +1186,10 @@ async def apify_webhook(request: Request):
             status_code=400,
             detail="Webhook body must contain valid JSON.",
         )
+
+    # --------------------------------------------------------
+    # PROCESS
+    # --------------------------------------------------------
 
     try:
 
@@ -1022,7 +1203,8 @@ async def apify_webhook(request: Request):
     except Exception as error:
 
         print(
-            f"WEBHOOK ERROR: {error}"
+            f"WEBHOOK ERROR: {error}",
+            flush=True,
         )
 
         raise HTTPException(
