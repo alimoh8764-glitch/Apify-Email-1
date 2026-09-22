@@ -380,6 +380,25 @@ def get_price(data):
 # ============================================================
 
 def get_address(data):
+    """
+    Clean Realtor.ca property address.
+
+    Examples:
+
+    23 Penworth Crescent SE|Calgary, Alberta T2A4C5
+        -> 23 Penworth Crescent SE
+
+    49, 1055 72 Avenue NW|Calgary, Alberta T2K5S4
+        -> 1055 72 Avenue NW
+
+    301, 55 Wolf Hollow Crescent SE|Calgary, Alberta T2X5K9
+        -> 55 Wolf Hollow Crescent SE
+
+    1506, 9800 Horton Road SW|Calgary, Alberta T2V5B5
+        -> 9800 Horton Road SW
+
+    Condo/unit numbers are intentionally removed.
+    """
 
     address = first_value(
         data,
@@ -390,24 +409,31 @@ def get_address(data):
     if not address:
         return ""
 
-    # Example:
-    # 23 Penworth Crescent SE|Calgary, Alberta...
-    address = address.split("|")[0]
+    # Remove city / province / postal code after Realtor's | separator.
+    address = address.split("|", 1)[0].strip()
 
-    address = address.split(",")[0]
-
-    address = address.strip()
-
-    # Remove unit / suite suffixes if present.
+    # Remove a leading condo/unit number when Realtor formats the address as:
+    # 49, 1055 72 Avenue NW -> 1055 72 Avenue NW
     address = re.sub(
-        r"\s+(?:apt|apartment|unit|suite|ste|#)"
-        r"\s*[\w-]+.*$",
+        r"^\s*(?:unit\s*)?#?\s*[A-Za-z0-9-]+\s*,\s*",
+        "",
+        address,
+        count=1,
+        flags=re.IGNORECASE,
+    )
+
+    # Remove an explicit unit/suite suffix if one appears at the end.
+    address = re.sub(
+        r"\s+(?:apt|apartment|unit|suite|ste|#)\s*[A-Za-z0-9-]+\s*$",
         "",
         address,
         flags=re.IGNORECASE,
     )
 
-    return address.strip()
+    # Normalize extra whitespace.
+    address = re.sub(r"\s+", " ", address).strip()
+
+    return address
 
 
 # ============================================================
