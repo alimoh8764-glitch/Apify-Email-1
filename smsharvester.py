@@ -2,53 +2,64 @@
 SMS HARVESTER
 =============
 
-Apify webhook -> Railway -> fetch Realtor.ca dataset
--> clean leads -> NumVerify -> route leads
+Apify
+  -> Railway webhook
+  -> Fetch Realtor dataset
+  -> Extract/clean leads
+  -> NumVerify concurrently
+  -> Route leads
+  -> Save qualified leads to GitHub CSV files
+
+OUTPUT
+------
+SMS Leads/SMS Leads.csv
+SMS Leads/Facebook Leads.csv
 
 ROUTING
 -------
-Valid mobile:
-    -> SMS Leads
+mobile
+    -> SMS Leads.csv
 
-Valid landline + website:
-    -> Facebook Leads
+landline + website
+    -> Facebook Leads.csv
 
-Valid landline + no website:
-    -> Discard
+landline + no website
+    -> discard
 
-Invalid:
-    -> Discard
+invalid / unsupported
+    -> discard
 
-NumVerify failure:
-    -> Verification Errors
-
-
-FINAL COLUMN ORDER
-------------------
-first_name
-phone_number
-city
-community
-price
-address
-bedrooms
-website
-registration_number
+NumVerify API failure
+    -> verification error (not treated as invalid)
 
 
-RAILWAY ENVIRONMENT VARIABLES
------------------------------
+RAILWAY VARIABLES
+-----------------
 NUMVERIFY_API_KEY
 APIFY_API_TOKEN
+
+GITHUB_TOKEN
+GITHUB_REPO
+GITHUB_BRANCH
+
+Optional:
+NUMVERIFY_WORKERS
 """
 
 import os
 import re
-import time
+import csv
+import io
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from typing import Any
 
 import requests
+
 from fastapi import FastAPI, HTTPException, Request
+
+from github import Github
+from github import Auth
+from github.GithubException import GithubException, UnknownObjectException
 
 
 # ============================================================
@@ -58,9 +69,42 @@ from fastapi import FastAPI, HTTPException, Request
 NUMVERIFY_API_KEY = os.getenv("NUMVERIFY_API_KEY", "")
 APIFY_API_TOKEN = os.getenv("APIFY_API_TOKEN", "")
 
+GITHUB_TOKEN = os.getenv("GITHUB_TOKEN", "")
+GITHUB_REPO = os.getenv("GITHUB_REPO", "")
+GITHUB_BRANCH = os.getenv("GITHUB_BRANCH", "main")
+
 NUMVERIFY_URL = "https://apilayer.net/api/validate"
 
 REQUEST_TIMEOUT = 30
+
+
+# Keep this conservative initially.
+# Increase later only if your NumVerify plan allows it.
+
+try:
+    NUMVERIFY_WORKERS = int(
+        os.getenv("NUMVERIFY_WORKERS", "5")
+    )
+except ValueError:
+    NUMVERIFY_WORKERS = 5
+
+NUMVERIFY_WORKERS = max(
+    1,
+    min(NUMVERIFY_WORKERS, 20),
+)
+
+
+# ============================================================
+# GITHUB OUTPUT
+# ============================================================
+
+GITHUB_FOLDER = "SMS Leads"
+
+SMS_FILE = f"{GITHUB_FOLDER}/SMS Leads.csv"
+
+FACEBOOK_FILE = (
+    f"{GITHUB_FOLDER}/Facebook Leads.csv"
+)
 
 
 # ============================================================
@@ -85,9 +129,6 @@ COLUMNS = [
 # ============================================================
 
 def clean(value):
-    """
-    Convert null / blank / NaN-like values into empty strings.
-    """
 
     if value is None:
         return ""
@@ -108,51 +149,37 @@ def clean(value):
 
 
 # ============================================================
-# NESTED + FLATTENED APIFY READER
+# READ FLATTENED OR NESTED APIFY DATA
 # ============================================================
 
 def get_nested(data, path):
     """
-    Supports BOTH formats.
+    Supports both:
 
-    FLATTENED:
-        {
-            "Individual/0/Phones/0/AreaCode": "403"
-        }
+    Flattened:
+        Individual/0/Phones/0/AreaCode
 
-    NESTED:
-        {
-            "Individual": [
-                {
-                    "Phones": [
-                        {
-                            "AreaCode": "403"
-                        }
-                    ]
-                }
-            ]
-        }
-
-    This is important because CSV exports and live Apify JSON
-    can have different structures.
+    Nested:
+        Individual:
+          [
+            {
+              Phones:
+                [
+                  {
+                    AreaCode: ...
+                  }
+                ]
+            }
+          ]
     """
-
-    # --------------------------------------------------------
-    # TRY EXACT FLATTENED KEY FIRST
-    # --------------------------------------------------------
 
     if isinstance(data, dict) and path in data:
         return data[path]
-
-    # --------------------------------------------------------
-    # OTHERWISE WALK NESTED JSON
-    # --------------------------------------------------------
 
     current = data
 
     for part in path.split("/"):
 
-        # Dictionary
         if isinstance(current, dict):
 
             if part not in current:
@@ -160,12 +187,10 @@ def get_nested(data, path):
 
             current = current[part]
 
-        # List
         elif isinstance(current, list):
 
             try:
                 index = int(part)
-
             except ValueError:
                 return None
 
@@ -181,13 +206,6 @@ def get_nested(data, path):
 
 
 def first_value(data, *keys):
-    """
-    Return the first populated value.
-
-    Works with both:
-    - flattened Apify records
-    - nested Apify JSON
-    """
 
     for key in keys:
 
@@ -216,7 +234,6 @@ def get_first_name(data):
     if first_name:
         return first_name
 
-    # Fallback to full name
     full_name = first_value(
         data,
         "Individual/0/Name",
@@ -230,7 +247,7 @@ def get_first_name(data):
 
 
 # ============================================================
-# REGISTRATION NUMBER / REALTOR INDIVIDUAL ID
+# REGISTRATION NUMBER
 # ============================================================
 
 def get_registration_number(data):
@@ -243,17 +260,15 @@ def get_registration_number(data):
 
 
 # ============================================================
-# PHONE
+# PHONE NUMBER
 # ============================================================
 
 def get_phone(data):
     """
-    Get the INDIVIDUAL Realtor's phone.
+    Individual Realtor phone only.
 
-    We do NOT intentionally use:
-        Organization/Phones
-
-    because that could be the brokerage phone.
+    Does NOT intentionally use the brokerage /
+    organization phone.
     """
 
     area_code = first_value(
@@ -268,7 +283,6 @@ def get_phone(data):
         "moreDetails/Individual/0/Phones/0/PhoneNumber",
     )
 
-    # Remove formatting
     area_digits = re.sub(
         r"\D",
         "",
@@ -283,26 +297,16 @@ def get_phone(data):
 
     number = area_digits + phone_digits
 
-    # --------------------------------------------------------
-    # NORMAL US / CANADA NUMBER
-    # --------------------------------------------------------
-
+    # 10-digit North American number
     if len(number) == 10:
         return "1" + number
 
-    # --------------------------------------------------------
-    # ALREADY HAS +1 / COUNTRY CODE
-    # --------------------------------------------------------
-
+    # Already contains country code 1
     if (
         len(number) == 11
         and number.startswith("1")
     ):
         return number
-
-    # --------------------------------------------------------
-    # BAD / MISSING NUMBER
-    # --------------------------------------------------------
 
     return ""
 
@@ -339,7 +343,6 @@ def get_community(data):
 
 def get_price(data):
 
-    # Prefer clean numeric price
     value = first_value(
         data,
         "Property/PriceUnformattedValue",
@@ -353,10 +356,6 @@ def get_price(data):
 
         except (ValueError, TypeError):
             pass
-
-    # --------------------------------------------------------
-    # FALLBACK TO FORMATTED PRICE
-    # --------------------------------------------------------
 
     value = first_value(
         data,
@@ -377,19 +376,10 @@ def get_price(data):
 
 
 # ============================================================
-# SHORTENED PROPERTY ADDRESS
+# ADDRESS
 # ============================================================
 
 def get_address(data):
-    """
-    Example:
-
-    23 Penworth Crescent SE|Calgary, Alberta T2A4C5
-
-    becomes:
-
-    23 Penworth Crescent SE
-    """
 
     address = first_value(
         data,
@@ -400,15 +390,15 @@ def get_address(data):
     if not address:
         return ""
 
-    # Realtor.ca separator
+    # Example:
+    # 23 Penworth Crescent SE|Calgary, Alberta...
     address = address.split("|")[0]
 
-    # Additional safety
     address = address.split(",")[0]
 
     address = address.strip()
 
-    # Remove unit / apartment / suite information
+    # Remove unit / suite suffixes if present.
     address = re.sub(
         r"\s+(?:apt|apartment|unit|suite|ste|#)"
         r"\s*[\w-]+.*$",
@@ -426,23 +416,16 @@ def get_address(data):
 
 def get_bedrooms(data):
     """
-    Realtor examples:
+    Examples:
 
-        3       -> 3
-        3 + 2   -> 5
-        4 + 1   -> 5
-
-    Returns TOTAL bedrooms.
+    3       -> 3
+    3 + 2   -> 5
+    4 + 1   -> 5
     """
 
     value = first_value(
         data,
-
-        # IMPORTANT:
-        # This exists in your actual Realtor/Apify data.
         "Building/Bedrooms",
-
-        # Fallback
         "moreDetails/Building/Bedrooms",
     )
 
@@ -464,14 +447,12 @@ def get_bedrooms(data):
 
 
 # ============================================================
-# AGENT WEBSITE
+# WEBSITE
 # ============================================================
 
 def get_website(data):
     """
-    Get the INDIVIDUAL agent website.
-
-    Do not intentionally substitute the brokerage website.
+    Individual Realtor website.
     """
 
     return first_value(
@@ -486,9 +467,6 @@ def get_website(data):
 # ============================================================
 
 def build_lead(data):
-    """
-    Creates the final nine columns in the exact required order.
-    """
 
     return {
         "first_name":
@@ -525,15 +503,6 @@ def build_lead(data):
 # ============================================================
 
 def numverify(phone_number):
-    """
-    Python calls NumVerify directly.
-
-    We use:
-        valid
-        line_type
-        country_code
-        carrier
-    """
 
     if not phone_number:
 
@@ -547,9 +516,14 @@ def numverify(phone_number):
 
     if not NUMVERIFY_API_KEY:
 
-        raise RuntimeError(
-            "NUMVERIFY_API_KEY is not configured in Railway."
-        )
+        return {
+            "success": False,
+            "error": "NUMVERIFY_API_KEY is missing.",
+            "valid": False,
+            "line_type": "",
+            "country_code": "",
+            "carrier": "",
+        }
 
     try:
 
@@ -581,22 +555,23 @@ def numverify(phone_number):
 
         return {
             "success": False,
-            "error": f"Invalid NumVerify JSON: {error}",
+            "error": (
+                f"Invalid NumVerify JSON: {error}"
+            ),
             "valid": False,
             "line_type": "",
             "country_code": "",
             "carrier": "",
         }
 
-    # --------------------------------------------------------
-    # NUMVERIFY API ERROR
-    # --------------------------------------------------------
-
     if result.get("success") is False:
 
         return {
             "success": False,
-            "error": result.get("error", {}),
+            "error": result.get(
+                "error",
+                {},
+            ),
             "valid": False,
             "line_type": "",
             "country_code": "",
@@ -604,7 +579,8 @@ def numverify(phone_number):
         }
 
     return {
-        "success": True,
+        "success":
+            True,
 
         "valid":
             result.get("valid") is True,
@@ -627,39 +603,15 @@ def numverify(phone_number):
 
 
 # ============================================================
-# ROUTE ONE LEAD
+# ROUTING
 # ============================================================
 
-def route_lead(data):
+def route_built_lead(lead):
     """
-    FINAL ROUTING LOGIC:
-
-    VALID MOBILE
-        -> SMS
-
-    VALID LANDLINE + WEBSITE
-        -> FACEBOOK
-
-    VALID LANDLINE + NO WEBSITE
-        -> DISCARD
-
-    INVALID
-        -> DISCARD
-
-    UNKNOWN / OTHER LINE TYPE
-        -> DISCARD
-
-    NUMVERIFY FAILURE
-        -> VERIFICATION ERROR
+    Route a lead that has already been extracted.
     """
-
-    lead = build_lead(data)
 
     phone = lead["phone_number"]
-
-    # --------------------------------------------------------
-    # NO USABLE PHONE
-    # --------------------------------------------------------
 
     if not phone:
 
@@ -669,16 +621,9 @@ def route_lead(data):
             "missing_or_bad_phone",
         )
 
-    # --------------------------------------------------------
-    # CALL NUMVERIFY
-    # --------------------------------------------------------
-
     verification = numverify(phone)
 
-    # --------------------------------------------------------
-    # NUMVERIFY FAILED
-    # --------------------------------------------------------
-
+    # NumVerify itself failed
     if not verification["success"]:
 
         return (
@@ -687,10 +632,7 @@ def route_lead(data):
             "numverify_error",
         )
 
-    # --------------------------------------------------------
-    # INVALID NUMBER
-    # --------------------------------------------------------
-
+    # Invalid phone
     if not verification["valid"]:
 
         return (
@@ -699,10 +641,7 @@ def route_lead(data):
             "invalid_phone",
         )
 
-    # --------------------------------------------------------
-    # ONLY US / CANADA
-    # --------------------------------------------------------
-
+    # US / Canada only
     if verification["country_code"] not in {
         "US",
         "CA",
@@ -716,9 +655,9 @@ def route_lead(data):
 
     line_type = verification["line_type"]
 
-    # ========================================================
+    # --------------------------------------------------------
     # MOBILE -> SMS
-    # ========================================================
+    # --------------------------------------------------------
 
     if line_type == "mobile":
 
@@ -728,15 +667,11 @@ def route_lead(data):
             "valid_mobile",
         )
 
-    # ========================================================
+    # --------------------------------------------------------
     # LANDLINE -> NEVER SMS
-    # ========================================================
+    # --------------------------------------------------------
 
     if line_type == "landline":
-
-        # ----------------------------------------------------
-        # LANDLINE + WEBSITE -> FACEBOOK
-        # ----------------------------------------------------
 
         if clean(lead["website"]):
 
@@ -746,10 +681,6 @@ def route_lead(data):
                 "landline_with_website",
             )
 
-        # ----------------------------------------------------
-        # LANDLINE + NO WEBSITE -> DISCARD
-        # ----------------------------------------------------
-
         return (
             "discard",
             lead,
@@ -757,18 +688,365 @@ def route_lead(data):
         )
 
     # --------------------------------------------------------
-    # OTHER TYPES DO NOT GO TO SMS
+    # UNKNOWN / VOIP / ETC
     # --------------------------------------------------------
 
     return (
         "discard",
         lead,
-        f"unsupported_line_type_{line_type or 'unknown'}",
+        (
+            "unsupported_line_type_"
+            f"{line_type or 'unknown'}"
+        ),
     )
 
 
 # ============================================================
-# PROCESS ALL REALTOR RECORDS
+# DEDUPLICATION
+# ============================================================
+
+def lead_identity(lead):
+    """
+    Prefer Realtor registration number.
+
+    Fall back to phone number.
+
+    This prevents the same Realtor from being repeatedly
+    appended on later Apify runs.
+    """
+
+    registration = clean(
+        lead.get("registration_number")
+    )
+
+    if registration:
+        return f"registration:{registration}"
+
+    phone = re.sub(
+        r"\D",
+        "",
+        clean(
+            lead.get("phone_number")
+        ),
+    )
+
+    if phone:
+        return f"phone:{phone}"
+
+    return ""
+
+
+def dedupe_rows(rows):
+
+    output = []
+
+    seen = set()
+
+    for row in rows:
+
+        identity = lead_identity(row)
+
+        if identity:
+
+            if identity in seen:
+                continue
+
+            seen.add(identity)
+
+        output.append(row)
+
+    return output
+
+
+# ============================================================
+# GITHUB CONNECTION
+# ============================================================
+
+def get_github_repo():
+
+    if not GITHUB_TOKEN:
+
+        raise RuntimeError(
+            "GITHUB_TOKEN is missing in Railway."
+        )
+
+    if not GITHUB_REPO:
+
+        raise RuntimeError(
+            "GITHUB_REPO is missing in Railway. "
+            "Use format: username/repository"
+        )
+
+    auth = Auth.Token(
+        GITHUB_TOKEN
+    )
+
+    github_client = Github(
+        auth=auth
+    )
+
+    return github_client.get_repo(
+        GITHUB_REPO
+    )
+
+
+# ============================================================
+# CSV HELPERS
+# ============================================================
+
+def csv_to_rows(content):
+
+    if not content:
+        return []
+
+    reader = csv.DictReader(
+        io.StringIO(content)
+    )
+
+    rows = []
+
+    for row in reader:
+
+        cleaned_row = {
+            column: clean(
+                row.get(column, "")
+            )
+            for column in COLUMNS
+        }
+
+        rows.append(
+            cleaned_row
+        )
+
+    return rows
+
+
+def rows_to_csv(rows):
+
+    output = io.StringIO(
+        newline=""
+    )
+
+    writer = csv.DictWriter(
+        output,
+        fieldnames=COLUMNS,
+        extrasaction="ignore",
+        lineterminator="\n",
+    )
+
+    writer.writeheader()
+
+    for row in rows:
+
+        writer.writerow({
+            column:
+                clean(
+                    row.get(column, "")
+                )
+            for column in COLUMNS
+        })
+
+    return output.getvalue()
+
+
+# ============================================================
+# READ EXISTING GITHUB CSV
+# ============================================================
+
+def read_github_csv(repo, path):
+
+    try:
+
+        file = repo.get_contents(
+            path,
+            ref=GITHUB_BRANCH,
+        )
+
+        content = file.decoded_content.decode(
+            "utf-8-sig"
+        )
+
+        return file, csv_to_rows(content)
+
+    except UnknownObjectException:
+
+        # File does not exist yet.
+        return None, []
+
+
+# ============================================================
+# APPEND / UPDATE GITHUB CSV
+# ============================================================
+
+def save_leads_to_github(
+    repo,
+    path,
+    new_rows,
+    label,
+):
+    """
+    Append new qualified leads to existing CSV.
+
+    Existing leads are preserved.
+
+    Duplicate Realtor registration IDs / phones are removed.
+    """
+
+    if not new_rows:
+
+        print(
+            f"GitHub: no new {label} leads to save.",
+            flush=True,
+        )
+
+        return {
+            "file": path,
+            "received": 0,
+            "added": 0,
+            "total": None,
+        }
+
+    existing_file, existing_rows = read_github_csv(
+        repo,
+        path,
+    )
+
+    # Deduplicate existing file first
+    existing_rows = dedupe_rows(
+        existing_rows
+    )
+
+    existing_identities = {
+        lead_identity(row)
+        for row in existing_rows
+        if lead_identity(row)
+    }
+
+    rows_to_add = []
+
+    for row in new_rows:
+
+        identity = lead_identity(row)
+
+        # Duplicate
+        if (
+            identity
+            and identity in existing_identities
+        ):
+            continue
+
+        rows_to_add.append(
+            row
+        )
+
+        if identity:
+            existing_identities.add(
+                identity
+            )
+
+    combined_rows = dedupe_rows(
+        existing_rows + rows_to_add
+    )
+
+    csv_content = rows_to_csv(
+        combined_rows
+    )
+
+    # --------------------------------------------------------
+    # UPDATE EXISTING FILE
+    # --------------------------------------------------------
+
+    if existing_file:
+
+        repo.update_file(
+            path=path,
+            message=(
+                f"Update {label} leads "
+                f"({len(rows_to_add)} new)"
+            ),
+            content=csv_content,
+            sha=existing_file.sha,
+            branch=GITHUB_BRANCH,
+        )
+
+        action = "updated"
+
+    # --------------------------------------------------------
+    # CREATE FILE / FOLDER
+    # --------------------------------------------------------
+
+    else:
+
+        # GitHub automatically creates the virtual folder
+        # when a file such as SMS Leads/SMS Leads.csv
+        # is created.
+
+        repo.create_file(
+            path=path,
+            message=(
+                f"Create {label} leads file"
+            ),
+            content=csv_content,
+            branch=GITHUB_BRANCH,
+        )
+
+        action = "created"
+
+    print(
+        f"GitHub: {action} {path} | "
+        f"{len(rows_to_add)} new | "
+        f"{len(combined_rows)} total",
+        flush=True,
+    )
+
+    return {
+        "file":
+            path,
+
+        "received":
+            len(new_rows),
+
+        "added":
+            len(rows_to_add),
+
+        "total":
+            len(combined_rows),
+    }
+
+
+# ============================================================
+# SAVE BOTH RESULT FILES
+# ============================================================
+
+def save_results_to_github(
+    sms_leads,
+    facebook_leads,
+):
+
+    repo = get_github_repo()
+
+    sms_result = save_leads_to_github(
+        repo=repo,
+        path=SMS_FILE,
+        new_rows=sms_leads,
+        label="SMS",
+    )
+
+    facebook_result = save_leads_to_github(
+        repo=repo,
+        path=FACEBOOK_FILE,
+        new_rows=facebook_leads,
+        label="Facebook",
+    )
+
+    return {
+        "sms": sms_result,
+        "facebook": facebook_result,
+    }
+
+
+# ============================================================
+# PROCESS DATASET CONCURRENTLY
 # ============================================================
 
 def process_payload(payload):
@@ -781,102 +1059,222 @@ def process_payload(payload):
 
     else:
         raise ValueError(
-            "Dataset must contain a dictionary or list."
+            "Dataset must be a dictionary or list."
         )
+
+    total = len(records)
+
+    print(
+        f"Processing {total} records with "
+        f"{NUMVERIFY_WORKERS} NumVerify workers.",
+        flush=True,
+    )
+
+    # --------------------------------------------------------
+    # EXTRACT FIRST
+    # --------------------------------------------------------
+
+    leads = [
+        build_lead(record)
+        for record in records
+    ]
 
     sms_leads = []
     facebook_leads = []
     verification_errors = []
 
     stats = {
-        "received": len(records),
-        "sms": 0,
-        "facebook": 0,
-        "discarded": 0,
-        "verification_errors": 0,
+        "received":
+            total,
+
+        "sms":
+            0,
+
+        "facebook":
+            0,
+
+        "discarded":
+            0,
+
+        "verification_errors":
+            0,
     }
 
-    for index, record in enumerate(
-        records,
-        start=1,
-    ):
+    # --------------------------------------------------------
+    # RUN NUMVERIFY IN PARALLEL
+    # --------------------------------------------------------
 
-        destination, lead, reason = route_lead(
-            record
-        )
+    with ThreadPoolExecutor(
+        max_workers=NUMVERIFY_WORKERS
+    ) as executor:
 
-        # ----------------------------------------------------
-        # SMS
-        # ----------------------------------------------------
+        future_map = {}
 
-        if destination == "sms":
+        for index, lead in enumerate(
+            leads,
+            start=1,
+        ):
 
-            sms_leads.append(lead)
+            future = executor.submit(
+                route_built_lead,
+                lead,
+            )
 
-            stats["sms"] += 1
+            future_map[future] = index
 
-        # ----------------------------------------------------
-        # FACEBOOK
-        # ----------------------------------------------------
+        completed = 0
 
-        elif destination == "facebook":
+        for future in as_completed(
+            future_map
+        ):
 
-            facebook_leads.append(lead)
+            original_index = future_map[
+                future
+            ]
 
-            stats["facebook"] += 1
+            completed += 1
 
-        # ----------------------------------------------------
-        # NUMVERIFY ERROR
-        # ----------------------------------------------------
+            try:
 
-        elif destination == "verification_error":
+                destination, lead, reason = (
+                    future.result()
+                )
 
-            verification_errors.append({
-                **lead,
-                "error_reason": reason,
-            })
+            except Exception as error:
 
-            stats["verification_errors"] += 1
+                lead = leads[
+                    original_index - 1
+                ]
 
-        # ----------------------------------------------------
-        # DISCARD
-        # ----------------------------------------------------
+                destination = (
+                    "verification_error"
+                )
 
-        else:
+                reason = (
+                    f"worker_error: {error}"
+                )
 
-            stats["discarded"] += 1
+            # ------------------------------------------------
+            # SMS
+            # ------------------------------------------------
 
-        # ----------------------------------------------------
-        # RAILWAY LOG
-        # ----------------------------------------------------
+            if destination == "sms":
 
-        print(
-            f"[{index}/{len(records)}] "
-            f"{lead['first_name']} | "
-            f"{lead['phone_number']} | "
-            f"{destination} | "
-            f"{reason}",
-            flush=True,
-        )
+                sms_leads.append(
+                    lead
+                )
 
-        # Small pause for NumVerify
-        time.sleep(0.1)
+                stats["sms"] += 1
+
+            # ------------------------------------------------
+            # FACEBOOK
+            # ------------------------------------------------
+
+            elif destination == "facebook":
+
+                facebook_leads.append(
+                    lead
+                )
+
+                stats["facebook"] += 1
+
+            # ------------------------------------------------
+            # VERIFICATION ERROR
+            # ------------------------------------------------
+
+            elif (
+                destination
+                == "verification_error"
+            ):
+
+                verification_errors.append({
+                    **lead,
+                    "error_reason": reason,
+                })
+
+                stats[
+                    "verification_errors"
+                ] += 1
+
+            # ------------------------------------------------
+            # DISCARD
+            # ------------------------------------------------
+
+            else:
+
+                stats["discarded"] += 1
+
+            print(
+                f"[{completed}/{total}] "
+                f"{lead['first_name']} | "
+                f"{lead['phone_number']} | "
+                f"{destination} | "
+                f"{reason}",
+                flush=True,
+            )
+
+    # --------------------------------------------------------
+    # REMOVE DUPLICATES WITHIN THIS RUN
+    # --------------------------------------------------------
+
+    sms_leads = dedupe_rows(
+        sms_leads
+    )
+
+    facebook_leads = dedupe_rows(
+        facebook_leads
+    )
+
+    # --------------------------------------------------------
+    # SAVE QUALIFIED LEADS TO GITHUB
+    # --------------------------------------------------------
+
+    print(
+        "NumVerify processing complete. "
+        "Saving qualified leads to GitHub...",
+        flush=True,
+    )
+
+    github_result = save_results_to_github(
+        sms_leads=sms_leads,
+        facebook_leads=facebook_leads,
+    )
+
+    print(
+        "GitHub save complete.",
+        flush=True,
+    )
+
+    print(
+        f"FINAL: "
+        f"{len(sms_leads)} SMS | "
+        f"{len(facebook_leads)} Facebook | "
+        f"{stats['discarded']} discarded | "
+        f"{stats['verification_errors']} verification errors",
+        flush=True,
+    )
 
     return {
-        "folder_name": "SMS Leads",
+        "folder_name":
+            GITHUB_FOLDER,
 
-        "columns": COLUMNS,
+        "columns":
+            COLUMNS,
 
         "sms_sheet": {
-            "name": "SMS Leads",
-            "columns": COLUMNS,
-            "rows": sms_leads,
+            "name":
+                "SMS Leads",
+
+            "rows":
+                sms_leads,
         },
 
         "facebook_sheet": {
-            "name": "Facebook Leads",
-            "columns": COLUMNS,
-            "rows": facebook_leads,
+            "name":
+                "Facebook Leads",
+
+            "rows":
+                facebook_leads,
         },
 
         "verification_errors":
@@ -884,77 +1282,65 @@ def process_payload(payload):
 
         "stats":
             stats,
+
+        "github":
+            github_result,
     }
 
 
 # ============================================================
-# FIND APIFY DATASET ID
+# FIND APIFY DATASET
 # ============================================================
 
 def find_dataset_id(payload):
-    """
-    Apify's webhook may contain the Actor run information
-    rather than the actual Realtor records.
-
-    Find defaultDatasetId from common locations.
-    """
 
     if not isinstance(payload, dict):
         return ""
 
-    # --------------------------------------------------------
-    # RESOURCE
-    # --------------------------------------------------------
-
-    resource = payload.get("resource")
+    resource = payload.get(
+        "resource"
+    )
 
     if isinstance(resource, dict):
 
         dataset_id = clean(
-            resource.get("defaultDatasetId")
+            resource.get(
+                "defaultDatasetId"
+            )
         )
 
         if dataset_id:
             return dataset_id
 
-    # --------------------------------------------------------
-    # EVENT DATA
-    # --------------------------------------------------------
-
-    event_data = payload.get("eventData")
+    event_data = payload.get(
+        "eventData"
+    )
 
     if isinstance(event_data, dict):
 
         dataset_id = clean(
-            event_data.get("defaultDatasetId")
+            event_data.get(
+                "defaultDatasetId"
+            )
         )
 
         if dataset_id:
             return dataset_id
 
-    # --------------------------------------------------------
-    # DIRECT
-    # --------------------------------------------------------
-
     dataset_id = clean(
-        payload.get("defaultDatasetId")
+        payload.get(
+            "defaultDatasetId"
+        )
     )
 
-    if dataset_id:
-        return dataset_id
-
-    return ""
+    return dataset_id
 
 
 # ============================================================
-# FETCH ACTUAL APIFY DATASET
+# FETCH APIFY DATASET
 # ============================================================
 
 def fetch_apify_dataset(dataset_id):
-    """
-    Fetch the actual dataset items after receiving the
-    Actor webhook.
-    """
 
     if not dataset_id:
 
@@ -963,7 +1349,7 @@ def fetch_apify_dataset(dataset_id):
         )
 
     url = (
-        f"https://api.apify.com/v2/datasets/"
+        "https://api.apify.com/v2/datasets/"
         f"{dataset_id}/items"
     )
 
@@ -972,9 +1358,11 @@ def fetch_apify_dataset(dataset_id):
         "format": "json",
     }
 
-    # Required for private datasets
     if APIFY_API_TOKEN:
-        params["token"] = APIFY_API_TOKEN
+
+        params["token"] = (
+            APIFY_API_TOKEN
+        )
 
     response = requests.get(
         url,
@@ -989,7 +1377,8 @@ def fetch_apify_dataset(dataset_id):
     if not isinstance(data, list):
 
         raise ValueError(
-            "Apify dataset response was not a list."
+            "Apify dataset response "
+            "was not a list."
         )
 
     print(
@@ -1005,12 +1394,6 @@ def fetch_apify_dataset(dataset_id):
 # ============================================================
 
 def looks_like_realtor_record(payload):
-    """
-    Detect Realtor records in either:
-
-    - flattened CSV-like format
-    - nested live Apify JSON
-    """
 
     if not isinstance(payload, dict):
         return False
@@ -1018,8 +1401,10 @@ def looks_like_realtor_record(payload):
     possible_fields = [
         "Individual/0/FirstName",
         "moreDetails/Individual/0/FirstName",
+
         "Property/Address/AddressText",
         "moreDetails/Property/Address/AddressText",
+
         "Building/Bedrooms",
         "moreDetails/Building/Bedrooms",
     ]
@@ -1027,7 +1412,10 @@ def looks_like_realtor_record(payload):
     for field in possible_fields:
 
         value = clean(
-            get_nested(payload, field)
+            get_nested(
+                payload,
+                field,
+            )
         )
 
         if value:
@@ -1037,61 +1425,47 @@ def looks_like_realtor_record(payload):
 
 
 # ============================================================
-# MAIN PROCESSOR
+# MAIN
 # ============================================================
 
 def main(payload):
-    """
-    Supports:
 
-    OPTION 1:
-    Apify sends a list of actual dataset records.
-
-    OPTION 2:
-    Apify sends one actual Realtor record.
-
-    OPTION 3:
-    Apify sends Actor webhook containing defaultDatasetId.
-
-    For option 3 we automatically fetch the dataset.
-    """
-
-    # --------------------------------------------------------
-    # ACTUAL DATASET LIST
-    # --------------------------------------------------------
-
+    # Actual list of dataset records
     if isinstance(payload, list):
 
         print(
-            f"Received {len(payload)} dataset records directly.",
+            f"Received {len(payload)} "
+            f"dataset records directly.",
             flush=True,
         )
 
-        return process_payload(payload)
+        return process_payload(
+            payload
+        )
 
-    # --------------------------------------------------------
-    # ONE REALTOR RECORD
-    # --------------------------------------------------------
-
-    if looks_like_realtor_record(payload):
+    # Single Realtor record
+    if looks_like_realtor_record(
+        payload
+    ):
 
         print(
             "Received Realtor record directly.",
             flush=True,
         )
 
-        return process_payload(payload)
+        return process_payload(
+            payload
+        )
 
-    # --------------------------------------------------------
-    # APIFY ACTOR EVENT
-    # --------------------------------------------------------
-
-    dataset_id = find_dataset_id(payload)
+    # Apify Actor webhook
+    dataset_id = find_dataset_id(
+        payload
+    )
 
     if dataset_id:
 
         print(
-            f"Apify webhook received. "
+            "Apify webhook received. "
             f"Fetching dataset: {dataset_id}",
             flush=True,
         )
@@ -1100,30 +1474,29 @@ def main(payload):
             dataset_id
         )
 
-        return process_payload(dataset)
-
-    # --------------------------------------------------------
-    # UNKNOWN
-    # --------------------------------------------------------
+        return process_payload(
+            dataset
+        )
 
     raise ValueError(
-        "Webhook received, but no Realtor records "
-        "or Apify defaultDatasetId were found."
+        "Webhook received, but no Realtor "
+        "records or Apify defaultDatasetId "
+        "were found."
     )
 
 
 # ============================================================
-# FASTAPI / RAILWAY
+# FASTAPI
 # ============================================================
 
 app = FastAPI(
     title="SMS Harvester",
-    version="1.1.0",
+    version="2.0.0",
 )
 
 
 # ============================================================
-# HEALTH CHECK
+# HEALTH
 # ============================================================
 
 @app.get("/")
@@ -1132,7 +1505,14 @@ def health_check():
     return {
         "status": "online",
         "service": "SMS Harvester",
-        "version": "1.1.0",
+        "version": "2.0.0",
+        "numverify_workers":
+            NUMVERIFY_WORKERS,
+        "github_output":
+            bool(
+                GITHUB_TOKEN
+                and GITHUB_REPO
+            ),
     }
 
 
@@ -1149,51 +1529,31 @@ def health():
 # ============================================================
 
 @app.post("/apify-webhook")
-async def apify_webhook(request: Request):
-    """
-    Apify HTTP webhook destination.
-
-    Flow:
-
-    APIFY
-        ↓
-    Railway
-        ↓
-    /apify-webhook
-        ↓
-    Get dataset
-        ↓
-    Extract Realtor data
-        ↓
-    NumVerify
-        ↓
-    MOBILE → SMS
-    LANDLINE + WEBSITE → FACEBOOK
-    EVERYTHING ELSE → DISCARD
-    """
-
-    # --------------------------------------------------------
-    # READ JSON
-    # --------------------------------------------------------
+async def apify_webhook(
+    request: Request
+):
 
     try:
 
-        payload: Any = await request.json()
+        payload: Any = (
+            await request.json()
+        )
 
     except Exception:
 
         raise HTTPException(
             status_code=400,
-            detail="Webhook body must contain valid JSON.",
+            detail=(
+                "Webhook body must "
+                "contain valid JSON."
+            ),
         )
-
-    # --------------------------------------------------------
-    # PROCESS
-    # --------------------------------------------------------
 
     try:
 
-        result = main(payload)
+        result = main(
+            payload
+        )
 
         return {
             "success": True,
