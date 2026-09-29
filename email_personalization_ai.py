@@ -1,7 +1,10 @@
 import os
 import re
+import threading
+import time
 from typing import Any
 
+import requests
 from flask import Flask, jsonify, request
 from openai import OpenAI
 
@@ -13,23 +16,30 @@ from openai import OpenAI
 app = Flask(__name__)
 
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
+APIFY_API_TOKEN = os.environ.get("APIFY_API_TOKEN")
+
+OPENAI_MODEL = os.environ.get(
+    "OPENAI_MODEL",
+    "gpt-5.6-luna",
+)
+
+BATCH_SIZE = 200
 
 if not OPENAI_API_KEY:
     raise RuntimeError(
         "OPENAI_API_KEY environment variable is missing."
     )
 
-client = OpenAI(api_key=OPENAI_API_KEY)
+if not APIFY_API_TOKEN:
+    raise RuntimeError(
+        "APIFY_API_TOKEN environment variable is missing."
+    )
 
-# You can change the model in Railway without editing the code.
-OPENAI_MODEL = os.environ.get(
-    "OPENAI_MODEL",
-    "gpt-5.6-luna",
-)
+client = OpenAI(api_key=OPENAI_API_KEY)
 
 
 # ============================================================
-# EXACT APIFY COLUMNS FROM YOUR DATA
+# APIFY COLUMN NAMES
 # ============================================================
 
 AGENT_NAME = "agents/0/agent_name"
@@ -45,11 +55,20 @@ PROPERTY_DESCRIPTION = "text"
 
 
 # ============================================================
-# BASIC CLEANING
+# JOB STATUS
+#
+# In-memory for now.
+# This lets us inspect a running job from Railway.
+# ============================================================
+
+jobs = {}
+
+
+# ============================================================
+# CLEANING
 # ============================================================
 
 def clean_value(value: Any) -> str:
-    """Convert null/NaN-like values to a clean string."""
 
     if value is None:
         return ""
@@ -70,36 +89,31 @@ def clean_value(value: Any) -> str:
 
 
 def valid_email(email: str) -> bool:
-    """Basic email validation."""
 
     email = clean_value(email)
 
     if not email:
         return False
 
-    pattern = r"^[^@\s]+@[^@\s]+\.[^@\s]+$"
-
-    return bool(re.match(pattern, email))
+    return bool(
+        re.match(
+            r"^[^@\s]+@[^@\s]+\.[^@\s]+$",
+            email,
+        )
+    )
 
 
 # ============================================================
-# NAME CLEANING
+# FIRST NAME
 # ============================================================
 
 def get_first_name(full_name: str) -> str:
-    """
-    Convert:
-        John Smith
-    into:
-        John
-    """
 
     full_name = clean_value(full_name)
 
     if not full_name:
         return ""
 
-    # Remove common prefixes.
     full_name = re.sub(
         r"^(mr\.?|mrs\.?|ms\.?|miss|dr\.?)\s+",
         "",
@@ -109,42 +123,37 @@ def get_first_name(full_name: str) -> str:
 
     first_name = full_name.split()[0]
 
-    # Remove odd punctuation around name.
     first_name = re.sub(
         r"[^A-Za-zÀ-ÖØ-öø-ÿ'\-]",
         "",
         first_name,
     )
 
-    if not first_name:
-        return ""
-
     return first_name.title()
 
 
 # ============================================================
-# CONTACT SELECTION
+# CONTACT MATCHING
 # ============================================================
 
 def get_contact(row: dict) -> dict:
     """
-    IMPORTANT:
-
-    We NEVER blindly combine an agent email with an advertiser
-    name or vice versa.
+    Never mix an agent's email with an advertiser's name.
 
     Priority:
 
     1. Agent name + agent email
     2. Advertiser name + advertiser email
     3. Name only
-
-    It is better to have a blank email than send an email using
-    another person's first name.
     """
 
-    agent_name = clean_value(row.get(AGENT_NAME))
-    agent_email = clean_value(row.get(AGENT_EMAIL))
+    agent_name = clean_value(
+        row.get(AGENT_NAME)
+    )
+
+    agent_email = clean_value(
+        row.get(AGENT_EMAIL)
+    )
 
     advertiser_name = clean_value(
         row.get(ADVERTISER_NAME)
@@ -154,87 +163,86 @@ def get_contact(row: dict) -> dict:
         row.get(ADVERTISER_EMAIL)
     )
 
-    # -----------------------------
     # Agent pair
-    # -----------------------------
-
     if agent_name and valid_email(agent_email):
 
         return {
-            "first_name": get_first_name(agent_name),
-            "full_name": agent_name,
-            "email": agent_email.lower(),
-            "contact_source": "agent",
+            "first_name":
+                get_first_name(agent_name),
+
+            "email":
+                agent_email.lower(),
+
+            "contact_source":
+                "agent",
         }
 
-    # -----------------------------
     # Advertiser pair
-    # -----------------------------
-
-    if advertiser_name and valid_email(
-        advertiser_email
+    if (
+        advertiser_name
+        and valid_email(advertiser_email)
     ):
 
         return {
-            "first_name": get_first_name(
-                advertiser_name
-            ),
-            "full_name": advertiser_name,
-            "email": advertiser_email.lower(),
-            "contact_source": "advertiser",
+            "first_name":
+                get_first_name(advertiser_name),
+
+            "email":
+                advertiser_email.lower(),
+
+            "contact_source":
+                "advertiser",
         }
 
-    # -----------------------------
     # Name only
-    # -----------------------------
-
     if agent_name:
 
         return {
-            "first_name": get_first_name(agent_name),
-            "full_name": agent_name,
-            "email": "",
-            "contact_source": "agent_name_only",
+            "first_name":
+                get_first_name(agent_name),
+
+            "email":
+                "",
+
+            "contact_source":
+                "agent_name_only",
         }
 
     if advertiser_name:
 
         return {
-            "first_name": get_first_name(
-                advertiser_name
-            ),
-            "full_name": advertiser_name,
-            "email": "",
+            "first_name":
+                get_first_name(advertiser_name),
+
+            "email":
+                "",
+
             "contact_source":
                 "advertiser_name_only",
         }
 
     return {
         "first_name": "",
-        "full_name": "",
         "email": "",
         "contact_source": "",
     }
 
 
 # ============================================================
-# ADDRESS CLEANING
+# ADDRESS
 # ============================================================
 
 def clean_address(address: str) -> str:
     """
-    We use address/street from Apify rather than the complete
-    postal address.
+    We only want the street address.
 
     Example:
 
-        123 North Bay, Calgary, AB E126QP
+    123 North Bay, Calgary, AB E126QP
 
     becomes:
 
-        123 North Bay
-
-    Normally address/street is already the short version.
+    123 North Bay
     """
 
     address = clean_value(address)
@@ -242,8 +250,8 @@ def clean_address(address: str) -> str:
     if not address:
         return ""
 
-    # If commas somehow exist in the street field,
-    # only keep the street portion.
+    # address/street should already normally be short,
+    # but this catches full-address values.
     if "," in address:
         address = address.split(",")[0].strip()
 
@@ -251,21 +259,13 @@ def clean_address(address: str) -> str:
 
 
 # ============================================================
-# PRICE FORMATTING
+# PRICE
 # ============================================================
 
 def format_price(price: Any) -> str:
     """
-    Examples:
-
-        425000
-        -> $425,000
-
-        1200000
-        -> $1,200,000
-
-        $725000
-        -> $725,000
+    425000 -> $425,000
+    1200000 -> $1,200,000
     """
 
     price = clean_value(price)
@@ -273,7 +273,6 @@ def format_price(price: Any) -> str:
     if not price:
         return ""
 
-    # Remove existing formatting.
     numeric = re.sub(
         r"[^0-9.]",
         "",
@@ -284,11 +283,13 @@ def format_price(price: Any) -> str:
         return ""
 
     try:
+
         number = float(numeric)
 
         return f"${number:,.0f}"
 
     except (ValueError, TypeError):
+
         return ""
 
 
@@ -300,21 +301,15 @@ AI_INSTRUCTIONS = """
 You write short personalized opening lines for real-estate
 agent outreach.
 
-You will receive the PUBLIC REMARKS / PROPERTY DESCRIPTION
-for one real-estate listing.
+You receive the public property description for ONE listing.
 
-Your job is to find ONE genuinely specific feature from the
-description that proves someone actually paid attention to
-the property.
+Find ONE genuinely distinctive property feature that proves
+someone actually read the listing.
 
-Then write one warm, casual sentence or two about it.
-
-
-GOOD FEATURES INCLUDE:
+Good examples include:
 
 - wired shed
-- detached workshop
-- finished room above a garage
+- workshop
 - barn apartment
 - unusual loft
 - private dock
@@ -331,52 +326,38 @@ GOOD FEATURES INCLUDE:
 - wine cellar
 - putting green
 - unusual architectural feature
-- distinctive view
-- unusual outdoor feature
+- distinctive outdoor feature
 
-
-AVOID GENERIC FEATURES SUCH AS:
+Avoid generic observations such as:
 
 - beautiful home
-- great location
 - spacious property
-- open floor plan
+- great location
 - nice kitchen
+- open floor plan
 - updated home
 - large bedrooms
-- great opportunity
 - lots of natural light
 - desirable neighborhood
 
-Generic observations do not prove the listing was actually
-read.
+ADDRESS:
 
-
-ADDRESS RULE:
-
-You MUST literally use:
+You MUST literally write:
 
 {{address}}
 
-Do NOT attempt to write the actual street address.
+Do NOT write the real street address.
 
-The software will replace {{address}} later.
+Another system will replace {{address}} later.
 
-
-TONE:
-
-Sound like a real person who quickly looked through the
-listing.
+STYLE:
 
 Warm.
 Casual.
-Short.
 Natural.
+Short.
 
-Do not sound like marketing copy.
-
-
-GOOD EXAMPLES:
+Examples:
 
 That wired shed on {{address}} caught my eye. Solid bonus for
 a place like that.
@@ -390,39 +371,34 @@ a nice touch for buyers looking around there.
 That four-season garden on {{address}} is a great touch. The
 goldfish pond makes it even more memorable.
 
-That rooftop deck on {{address}} caught my eye. Pretty sweet
-feature for enjoying the view.
-
-
-IMPORTANT:
+RULES:
 
 - Maximum 35 words.
-- Pick only ONE main distinctive feature.
-- Never invent anything.
+- Pick one main distinctive feature.
+- Never invent a feature.
 - Never mention the recipient's name.
 - Never use an exclamation mark.
 - Never say "I noticed your listing".
 - Never say "I came across your listing".
-- Avoid words like "impressive" and "stunning".
-- Do not sound overly enthusiastic.
-- Do not mention being an AI.
-- Do not output quotation marks.
-- Do not explain your answer.
-- Output ONLY the personalized line.
+- Avoid "impressive" and "stunning".
+- Do not sound like marketing copy.
+- Output only the personalized line.
+- No quotation marks.
+- No explanation.
 
-If there is no genuinely specific feature in the description,
-output exactly:
+If there is no genuinely specific feature, output exactly:
 
 SKIP
 """
 
 
 # ============================================================
-# AI PERSONALIZATION
+# OPENAI PERSONALIZATION
 # ============================================================
 
 def create_personalized_line(
     description: str,
+    max_retries: int = 3,
 ) -> str:
 
     description = clean_value(description)
@@ -430,75 +406,90 @@ def create_personalized_line(
     if not description:
         return ""
 
-    # Keeps token usage under control if Apify returns an
-    # abnormally long description.
+    # Control token usage.
     description = description[:6000]
 
-    try:
+    for attempt in range(max_retries):
 
-        response = client.responses.create(
-            model=OPENAI_MODEL,
+        try:
 
-            reasoning={
-                "effort": "low"
-            },
+            response = client.responses.create(
+                model=OPENAI_MODEL,
 
-            instructions=AI_INSTRUCTIONS,
+                reasoning={
+                    "effort": "low"
+                },
 
-            input=(
-                "PROPERTY DESCRIPTION:\n\n"
-                + description
-            ),
+                instructions=AI_INSTRUCTIONS,
 
-            max_output_tokens=100,
-        )
+                input=(
+                    "PROPERTY DESCRIPTION:\n\n"
+                    + description
+                ),
 
-        line = clean_value(
-            response.output_text
-        )
-
-        if not line:
-            return ""
-
-        if line.upper() == "SKIP":
-            return ""
-
-        # Remove accidental quotes.
-        line = line.strip('"').strip("'").strip()
-
-        # Critical validation.
-        # We WANT the literal Instantly variable.
-        if "{{address}}" not in line:
-            print(
-                "AI line rejected because "
-                "{{address}} was missing:",
-                line,
+                max_output_tokens=100,
             )
 
-            return ""
-
-        # Reject excessively long output.
-        if len(line.split()) > 40:
-            print(
-                "AI line rejected because it was too long:",
-                line,
+            line = clean_value(
+                response.output_text
             )
 
-            return ""
+            if not line:
+                return ""
 
-        return line
+            if line.upper() == "SKIP":
+                return ""
 
-    except Exception as error:
+            line = (
+                line
+                .strip('"')
+                .strip("'")
+                .strip()
+            )
 
-        print(
-            f"OpenAI personalization error: {error}"
-        )
+            # AI must preserve our Instantly variable.
+            if "{{address}}" not in line:
 
-        return ""
+                print(
+                    "Rejected AI line - "
+                    "missing {{address}}:",
+                    line,
+                )
+
+                return ""
+
+            if len(line.split()) > 40:
+
+                print(
+                    "Rejected AI line - "
+                    "too long:",
+                    line,
+                )
+
+                return ""
+
+            return line
+
+        except Exception as error:
+
+            print(
+                f"OpenAI attempt "
+                f"{attempt + 1} failed: "
+                f"{error}"
+            )
+
+            if attempt < max_retries - 1:
+
+                # 2 sec, then 4 sec
+                time.sleep(
+                    2 ** (attempt + 1)
+                )
+
+    return ""
 
 
 # ============================================================
-# PROCESS ONE APIFY RECORD
+# PROCESS ONE PROPERTY
 # ============================================================
 
 def process_property(row: dict) -> dict:
@@ -522,15 +513,12 @@ def process_property(row: dict) -> dict:
     )
 
     personalized_line = (
-        create_personalized_line(description)
+        create_personalized_line(
+            description
+        )
     )
 
     return {
-
-        # ------------------------------------
-        # FINAL SHEET FIELDS
-        # ------------------------------------
-
         "first_name":
             contact["first_name"],
 
@@ -552,33 +540,564 @@ def process_property(row: dict) -> dict:
         "personalized_line":
             personalized_line,
 
-        # ------------------------------------
-        # Useful debugging information
-        # ------------------------------------
-
         "contact_source":
             contact["contact_source"],
     }
 
 
 # ============================================================
+# APIFY DATASET DOWNLOAD
+# ============================================================
+
+def get_apify_dataset(
+    dataset_id: str,
+) -> list:
+    """
+    Download the completed Actor dataset.
+
+    Railway authenticates to Apify using APIFY_API_TOKEN.
+    """
+
+    url = (
+        "https://api.apify.com/v2/datasets/"
+        f"{dataset_id}/items"
+    )
+
+    headers = {
+        "Authorization":
+            f"Bearer {APIFY_API_TOKEN}"
+    }
+
+    params = {
+        "clean": "true",
+        "format": "json",
+    }
+
+    response = requests.get(
+        url,
+        headers=headers,
+        params=params,
+        timeout=120,
+    )
+
+    response.raise_for_status()
+
+    data = response.json()
+
+    if not isinstance(data, list):
+        raise ValueError(
+            "Apify dataset response was not a list."
+        )
+
+    return data
+
+
+# ============================================================
+# BATCHING
+# ============================================================
+
+def split_batches(
+    items: list,
+    size: int = BATCH_SIZE,
+):
+
+    for start in range(
+        0,
+        len(items),
+        size,
+    ):
+
+        yield items[
+            start:start + size
+        ]
+
+
+# ============================================================
+# PROCESS COMPLETE APIFY RUN
+# ============================================================
+
+def process_apify_run(
+    run_id: str,
+    dataset_id: str,
+):
+    """
+    Runs after the webhook has already returned HTTP 200.
+
+    Dataset is processed in chunks of 200.
+    """
+
+    try:
+
+        jobs[run_id] = {
+            "status":
+                "downloading_dataset",
+
+            "dataset_id":
+                dataset_id,
+
+            "total":
+                0,
+
+            "processed":
+                0,
+
+            "batch":
+                0,
+
+            "results":
+                [],
+        }
+
+        print(
+            f"[{run_id}] "
+            f"Downloading dataset "
+            f"{dataset_id}"
+        )
+
+        items = get_apify_dataset(
+            dataset_id
+        )
+
+        total = len(items)
+
+        jobs[run_id]["total"] = total
+
+        jobs[run_id]["status"] = (
+            "processing"
+        )
+
+        print(
+            f"[{run_id}] "
+            f"Downloaded {total} records."
+        )
+
+        all_results = []
+
+        # ----------------------------------------
+        # 200 records per batch
+        # ----------------------------------------
+
+        for batch_number, batch in enumerate(
+            split_batches(
+                items,
+                BATCH_SIZE,
+            ),
+            start=1,
+        ):
+
+            jobs[run_id]["batch"] = (
+                batch_number
+            )
+
+            print(
+                f"[{run_id}] "
+                f"Starting batch "
+                f"{batch_number} "
+                f"({len(batch)} records)"
+            )
+
+            batch_results = []
+
+            for row in batch:
+
+                try:
+
+                    cleaned = (
+                        process_property(row)
+                    )
+
+                    batch_results.append(
+                        cleaned
+                    )
+
+                except Exception as error:
+
+                    print(
+                        f"[{run_id}] "
+                        f"Property failed: "
+                        f"{error}"
+                    )
+
+            all_results.extend(
+                batch_results
+            )
+
+            jobs[run_id]["processed"] = (
+                len(all_results)
+            )
+
+            # Store progress.
+            jobs[run_id]["results"] = (
+                all_results
+            )
+
+            print(
+                f"[{run_id}] "
+                f"Finished batch "
+                f"{batch_number}. "
+                f"{len(all_results)}/"
+                f"{total} processed."
+            )
+
+        # ----------------------------------------
+        # Complete
+        # ----------------------------------------
+
+        with_email = sum(
+            1
+            for row in all_results
+            if row["email"]
+        )
+
+        with_personalization = sum(
+            1
+            for row in all_results
+            if row["personalized_line"]
+        )
+
+        jobs[run_id].update({
+            "status":
+                "completed",
+
+            "processed":
+                len(all_results),
+
+            "with_email":
+                with_email,
+
+            "with_personalization":
+                with_personalization,
+
+            "results":
+                all_results,
+        })
+
+        print(
+            f"[{run_id}] COMPLETE. "
+            f"{len(all_results)} records. "
+            f"{with_email} emails. "
+            f"{with_personalization} "
+            f"personalized."
+        )
+
+    except Exception as error:
+
+        print(
+            f"[{run_id}] "
+            f"JOB FAILED: {error}"
+        )
+
+        jobs[run_id] = {
+            "status":
+                "failed",
+
+            "dataset_id":
+                dataset_id,
+
+            "error":
+                str(error),
+        }
+
+
+# ============================================================
 # HEALTH CHECK
 # ============================================================
 
-@app.route("/", methods=["GET"])
+@app.route(
+    "/",
+    methods=["GET"],
+)
 def health():
 
     return jsonify({
-        "status": "ok",
+        "status":
+            "ok",
+
         "service":
             "email-personalization-ai",
+
         "model":
             OPENAI_MODEL,
+
+        "batch_size":
+            BATCH_SIZE,
     })
 
 
 # ============================================================
-# TEST JUST THE AI
+# APIFY SUCCESS WEBHOOK
+# ============================================================
+
+@app.route(
+    "/apify-webhook",
+    methods=["POST"],
+)
+def apify_webhook():
+    """
+    Apify calls this endpoint when the Actor succeeds.
+
+    IMPORTANT:
+
+    We acknowledge the webhook immediately.
+
+    The 3,000-5,000 record processing job runs separately
+    instead of making Apify wait for thousands of AI calls.
+    """
+
+    payload = request.get_json(
+        silent=True
+    ) or {}
+
+    print(
+        "Apify webhook received:",
+        payload.get("eventType")
+    )
+
+    # ----------------------------------------
+    # Only process successful Actor runs
+    # ----------------------------------------
+
+    event_type = payload.get(
+        "eventType"
+    )
+
+    if (
+        event_type
+        and event_type
+        != "ACTOR.RUN.SUCCEEDED"
+    ):
+
+        return jsonify({
+            "success": False,
+            "message":
+                "Ignored non-success event.",
+        }), 200
+
+    # ----------------------------------------
+    # Apify puts the completed Actor run
+    # inside "resource".
+    # ----------------------------------------
+
+    resource = payload.get(
+        "resource"
+    ) or {}
+
+    dataset_id = resource.get(
+        "defaultDatasetId"
+    )
+
+    run_id = (
+        resource.get("id")
+        or
+        payload
+        .get("eventData", {})
+        .get("actorRunId")
+    )
+
+    if not dataset_id:
+
+        return jsonify({
+            "success": False,
+            "error":
+                "defaultDatasetId missing "
+                "from Apify webhook.",
+        }), 400
+
+    if not run_id:
+
+        return jsonify({
+            "success": False,
+            "error":
+                "Actor run ID missing "
+                "from webhook.",
+        }), 400
+
+    # ----------------------------------------
+    # Prevent duplicate webhook processing
+    # ----------------------------------------
+
+    existing = jobs.get(run_id)
+
+    if existing and existing.get(
+        "status"
+    ) in {
+        "downloading_dataset",
+        "processing",
+        "completed",
+    }:
+
+        return jsonify({
+            "success": True,
+            "message":
+                "Run already received.",
+
+            "run_id":
+                run_id,
+
+            "status":
+                existing.get("status"),
+        }), 200
+
+    # ----------------------------------------
+    # Register job immediately
+    # ----------------------------------------
+
+    jobs[run_id] = {
+        "status":
+            "queued",
+
+        "dataset_id":
+            dataset_id,
+
+        "processed":
+            0,
+
+        "results":
+            [],
+    }
+
+    # ----------------------------------------
+    # Start background processing
+    # ----------------------------------------
+
+    worker = threading.Thread(
+        target=process_apify_run,
+        args=(
+            run_id,
+            dataset_id,
+        ),
+        daemon=True,
+    )
+
+    worker.start()
+
+    # ----------------------------------------
+    # Immediately acknowledge Apify
+    # ----------------------------------------
+
+    return jsonify({
+        "success":
+            True,
+
+        "message":
+            "Apify run accepted for processing.",
+
+        "run_id":
+            run_id,
+
+        "dataset_id":
+            dataset_id,
+
+        "batch_size":
+            BATCH_SIZE,
+    }), 200
+
+
+# ============================================================
+# JOB STATUS
+# ============================================================
+
+@app.route(
+    "/jobs/<run_id>",
+    methods=["GET"],
+)
+def job_status(run_id):
+
+    job = jobs.get(run_id)
+
+    if not job:
+
+        return jsonify({
+            "success":
+                False,
+
+            "error":
+                "Job not found.",
+        }), 404
+
+    # Don't return thousands of rows from the status endpoint.
+    safe_job = {
+        key: value
+        for key, value in job.items()
+        if key != "results"
+    }
+
+    return jsonify({
+        "success":
+            True,
+
+        "job":
+            safe_job,
+    })
+
+
+# ============================================================
+# GET FINAL RESULTS
+# ============================================================
+
+@app.route(
+    "/jobs/<run_id>/results",
+    methods=["GET"],
+)
+def job_results(run_id):
+
+    job = jobs.get(run_id)
+
+    if not job:
+
+        return jsonify({
+            "success":
+                False,
+
+            "error":
+                "Job not found.",
+        }), 404
+
+    if job.get("status") != "completed":
+
+        return jsonify({
+            "success":
+                False,
+
+            "status":
+                job.get("status"),
+
+            "processed":
+                job.get(
+                    "processed",
+                    0,
+                ),
+
+            "total":
+                job.get(
+                    "total",
+                    0,
+                ),
+
+            "message":
+                "Job has not completed yet.",
+        }), 202
+
+    return jsonify({
+        "success":
+            True,
+
+        "run_id":
+            run_id,
+
+        "total":
+            job.get("processed"),
+
+        "data":
+            job.get(
+                "results",
+                [],
+            ),
+    })
+
+
+# ============================================================
+# TEST AI ENDPOINT
 # ============================================================
 
 @app.route(
@@ -608,140 +1127,16 @@ def test_personalization():
     )
 
     return jsonify({
-        "success": True,
-        "personalized_line": line,
+        "success":
+            True,
+
+        "personalized_line":
+            line,
     })
 
 
 # ============================================================
-# APIFY ENDPOINT
-# ============================================================
-
-@app.route("/process", methods=["POST"])
-def process_payload():
-
-    payload = request.get_json(
-        silent=True
-    )
-
-    if payload is None:
-
-        return jsonify({
-            "success": False,
-            "error":
-                "No JSON payload received",
-        }), 400
-
-    # ----------------------------------------
-    # Payload can be:
-    #
-    # [ {...}, {...} ]
-    #
-    # OR
-    #
-    # { "items": [ {...}, {...} ] }
-    #
-    # OR one record:
-    #
-    # { ... }
-    # ----------------------------------------
-
-    if isinstance(payload, list):
-
-        items = payload
-
-    elif (
-        isinstance(payload, dict)
-        and isinstance(
-            payload.get("items"),
-            list,
-        )
-    ):
-
-        items = payload["items"]
-
-    elif isinstance(payload, dict):
-
-        items = [payload]
-
-    else:
-
-        return jsonify({
-            "success": False,
-            "error":
-                "Unsupported payload format",
-        }), 400
-
-    results = []
-    failed = 0
-
-    # ----------------------------------------
-    # Process every property
-    # ----------------------------------------
-
-    for row in items:
-
-        try:
-
-            cleaned = process_property(
-                row
-            )
-
-            results.append(cleaned)
-
-        except Exception as error:
-
-            failed += 1
-
-            print(
-                "Failed to process row:",
-                error,
-            )
-
-    # ----------------------------------------
-    # Stats
-    # ----------------------------------------
-
-    with_email = sum(
-        1
-        for row in results
-        if row["email"]
-    )
-
-    with_personalization = sum(
-        1
-        for row in results
-        if row["personalized_line"]
-    )
-
-    return jsonify({
-
-        "success": True,
-
-        "stats": {
-            "received":
-                len(items),
-
-            "processed":
-                len(results),
-
-            "failed":
-                failed,
-
-            "with_email":
-                with_email,
-
-            "with_personalization":
-                with_personalization,
-        },
-
-        "data":
-            results,
-    })
-
-
-# ============================================================
-# RUN LOCALLY
+# LOCAL RUN
 # ============================================================
 
 if __name__ == "__main__":
