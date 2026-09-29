@@ -5,3 +5,4 @@ pandas
 Flask>=3.0,<4
 requests>=2.31,<3
 gunicorn>=22,<24
+openai>=1.0
