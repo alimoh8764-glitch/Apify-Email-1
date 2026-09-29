@@ -1,11 +1,15 @@
 import os
 import re
+import csv
+import io
 import threading
 import time
+from datetime import datetime, timezone
 from typing import Any
 
 import requests
 from flask import Flask, jsonify, request
+from github import Github
 from openai import OpenAI
 
 
@@ -18,6 +22,10 @@ app = Flask(__name__)
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 APIFY_API_TOKEN = os.environ.get("APIFY_API_TOKEN")
 
+GITHUB_TOKEN = os.environ.get("GITHUB_TOKEN")
+GITHUB_REPO = os.environ.get("GITHUB_REPO")
+GITHUB_BRANCH = os.environ.get("GITHUB_BRANCH", "main")
+
 OPENAI_MODEL = os.environ.get(
     "OPENAI_MODEL",
     "gpt-5.6-luna",
@@ -25,21 +33,27 @@ OPENAI_MODEL = os.environ.get(
 
 BATCH_SIZE = 200
 
+
 if not OPENAI_API_KEY:
-    raise RuntimeError(
-        "OPENAI_API_KEY environment variable is missing."
-    )
+    raise RuntimeError("OPENAI_API_KEY is missing.")
 
 if not APIFY_API_TOKEN:
-    raise RuntimeError(
-        "APIFY_API_TOKEN environment variable is missing."
-    )
+    raise RuntimeError("APIFY_API_TOKEN is missing.")
+
+if not GITHUB_TOKEN:
+    raise RuntimeError("GITHUB_TOKEN is missing.")
+
+if not GITHUB_REPO:
+    raise RuntimeError("GITHUB_REPO is missing.")
+
 
 client = OpenAI(api_key=OPENAI_API_KEY)
 
+github_client = Github(GITHUB_TOKEN)
+
 
 # ============================================================
-# APIFY COLUMN NAMES
+# APIFY COLUMNS
 # ============================================================
 
 AGENT_NAME = "agents/0/agent_name"
@@ -56,16 +70,13 @@ PROPERTY_DESCRIPTION = "text"
 
 # ============================================================
 # JOB STATUS
-#
-# In-memory for now.
-# This lets us inspect a running job from Railway.
 # ============================================================
 
 jobs = {}
 
 
 # ============================================================
-# CLEANING
+# BASIC CLEANING
 # ============================================================
 
 def clean_value(value: Any) -> str:
@@ -129,6 +140,9 @@ def get_first_name(full_name: str) -> str:
         first_name,
     )
 
+    if not first_name:
+        return ""
+
     return first_name.title()
 
 
@@ -138,13 +152,14 @@ def get_first_name(full_name: str) -> str:
 
 def get_contact(row: dict) -> dict:
     """
-    Never mix an agent's email with an advertiser's name.
+    Never mix agent and advertiser identities.
 
     Priority:
 
     1. Agent name + agent email
     2. Advertiser name + advertiser email
-    3. Name only
+    3. Agent name only
+    4. Advertiser name only
     """
 
     agent_name = clean_value(
@@ -163,21 +178,14 @@ def get_contact(row: dict) -> dict:
         row.get(ADVERTISER_EMAIL)
     )
 
-    # Agent pair
     if agent_name and valid_email(agent_email):
 
         return {
-            "first_name":
-                get_first_name(agent_name),
-
-            "email":
-                agent_email.lower(),
-
-            "contact_source":
-                "agent",
+            "first_name": get_first_name(agent_name),
+            "email": agent_email.lower(),
+            "contact_source": "agent",
         }
 
-    # Advertiser pair
     if (
         advertiser_name
         and valid_email(advertiser_email)
@@ -194,7 +202,6 @@ def get_contact(row: dict) -> dict:
                 "advertiser",
         }
 
-    # Name only
     if agent_name:
 
         return {
@@ -233,25 +240,12 @@ def get_contact(row: dict) -> dict:
 # ============================================================
 
 def clean_address(address: str) -> str:
-    """
-    We only want the street address.
-
-    Example:
-
-    123 North Bay, Calgary, AB E126QP
-
-    becomes:
-
-    123 North Bay
-    """
 
     address = clean_value(address)
 
     if not address:
         return ""
 
-    # address/street should already normally be short,
-    # but this catches full-address values.
     if "," in address:
         address = address.split(",")[0].strip()
 
@@ -263,10 +257,6 @@ def clean_address(address: str) -> str:
 # ============================================================
 
 def format_price(price: Any) -> str:
-    """
-    425000 -> $425,000
-    1200000 -> $1,200,000
-    """
 
     price = clean_value(price)
 
@@ -309,8 +299,9 @@ someone actually read the listing.
 Good examples include:
 
 - wired shed
-- workshop
+- detached workshop
 - barn apartment
+- finished room above a garage
 - unusual loft
 - private dock
 - boat lift
@@ -326,7 +317,8 @@ Good examples include:
 - wine cellar
 - putting green
 - unusual architectural feature
-- distinctive outdoor feature
+- distinctive view
+- unusual outdoor feature
 
 Avoid generic observations such as:
 
@@ -340,24 +332,25 @@ Avoid generic observations such as:
 - lots of natural light
 - desirable neighborhood
 
-ADDRESS:
+ADDRESS RULE:
 
-You MUST literally write:
+You MUST literally use:
 
 {{address}}
 
-Do NOT write the real street address.
+Do NOT write the actual address.
 
-Another system will replace {{address}} later.
+The outreach software will replace {{address}} later.
 
-STYLE:
+TONE:
 
 Warm.
 Casual.
 Natural.
 Short.
+Human.
 
-Examples:
+Good examples:
 
 That wired shed on {{address}} caught my eye. Solid bonus for
 a place like that.
@@ -374,17 +367,18 @@ goldfish pond makes it even more memorable.
 RULES:
 
 - Maximum 35 words.
-- Pick one main distinctive feature.
-- Never invent a feature.
+- Pick only one main distinctive feature.
+- Never invent anything.
 - Never mention the recipient's name.
 - Never use an exclamation mark.
 - Never say "I noticed your listing".
 - Never say "I came across your listing".
 - Avoid "impressive" and "stunning".
 - Do not sound like marketing copy.
-- Output only the personalized line.
-- No quotation marks.
-- No explanation.
+- Do not mention being AI.
+- Do not output quotation marks.
+- Do not explain your answer.
+- Output ONLY the personalized line.
 
 If there is no genuinely specific feature, output exactly:
 
@@ -393,7 +387,7 @@ SKIP
 
 
 # ============================================================
-# OPENAI PERSONALIZATION
+# AI PERSONALIZATION
 # ============================================================
 
 def create_personalized_line(
@@ -406,7 +400,7 @@ def create_personalized_line(
     if not description:
         return ""
 
-    # Control token usage.
+    # Avoid wasting tokens on abnormally long descriptions.
     description = description[:6000]
 
     for attempt in range(max_retries):
@@ -447,23 +441,26 @@ def create_personalized_line(
                 .strip()
             )
 
-            # AI must preserve our Instantly variable.
+            # The literal Instantly variable must survive.
             if "{{address}}" not in line:
 
                 print(
-                    "Rejected AI line - "
-                    "missing {{address}}:",
+                    "Rejected AI line because "
+                    "{{address}} was missing:",
                     line,
+                    flush=True,
                 )
 
                 return ""
 
+            # Extra protection against long responses.
             if len(line.split()) > 40:
 
                 print(
-                    "Rejected AI line - "
-                    "too long:",
+                    "Rejected AI line because "
+                    "it was too long:",
                     line,
+                    flush=True,
                 )
 
                 return ""
@@ -475,12 +472,12 @@ def create_personalized_line(
             print(
                 f"OpenAI attempt "
                 f"{attempt + 1} failed: "
-                f"{error}"
+                f"{error}",
+                flush=True,
             )
 
             if attempt < max_retries - 1:
 
-                # 2 sec, then 4 sec
                 time.sleep(
                     2 ** (attempt + 1)
                 )
@@ -546,17 +543,12 @@ def process_property(row: dict) -> dict:
 
 
 # ============================================================
-# APIFY DATASET DOWNLOAD
+# DOWNLOAD APIFY DATASET
 # ============================================================
 
 def get_apify_dataset(
     dataset_id: str,
 ) -> list:
-    """
-    Download the completed Actor dataset.
-
-    Railway authenticates to Apify using APIFY_API_TOKEN.
-    """
 
     url = (
         "https://api.apify.com/v2/datasets/"
@@ -585,6 +577,7 @@ def get_apify_dataset(
     data = response.json()
 
     if not isinstance(data, list):
+
         raise ValueError(
             "Apify dataset response was not a list."
         )
@@ -613,24 +606,114 @@ def split_batches(
 
 
 # ============================================================
-# PROCESS COMPLETE APIFY RUN
+# BUILD CSV
+# ============================================================
+
+def build_csv(results: list) -> str:
+
+    output = io.StringIO()
+
+    fieldnames = [
+        "first_name",
+        "email",
+        "address",
+        "city",
+        "price",
+        "property_description",
+        "personalized_line",
+        "contact_source",
+    ]
+
+    writer = csv.DictWriter(
+        output,
+        fieldnames=fieldnames,
+        extrasaction="ignore",
+    )
+
+    writer.writeheader()
+
+    for row in results:
+        writer.writerow(row)
+
+    return output.getvalue()
+
+
+# ============================================================
+# UPLOAD CSV TO GITHUB
+# ============================================================
+
+def upload_csv_to_github(
+    results: list,
+    run_id: str,
+    event_type: str,
+) -> str:
+
+    if not results:
+        raise ValueError(
+            "No processed results to upload."
+        )
+
+    repo = github_client.get_repo(
+        GITHUB_REPO
+    )
+
+    csv_content = build_csv(results)
+
+    timestamp = datetime.now(
+        timezone.utc
+    ).strftime(
+        "%Y-%m-%d_%H-%M-%S"
+    )
+
+    status_name = (
+        event_type
+        .replace("ACTOR.RUN.", "")
+        .lower()
+    )
+
+    # Shorten run ID in filename while keeping it identifiable.
+    short_run_id = run_id[:10]
+
+    github_path = (
+        "output/"
+        f"properties_{timestamp}_"
+        f"{status_name}_"
+        f"{short_run_id}.csv"
+    )
+
+    commit_message = (
+        f"Add processed property data "
+        f"for Apify run {run_id}"
+    )
+
+    repo.create_file(
+        github_path,
+        commit_message,
+        csv_content,
+        branch=GITHUB_BRANCH,
+    )
+
+    return github_path
+
+
+# ============================================================
+# PROCESS APIFY RUN
 # ============================================================
 
 def process_apify_run(
     run_id: str,
     dataset_id: str,
+    event_type: str,
 ):
-    """
-    Runs after the webhook has already returned HTTP 200.
-
-    Dataset is processed in chunks of 200.
-    """
 
     try:
 
         jobs[run_id] = {
             "status":
                 "downloading_dataset",
+
+            "event_type":
+                event_type,
 
             "dataset_id":
                 dataset_id,
@@ -644,14 +727,21 @@ def process_apify_run(
             "batch":
                 0,
 
-            "results":
-                [],
+            "github_file":
+                "",
         }
 
         print(
             f"[{run_id}] "
+            f"Event: {event_type}",
+            flush=True,
+        )
+
+        print(
+            f"[{run_id}] "
             f"Downloading dataset "
-            f"{dataset_id}"
+            f"{dataset_id}",
+            flush=True,
         )
 
         items = get_apify_dataset(
@@ -661,21 +751,33 @@ def process_apify_run(
         total = len(items)
 
         jobs[run_id]["total"] = total
-
-        jobs[run_id]["status"] = (
-            "processing"
-        )
+        jobs[run_id]["status"] = "processing"
 
         print(
             f"[{run_id}] "
-            f"Downloaded {total} records."
+            f"Downloaded {total} records.",
+            flush=True,
         )
+
+        if total == 0:
+
+            jobs[run_id]["status"] = (
+                "completed_empty"
+            )
+
+            print(
+                f"[{run_id}] "
+                "Dataset contained 0 records.",
+                flush=True,
+            )
+
+            return
 
         all_results = []
 
-        # ----------------------------------------
-        # 200 records per batch
-        # ----------------------------------------
+        # ====================================================
+        # PROCESS IN BATCHES OF 200
+        # ====================================================
 
         for batch_number, batch in enumerate(
             split_batches(
@@ -693,12 +795,16 @@ def process_apify_run(
                 f"[{run_id}] "
                 f"Starting batch "
                 f"{batch_number} "
-                f"({len(batch)} records)"
+                f"({len(batch)} records)",
+                flush=True,
             )
 
             batch_results = []
 
-            for row in batch:
+            for row_number, row in enumerate(
+                batch,
+                start=1,
+            ):
 
                 try:
 
@@ -714,8 +820,11 @@ def process_apify_run(
 
                     print(
                         f"[{run_id}] "
-                        f"Property failed: "
-                        f"{error}"
+                        f"Row {row_number} "
+                        f"in batch "
+                        f"{batch_number} failed: "
+                        f"{error}",
+                        flush=True,
                     )
 
             all_results.extend(
@@ -726,22 +835,18 @@ def process_apify_run(
                 len(all_results)
             )
 
-            # Store progress.
-            jobs[run_id]["results"] = (
-                all_results
-            )
-
             print(
                 f"[{run_id}] "
                 f"Finished batch "
                 f"{batch_number}. "
                 f"{len(all_results)}/"
-                f"{total} processed."
+                f"{total} processed.",
+                flush=True,
             )
 
-        # ----------------------------------------
-        # Complete
-        # ----------------------------------------
+        # ====================================================
+        # STATS
+        # ====================================================
 
         with_email = sum(
             1
@@ -753,6 +858,27 @@ def process_apify_run(
             1
             for row in all_results
             if row["personalized_line"]
+        )
+
+        # ====================================================
+        # CREATE + UPLOAD GITHUB CSV
+        # ====================================================
+
+        jobs[run_id]["status"] = (
+            "uploading_to_github"
+        )
+
+        print(
+            f"[{run_id}] "
+            "Creating CSV and uploading "
+            "to GitHub...",
+            flush=True,
+        )
+
+        github_file = upload_csv_to_github(
+            all_results,
+            run_id,
+            event_type,
         )
 
         jobs[run_id].update({
@@ -768,8 +894,8 @@ def process_apify_run(
             "with_personalization":
                 with_personalization,
 
-            "results":
-                all_results,
+            "github_file":
+                github_file,
         })
 
         print(
@@ -777,19 +903,33 @@ def process_apify_run(
             f"{len(all_results)} records. "
             f"{with_email} emails. "
             f"{with_personalization} "
-            f"personalized."
+            f"personalized.",
+            flush=True,
+        )
+
+        print(
+            f"[{run_id}] "
+            f"GitHub file created: "
+            f"{github_file}",
+            flush=True,
         )
 
     except Exception as error:
 
         print(
             f"[{run_id}] "
-            f"JOB FAILED: {error}"
+            f"JOB FAILED: "
+            f"{type(error).__name__}: "
+            f"{error}",
+            flush=True,
         )
 
         jobs[run_id] = {
             "status":
                 "failed",
+
+            "event_type":
+                event_type,
 
             "dataset_id":
                 dataset_id,
@@ -821,11 +961,22 @@ def health():
 
         "batch_size":
             BATCH_SIZE,
+
+        "accepted_events": [
+            "ACTOR.RUN.SUCCEEDED",
+            "ACTOR.RUN.ABORTED",
+        ],
+
+        "github_repo":
+            GITHUB_REPO,
+
+        "github_branch":
+            GITHUB_BRANCH,
     })
 
 
 # ============================================================
-# APIFY SUCCESS WEBHOOK
+# APIFY WEBHOOK
 # ============================================================
 
 @app.route(
@@ -833,50 +984,52 @@ def health():
     methods=["POST"],
 )
 def apify_webhook():
-    """
-    Apify calls this endpoint when the Actor succeeds.
-
-    IMPORTANT:
-
-    We acknowledge the webhook immediately.
-
-    The 3,000-5,000 record processing job runs separately
-    instead of making Apify wait for thousands of AI calls.
-    """
 
     payload = request.get_json(
         silent=True
     ) or {}
 
-    print(
-        "Apify webhook received:",
-        payload.get("eventType")
-    )
-
-    # ----------------------------------------
-    # Only process successful Actor runs
-    # ----------------------------------------
-
     event_type = payload.get(
         "eventType"
     )
 
-    if (
-        event_type
-        and event_type
-        != "ACTOR.RUN.SUCCEEDED"
-    ):
+    print(
+        "Apify webhook received:",
+        event_type,
+        flush=True,
+    )
+
+    # ========================================================
+    # ACCEPT BOTH SUCCESS + ABORT
+    # ========================================================
+
+    allowed_events = {
+        "ACTOR.RUN.SUCCEEDED",
+        "ACTOR.RUN.ABORTED",
+    }
+
+    if event_type not in allowed_events:
+
+        print(
+            "Ignoring event:",
+            event_type,
+            flush=True,
+        )
 
         return jsonify({
-            "success": False,
+            "success":
+                True,
+
             "message":
-                "Ignored non-success event.",
+                "Event ignored.",
+
+            "event_type":
+                event_type,
         }), 200
 
-    # ----------------------------------------
-    # Apify puts the completed Actor run
-    # inside "resource".
-    # ----------------------------------------
+    # ========================================================
+    # GET RUN + DATASET
+    # ========================================================
 
     resource = payload.get(
         "resource"
@@ -896,8 +1049,16 @@ def apify_webhook():
 
     if not dataset_id:
 
+        print(
+            "Webhook missing "
+            "defaultDatasetId.",
+            flush=True,
+        )
+
         return jsonify({
-            "success": False,
+            "success":
+                False,
+
             "error":
                 "defaultDatasetId missing "
                 "from Apify webhook.",
@@ -906,28 +1067,43 @@ def apify_webhook():
     if not run_id:
 
         return jsonify({
-            "success": False,
+            "success":
+                False,
+
             "error":
                 "Actor run ID missing "
                 "from webhook.",
         }), 400
 
-    # ----------------------------------------
-    # Prevent duplicate webhook processing
-    # ----------------------------------------
+    print(
+        f"Accepted {event_type} "
+        f"for run {run_id}. "
+        f"Dataset: {dataset_id}",
+        flush=True,
+    )
+
+    # ========================================================
+    # DUPLICATE PROTECTION
+    # ========================================================
 
     existing = jobs.get(run_id)
 
-    if existing and existing.get(
-        "status"
-    ) in {
-        "downloading_dataset",
-        "processing",
-        "completed",
-    }:
+    if (
+        existing
+        and existing.get("status")
+        in {
+            "queued",
+            "downloading_dataset",
+            "processing",
+            "uploading_to_github",
+            "completed",
+        }
+    ):
 
         return jsonify({
-            "success": True,
+            "success":
+                True,
+
             "message":
                 "Run already received.",
 
@@ -938,13 +1114,12 @@ def apify_webhook():
                 existing.get("status"),
         }), 200
 
-    # ----------------------------------------
-    # Register job immediately
-    # ----------------------------------------
-
     jobs[run_id] = {
         "status":
             "queued",
+
+        "event_type":
+            event_type,
 
         "dataset_id":
             dataset_id,
@@ -952,35 +1127,36 @@ def apify_webhook():
         "processed":
             0,
 
-        "results":
-            [],
+        "github_file":
+            "",
     }
 
-    # ----------------------------------------
-    # Start background processing
-    # ----------------------------------------
+    # ========================================================
+    # BACKGROUND WORKER
+    # ========================================================
 
     worker = threading.Thread(
         target=process_apify_run,
         args=(
             run_id,
             dataset_id,
+            event_type,
         ),
         daemon=True,
     )
 
     worker.start()
 
-    # ----------------------------------------
-    # Immediately acknowledge Apify
-    # ----------------------------------------
-
+    # Return immediately so Apify doesn't wait for OpenAI.
     return jsonify({
         "success":
             True,
 
         "message":
-            "Apify run accepted for processing.",
+            "Apify run accepted.",
+
+        "event_type":
+            event_type,
 
         "run_id":
             run_id,
@@ -1015,69 +1191,6 @@ def job_status(run_id):
                 "Job not found.",
         }), 404
 
-    # Don't return thousands of rows from the status endpoint.
-    safe_job = {
-        key: value
-        for key, value in job.items()
-        if key != "results"
-    }
-
-    return jsonify({
-        "success":
-            True,
-
-        "job":
-            safe_job,
-    })
-
-
-# ============================================================
-# GET FINAL RESULTS
-# ============================================================
-
-@app.route(
-    "/jobs/<run_id>/results",
-    methods=["GET"],
-)
-def job_results(run_id):
-
-    job = jobs.get(run_id)
-
-    if not job:
-
-        return jsonify({
-            "success":
-                False,
-
-            "error":
-                "Job not found.",
-        }), 404
-
-    if job.get("status") != "completed":
-
-        return jsonify({
-            "success":
-                False,
-
-            "status":
-                job.get("status"),
-
-            "processed":
-                job.get(
-                    "processed",
-                    0,
-                ),
-
-            "total":
-                job.get(
-                    "total",
-                    0,
-                ),
-
-            "message":
-                "Job has not completed yet.",
-        }), 202
-
     return jsonify({
         "success":
             True,
@@ -1085,19 +1198,13 @@ def job_results(run_id):
         "run_id":
             run_id,
 
-        "total":
-            job.get("processed"),
-
-        "data":
-            job.get(
-                "results",
-                [],
-            ),
+        "job":
+            job,
     })
 
 
 # ============================================================
-# TEST AI ENDPOINT
+# TEST AI
 # ============================================================
 
 @app.route(
@@ -1117,7 +1224,9 @@ def test_personalization():
     if not description:
 
         return jsonify({
-            "success": False,
+            "success":
+                False,
+
             "error":
                 "description is required",
         }), 400
