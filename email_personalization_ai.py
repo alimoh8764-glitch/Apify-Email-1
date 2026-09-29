@@ -1,37 +1,105 @@
 import os
 import re
-from flask import Flask, request, jsonify
+from typing import Any
+
+from flask import Flask, jsonify, request
 from openai import OpenAI
+
+
+# ============================================================
+# CONFIG
+# ============================================================
 
 app = Flask(__name__)
 
-client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 
-MODEL = os.environ.get("OPENAI_MODEL", "gpt-5.6-luna")
+if not OPENAI_API_KEY:
+    raise RuntimeError(
+        "OPENAI_API_KEY environment variable is missing."
+    )
+
+client = OpenAI(api_key=OPENAI_API_KEY)
+
+# You can change the model in Railway without editing the code.
+OPENAI_MODEL = os.environ.get(
+    "OPENAI_MODEL",
+    "gpt-5.6-luna",
+)
+
+
+# ============================================================
+# EXACT APIFY COLUMNS FROM YOUR DATA
+# ============================================================
+
+AGENT_NAME = "agents/0/agent_name"
+AGENT_EMAIL = "agents/0/agent_email"
+
+ADVERTISER_NAME = "advertisers/0/name"
+ADVERTISER_EMAIL = "advertisers/0/email"
+
+PROPERTY_ADDRESS = "address/street"
+PROPERTY_CITY = "address/locality"
+PROPERTY_PRICE = "listPrice"
+PROPERTY_DESCRIPTION = "text"
 
 
 # ============================================================
 # BASIC CLEANING
 # ============================================================
 
-def clean_value(value):
+def clean_value(value: Any) -> str:
+    """Convert null/NaN-like values to a clean string."""
+
     if value is None:
         return ""
 
     value = str(value).strip()
 
-    if value.lower() in {"nan", "none", "null"}:
+    if value.lower() in {
+        "",
+        "nan",
+        "none",
+        "null",
+        "n/a",
+        "na",
+    }:
         return ""
 
     return re.sub(r"\s+", " ", value)
 
 
-def get_first_name(full_name):
+def valid_email(email: str) -> bool:
+    """Basic email validation."""
+
+    email = clean_value(email)
+
+    if not email:
+        return False
+
+    pattern = r"^[^@\s]+@[^@\s]+\.[^@\s]+$"
+
+    return bool(re.match(pattern, email))
+
+
+# ============================================================
+# NAME CLEANING
+# ============================================================
+
+def get_first_name(full_name: str) -> str:
+    """
+    Convert:
+        John Smith
+    into:
+        John
+    """
+
     full_name = clean_value(full_name)
 
     if not full_name:
         return ""
 
+    # Remove common prefixes.
     full_name = re.sub(
         r"^(mr\.?|mrs\.?|ms\.?|miss|dr\.?)\s+",
         "",
@@ -39,85 +107,89 @@ def get_first_name(full_name):
         flags=re.IGNORECASE,
     )
 
-    return full_name.split()[0].title()
+    first_name = full_name.split()[0]
 
+    # Remove odd punctuation around name.
+    first_name = re.sub(
+        r"[^A-Za-zÀ-ÖØ-öø-ÿ'\-]",
+        "",
+        first_name,
+    )
 
-def first_value(row, *keys):
-    """
-    Return the first non-empty value from several possible
-    Apify field names.
-    """
-    for key in keys:
-        value = row.get(key)
+    if not first_name:
+        return ""
 
-        if value is not None and clean_value(value):
-            return clean_value(value)
-
-    return ""
+    return first_name.title()
 
 
 # ============================================================
-# CONTACT MATCHING
+# CONTACT SELECTION
 # ============================================================
 
-def get_contact(row):
+def get_contact(row: dict) -> dict:
     """
-    CRITICAL RULE:
+    IMPORTANT:
 
-    Never blindly combine an advertiser's name with an
-    agent's email.
+    We NEVER blindly combine an agent email with an advertiser
+    name or vice versa.
 
-    Keep known name/email pairs together.
+    Priority:
+
+    1. Agent name + agent email
+    2. Advertiser name + advertiser email
+    3. Name only
+
+    It is better to have a blank email than send an email using
+    another person's first name.
     """
 
-    agent_name = first_value(
-        row,
-        "agents/0/agent_name",
-        "agents.0.agent_name",
-        "agent_name",
+    agent_name = clean_value(row.get(AGENT_NAME))
+    agent_email = clean_value(row.get(AGENT_EMAIL))
+
+    advertiser_name = clean_value(
+        row.get(ADVERTISER_NAME)
     )
 
-    agent_email = first_value(
-        row,
-        "agents/0/email",
-        "agents.0.email",
-        "agent_email",
+    advertiser_email = clean_value(
+        row.get(ADVERTISER_EMAIL)
     )
 
-    advertiser_name = first_value(
-        row,
-        "advertisers/0/name",
-        "advertisers.0.name",
-        "advertiser_name",
-    )
+    # -----------------------------
+    # Agent pair
+    # -----------------------------
 
-    advertiser_email = first_value(
-        row,
-        "advertisers/0/email",
-        "advertisers.0.email",
-        "advertiser_email",
-    )
+    if agent_name and valid_email(agent_email):
 
-    # Preferred pair
-    if agent_name and agent_email:
         return {
             "first_name": get_first_name(agent_name),
             "full_name": agent_name,
-            "email": agent_email,
+            "email": agent_email.lower(),
             "contact_source": "agent",
         }
 
-    # Second preferred pair
-    if advertiser_name and advertiser_email:
+    # -----------------------------
+    # Advertiser pair
+    # -----------------------------
+
+    if advertiser_name and valid_email(
+        advertiser_email
+    ):
+
         return {
-            "first_name": get_first_name(advertiser_name),
+            "first_name": get_first_name(
+                advertiser_name
+            ),
             "full_name": advertiser_name,
-            "email": advertiser_email,
+            "email": advertiser_email.lower(),
             "contact_source": "advertiser",
         }
 
-    # Name without verified email is safer than mismatching people.
+    # -----------------------------
+    # Name only
+    # -----------------------------
+
     if agent_name:
+
         return {
             "first_name": get_first_name(agent_name),
             "full_name": agent_name,
@@ -126,11 +198,15 @@ def get_contact(row):
         }
 
     if advertiser_name:
+
         return {
-            "first_name": get_first_name(advertiser_name),
+            "first_name": get_first_name(
+                advertiser_name
+            ),
             "full_name": advertiser_name,
             "email": "",
-            "contact_source": "advertiser_name_only",
+            "contact_source":
+                "advertiser_name_only",
         }
 
     return {
@@ -142,174 +218,244 @@ def get_contact(row):
 
 
 # ============================================================
-# PROPERTY FIELDS
+# ADDRESS CLEANING
 # ============================================================
 
-def get_property_address(row):
-    return first_value(
-        row,
-        "address/street",
-        "address.street",
-        "street",
-        "property_address",
-        "address",
+def clean_address(address: str) -> str:
+    """
+    We use address/street from Apify rather than the complete
+    postal address.
+
+    Example:
+
+        123 North Bay, Calgary, AB E126QP
+
+    becomes:
+
+        123 North Bay
+
+    Normally address/street is already the short version.
+    """
+
+    address = clean_value(address)
+
+    if not address:
+        return ""
+
+    # If commas somehow exist in the street field,
+    # only keep the street portion.
+    if "," in address:
+        address = address.split(",")[0].strip()
+
+    return address
+
+
+# ============================================================
+# PRICE FORMATTING
+# ============================================================
+
+def format_price(price: Any) -> str:
+    """
+    Examples:
+
+        425000
+        -> $425,000
+
+        1200000
+        -> $1,200,000
+
+        $725000
+        -> $725,000
+    """
+
+    price = clean_value(price)
+
+    if not price:
+        return ""
+
+    # Remove existing formatting.
+    numeric = re.sub(
+        r"[^0-9.]",
+        "",
+        price,
     )
 
+    if not numeric:
+        return ""
 
-def get_city(row):
-    return first_value(
-        row,
-        "address/locality",
-        "address.locality",
-        "city",
-    )
+    try:
+        number = float(numeric)
 
+        return f"${number:,.0f}"
 
-def get_price(row):
-    return first_value(
-        row,
-        "list_price",
-        "listPrice",
-        "price",
-    )
+    except (ValueError, TypeError):
+        return ""
 
 
-def get_description(row):
-    return first_value(
-        row,
-        "text",
-        "description",
-        "public_remarks",
-        "publicRemarks",
-        "remarks",
-    )
+# ============================================================
+# AI PROMPT
+# ============================================================
+
+AI_INSTRUCTIONS = """
+You write short personalized opening lines for real-estate
+agent outreach.
+
+You will receive the PUBLIC REMARKS / PROPERTY DESCRIPTION
+for one real-estate listing.
+
+Your job is to find ONE genuinely specific feature from the
+description that proves someone actually paid attention to
+the property.
+
+Then write one warm, casual sentence or two about it.
+
+
+GOOD FEATURES INCLUDE:
+
+- wired shed
+- detached workshop
+- finished room above a garage
+- barn apartment
+- unusual loft
+- private dock
+- boat lift
+- four-season garden
+- goldfish pond
+- saltwater pool
+- rooftop deck
+- wraparound porch
+- screened porch
+- outdoor kitchen
+- original fireplace
+- guest house
+- wine cellar
+- putting green
+- unusual architectural feature
+- distinctive view
+- unusual outdoor feature
+
+
+AVOID GENERIC FEATURES SUCH AS:
+
+- beautiful home
+- great location
+- spacious property
+- open floor plan
+- nice kitchen
+- updated home
+- large bedrooms
+- great opportunity
+- lots of natural light
+- desirable neighborhood
+
+Generic observations do not prove the listing was actually
+read.
+
+
+ADDRESS RULE:
+
+You MUST literally use:
+
+{{address}}
+
+Do NOT attempt to write the actual street address.
+
+The software will replace {{address}} later.
+
+
+TONE:
+
+Sound like a real person who quickly looked through the
+listing.
+
+Warm.
+Casual.
+Short.
+Natural.
+
+Do not sound like marketing copy.
+
+
+GOOD EXAMPLES:
+
+That wired shed on {{address}} caught my eye. Solid bonus for
+a place like that.
+
+That finished apartment above the barn on {{address}} really
+stood out. That's a pretty useful feature to have.
+
+The private dock on {{address}} caught my attention. Definitely
+a nice touch for buyers looking around there.
+
+That four-season garden on {{address}} is a great touch. The
+goldfish pond makes it even more memorable.
+
+That rooftop deck on {{address}} caught my eye. Pretty sweet
+feature for enjoying the view.
+
+
+IMPORTANT:
+
+- Maximum 35 words.
+- Pick only ONE main distinctive feature.
+- Never invent anything.
+- Never mention the recipient's name.
+- Never use an exclamation mark.
+- Never say "I noticed your listing".
+- Never say "I came across your listing".
+- Avoid words like "impressive" and "stunning".
+- Do not sound overly enthusiastic.
+- Do not mention being an AI.
+- Do not output quotation marks.
+- Do not explain your answer.
+- Output ONLY the personalized line.
+
+If there is no genuinely specific feature in the description,
+output exactly:
+
+SKIP
+"""
 
 
 # ============================================================
 # AI PERSONALIZATION
 # ============================================================
 
-PERSONALIZATION_INSTRUCTIONS = """
-You write one short personalized sentence for real-estate
-agent outreach.
-
-You will receive the public listing description for ONE property.
-
-Your job is to identify ONE concrete, distinctive feature that
-proves the listing was actually looked at.
-
-GOOD FEATURES:
-- wired shed or workshop
-- detached barn
-- finished apartment above a garage
-- unusual loft
-- private dock
-- screened porch
-- saltwater pool
-- four-season garden
-- goldfish pond
-- outdoor kitchen
-- original stone fireplace
-- wraparound porch
-- rooftop deck
-- unusually large workshop
-- guest house
-- wine cellar
-- boat lift
-- putting green
-- distinctive architectural feature
-
-BAD FEATURES:
-- great location
-- beautiful home
-- spacious property
-- amazing opportunity
-- open floor plan
-- lots of potential
-- updated home
-- nice kitchen
-- good neighborhood
-
-Those generic observations do NOT prove somebody actually
-read the listing.
-
-OUTPUT STYLE:
-
-Write naturally like a person sending a quick cold email.
-
-The sentence should normally follow this idea:
-
-"That [specific feature] on {{address}} caught my eye. [Short,
-natural positive reaction.]"
-
-But vary the language naturally.
-
-Examples of acceptable tone:
-
-"That wired shed on {{address}} caught my eye. Solid bonus for
-a place like that."
-
-"That finished apartment above the barn on {{address}} really
-stood out. That's a pretty useful selling point."
-
-"The private dock on {{address}} caught my attention. Definitely
-a nice feature to have for buyers looking around there."
-
-"That four-season garden on {{address}} is a great touch. The
-goldfish pond makes it even more memorable."
-
-IMPORTANT RULES:
-
-1. ALWAYS write {{address}} literally.
-2. Do NOT replace {{address}} with the real address.
-3. Do NOT mention the recipient's name.
-4. Pick details ONLY from the supplied listing description.
-5. Never invent a feature.
-6. Do not use salesy corporate language.
-7. Do not use exclamation marks.
-8. Do not say "I noticed your listing."
-9. Do not say "I came across your listing."
-10. Do not say "impressive."
-11. Keep it conversational.
-12. Keep the entire output under 35 words.
-13. Output ONLY the personalized line.
-14. No quotation marks.
-15. No explanation.
-16. If the description contains no sufficiently specific feature,
-    output exactly: SKIP
-"""
-
-
-def create_personalized_line(description):
-    """
-    Ask GPT-5.6 Luna to select one genuine property feature
-    and turn it into a short outreach line.
-    """
+def create_personalized_line(
+    description: str,
+) -> str:
 
     description = clean_value(description)
 
     if not description:
         return ""
 
-    # Avoid unnecessarily enormous listing descriptions.
+    # Keeps token usage under control if Apify returns an
+    # abnormally long description.
     description = description[:6000]
 
     try:
+
         response = client.responses.create(
-            model=MODEL,
+            model=OPENAI_MODEL,
+
             reasoning={
                 "effort": "low"
             },
-            instructions=PERSONALIZATION_INSTRUCTIONS,
-            input=f"""
-PROPERTY LISTING DESCRIPTION:
 
-{description}
-""",
+            instructions=AI_INSTRUCTIONS,
+
+            input=(
+                "PROPERTY DESCRIPTION:\n\n"
+                + description
+            ),
+
             max_output_tokens=100,
         )
 
-        line = clean_value(response.output_text)
+        line = clean_value(
+            response.output_text
+        )
 
         if not line:
             return ""
@@ -317,50 +463,101 @@ PROPERTY LISTING DESCRIPTION:
         if line.upper() == "SKIP":
             return ""
 
-        # Safety check:
-        # AI must preserve our Instantly variable.
+        # Remove accidental quotes.
+        line = line.strip('"').strip("'").strip()
+
+        # Critical validation.
+        # We WANT the literal Instantly variable.
         if "{{address}}" not in line:
+            print(
+                "AI line rejected because "
+                "{{address}} was missing:",
+                line,
+            )
+
             return ""
 
-        # Remove accidental quotation marks.
-        line = line.strip('"').strip("'").strip()
+        # Reject excessively long output.
+        if len(line.split()) > 40:
+            print(
+                "AI line rejected because it was too long:",
+                line,
+            )
+
+            return ""
 
         return line
 
-    except Exception as e:
-        print(f"AI personalization error: {e}")
+    except Exception as error:
+
+        print(
+            f"OpenAI personalization error: {error}"
+        )
+
         return ""
 
 
 # ============================================================
-# PROCESS PROPERTY
+# PROCESS ONE APIFY RECORD
 # ============================================================
 
-def process_property(row):
+def process_property(row: dict) -> dict:
+
     contact = get_contact(row)
 
-    address = get_property_address(row)
-    city = get_city(row)
-    price = get_price(row)
-    description = get_description(row)
+    address = clean_address(
+        row.get(PROPERTY_ADDRESS)
+    )
 
-    personalized_line = create_personalized_line(description)
+    city = clean_value(
+        row.get(PROPERTY_CITY)
+    )
+
+    price = format_price(
+        row.get(PROPERTY_PRICE)
+    )
+
+    description = clean_value(
+        row.get(PROPERTY_DESCRIPTION)
+    )
+
+    personalized_line = (
+        create_personalized_line(description)
+    )
 
     return {
-        "first_name": contact["first_name"],
-        "full_name": contact["full_name"],
-        "email": contact["email"],
 
-        "property_address": address,
-        "city": city,
-        "property_price": price,
+        # ------------------------------------
+        # FINAL SHEET FIELDS
+        # ------------------------------------
 
-        "property_description": description,
+        "first_name":
+            contact["first_name"],
 
-        # Ready for Instantly:
-        "personalized_line": personalized_line,
+        "email":
+            contact["email"],
 
-        "contact_source": contact["contact_source"],
+        "address":
+            address,
+
+        "city":
+            city,
+
+        "price":
+            price,
+
+        "property_description":
+            description,
+
+        "personalized_line":
+            personalized_line,
+
+        # ------------------------------------
+        # Useful debugging information
+        # ------------------------------------
+
+        "contact_source":
+            contact["contact_source"],
     }
 
 
@@ -369,105 +566,192 @@ def process_property(row):
 # ============================================================
 
 @app.route("/", methods=["GET"])
-def health_check():
+def health():
+
     return jsonify({
         "status": "ok",
-        "service": "realtor-personalization-engine",
-        "model": MODEL,
+        "service":
+            "email-personalization-ai",
+        "model":
+            OPENAI_MODEL,
     })
 
 
 # ============================================================
-# TEST ONE DESCRIPTION
+# TEST JUST THE AI
 # ============================================================
 
-@app.route("/test-personalization", methods=["POST"])
+@app.route(
+    "/test-personalization",
+    methods=["POST"],
+)
 def test_personalization():
-    """
-    Handy while we're developing.
 
-    POST:
-    {
-        "description": "Beautiful property featuring..."
-    }
+    payload = request.get_json(
+        silent=True
+    ) or {}
 
-    Returns just the generated line.
-    """
-
-    payload = request.get_json(silent=True) or {}
-
-    description = clean_value(payload.get("description"))
+    description = clean_value(
+        payload.get("description")
+    )
 
     if not description:
+
         return jsonify({
-            "error": "description is required"
+            "success": False,
+            "error":
+                "description is required",
         }), 400
 
-    line = create_personalized_line(description)
+    line = create_personalized_line(
+        description
+    )
 
     return jsonify({
-        "personalized_line": line
+        "success": True,
+        "personalized_line": line,
     })
 
 
 # ============================================================
-# PROCESS APIFY PAYLOAD
+# APIFY ENDPOINT
 # ============================================================
 
 @app.route("/process", methods=["POST"])
 def process_payload():
 
-    payload = request.get_json(silent=True)
+    payload = request.get_json(
+        silent=True
+    )
 
     if payload is None:
+
         return jsonify({
-            "error": "No JSON payload received"
+            "success": False,
+            "error":
+                "No JSON payload received",
         }), 400
 
-    # Apify might send a raw list.
+    # ----------------------------------------
+    # Payload can be:
+    #
+    # [ {...}, {...} ]
+    #
+    # OR
+    #
+    # { "items": [ {...}, {...} ] }
+    #
+    # OR one record:
+    #
+    # { ... }
+    # ----------------------------------------
+
     if isinstance(payload, list):
+
         items = payload
 
-    # Or an object containing items.
-    elif isinstance(payload, dict) and isinstance(
-        payload.get("items"), list
+    elif (
+        isinstance(payload, dict)
+        and isinstance(
+            payload.get("items"),
+            list,
+        )
     ):
+
         items = payload["items"]
 
-    # Or one property.
     elif isinstance(payload, dict):
+
         items = [payload]
 
     else:
+
         return jsonify({
-            "error": "Unsupported payload format"
+            "success": False,
+            "error":
+                "Unsupported payload format",
         }), 400
 
-    cleaned_properties = []
+    results = []
+    failed = 0
 
-    for item in items:
+    # ----------------------------------------
+    # Process every property
+    # ----------------------------------------
+
+    for row in items:
+
         try:
-            result = process_property(item)
-            cleaned_properties.append(result)
 
-        except Exception as e:
-            print(f"Property processing error: {e}")
+            cleaned = process_property(
+                row
+            )
+
+            results.append(cleaned)
+
+        except Exception as error:
+
+            failed += 1
+
+            print(
+                "Failed to process row:",
+                error,
+            )
+
+    # ----------------------------------------
+    # Stats
+    # ----------------------------------------
+
+    with_email = sum(
+        1
+        for row in results
+        if row["email"]
+    )
+
+    with_personalization = sum(
+        1
+        for row in results
+        if row["personalized_line"]
+    )
 
     return jsonify({
+
         "success": True,
-        "received": len(items),
-        "processed": len(cleaned_properties),
-        "data": cleaned_properties,
+
+        "stats": {
+            "received":
+                len(items),
+
+            "processed":
+                len(results),
+
+            "failed":
+                failed,
+
+            "with_email":
+                with_email,
+
+            "with_personalization":
+                with_personalization,
+        },
+
+        "data":
+            results,
     })
 
 
 # ============================================================
-# RUN
+# RUN LOCALLY
 # ============================================================
 
 if __name__ == "__main__":
 
-    port = int(os.environ.get("PORT", 8080))
+    port = int(
+        os.environ.get(
+            "PORT",
+            8080,
+        )
+    )
 
     app.run(
         host="0.0.0.0",
