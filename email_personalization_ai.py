@@ -32,7 +32,10 @@ GITHUB_REPO = os.environ.get(
     "GITHUB_REPO",
     "alimoh8764-glitch/Apify-Email-1",
 )
-GITHUB_BRANCH = os.environ.get("GITHUB_BRANCH", "main")
+GITHUB_BRANCH = os.environ.get(
+    "GITHUB_BRANCH",
+    "main",
+)
 
 OPENAI_MODEL = os.environ.get(
     "OPENAI_MODEL",
@@ -41,22 +44,25 @@ OPENAI_MODEL = os.environ.get(
 
 BATCH_SIZE = 200
 
-openai_client = OpenAI(
-    api_key=OPENAI_API_KEY
-) if OPENAI_API_KEY else None
+openai_client = (
+    OpenAI(api_key=OPENAI_API_KEY)
+    if OPENAI_API_KEY
+    else None
+)
 
-github_client = Github(
-    GITHUB_TOKEN
-) if GITHUB_TOKEN else None
+github_client = (
+    Github(GITHUB_TOKEN)
+    if GITHUB_TOKEN
+    else None
+)
 
-
-# In-memory status only.
-# Fine for testing, but not durable across Railway restarts.
+# In-memory status.
+# This resets if Railway restarts.
 jobs = {}
 
 
 # ============================================================
-# GENERAL CLEANING
+# GENERAL HELPERS
 # ============================================================
 
 def clean_value(value: Any) -> str:
@@ -97,7 +103,6 @@ def get_first_name(full_name: Any) -> str:
     if not name:
         return ""
 
-    # Remove common prefixes.
     name = re.sub(
         r"^(mr|mrs|ms|miss|dr)\.?\s+",
         "",
@@ -105,7 +110,6 @@ def get_first_name(full_name: Any) -> str:
         flags=re.IGNORECASE,
     )
 
-    # Realtor data can occasionally contain punctuation.
     name = name.strip(" ,.-")
 
     if not name:
@@ -114,14 +118,7 @@ def get_first_name(full_name: Any) -> str:
     return name.split()[0]
 
 
-# ============================================================
-# NESTED REALTOR JSON HELPERS
-# ============================================================
-
 def get_list(value: Any) -> list:
-    """
-    Safely return a list.
-    """
     if isinstance(value, list):
         return value
 
@@ -129,9 +126,6 @@ def get_list(value: Any) -> list:
 
 
 def get_dict(value: Any) -> dict:
-    """
-    Safely return a dictionary.
-    """
     if isinstance(value, dict):
         return value
 
@@ -139,22 +133,20 @@ def get_dict(value: Any) -> dict:
 
 
 # ============================================================
-# CONTACT MATCHING
+# CONTACT EXTRACTION
 # ============================================================
 
 def get_contact(row: dict) -> dict:
     """
-    Get ONE correctly matched contact.
+    Contact priority:
 
-    Priority:
-    1. Complete agent name + email
-    2. Complete advertiser name + email
-    3. Match agent email to advertiser email and use
-       advertiser name
-    4. Name-only agent
-    5. Name-only advertiser
+    1. Agent with both name and valid email
+    2. Advertiser with both name and valid email
+    3. Agent email matched to advertiser email
+    4. Agent name only
+    5. Advertiser name only
 
-    Never intentionally pair unrelated names and emails.
+    Never intentionally combine unrelated names/emails.
     """
 
     agents = get_list(row.get("agents"))
@@ -199,23 +191,16 @@ def get_contact(row: dict) -> dict:
             }
 
     # --------------------------------------------------------
-    # 3. AGENT EMAIL MATCHES ADVERTISER EMAIL
-    #
-    # Example from your dataset:
-    # agent name = null
-    # agent email = allenkcurtis@gmail.com
-    #
-    # advertiser name = Allen Curtis
-    # advertiser email = allenkcurtis@gmail.com
-    #
-    # That's clearly the same contact.
+    # 3. MATCH AGENT EMAIL TO ADVERTISER EMAIL
     # --------------------------------------------------------
 
     for agent in agents:
         if not isinstance(agent, dict):
             continue
 
-        agent_email = clean_value(agent.get("email"))
+        agent_email = clean_value(
+            agent.get("email")
+        )
 
         if not valid_email(agent_email):
             continue
@@ -224,12 +209,12 @@ def get_contact(row: dict) -> dict:
             if not isinstance(advertiser, dict):
                 continue
 
-            advertiser_email = clean_value(
-                advertiser.get("email")
-            )
-
             advertiser_name = clean_value(
                 advertiser.get("name")
+            )
+
+            advertiser_email = clean_value(
+                advertiser.get("email")
             )
 
             if (
@@ -248,14 +233,16 @@ def get_contact(row: dict) -> dict:
                 }
 
     # --------------------------------------------------------
-    # 4. NAME-ONLY AGENT
+    # 4. AGENT NAME ONLY
     # --------------------------------------------------------
 
     for agent in agents:
         if not isinstance(agent, dict):
             continue
 
-        name = clean_value(agent.get("name"))
+        name = clean_value(
+            agent.get("name")
+        )
 
         if name:
             return {
@@ -266,14 +253,16 @@ def get_contact(row: dict) -> dict:
             }
 
     # --------------------------------------------------------
-    # 5. NAME-ONLY ADVERTISER
+    # 5. ADVERTISER NAME ONLY
     # --------------------------------------------------------
 
     for advertiser in advertisers:
         if not isinstance(advertiser, dict):
             continue
 
-        name = clean_value(advertiser.get("name"))
+        name = clean_value(
+            advertiser.get("name")
+        )
 
         if name:
             return {
@@ -292,19 +281,13 @@ def get_contact(row: dict) -> dict:
 
 
 # ============================================================
-# PROPERTY DATA
+# PROPERTY EXTRACTION
 # ============================================================
 
 def get_address(row: dict) -> str:
-    """
-    Realtor JSON:
-        "address": {
-            "street": "143 Rosewood Ln",
-            "locality": "Rutherfordton"
-        }
-    """
-
-    address_data = get_dict(row.get("address"))
+    address_data = get_dict(
+        row.get("address")
+    )
 
     return clean_value(
         address_data.get("street")
@@ -312,7 +295,9 @@ def get_address(row: dict) -> str:
 
 
 def get_city(row: dict) -> str:
-    address_data = get_dict(row.get("address"))
+    address_data = get_dict(
+        row.get("address")
+    )
 
     return clean_value(
         address_data.get("locality")
@@ -320,12 +305,6 @@ def get_city(row: dict) -> str:
 
 
 def get_description(row: dict) -> str:
-    """
-    IMPORTANT:
-    Realtor scraper uses `description`,
-    NOT `text`.
-    """
-
     return clean_value(
         row.get("description")
     )
@@ -371,49 +350,43 @@ agent outreach.
 
 You will receive a property's public listing description.
 
-Your job is to identify ONE genuinely distinctive,
-specific feature from that description and write a short,
-natural sentence about it.
+Your job is to identify ONE genuinely distinctive, specific
+feature from that description and write a short, natural
+sentence about it.
 
 RULES:
 
-- Use ONLY facts explicitly contained in the listing
-  description.
+- Use ONLY facts explicitly contained in the listing description.
 - Never invent or assume a feature.
-- Refer to the property using the literal placeholder
-  {{address}}.
+- Refer to the property using the literal placeholder {{address}}.
 - NEVER insert the actual street address.
 - Keep the final response under 35 words.
 - Sound casual, warm, and human.
-- Pick ONE distinctive detail rather than summarizing
-  the whole property.
+- Pick ONE distinctive detail rather than summarizing the property.
 - Avoid generic compliments.
-- Do not say:
-  "I noticed your listing"
-  "I came across your listing"
-  "beautiful home"
-  "great location"
-  "spacious property"
-  "impressive"
-  "stunning"
+- Do not say "I noticed your listing".
+- Do not say "I came across your listing".
+- Do not say "beautiful home".
+- Do not say "great location".
+- Do not say "spacious property".
+- Do not use "impressive".
+- Do not use "stunning".
 - Do not use exclamation marks.
 - Do not mention that you are an AI.
 - Do not explain your reasoning.
 - Return ONLY the personalized line.
-- If the description contains no genuinely distinctive
-  usable feature, return exactly:
-  SKIP
+- If there is no genuinely distinctive usable feature,
+  return exactly: SKIP
 
-Good style example:
+Example:
 
-That wired shed on {{address}} caught my eye. Solid bonus
-for a place like that.
+That wired shed on {{address}} caught my eye. Solid bonus for
+a place like that.
 
 Another example:
 
-The screened porches on {{address}} are a nice touch.
-That kind of outdoor space gives the place some real
-character.
+The screened porches on {{address}} are a nice touch. That kind
+of outdoor space gives the place some real character.
 """.strip()
 
 
@@ -434,8 +407,6 @@ def create_personalized_line(
         )
         return ""
 
-    # Prevent huge descriptions from unnecessarily
-    # increasing token usage.
     description = description[:6000]
 
     prompt = f"""
@@ -453,23 +424,23 @@ Write the personalized opening line now.
         max_attempts + 1,
     ):
         try:
-            response = openai_client.responses.create(
-                model=OPENAI_MODEL,
-                reasoning={
-                    "effort": "low"
-                },
-                instructions=AI_INSTRUCTIONS,
-                input=prompt,
-                max_output_tokens=100,
+            response = (
+                openai_client.responses.create(
+                    model=OPENAI_MODEL,
+                    reasoning={
+                        "effort": "low"
+                    },
+                    instructions=AI_INSTRUCTIONS,
+                    input=prompt,
+                    max_output_tokens=150,
+                )
             )
 
             line = clean_value(
                 response.output_text
             )
 
-            line = line.strip(
-                '"\''
-            )
+            line = line.strip("\"'")
 
             if not line:
                 return ""
@@ -477,21 +448,19 @@ Write the personalized opening line now.
             if line.upper() == "SKIP":
                 return ""
 
-            # Required placeholder.
             if "{{address}}" not in line:
                 print(
-                    "AI output rejected because "
-                    "{{address}} was missing:",
+                    "AI output rejected - "
+                    "{{address}} missing:",
                     line,
                     flush=True,
                 )
                 return ""
 
-            # Extra safety limit.
             if len(line.split()) > 40:
                 print(
-                    "AI output rejected because "
-                    "it exceeded 40 words:",
+                    "AI output rejected - "
+                    "over 40 words:",
                     line,
                     flush=True,
                 )
@@ -501,8 +470,8 @@ Write the personalized opening line now.
 
         except Exception as exc:
             print(
-                f"OpenAI attempt {attempt} failed: "
-                f"{exc}",
+                f"OpenAI attempt {attempt} "
+                f"failed: {exc}",
                 flush=True,
             )
 
@@ -519,7 +488,6 @@ Write the personalized opening line now.
 # ============================================================
 
 def process_property(row: dict) -> dict:
-
     contact = get_contact(row)
 
     address = get_address(row)
@@ -643,31 +611,33 @@ def split_batches(
 # CSV
 # ============================================================
 
+CSV_FIELDS = [
+    "first_name",
+    "email",
+    "address",
+    "city",
+    "price",
+    "property_description",
+    "personalized_line",
+    "contact_source",
+]
+
+
 def build_csv(results: list) -> str:
-
-    output = io.StringIO()
-
-    fieldnames = [
-        "first_name",
-        "email",
-        "address",
-        "city",
-        "price",
-        "property_description",
-        "personalized_line",
-        "contact_source",
-    ]
+    output = io.StringIO(
+        newline=""
+    )
 
     writer = csv.DictWriter(
         output,
-        fieldnames=fieldnames,
+        fieldnames=CSV_FIELDS,
         extrasaction="ignore",
     )
 
     writer.writeheader()
 
-    for row in results:
-        writer.writerow(row)
+    for result in results:
+        writer.writerow(result)
 
     return output.getvalue()
 
@@ -761,7 +731,7 @@ def upload_csv_to_github(
 
 
 # ============================================================
-# PROCESS COMPLETE APIFY RUN
+# PROCESS APIFY RUN
 # ============================================================
 
 def process_apify_run(
@@ -777,6 +747,8 @@ def process_apify_run(
             "dataset_id": dataset_id,
             "processed": 0,
             "total": 0,
+            "emails": 0,
+            "personalized": 0,
             "github_file": None,
             "error": None,
         }
@@ -792,26 +764,21 @@ def process_apify_run(
             "processing"
         )
 
-        if total == 0:
-            print(
-                "Dataset contains zero records.",
-                flush=True,
-            )
+        print(
+            f"Processing {total} records "
+            f"in batches of {BATCH_SIZE}.",
+            flush=True,
+        )
 
         results = []
 
-        batches = list(
+        for batch_number, batch in enumerate(
             split_batches(
                 items,
                 BATCH_SIZE,
-            )
-        )
-
-        for batch_number, batch in enumerate(
-            batches,
+            ),
             start=1,
         ):
-
             print(
                 f"Starting batch "
                 f"{batch_number} "
@@ -823,14 +790,9 @@ def process_apify_run(
                 batch,
                 start=1,
             ):
-
                 try:
                     processed = (
                         process_property(row)
-                    )
-
-                    results.append(
-                        processed
                     )
 
                 except Exception as exc:
@@ -840,10 +802,7 @@ def process_apify_run(
                         flush=True,
                     )
 
-                    # Keep a row in the CSV so
-                    # one bad property doesn't
-                    # destroy the whole run.
-                    results.append({
+                    processed = {
                         "first_name": "",
                         "email": "",
                         "address":
@@ -861,11 +820,37 @@ def process_apify_run(
                         "personalized_line": "",
                         "contact_source":
                             "processing_error",
-                    })
+                    }
+
+                results.append(
+                    processed
+                )
 
                 jobs[run_id][
                     "processed"
                 ] = len(results)
+
+                # Debug first few records.
+                if len(results) <= 3:
+                    print(
+                        "DEBUG PROCESSED ROW "
+                        f"{len(results)}: "
+                        f"first_name="
+                        f"{processed.get('first_name')!r}, "
+                        f"email="
+                        f"{processed.get('email')!r}, "
+                        f"address="
+                        f"{processed.get('address')!r}, "
+                        f"city="
+                        f"{processed.get('city')!r}, "
+                        f"price="
+                        f"{processed.get('price')!r}, "
+                        f"description_chars="
+                        f"{len(processed.get('property_description', ''))}, "
+                        f"personalized="
+                        f"{bool(processed.get('personalized_line'))}",
+                        flush=True,
+                    )
 
             print(
                 f"Finished batch "
@@ -874,6 +859,28 @@ def process_apify_run(
                 "processed.",
                 flush=True,
             )
+
+        email_count = sum(
+            1
+            for row in results
+            if row.get("email")
+        )
+
+        personalized_count = sum(
+            1
+            for row in results
+            if row.get(
+                "personalized_line"
+            )
+        )
+
+        jobs[run_id][
+            "emails"
+        ] = email_count
+
+        jobs[run_id][
+            "personalized"
+        ] = personalized_count
 
         jobs[run_id]["status"] = (
             "uploading"
@@ -895,19 +902,20 @@ def process_apify_run(
             "github_file"
         ] = github_path
 
-        # Store results temporarily so the
-        # existing results endpoint still works.
-        jobs[run_id]["results"] = results
+        jobs[run_id][
+            "results"
+        ] = results
 
         print(
-            f"Run {run_id} completed. "
-            f"{len(results)} records "
-            "processed.",
+            f"FINAL COMPLETE: "
+            f"{run_id} | "
+            f"{len(results)} records | "
+            f"{email_count} emails | "
+            f"{personalized_count} personalized",
             flush=True,
         )
 
     except Exception as exc:
-
         print(
             f"Run {run_id} FAILED: "
             f"{exc}",
@@ -937,12 +945,18 @@ def process_apify_run(
 def health():
     return jsonify({
         "ok": True,
+        "version":
+            "FINAL-NESTED-REALTOR-V1",
         "service":
             "email-personalization-ai",
-        "batch_size": BATCH_SIZE,
-        "openai_model": OPENAI_MODEL,
-        "github_repo": GITHUB_REPO,
-        "github_branch": GITHUB_BRANCH,
+        "batch_size":
+            BATCH_SIZE,
+        "openai_model":
+            OPENAI_MODEL,
+        "github_repo":
+            GITHUB_REPO,
+        "github_branch":
+            GITHUB_BRANCH,
     })
 
 
@@ -979,7 +993,7 @@ def apify_webhook():
     )
 
     print(
-        "Apify webhook received: "
+        "FINAL-V1 webhook received: "
         f"{event_type}",
         flush=True,
     )
@@ -1003,11 +1017,6 @@ def apify_webhook():
         }), 200
 
     if not run_id:
-        print(
-            "Webhook missing run ID.",
-            flush=True,
-        )
-
         return jsonify({
             "ok": False,
             "error":
@@ -1015,12 +1024,6 @@ def apify_webhook():
         }), 400
 
     if not dataset_id:
-        print(
-            "Webhook missing "
-            "defaultDatasetId.",
-            flush=True,
-        )
-
         return jsonify({
             "ok": False,
             "error":
@@ -1028,26 +1031,20 @@ def apify_webhook():
                 "missing",
         }), 400
 
-    # Basic duplicate protection.
-    # Note: this resets if Railway
-    # restarts the container.
-    existing = jobs.get(run_id)
+    existing = jobs.get(
+        run_id
+    )
 
-    if existing and existing.get(
-        "status"
-    ) in {
-        "downloading",
-        "processing",
-        "uploading",
-        "completed",
-    }:
-
-        print(
-            f"Run {run_id} already "
-            "accepted.",
-            flush=True,
-        )
-
+    if (
+        existing
+        and existing.get("status")
+        in {
+            "downloading",
+            "processing",
+            "uploading",
+            "completed",
+        }
+    ):
         return jsonify({
             "ok": True,
             "duplicate": True,
@@ -1057,14 +1054,13 @@ def apify_webhook():
         }), 200
 
     print(
-        f"Accepted {event_type} "
-        f"for run {run_id}",
+        f"FINAL-V1 accepted "
+        f"{event_type} "
+        f"for run {run_id}. "
+        f"Dataset: {dataset_id}",
         flush=True,
     )
 
-    # Respond to Apify immediately.
-    # Actual work happens in the
-    # background.
     worker = threading.Thread(
         target=process_apify_run,
         args=(
@@ -1080,6 +1076,8 @@ def apify_webhook():
     return jsonify({
         "ok": True,
         "accepted": True,
+        "version":
+            "FINAL-NESTED-REALTOR-V1",
         "run_id": run_id,
         "dataset_id": dataset_id,
         "event_type": event_type,
@@ -1096,17 +1094,21 @@ def apify_webhook():
 )
 def job_status(run_id):
 
-    job = jobs.get(run_id)
+    job = jobs.get(
+        run_id
+    )
 
     if not job:
         return jsonify({
             "ok": False,
-            "error": "Job not found",
+            "error":
+                "Job not found",
         }), 404
 
     safe_job = {
         key: value
-        for key, value in job.items()
+        for key, value
+        in job.items()
         if key != "results"
     }
 
@@ -1127,15 +1129,21 @@ def job_status(run_id):
 )
 def job_results(run_id):
 
-    job = jobs.get(run_id)
+    job = jobs.get(
+        run_id
+    )
 
     if not job:
         return jsonify({
             "ok": False,
-            "error": "Job not found",
+            "error":
+                "Job not found",
         }), 404
 
-    if job.get("status") != "completed":
+    if (
+        job.get("status")
+        != "completed"
+    ):
         return jsonify({
             "ok": False,
             "status":
@@ -1144,23 +1152,27 @@ def job_results(run_id):
                 "Job has not completed.",
         }), 409
 
+    results = job.get(
+        "results",
+        [],
+    )
+
     return jsonify({
         "ok": True,
         "run_id": run_id,
         "github_file":
             job.get("github_file"),
         "count":
-            len(
-                job.get(
-                    "results",
-                    [],
-                )
+            len(results),
+        "emails":
+            job.get("emails", 0),
+        "personalized":
+            job.get(
+                "personalized",
+                0,
             ),
         "results":
-            job.get(
-                "results",
-                [],
-            ),
+            results,
     })
 
 
@@ -1195,7 +1207,8 @@ def test_personalization():
 
     return jsonify({
         "ok": True,
-        "personalized_line": line,
+        "personalized_line":
+            line,
     })
 
 
