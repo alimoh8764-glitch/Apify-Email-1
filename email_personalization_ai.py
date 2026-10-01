@@ -345,79 +345,158 @@ def format_price(value: Any) -> str:
 # ============================================================
 
 AI_INSTRUCTIONS = """
-You write personalized first lines for cold emails to real estate agents.
+You write short personalized first lines for cold emails to real estate agents.
 
 You are given:
 1. The property's street address
 2. The listing price
 3. The property's public listing description
 
-Pick ONE genuinely interesting or unusual physical feature from the description.
+Pick ONE genuinely interesting and specific physical feature from the description.
 
-Write exactly 2 short, casual sentences.
+Write exactly 2 short casual sentences.
 
-The target style is:
+TARGET STYLE:
 
 That wired shed on 6214 Elkington Ln caught my eye. Solid bonus for a place at that price point.
 
-RULES:
-- Sentence 1 must mention ONE specific property feature and the actual street address.
-- Sentence 2 must be a short, casual reaction to that feature.
-- When natural, relate the feature to the property's price point using wording like "at that price point".
-- Use the actual street address provided.
-- Do not use {{address}}.
-- Do not state the numerical listing price in the output.
-- Keep the entire response under 35 words.
-- Sound like a real person who briefly looked at the listing.
-- Use simple, direct language.
-- Do not sound like a realtor, marketer, or copywriter.
-- Do not summarize the property.
-- Do not mention more than ONE feature.
-- Do not invent or assume anything not stated in the description.
-- Do not use exclamation marks.
-- Return ONLY the two sentences.
+CRITICAL STYLE RULES:
+
+Keep it snappy.
+
+Use simple everyday words.
+
+Use the shortest natural name for the feature.
+
+Do not copy long descriptive phrases from the listing.
+
+Remove unnecessary adjectives, measurements, specifications, and marketing language.
+
+Examples of shortening:
+
+"whole home Generac generator"
+becomes:
+"Generac generator"
+
+"custom 10 foot ceiling screened porch"
+becomes:
+"screened porch"
+
+"stacked stone wood burning fireplace"
+becomes:
+"fireplace"
+
+"custom designed primary closet"
+becomes:
+"primary closet"
+
+"complete outdoor shower"
+becomes:
+"outdoor shower"
+
+"detached Lighthouse Guest House"
+becomes:
+"lighthouse guest house"
+
+Mention only enough information to identify the feature.
+
+Do not cram multiple details into the line.
+
+DASH RULE:
+
+Never use any type of dash in the response.
+
+Do not use a hyphen, en dash, or em dash.
+
+If a phrase normally contains a dash, rewrite it with simple words instead.
+
+ADDRESS:
+
+Sentence 1 must include the exact street address provided.
+
+Do not use {{address}}.
+
+Do not change, shorten, or rewrite the street address.
+
+STRUCTURE:
+
+Sentence 1 should briefly mention ONE feature and the address.
+
+Sentence 2 should give a very short casual reaction.
 
 GOOD EXAMPLES:
 
-That wired shed on 6214 Elkington Ln caught my eye. Solid bonus for a place at that price point.
+That Generac generator at 2035 Colony Pines Dr caught my eye. Solid bonus at that price point.
 
-That backyard ADU at 4409 Randall Rd caught my eye. Solid bonus for a place at that price point.
+That screened porch at 10079 Fox Trotter Ln caught my eye. Nice setup at that price point.
 
-That raised bar at 8 Hummingbird Ln caught my eye. Cool feature for a place at that price point.
+That wired storage building at 814 Gatewood Dr caught my eye. Solid bonus at that price point.
 
-That lighthouse guest house at 100 Nautical Ln caught my eye. Definitely not something you see every day at that price point.
+That outdoor shower at 4503 E Oak Island Dr Unit 84 caught my eye. Pretty handy for a beach house.
 
-That greenhouse at 4409 Randall Rd caught my eye. Nice bonus for a place at that price point.
+That lighthouse guest house at 100 Nautical Ln caught my eye. Definitely not something you see every day.
 
-BAD EXAMPLES:
+That raised bar at 8 Hummingbird Ln caught my eye. Pretty cool feature at that price point.
 
-The backyard ADU has its own bath, kitchen hookups, and newly carpeted upstairs, making it an unusually flexible setup for guests.
+LENGTH:
 
-The oversized private office and coffered ceiling make a memorable first impression.
+Aim for 14 to 24 words total.
 
-The included washer and dryer are a thoughtful move-in-ready touch.
+Never exceed 30 words.
 
-The property offers a distinctive country feel.
+Shorter is better.
 
-AVOID PHRASES LIKE:
-- thoughtful touch
-- memorable first impression
-- distinctive country feel
-- especially convenient
-- thoughtfully designed
-- versatile layout
-- ideal for
-- perfect for
-- great opportunity
-- truly unique
-- standout feature
-- impressive
-- stunning
+FEATURE SELECTION:
 
-Prefer unusual concrete features such as sheds, workshops, guest houses, ADUs, greenhouses, creeks, ponds, bars, unusual architecture, hobby spaces, outdoor kitchens, saunas, or other memorable property details.
+Prefer genuinely interesting physical property features such as sheds, workshops, guest houses, ADUs, greenhouses, creeks, ponds, bars, outdoor showers, generators, unusual garages, saunas, screened porches, interesting fireplaces, hobby spaces, or unusual architecture.
 
-If there is no genuinely interesting specific feature, return exactly:
+Avoid boring features when a more interesting feature exists.
+
+Do not choose ordinary features such as bedroom count, bathroom count, granite counters, stainless appliances, walk in closets, laundry rooms, square footage, open floor plans, or ordinary offices.
+
+VOICE:
+
+Casual.
+Short.
+Natural.
+Human.
+Understated.
+
+Do not sound like a realtor.
+Do not sound like marketing copy.
+Do not explain why the feature adds value.
+Do not summarize the listing.
+Do not use fancy adjectives.
+Do not use exclamation marks.
+Do not invent anything.
+
+Avoid phrases like:
+
+thoughtful touch
+memorable first impression
+distinctive
+exceptional
+impressive
+stunning
+beautifully designed
+thoughtfully designed
+versatile
+luxurious
+ideal for
+perfect for
+standout feature
+
+PRICE:
+
+You may say "at that price point".
+
+Do not state the numerical listing price.
+
+If there is no genuinely interesting feature worth mentioning, return exactly:
+
 SKIP
+
+Return ONLY the personalized line.
 """.strip()
 
 
@@ -481,18 +560,32 @@ Write the personalized opening line now.
 
             if address.lower() not in line.lower():
                 print(
-                    "AI output rejected - actual address missing:",
+                    "AI output rejected because actual address is missing:",
                     line,
                     flush=True,
                 )
+                if attempt < max_attempts:
+                    continue
                 return ""
 
-            if len(line.split()) > 35:
+            if any(char in line for char in ("-", "–", "—")):
                 print(
-                    "AI output rejected - over 35 words:",
+                    "AI output rejected because it contains a dash:",
                     line,
                     flush=True,
                 )
+                if attempt < max_attempts:
+                    continue
+                return ""
+
+            if len(line.split()) > 30:
+                print(
+                    "AI output rejected because it is over 30 words:",
+                    line,
+                    flush=True,
+                )
+                if attempt < max_attempts:
+                    continue
                 return ""
 
             return line
@@ -974,7 +1067,7 @@ def health():
     return jsonify({
         "ok": True,
         "version":
-            "FINAL-NESTED-REALTOR-V2",
+            "FINAL-NESTED-REALTOR-V3",
         "service":
             "email-personalization-ai",
         "batch_size":
@@ -1021,7 +1114,7 @@ def apify_webhook():
     )
 
     print(
-        "FINAL-V2 webhook received: "
+        "FINAL-V3 webhook received: "
         f"{event_type}",
         flush=True,
     )
@@ -1082,7 +1175,7 @@ def apify_webhook():
         }), 200
 
     print(
-        f"FINAL-V2 accepted "
+        f"FINAL-V3 accepted "
         f"{event_type} "
         f"for run {run_id}. "
         f"Dataset: {dataset_id}",
@@ -1105,7 +1198,7 @@ def apify_webhook():
         "ok": True,
         "accepted": True,
         "version":
-            "FINAL-NESTED-REALTOR-V2",
+            "FINAL-NESTED-REALTOR-V3",
         "run_id": run_id,
         "dataset_id": dataset_id,
         "event_type": event_type,
