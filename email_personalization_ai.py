@@ -870,6 +870,7 @@ def process_apify_run(
             "total": 0,
             "emails": 0,
             "personalized": 0,
+            "removed_no_email": 0,
             "github_file": None,
             "error": None,
         }
@@ -878,11 +879,44 @@ def process_apify_run(
             dataset_id
         )
 
+        downloaded_total = len(items)
+
+        # Remove leads without a valid email BEFORE personalization.
+        # This prevents wasting OpenAI calls on leads that cannot be emailed.
+        items_with_email = []
+
+        for row in items:
+            contact = get_contact(row)
+
+            if valid_email(
+                contact.get("email")
+            ):
+                items_with_email.append(
+                    row
+                )
+
+        removed_no_email = (
+            downloaded_total
+            - len(items_with_email)
+        )
+
+        items = items_with_email
         total = len(items)
 
         jobs[run_id]["total"] = total
+        jobs[run_id]["removed_no_email"] = (
+            removed_no_email
+        )
         jobs[run_id]["status"] = (
             "processing"
+        )
+
+        print(
+            f"Email filter: kept {total} "
+            f"of {downloaded_total} records; "
+            f"removed {removed_no_email} "
+            "without a valid email.",
+            flush=True,
         )
 
         print(
@@ -1067,7 +1101,7 @@ def health():
     return jsonify({
         "ok": True,
         "version":
-            "FINAL-NESTED-REALTOR-V3",
+            "FINAL-NESTED-REALTOR-V4",
         "service":
             "email-personalization-ai",
         "batch_size":
@@ -1114,7 +1148,7 @@ def apify_webhook():
     )
 
     print(
-        "FINAL-V3 webhook received: "
+        "FINAL-V4 webhook received: "
         f"{event_type}",
         flush=True,
     )
@@ -1175,7 +1209,7 @@ def apify_webhook():
         }), 200
 
     print(
-        f"FINAL-V3 accepted "
+        f"FINAL-V4 accepted "
         f"{event_type} "
         f"for run {run_id}. "
         f"Dataset: {dataset_id}",
@@ -1198,7 +1232,7 @@ def apify_webhook():
         "ok": True,
         "accepted": True,
         "version":
-            "FINAL-NESTED-REALTOR-V3",
+            "FINAL-NESTED-REALTOR-V4",
         "run_id": run_id,
         "dataset_id": dataset_id,
         "event_type": event_type,
